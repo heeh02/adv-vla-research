@@ -1,0 +1,26 @@
+[
+  {
+    "local": "Current_basis_geometry_task_scores.csv.gz",
+    "release": "v1.0.0",
+    "asset": "Analysis_historical_20261017_tables-public.zip",
+    "asset_member": "docs/data-transfer/google-drive-20261017/analysis-ready/Current_basis_geometry_task_scores.csv",
+    "member_sha256": "2b4ea1790964d38d47976817d3f4bf31f8b750ec3052a9120fbb7b02fcc938fa",
+    "local_sha256": "b491eba215058b9975cda75eedc9b620b1366581074407a3110c21e9bf26c448"
+  },
+  {
+    "local": "Current_basis_readout_task_scores.csv.gz",
+    "release": "v1.0.0",
+    "asset": "Analysis_historical_20261017_tables-public.zip",
+    "asset_member": "docs/data-transfer/google-drive-20261017/analysis-ready/Current_basis_readout_task_scores.csv",
+    "member_sha256": "6a35728fb9d86998e17f553f0e251b59cde17a9f0f454536726f3c482ee26865",
+    "local_sha256": "988c1aedd157d29d3c0ff3249ee2e2a84542da0d5f54f82020f514da4f8ff641"
+  },
+  {
+    "local": "CASE-BEHAVIOR.jsonl.gz",
+    "release": "v1.0.0",
+    "asset": "P1_current_chapter_refined_20261105-public.zip",
+    "asset_member": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/command_direction_audit/inputs/CASE-BEHAVIOR.jsonl.gz",
+    "member_sha256": "9027d77e4d31897c77eeeeb05d92ab28e70baa5d1a050a00f23e5ce38338dcc8",
+    "local_sha256": "9027d77e4d31897c77eeeeb05d92ab28e70baa5d1a050a00f23e5ce38338dcc8"
+  }
+]
