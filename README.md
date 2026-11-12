@@ -1,30 +1,37 @@
 # Sensitivity Is Not Fragility
-### Shared Visual Responses and Task Outcomes in Vision-Language-Action Policies
+**Shared Visual Responses and Task Outcomes in Vision-Language-Action Policies**
 
-[Paper (PDF)](paper1/current/latex/main.pdf) · [Supplement (PDF)](paper1/current/latex/supplement.pdf) · [Reproduce the figures and results](reproduce/README.md) · [Download the data](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0)
+[Paper](paper1/current/latex/main.pdf) · [Supplement](paper1/current/latex/supplement.pdf) · [Illustrated guide](docs/figures/README.md) · [中文逐图讲解](docs/figures/README.zh-CN.md) · [组会讲义 (PDF)](docs/figures/group-meeting-zh.pdf)
 
-When a robot sees the same task under a different camera view or lighting condition, how much does its response tell us about whether it will succeed? We study frozen π₀.₅ and π₀ policies on LIBERO and LIBERO-Plus. In π₀.₅, 16 shared directions capture **36.5–83.6%** of held-out, mean-centered visual response energy. Restoring clean values along these directions reduces initial translation-command error by **24%** under camera changes and **5%** under sensor noise. Paired executions show why task outcomes also matter. Under sensor noise, π₀'s mean early motion separation is only **0.58×** its clean-resampling reference, yet success drops by **14.3 percentage points**.
+Under sensor noise, a π₀ robot moves only **0.58×** as far from its clean trajectory in the first five controls as two clean runs move from each other. Yet its task success falls by **14.3 percentage points**. What can a change in a robot’s visual input tell us about its actions and its chances of success?
 
-![Figure 1 from the paper. The left panel shows the recording sites and the intervention at layer 9. The right panel shows changes in command error and task success.](paper1/current/figure_src/figs/figure1.png)
+We study frozen π₀.₅ and π₀ policies on LIBERO and LIBERO-Plus. In π₀.₅, different visual perturbations produce feature changes along shared directions. Restoring the clean values along 16 of those directions brings the issued commands closer to their clean references. Independent paired executions show which successful runs are lost and which failed runs become successes.
 
-## Check the reported numbers
+![Figure 1. The two observations share a physical state. The diagram marks recording at L1, L9 and L18 and restoration at L9; the right panel reports command error and success.](paper1/current/figure_src/figs/figure1.png)
 
-From a clean checkout, run the following with Python 3.9 or later. The numerical check uses the standard library and data included in the repository.
+## Read the figures
+
+| Question | Where to look |
+|---|---|
+| Where do we record the visual response? What stays fixed between two runs? | **Figures 1–2, Table 1.** Follow one observation through generation and execution, then compare the three paired study designs. |
+| Do the same feature directions describe responses to unseen tasks and perturbations? | **Figure 3.** Sixteen directions retain **36.5–83.6%** of held-out residual response energy. The second panel asks how well those coordinates predict translation commands. |
+| Does changing those features change what the robot does? | **Figure 4, Table 2.** Restoring clean coordinates reduces initial command error by **24%** under Camera and **5%** under Sensor Noise. The observed success gains have simultaneous intervals that include zero. |
+| What can an average success rate hide? | **Figure 5, Table 3.** Under Background, π₀.₅ loses success on 3.57% of pairs and gains it on another 3.57%, with tasks weighted equally. Net success stays unchanged while **7.14%** of paired outcomes flip. |
+
+The illustrated guide shows each panel alongside its comparison, population and link to the underlying data. The 17-slide Chinese talk includes speaker notes in the PowerPoint version. [English guide](docs/figures/README.md) · [中文导读](docs/figures/README.zh-CN.md) · [PowerPoint](docs/figures/group-meeting-zh.pptx)
+
+## Reproduce the main results
+
+Clone the repository and run the numerical check with Python 3.9 or later. The required inputs are included; the check uses only the standard library.
 
 ```sh
 git clone https://github.com/heeh02/adv-vla-research.git
 cd adv-vla-research
-git checkout paper-v1.1
+git checkout paper-v1.2
 python3 -B reproduce/paper.py --output paper-results.json
 ```
 
-| Where in the paper | What you can check |
-|---|---|
-| **Figure 3 · Shared directions** | Recompute retained energy from held-out task scores for response, clean and random bases. Rebuild all 112 task rows used to compare layer depth and command prediction. |
-| **Figures 1b and 4 · Restoration** | Match the six runs at each of 216 starting conditions and noise draws. Recompute translation error from the first five issued commands and check all 1,296 success labels. For Camera, mean error falls from 0.409 to 0.312, while the success change is +1.85 points with a simultaneous 95% interval of [−8.33, 11.11]. |
-| **Figure 5 · Motion and outcomes** | Recompute task-weighted motion, lost and gained successes, and intervals from the five-arm case records. Under π₀ Sensor Noise, 12 of 18 lost-success pairs have less early motion separation than their own clean-resampling reference. |
-
-The command writes intermediate estimates and matched-pair summaries to JSON. To inspect an individual case, change a grouping, rerun the broader statistical checks, or rebuild both PDFs, follow the [figure-by-figure reproduction guide](reproduce/README.md). It identifies which inputs are issued commands, episode-level observations, frozen task scores or published estimates. Full original hidden tensors, checkpoints and simulator trajectories are unavailable for a fresh collection.
+The check rebuilds **112 task rows** for Figure 3, compares the first five issued commands across **216 six-arm cases** for Figure 4, and recomputes Figure 5’s outcomes from the five-arm records. Open `paper-results.json` to inspect group estimates and individual Sensor Noise pairs. The reproduction guide identifies the estimators, uncertainty intervals, archived inputs and commands to rebuild both PDFs. [Reproduction guide](reproduce/README.md) · [Statistical and collection code](paper1/reproduction) · [Download the data](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0)
 
 ## Two studies we are releasing for others to continue
 
