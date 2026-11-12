@@ -1,0 +1,16 @@
+{
+  "status": "delivered",
+  "date": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "local_report": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/final-closeout-report-20261022-v1/REPORT.md",
+  "notion_url": "removed-private-link",
+  "sources": 21,
+  "figures_indexed": 11,
+  "figures_embedded": 3,
+  "tables_read_back": 12,
+  "models_indexed": 4,
+  "new_experiments": 0,
+  "new_cloud_compute": 0,
+  "goal_reopened": false,
+  "other_paper_threads_messaged_or_modified": false
+}

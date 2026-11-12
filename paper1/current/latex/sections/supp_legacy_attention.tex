@@ -1,0 +1,30 @@
+\subsection{Wrist attention: how much it receives and how it is spread}
+\label{supp:legacy-attention}
+When only the main camera turns, attention within the unchanged wrist image is redistributed more at L18 than at L9, but weighting by the wrist's share of all attention reverses the ranking (Table~\ref{tab:legacy-attention}). Deep wrist features also change although the wrist pixels do not. This is an additional study for the attention analysis (Sec.~\ref{sec:supp-attention-analysis}); the main paper does not rely on it. Fig.~\ref{fig:attention-spatial-full} shows one example.
+
+\paragraph{Four measures of one regional change.}
+The measures separate allocation (how much attention the region receives) from redistribution (how it is spread within the region). At each head and plan position, let $m=\sum_{k\in\mathcal C}P_k$ be the probability mass on camera keys among all keys (the allocation), and $\widetilde P_k=P_k/m$ for $m>0$. Camera-conditional total variation (TV), the redistribution, is $\frac12\sum_{k\in\mathcal C}|\widetilde P_k^1-\widetilde P_k^0|$; its mass-weighted version is $w=\frac12(m_0+m_1)\operatorname{TV}$, computed before averaging. The camera-restricted difference is $n_{\mathcal C}=\sum_{k\in\mathcal C}|P_k^1-P_k^0|$, without the factor of one half; it differs from both the signed mass change and the sum of separate allocation and redistribution norms.
+
+\begin{table}[t]\centering\small
+\caption{\textbf{Different attention measures rank the wrist layers differently.} Fixed-state camera study, 36 tasks, main camera $0^\circ\!\rightarrow15^\circ$ at the baseline headlight, generation step 0; equal-weight means over tasks of per-task averages across all eight heads, ten positions, demonstrations, phases and the two recorded noise definitions. Conditional TV is a percentage of wrist mass; the other rows are percentage points of probability over all keys. Point values, no intervals.}
+\label{tab:legacy-attention}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}\toprule
+Wrist quantity & L1 & L9 & L18\\\midrule
+Conditional TV (\%) & 0.084 & 15.753 & 25.180\\
+Mass-weighted TV (pp) & 0.0139 & 5.453 & 2.333\\
+Absolute mass change (pp) & 0.407 & 4.767 & 2.300\\
+Wrist-restricted $L_1$ change (pp) & 0.4071 & 12.9226 & 5.2600\\\bottomrule
+\end{tabular}\end{table}
+
+\paragraph{Mass weighting reverses the layer ordering in every task.}
+After averaging over phases and noise, L18 has larger conditional TV and smaller weighted TV than L9 on every task, across four lighting and camera changes and three generation steps; the wrist-restricted $L_1$ change is also smaller in all 432 task/generation-step/change measurements. Finer strata contain 11 conditional-TV reversals among 1,728 comparisons; the subsets of the first five and last five positions keep five and six weighted-TV reversals. All are repeated measurements of 36 tasks.
+
+\paragraph{Deep wrist values respond to an identical wrist image.}
+The L1 wrist-value response is zero under the camera change, while the mean per-patch relative norms at L9/L18 are 0.400/0.364 at the baseline headlight: a deep token at a fixed image position carries context from the main view.
+
+\paragraph{Text-token states respond under a fixed instruction.}
+A companion readout also records camera responses in the text-token states $H$ and $Z$. On its common scoring positions, the mid-observation responses at L9/L18 are nonzero in all 72 demonstration pairs from 36 tasks, and the L1 responses are all zero. Instruction, tokenizer and pipeline settings are fixed for the 144-state set; token bytes were not compared directly. The shared positions cover 6--9 text slots, or 42.86--100\% of the target slots.
+
+\paragraph{Splitting the change into probability and value terms depends on the reference.}
+In the L18 main-camera slice at generation step 9, the value term exceeds the probability term on 7/36 tasks with one reference and on 28/36 with the reverse. The split isolates terms of the saved attention read; an intervention would also involve the gate and the rest of the policy.

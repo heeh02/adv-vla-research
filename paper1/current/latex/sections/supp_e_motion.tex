@@ -1,0 +1,28 @@
+\subsection{Command changes reach the robot: strongly after 5 controls, still after 60}
+\label{sec:early-late-association}
+Do changes in the first five commands show in the robot's motion? The command change ranks with end-effector separation almost perfectly after five controls, as expected since those controls execute the commands, and more weakly but clearly after 60 (Table~\ref{tab:early-late-association}; Fig.~\ref{fig:supp-early-late}). This supports Sec.~\ref*{M-sec:early} of the main paper. The comparison uses all 268 planned settings.
+
+\paragraph{Same pairs, two control steps.}
+We match the same policy, setting and noise draw after controls 5 and 60, requiring the same first-query command-change norm and a valid end-effector separation at both steps; every outcome group is included. The matched support is 516/536 pairs for $\pi_{0.5}$ and 526/536 for $\pi_0$, each on 40 tasks; unavailable measurements stay counted on the planned support.
+
+\paragraph{Task-weighted rank correlation.}
+Each eligible pair has weight $w_{tvn}=1/(T V_t N_{tv})$, weighting tasks, their settings and their noise draws equally at each level. For a scalar $z$, define the weighted midpoint empirical CDF
+\begin{equation}
+F_w(z_i)=\sum_{j:z_j<z_i}w_j+\tfrac12\sum_{j:z_j=z_i}w_j.
+\end{equation}
+The rank correlation is the weighted Pearson correlation of these transforms of command-change norm and end-effector distance, pooled over the plotted families with equal task weight. Section~\ref{sec:supp-bounded-internal} instead centers ranks within tasks. Constant tasks stay included; zero overall variance would leave the statistic undefined.
+
+\begin{table}[h]
+\caption{\textbf{The command change ranks with end-effector separation more strongly after control 5 than after control 60, in both policies.} Weighted rank correlation on the same pairs at both steps. Brackets are pointwise 95\% intervals for each policy and contrast.}
+\centering\small
+\begin{tabular}{lrrr}\toprule
+Policy & Control 5 & Control 60 & Early minus late\\\midrule
+$\pi_{0.5}$ & \shortstack{0.953\\{[0.933,0.968]}} & \shortstack{0.474\\{[0.362,0.580]}} & \shortstack{0.479\\{[0.368,0.593]}}\\
+$\pi_0$ & \shortstack{0.974\\{[0.961,0.982]}} & \shortstack{0.409\\{[0.303,0.512]}} & \shortstack{0.566\\{[0.463,0.671]}}\\
+\bottomrule\end{tabular}
+
+\label{tab:early-late-association}
+\end{table}
+
+\paragraph{Uncertainty and units.}
+The analysis rules were fixed before these calculations, on data already observed. Intervals come from 10,000 whole-task bootstrap draws, shared by both control steps, with the weighted CDFs recomputed in each draw; percentile intervals use linear interpolation, and all draws are defined. Command norms use the fifteen translation coordinates (command units); end-effector distances are in millimetres.

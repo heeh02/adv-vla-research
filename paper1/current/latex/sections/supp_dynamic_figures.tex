@@ -1,0 +1,79 @@
+\paragraph{Figures for Sec.~\ref{sec:supp-dynamic-visual}.}
+Figures~\ref{fig:supp-token-full} and~\ref{fig:supp-p08-full} show response size, concentration and retention at a later observation. For attention, read the layer-18 relative response, raw difference and clean scale together (Figs.~\ref{fig:supp-pw-l18-relative}--\ref{fig:supp-pw-l18-reference}); all three show the same 536 recorded LIBERO-Plus pairs. The layer-1 views give a shallow-layer comparison (Figs.~\ref{fig:supp-pw-relative}--\ref{fig:supp-issued-full}). Figure~\ref{fig:supp-attention-estimates} shows the 404 command-matched cases used in Fig.~\ref{fig:supp-attention-main-view}. In the attention panels, 0/5/9 index generation steps within a query, not physical frames. Figures~\ref{fig:supp-motion-full} and~\ref{fig:supp-motion-reference-estimates} show the direction of the command change and the clean-rerun reference. The full spatial attention example is in Fig.~\ref{fig:attention-spatial-full}.
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figures/v77_token_structure.pdf}
+\caption{\textbf{Response size and concentration across channels follow different layer patterns.} (a) Clean-relative H/Z/V responses by region, (b) raw value-response RMS beside its clean scale, and (c) the effective number of participating V channels (256 axes). 404 matched LIBERO-Plus pairs on 28 tasks; descriptive family aggregates without intervals.}
+\label{fig:supp-token-full}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figures/v78_p08_full.pdf}
+\caption{\textbf{Shared directions fitted at an earlier observation retain more of the later response than both controls, even when the response changes direction.} For each episode, the cosine between its full responses at the two observations (horizontal) against centered retention at the second observation (vertical). Shared, clean-feature and random directions use equal coefficient budgets. Cross-observation study (Sec.~\ref{sec:supp-p08-dynamic}): 16 held-out tasks, ten conditions, 940/960 planned episodes observed; one point per episode, no interval.}
+\label{fig:supp-p08-full}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_relative_L18.pdf}
+\caption{\textbf{At layer 18, attention-probability shifts shrink and relative attention-output responses grow over generation.} Horizontal: probability TV over all visible keys; vertical: the attention-output difference norm divided by the clean $W$ norm. Both are recomputed at each branch's saved generation state, after output projection and before gating for $W$. Lines join generation steps 0/5/9 of the same case within the first query. All 536 recorded LIBERO-Plus pairs; Fig.~\ref{fig:supp-attention-main-view} uses the 404 command-matched cases. One point per case and step, no interval. Figures~\ref{fig:supp-pw-l18-raw} and~\ref{fig:supp-pw-l18-reference} retain these cases and trajectories while showing the raw difference and clean scale.}
+\label{fig:supp-pw-l18-relative}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_raw_L18.pdf}
+\caption{\textbf{The layer-18 attention-output difference on its raw scale.} Vertical: perturbed--clean $W$ difference RMS in model units. The 536 cases, horizontal axis and lines joining generation steps 0/5/9 as in Fig.~\ref{fig:supp-pw-l18-relative}. Recomputed at each branch's saved generation state; one point per case and step, no interval. The corresponding clean $W$ scale is shown in Fig.~\ref{fig:supp-pw-l18-reference}.}
+\label{fig:supp-pw-l18-raw}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_clean_L18.pdf}
+\caption{\textbf{The clean output scale also changes during layer-18 generation.} The vertical axis shows clean $W$ RMS in model units, the reference scale for the relative response in Fig.~\ref{fig:supp-pw-l18-relative}. The 536 cases, horizontal axis and lines joining generation steps 0/5/9 are as in Figs.~\ref{fig:supp-pw-l18-relative} and~\ref{fig:supp-pw-l18-raw}. Recomputed at the saved generation states; one point per case and step, no interval. The relative response must be read against this changing reference.}
+\label{fig:supp-pw-l18-reference}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_relative_L1.pdf}
+\caption{\textbf{Probability shifts and relative attention-output responses over generation at layer 1.} Lines join generation steps 0/5/9 of the same case within a query. Horizontal: probability TV over all visible keys; vertical: attention-output response W divided by its clean norm. Both recomputed, all 536 LIBERO-Plus pairs; one point per case and step, no interval.}
+\label{fig:supp-pw-relative}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_clean_L1.pdf}
+\caption{\textbf{A nearly constant clean output scale leaves the response difference to account for the relative spread.} The cases and horizontal axis match Fig.~\ref{fig:supp-pw-relative}; the vertical axis now shows clean W RMS (model units), the denominator of the relative response.}
+\label{fig:supp-pw-reference}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_pw_issued_L1.pdf}
+\caption{\textbf{Layer-1 attention-output responses against the change in the first five commands.} Horizontal: raw W difference RMS (model units) at generation steps 0/5/9; vertical: RMS change in the first five commands (translation, command units), one value per case. The matched subset contains 404 of 536 pairs with recorded commands; 132 unmatched pairs remain in the full recording count. Symlog axes; no interval.}
+\label{fig:supp-issued-full}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v77_attention_link.pdf}
+\caption{\textbf{Association with the command change and separation of lost successes ask different questions of the same internal measurements.} On 404 matched LIBERO-Plus pairs, (a) L18 family means over generation steps 0/5/9; (b) within-task rank associations of first-step L18 measurements with the change in the first five commands (translation); (c) task-equal AUROC for lost success (SF versus SS), where 0.5 is chance. The AUROC uses the eligible tasks with both outcomes; pointwise descriptive 95\% whole-task intervals and definitions are given in Table~\ref{tab:supp-internal-links}.}
+\label{fig:supp-attention-estimates}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v715_motion_direction.pdf}
+\caption{\textbf{Direction of the translation command change across the two policy-noise draws, by size of the change.} At the first query, horizontal: cosine between the two noise-matched changes; vertical: size of the change in the first five commands (command units, symlog). Lines join a setting's two noises; color gives the paired outcome. Of 268 planned settings per policy, 516/536 and 526/536 noise pairs are plotted for $\pi_{0.5}$ and $\pi_0$, respectively; the remainder appears in the coverage strip. No interval.}
+\label{fig:supp-motion-full}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v77_motion_reference.pdf}
+\caption{\textbf{The clean rerun puts command and motion changes on a common reference scale.} Primary panel of the paired executions, supports printed. (a) Task-equal mean end-effector position distance (metres), T--R against the clean rerun R0--R1, after executed control steps 0, 5, 15, 30, 60; 95\% whole-task intervals. (b) T--R/R0--R1 for the first five commands (translation), same intervals. Light has incomplete fixed-step support; terminal observations are analyzed separately. Intervals describe mean distances in (a) and command-distance ratios in (b), on their respective matched supports.}
+\label{fig:supp-motion-reference-estimates}
+\end{figure*}

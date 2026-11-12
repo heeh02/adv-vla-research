@@ -1,0 +1,13 @@
+\paragraph{Under Camera, restoration moves the commands mainly toward the clean commands.}
+Write the translation parts of the first five commands as $A^a\in\mathbb R^{15}$. For each setting, start state and noise draw, let $c=A^{N_C}-A^{N_T}$ be the direction toward the clean commands and $d^a=A^a-A^{N_T}$ the change the edit causes. Its signed component along $c$ and the size of the rest are
+\begin{equation}
+ d_\parallel^a=\frac{\langle d^a,c\rangle}{\|c\|_2},
+ \qquad
+ d_\perp^a=\left\|d^a-d_\parallel^a\frac{c}{\|c\|_2}\right\|_2.
+ \label{eq:issued-command-direction}
+\end{equation}
+For each run, the command error satisfies $(e^a)^2=(\|c\|_2-d_\parallel^a)^2+(d_\perp^a)^2$: $d_\parallel$ is progress toward the clean commands and $d_\perp$ the change in other directions. Both are computed per record and then averaged like the command error.
+
+All 1,296 records contain the five commands, and all 216 clean-target distances are positive. Table~\ref{tab:issued-command-direction} reports all six runs as a descriptive decomposition. Restoration has mean along/orthogonal components $0.10365/0.04660$ under Camera, so most of its change points toward the clean commands, and $0.01139/0.01229$ under Sensor Noise, where the change in other directions is as large as the progress toward the clean commands. Only the command-error contrasts carry intervals (Table~\ref{tab:allstep-restoration-contrasts}).
+
+\input{sections/issued_command_direction_table}

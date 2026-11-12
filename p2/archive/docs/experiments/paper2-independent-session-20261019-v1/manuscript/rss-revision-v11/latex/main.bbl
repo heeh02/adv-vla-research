@@ -1,0 +1,72 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Buurmeijer et~al.(2026)Buurmeijer, {Amo Alonso}, Swann, and
+  Pavone]{observing2026}
+Hugo Buurmeijer, Carmen {Amo Alonso}, Aiden Swann, and Marco Pavone.
+\newblock Observing and controlling features in vision-language-action models.
+\newblock \emph{arXiv preprint arXiv:2603.05487v2}, 2026.
+
+\bibitem[Chen et~al.(2026)Chen, Tian, Wang, Joffe, Lin, Chen, Karamcheti, and
+  Xu]{resteer2026}
+Zhenyang Chen, Alan Tian, Liquan Wang, Benjamin Joffe, Yingyan~Celine Lin,
+  Yuxiao Chen, Siddharth Karamcheti, and Danfei Xu.
+\newblock {ReSteer}: Quantifying and refining the steerability of multitask
+  robot policies.
+\newblock In \emph{Proceedings of Robotics: Science and Systems}, 2026.
+
+\bibitem[Grant et~al.(2026)Grant, Zhao, and Wang]{grant2026}
+Bryce Grant, Xijia Zhao, and Peng Wang.
+\newblock Not all features are created equal: A mechanistic study of
+  vision-language-action models.
+\newblock \emph{Author manuscript}, 2026.
+
+\bibitem[H{\"a}on et~al.(2025)H{\"a}on, Stocking, Chuang, and Tomlin]{haon2025}
+Bear H{\"a}on, Kaylene~Caswell Stocking, Ian Chuang, and Claire Tomlin.
+\newblock Mechanistic interpretability for steering vision-language-action
+  models.
+\newblock In \emph{Proceedings of The 9th Conference on Robot Learning}, volume
+  305 of \emph{Proceedings of Machine Learning Research}, pages 2743--2762.
+  PMLR, 2025.
+
+\bibitem[Hewitt and Liang(2019)]{hewitt2019}
+John Hewitt and Percy Liang.
+\newblock Designing and interpreting probes with control tasks.
+\newblock In \emph{Proceedings of EMNLP-IJCNLP}, pages 2733--2743, 2019.
+
+\bibitem[Liu et~al.(2023)Liu, Zhu, Gao, Feng, Liu, Zhu, and Stone]{libero}
+Bo~Liu, Yifeng Zhu, Chongkai Gao, Yihao Feng, Qiang Liu, Yuke Zhu, and Peter
+  Stone.
+\newblock {LIBERO}: Benchmarking knowledge transfer for lifelong robot
+  learning.
+\newblock \emph{arXiv preprint arXiv:2306.03310}, 2023.
+
+\bibitem[{Physical Intelligence} et~al.(2025){Physical Intelligence}, Black,
+  Brown, et~al.]{pi05}
+{Physical Intelligence}, Kevin Black, Noah Brown, et~al.
+\newblock $\pi_{0.5}$: A vision-language-action model with open-world
+  generalization.
+\newblock \emph{arXiv preprint arXiv:2504.16054}, 2025.
+
+\bibitem[Shi et~al.(2026)Shi, Ren, Zhang, Zhang, Hu, Shan, Dong, Lu, Chen,
+  Zhang, Dai, and Ju]{shi2026}
+Haoyuan Shi, Xiancong Ren, Yingji Zhang, Qinfan Zhang, Jiayu Hu, Haozhe Shan,
+  Han Dong, Jinpeng Lu, Yinda Chen, Yi~Zhang, Yong Dai, and Xiaozhu Ju.
+\newblock {VLA-Trace}: Diagnosing vision-language-action models through
+  representation and behavior tracing.
+\newblock \emph{arXiv preprint arXiv:2605.30117v2}, 2026.
+
+\bibitem[Zhang et~al.(2026)Zhang, Xu, Dhafer, Yue, Dong, and Hao]{zhang2026}
+Hanxin Zhang, Mingshuo Xu, Abdulqader Dhafer, Shigang Yue, Hongbiao Dong, and
+  Zhou~Daniel Hao.
+\newblock Embodied interpretability: Linking causal understanding to
+  generalization in vision-language-action models.
+\newblock In \emph{Proceedings of the 43rd International Conference on Machine
+  Learning}, volume 306 of \emph{Proceedings of Machine Learning Research},
+  pages 159526--159549. PMLR, 2026.
+
+\end{thebibliography}

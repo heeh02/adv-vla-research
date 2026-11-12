@@ -1,0 +1,184 @@
+{
+ "QC_P3a_cos_median": 0.9912049994718106,
+ "QC_P3a_pass": true,
+ "floor_unit_lastquery_mm": {
+  "median": 6.9484567701380255,
+  "p95": 29.77665275369837
+ },
+ "anchors": "prereg3",
+ "anchors_per_seed_mean": 3.0,
+ "QC_P3b": {
+  "units": 720,
+  "units_with_O": 439,
+  "camera_units_above_floor": 33
+ },
+ "D1": {
+  "cos_DO_median": 0.4213119065088014,
+  "ci": [
+   -0.16214687806583,
+   0.7431081926442447
+  ],
+  "n_units": 33,
+  "direction_predicts_offset": false,
+  "n_roots": 14,
+  "n_tasks": 9,
+  "units_by_condition": {
+   "camera_minus30": 9,
+   "camera_plus30": 6,
+   "camera_minus15": 6,
+   "camera_minus15_surface_cool": 5,
+   "camera_plus15": 4,
+   "camera_plus15_surface_warm": 3
+  },
+  "n_camera_units_with_O": 256,
+  "note": "O_sys uses successful seeds only (>=2); association within selected successful episodes, not a failure explanation",
+  "cos_DE": [
+   -0.0039195933188167454,
+   [
+    -0.8473557476062263,
+    0.10174088404793577
+   ],
+   33
+  ],
+  "cos_EO": [
+   0.12060598633536579,
+   [
+    -0.2889609312319638,
+    0.6389660950974404
+   ],
+   33
+  ]
+ },
+ "D1_sensitivity_floor_10.6mm": {
+  "cos_DO_median": 0.27788412648333866,
+  "ci": [
+   0.06233041212932603,
+   0.45515528376492365
+  ],
+  "n_units": 175,
+  "n_tasks": 23
+ },
+ "D2_mirror": {
+  "prereg46:camera_plus15_vs_camera_minus15": {
+   "cos_median": 0.894192695895832,
+   "ci": [
+    0.7712782083609816,
+    0.9404928179608167
+   ],
+   "n": 46,
+   "verdict": "same-direction"
+  },
+  "prereg46:camera_plus30_vs_camera_minus30": {
+   "cos_median": 0.8722437857129581,
+   "ci": [
+    0.6665570719471293,
+    0.9645088042532038
+   ],
+   "n": 46,
+   "verdict": "same-direction"
+  },
+  "all72:camera_plus15_vs_camera_minus15": {
+   "cos_median": 0.9083682681791589,
+   "ci": [
+    0.8057397055760074,
+    0.9542819362143302
+   ],
+   "n": 72,
+   "verdict": "same-direction"
+  },
+  "all72:camera_plus30_vs_camera_minus30": {
+   "cos_median": 0.9335202512426601,
+   "ci": [
+    0.7653317549862892,
+    0.9725262253332997
+   ],
+   "n": 72,
+   "verdict": "same-direction"
+  }
+ },
+ "D3_outcome": {
+  "own_population:D_norm": {
+   "auc_within_condition": 0.36371784057359763,
+   "ci": [
+    0.2958184552780022,
+    0.4772143689720348
+   ],
+   "n": 2050,
+   "harms": 100,
+   "n_tasks": 35
+  },
+  "own_population:O_loo": {
+   "auc_within_condition": 0.6025588675649926,
+   "ci": [
+    0.3957890172113701,
+    0.7188199967953942
+   ],
+   "n": 1313,
+   "harms": 61,
+   "n_tasks": 23
+  },
+  "common_population:D_norm": {
+   "auc_within_condition": 0.46263781135157206,
+   "ci": [
+    0.39434379197467345,
+    0.5664272295803914
+   ],
+   "n": 1313,
+   "harms": 61,
+   "n_tasks": 23
+  },
+  "common_population:O_loo": {
+   "auc_within_condition": 0.6025588675649926,
+   "ci": [
+    0.40433932790087046,
+    0.7171271902434837
+   ],
+   "n": 1313,
+   "harms": 61,
+   "n_tasks": 23
+  },
+  "cross_seed_rank_corr_single_seed_magnitudes": {
+   "D_single_seed_norm": {
+    "mean_cross_seed_spearman": 0.739032520848072
+   },
+   "O_single_seed_norm": {
+    "mean_cross_seed_spearman": 0.4605105302164627
+   }
+  }
+ },
+ "phase_cos_with_O_camera_above_floor": {
+  "q0": [
+   0.25104537724731785,
+   [
+    -0.33469017928479056,
+    0.8640892690618315
+   ],
+   33
+  ],
+  "lm1": [
+   0.24800903314901562,
+   [
+    -0.05513798105065203,
+    0.3064191631597426
+   ],
+   33
+  ],
+  "lm2": [
+   -0.3662262142864652,
+   [
+    -0.7421149254275473,
+    -0.0838336837373397
+   ],
+   33
+  ]
+ },
+ "noncamera_cos_DO": [
+  0.27820078427742995,
+  [
+   0.07192671097774452,
+   0.4578969790442565
+  ],
+  183
+ ],
+ "pulse_cos_DO": "not computable: pulse conditions have no q0 trace in D3"
+}

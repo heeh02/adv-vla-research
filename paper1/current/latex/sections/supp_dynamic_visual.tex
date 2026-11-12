@@ -1,0 +1,133 @@
+\section{Response Structure across Observations and Generation Steps}
+\label{sec:supp-dynamic-visual}
+This section follows the response beyond the first generation step of the first query. Sec.~\ref{sec:supp-p08-dynamic} shows that shared directions fitted at one observation of an episode still retain most of the response at a later observation, far more than clean-feature or random directions; this supports the statement in main Sec.~\ref*{M-sec:shared} that the result holds at a later observation. Secs.~\ref{sec:supp-plus-joint-readout} and~\ref{sec:supp-command-motion-joint} are additional studies; the main paper does not rely on them.
+
+\paragraph{Figures.}
+Later observation: Fig.~\ref{fig:supp-p08-full} (episodes, step $j=0$) and Table~\ref{tab:p08-dynamic-ranges} (condition means). Generation: Figs.~\ref{fig:supp-pw-l18-relative}--\ref{fig:supp-pw-l18-reference} (layer 18) and~\ref{fig:supp-pw-relative}--\ref{fig:supp-pw-reference} (layer 1) on all recordings; Figs.~\ref{fig:supp-issued-full}, \ref{fig:supp-attention-estimates} and~\ref{fig:supp-attention-main-view}a--c on the subset matched to commands. Execution: Figs.~\ref{fig:supp-motion-full}--\ref{fig:supp-motion-reference-estimates}, motion aligned by executed control where measured; outcomes keep planned denominators.
+
+\subsection{Shared directions fitted at one observation hold at a later observation}
+\label{sec:supp-p08-dynamic}
+Directions fitted at an earlier observation retain 50.8--64.2\% (L1), 35.7--45.7\% (L9) and 32.7--38.1\% (L18) of the centered response energy at a later observation on 16 held-out tasks, against at most 11.0\% for clean-feature directions and at most 1.8\% for random directions (Table~\ref{tab:p08-dynamic-ranges}). The advantage over both controls holds in all 30 condition--layer comparisons. Unlike the fit in main Sec.~\ref*{M-sec:shared}, this one holds out tasks but not perturbation conditions: the ten test conditions are also used for fitting.
+
+\paragraph{Data: two observations per episode.}
+The study runs $\pi_{0.5}$ on original LIBERO: 3,360 episodes with two observations each, 6,720 records. Features exist for 6,554 records; 83 missing episodes (166 records) stay missing. The two observations are taken after a suite-specific number of executed controls, Spatial 20/40, Object 25/55, Goal 30/60 and LIBERO-10 50/100, with no feature recording in between. At each observation, clean and perturbed images of the same visited state pass through the policy with the same initial noise; we record clean features and responses at L1, L9 and L18, first generation step ($j=0,t=1$), first five planned actions ($3\times5\times1024$ per observation). Between the observations, state, images and noise all change.
+
+\paragraph{Fit: held-out tasks, seen conditions.}
+Of the 40 tasks, 24 are used for fitting and 16 are held out. Only the first observations of the fitting tasks under the ten persistent conditions enter the fit, 1,404/1,440 available observations, so the test conditions are seen during fitting. Tasks, conditions, start states, noise repeats and the five plan positions are weighted equally within their parents. Each layer has its own mean $\mu_p$ for each position $p$ and a channel scatter shared across positions,
+\begin{equation}
+C=\sum_{i,p}\frac{w_i}{5}
+(\Delta H_{ip}-\mu_p)^\top(\Delta H_{ip}-\mu_p).
+\end{equation}
+Its top 16 eigenvectors form the shared directions $B\in\mathbb R^{1024\times16}$; the largest absolute loading of each fixes its sign. The rank is fixed and nothing is selected by outcome. Clean-feature directions use the same observations and weights but are fitted to clean features; random directions are a fixed Gaussian basis orthonormalized by QR. All three reconstruct the same response about the same $\mu_p$, with 16 coefficients per position computed from the test response, 80 per observation out of 5120 response entries. A mean-only baseline uses $\mu_p$ with zero coefficients.
+
+\paragraph{Measures.}
+For one observation, let $E=\|\Delta H\|_F^2$, $E_c=\|\Delta H-\mu\|_F^2$ and $S_a=\|\Delta H-\widehat{\Delta H}^{(a)}\|_F^2$ be the raw energy, the centered energy and the reconstruction error of directions $a$. The plotted centered retention and the tested advantage over a control are
+\begin{equation}
+R_a=1-\frac{S_a}{E_c},\qquad
+G_{\mathrm{response}-a}=\frac{S_a-S_{\mathrm{response}}}{E}.
+\end{equation}
+$R_a$ pools the energy of all five positions before forming the ratio. Negative values of $G$ are kept, and ratios with a zero denominator are undefined. Channel participation, the effective number of channels that carry the response energy, describes how widely the energy spreads; it is not a spectral rank or an intrinsic dimension.
+
+\begin{table*}[t]\centering\small
+\caption{\textbf{At the later observation, shared directions retain far more of the response than both controls; retention falls with depth while participation rises.} 16 held-out tasks, ten persistent conditions; each cell has 94/96 defined observations and 16/16 tasks. Ranges are over condition means, averaging available noises within start states, start states within tasks, and tasks equally. All three sets of 16 directions reconstruct the same position-centered response. Retention pools the five positions' energies before forming the ratio; participation pools position energies on 1024 channels.}
+\label{tab:p08-dynamic-ranges}
+\begin{tabular}{lrrrr}\toprule
+Layer & Shared directions & Clean-feature directions & Random directions & Channel participation\\\midrule
+L1 & 50.8--64.2\% & 3.6--6.3\% & 1.6--1.8\% & 31.0--39.9\\
+L9 & 35.7--45.7\% & 0.8--1.8\% & 1.4--1.8\% & 63.9--117.9\\
+L18 & 32.7--38.1\% & 8.2--11.0\% & 1.4--1.5\% & 186.2--229.0\\\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{The advantage over both controls holds in every comparison.}
+All 30 condition--layer comparisons show a positive advantage over both controls, with positive 95\% lower bounds (descriptive). The intervals come from 2,000 whole-task bootstrap draws, which keep the dependence within tasks and among comparisons on the same 16 tasks, and condition on the fitted directions and the observed support. Retention changes little between the two observations: for the paired first-to-second-observation difference in retention of the shared directions, 28/30 intervals cross zero; the remaining two are pointwise contrasts without multiplicity adjustment.
+
+\paragraph{Retention holds even when the response changes direction.}
+Fig.~\ref{fig:supp-p08-full} keeps all 960 planned held-out episodes under persistent conditions, 940 available and 20 missing. The horizontal axis is the cosine between the full $5\times1024$ responses at the two observations; the vertical axes are the second-observation retentions of the three sets of directions. Even near zero cosine, the shared directions retain appreciably more energy than clean-feature and random directions: the response changes, but it stays within the shared span. The scatter is descriptive, with no fitted threshold or association model; colors mark conditions, one point per episode.
+
+\paragraph{Channel and attention views.}
+The channel view shows all five plan positions and 1024 channels in fixed pages of 128, not channels selected by amplitude. Its attention diagnostic recomputes the unconditional main-camera probability on $8\times2\times16\times16$ maps per layer, averaged over the first five action queries; camera mass, its signed change and the unconditional camera half-$L_1$ differ from the within-camera conditional TV, and no per-position attention, complete-key P, prefix V or W was recorded. Ten held-out examples, chosen by a fixed rule without outcomes, allow inspection. Three-dimensional plots use the first three directions with their energy fractions; positions are centered separately, so distances across positions are not hidden-state distances. Clean and three history controls, perturbed only at the first policy query, have zero raw response but centered coordinates $-\mu_p$; their histories retain the earlier exposure.
+
+\paragraph{Implementation notes.}
+The random directions and the bootstrap use a fixed seed (20261012). Raw flow is a $5\times32$ generated output; planned-command RMS describes the generated block, and command analyses use the values returned by the controller. An episode's clean--perturbed success pair uses the independent clean run from the same start state and noise, not the clean re-rendering of the same state behind its response.
+
+\subsection{Generation profiles and command associations on LIBERO-Plus}
+\label{sec:supp-plus-joint-readout}
+This is an additional study; the main paper does not rely on it. Across the generation steps of the first query, the shift in attention probabilities shrinks while the raw difference in the L18 attention output grows; the raw response of the post-block state shrinks, but relative to its shrinking clean scale it grows (Table~\ref{tab:attention-generation-sites}). Which of these measurements relates more strongly to the command change is not resolved: all four differences between the attention-output and attention-probability associations have intervals that include or touch zero.
+
+\paragraph{Data.}
+The analysis keeps all 536 recorded LIBERO-Plus pairs and all 4,824 rows indexed by case, layer and generation step at L1/L9/L18 and $j=0,5,9$. The command target exists for the matched subset of 404 pairs (Table~\ref{tab:plus-joint-support}). Case, row, noise, task, clean reference, family, suite and outcome are checked before matching; planned actions never replace missing executed commands. All seven P/W/AE fields are present at every recorded site. Prefix V is fixed within a query and is not repeated across generation steps.
+\begin{table}[t]\centering\small
+\caption{\textbf{All recorded LIBERO-Plus pairs have internal measurements; 404 also enter the command analysis.} Recorded $\pi_{0.5}$ LIBERO-Plus pairs by family; counts, no interval. The command column is the matched subset with a verified change in the first five commands; the other 132 lie outside that intersection and are not failed episodes.}
+\label{tab:plus-joint-support}
+\begin{tabular}{lrr}\toprule
+Family & Recorded pairs & With commands\\\midrule
+Background & 118 & 96\\
+Camera & 112 & 102\\
+Light & 152 & 96\\
+Sensor Noise & 154 & 110\\\midrule
+Total & 536 & 404\\\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Measures.}
+P-shift is the total variation of the attention probabilities over all visible keys, averaged over valid heads and action queries. W is the attention output, combining prefix and action-side values, after the output projection and before gating, over all ten plan positions; its raw difference RMS, clean RMS and relative $L_2$ have distinct denominators and keep the model's activation units. P and W are recomputed from saved states; H (AE) is the post-block state recorded during the policy's own generation (Table~\ref{tab:recording-roles}). Later generation steps use each branch's own $x_j$ within the same first query.
+
+\paragraph{Attention output grows while the post-block response shrinks in raw size.}
+Figure~\ref{fig:supp-attention-main-view} uses the 404 matched pairs of Table~\ref{tab:plus-joint-support}, with the same cases and weights for every signal. Panel c shows the raw post-block $H$ difference RMS and the clean-relative response on separate axes, without indexing to generation step 0; Table~\ref{tab:attention-generation-sites} gives the endpoint values. For every family, raw $W$ increases across steps 0/5/9, while raw $H$ decreases and relative $H$ increases, because the clean RMS of $H$ falls from approximately 46.8 to 16.6 over these steps. On all LIBERO-Plus recordings, the full-key TV decreases from the first to the last generation step in all 48 layer$\times$perturbation-category--task-suite groups; at L18 the relative attention-output response increases in all 16 groups and its raw difference RMS in 15.
+\input{sections/attention_generation_sites_table}
+
+\paragraph{Associations with the command change.}
+The target is the RMS difference over the first five commands and three translation coordinates, in command units. It repeats across each case's nine layer/step rows, so the 4,824 rows are repeated internal measurements of shared targets, and the scatterplots are descriptive. Association estimates and intervals come from a task-centered analysis at the first generation step that keeps all four sites and families (Sec.~\ref{sec:supp-bounded-internal}). For Camera, the prefix-H/P/W/AE associations with the command change are $-0.072/0.348/0.467/0.400$; for Sensor Noise, $0.620/0.453/0.554/0.568$. Camera W has association $-0.284$ $[-0.484,-0.044]$ with the signed outcome and an AUROC for lost success of $0.842$ $[0.683,0.967]$. The four W-minus-P intervals include or touch zero. The outcome groups are post hoc, and the estimates describe the observed tasks.
+
+\input{sections/supp_wrist_values}
+
+\paragraph{Value responses concentrate on fewer tokens and channels at depth.}
+Raw size, relative size and participation describe the amplitude of the value response, its scale relative to the clean values, and how widely its energy spreads. Channel participation is $(\sum_d e_d)^2/\sum_d e_d^2$ for $e_d=\sum_k(\Delta V_{kd})^2$; token participation is $(\sum_k e_k)^2/\sum_k e_k^2$ for $e_k=\sum_d(\Delta V_{kd})^2$. Both are undefined when the response energy is zero.
+For the Camera main-camera V, the difference RMS rises from $0.895$ at L9 to $8.053$ at L18 while the relative magnitude falls from $0.942$ to $0.451$; token participation falls from $190.17$ to $62.46$ and channel participation from $212.97$ to $86.31$ of 256 axes. Both cameras follow these directions in all four families. Prefix H and normalized Z also show different relative trends despite increasing raw differences, and in the action expert participation increases as retention by the shared directions decreases.
+
+\paragraph{An idealized flow shows how generation alone separates two conditions.}
+Take a fixed endpoint map $a(c)$ for condition $c$ and velocity $v(x,t,c)=(x-a(c))/t$. The state is $x(t)=tz+(1-t)a(c)$, so two conditions that share the noise $z$ separate as $\Delta x(t)=(1-t)[a(c')-a(c)]$, from zero at $t=1$ to the full endpoint difference at $t=0$. The states separate progressively although the endpoint map is fixed and the velocity difference is constant. The example describes state evolution only; the measured $W$ responses also involve the policy's attention.
+
+\paragraph{Related results elsewhere} (each with its own directions, support and target).
+
+\noindent\textbf{Normalized responses at different sites.}
+For Camera main-camera tokens, the relative response of prefix H rises $0.246\!\rightarrow\!0.615$ and that of Z falls $0.756\!\rightarrow\!0.484$ from L9 to L18, although both raw differences increase. In the fixed-state camera study, deep relative wrist-value norms are $0.400/0.364$ with an unchanged wrist image (Secs.~\ref{sec:plus-sites} and~\ref{supp:legacy-attention}).
+
+\noindent\textbf{Retention on the full LIBERO-Plus panel.}
+Centered shared directions retain $36.7$--$84.2\%$ of centered energy, against $0.5$--$10.6\%$ for clean-feature and $1.3$--$1.9\%$ for random directions, with 160 coefficients from the observed response over ten plan positions; uncentered shared directions reconstruct $32.4$--$75.3\%$ of raw energy (Sec.~\ref{sec:mean-controls}). Denominators and the ten-position budget differ from Sec.~\ref{sec:supp-p08-dynamic}.
+
+\noindent\textbf{A fixed coordinate subset.}
+A separate digital-RGB analysis with a fixed subset of 64 coordinates captures about $3.7\%$ of standardized energy on 2048 axes; a fixed coordinate subset and a shared span are different objects.
+
+\noindent\textbf{Angle prediction.}
+Predicting the $30^\circ$ response from the $15^\circ$ one keeps its $41.2\%/40.4\%$ gains over matched simple rules, but it receives the observed smaller-angle response and has seen the target angle in training (Sec.~\ref{supp:identification}).
+
+\noindent\textbf{Gains over one feature set versus absolute accuracy.}
+In the separate matched-lighting probe of signed vectors, adding H18 improves on the visual predictor, yet the combined predictor's absolute error is $8.39\%$ above the training-target mean for flow and $0.328\%$ below it for candidate actions (Sec.~\ref{supp:legacy-d2}). On LIBERO-Plus, the earlier uncentered readout compares response coordinates with the paired first flow as an existing predictor (Sec.~\ref{sec:plus-readout}); none of its original gain intervals is positive. The current comparison with the same directions is in Sec.~\ref{sec:current-basis-readout}.
+
+\subsection{From the first five commands to motion in the paired executions}
+\label{sec:supp-command-motion-joint}
+This is an additional study; the main paper's link from commands to motion (main Sec.~\ref*{M-sec:early}) rests on Secs.~\ref{sec:early-late-association} and~\ref{sec:supp-q0-consistency}. Here the same paired executions are followed to a later control: after 60 controls, Camera separates the perturbed run from its clean run by $2.29$ $[1.74,3.03]$ times the clean-rerun distance in $\pi_{0.5}$ and $1.55$ $[1.04,2.27]$ times in $\pi_0$, so Camera's effect on motion exceeds the clean-rerun scale in both policies at this later point.
+
+\paragraph{Data.}
+The cases are those of the command-consistency analysis at the first query: two policies, 268 planned settings each, 2,680 planned runs. Commands and motion are matched by policy, setting and execution; all 39 unknown outcomes stay unknown.
+
+\paragraph{Measures.}
+For each command component, the plot shows the size of the command change at the first query and the cosine between the two noise-matched changes; $U/D$ remains the main paper's direction-and-magnitude statistic. End-effector position separation is the Euclidean distance after 5 or 60 executed controls; orientation is a separate angular endpoint. Missing values at the fixed steps are not filled from terminal poses, another noise or a neighboring observation. The command--position plots show 516/536 planned noise pairs for $\pi_{0.5}$ and 526/536 for $\pi_0$; a setting's two noises remain dependent, and outcome colors play no role in selection. The reference panels use 257/268 and 263/268 settings at each fixed step and keep $T$--$R$, $R_0$--$R_1$ (clean rerun) and $R_0$--$R'_0$ (repeat of the first clean run) distinct; the plots show all planned rows and their missingness. The 268-setting views describe the full panel; main estimates and intervals use the primary 28-task panel.
+
+\paragraph{Camera exceeds the clean-rerun scale after 60 controls in both policies.}
+The Camera ratios above are primary-panel estimates. Background's $\pi_{0.5}$ ratio is $1.273$ $[0.9997,1.6505]$, with a paired-distance difference interval that crosses zero; Light keeps its incomplete observed support. Sec.~\ref{sec:supp-matched-motion} gives the motion comparison.
+
+\begin{table}[t]\centering\small
+\caption{\textbf{Three repeats of the first clean run differ slightly in position after 60 controls but share their outcomes.} Qualified $R_0$--$R'_0$ pairs in both policies; rows are the three recorded settings with nonzero repeat distance after executed control step 60, all with zero distance at step 5. Exact recorded distances after control 60, shown in millimetres; outcomes list $R_0$ then $R'_0$; no interval. The source of these small differences is unknown.}
+\label{tab:repeat-motion-exceptions}
+\begin{tabular}{llrr}\toprule
+Policy & Setting & Control 60 (mm) & Outcomes\\\midrule
+$\pi_{0.5}$ & Example A & 0.0319815382 & SS\\
+$\pi_{0.5}$ & Example B & 1.1713919779 & FF\\
+$\pi_0$ & Example C & 0.1556652612 & SS\\\bottomrule
+\end{tabular}
+\end{table}
+\paragraph{Repeats are exact except in three pairs.}
+The repeat $R'_0$ checks that runs are reproducible. Every other qualified repeat pair has zero distance after 60 controls; the three in Table~\ref{tab:repeat-motion-exceptions} have no recorded qualification issue, differ by small distances after 60 controls and keep their outcomes. Zero denominators and unavailable comparisons remain in the source tables.

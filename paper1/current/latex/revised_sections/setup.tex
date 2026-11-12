@@ -1,0 +1,35 @@
+\section{Analysis Framework}
+\label{sec:setup}
+All studies use frozen, LIBERO-finetuned $\pi_{0.5}$~\cite{pi05} and $\pi_0$~\cite{pi0} in the LIBERO simulator, under the four LIBERO-Plus visual perturbation families: Background, Camera, Light, and Sensor Noise. Table~\ref{tab:study-map} lists the three studies.
+
+\input{revised_sections/float_study_map}
+
+\subsection{How the Policy Turns an Observation into Commands}
+\label{sec:generation}
+Each time the policy is called (a \emph{query}), a vision-language network encodes the two camera images and the task instruction into context tokens, the \emph{prefix} $C$ (Fig.~\ref{fig:model-measurement}a). An \emph{action expert}, a transformer with 18 blocks, then generates a plan: a short sequence of future actions. Every block attends to the prefix, so the image enters at every layer.
+
+The plan starts as random noise $x_0$, the \emph{policy noise}, and is refined in ten \emph{generation steps}:
+\begin{equation}
+x_{j+1}=x_j+\Delta t_j F_\theta(C,x_j,t_j),\quad j=0,\ldots,9,
+\label{eq:generation}
+\end{equation}
+where $F_\theta$ is the action expert's update at generation time $t_j$. Because the noise is random, two runs produce different plans even from identical observations. A plan holds ten actions for $\pi_{0.5}$ and fifty for $\pi_0$; each action commands a translation and a rotation of the end effector and a gripper movement. The robot executes the first five actions, takes a new observation, and queries again. We call each executed action a \emph{control}, and the translations commanded by an episode's first five controls, 15 numbers, the \emph{first five commands}.
+
+To see what a perturbation changes inside the policy, we record $\pi_{0.5}$'s hidden states after blocks 1, 9, and 18 of the action expert (L1, L9, L18; Fig.~\ref{fig:teaser}a; Supplement, Sec.~S1). With $H^c_{\ell,j}$ and $H^p_{\ell,j}$ the states after block $\ell$ at generation step $j$ under the clean and the perturbed observation (Fig.~\ref{fig:model-measurement}b), the \emph{response} to the perturbation is their difference:
+\begin{equation}
+\Delta H_{\ell,j}=H^p_{\ell,j}-H^c_{\ell,j}.
+\label{eq:response}
+\end{equation}
+For $\pi_{0.5}$, $\Delta H_{\ell,j}\in\mathbb R^{10\times1024}$: one row per planned action, 1024 channels.
+
+\subsection{What Is Compared}
+\label{sec:comparisons}
+A \emph{setting} is one task under one visual variant, for example one camera viewpoint. Every comparison runs a setting twice, clean and perturbed, from the same initial physical state and with the same policy noise, so that only the image differs. The two runs share a state only at the first query, where responses and commands are compared; motion is compared after 5 and 60 controls, and task success at the end of the episode.
+
+Internal recordings and paired executions cover the same 268 settings on 40 tasks, in separate episodes. Primary comparisons use the 202 settings to which LIBERO-Plus assigns a difficulty level, on the 28 tasks that have all four families. The settings are a subset of LIBERO-Plus that we chose deliberately: recording internal states and running five executions per setting made the full benchmark impractical, and we left out settings whose perturbation we judged too large for a controlled comparison with the clean run, above all large camera displacements. The labelled settings span all five LIBERO-Plus difficulty levels. Success rates on this panel should not be compared with full-benchmark figures: for $\pi_0$ they are close under Background and Sensor Noise (85.7\% and 78.6\%, against 81.4\% and 79.0\%) but much higher under Camera (66.1\% against 13.8\%)~\cite{fei2026liberoplus}. Each setting is run under two draws of policy noise; one setting under one draw is a \emph{pair} (a \emph{case} in the restoration study), so the recordings give 404 pairs. The restoration study splits the 40 tasks into 9 used to develop it and 31 held out to test it (Sec.~\ref{sec:restoration}; Fig.~\ref{fig:model-measurement}c).
+
+The paired executions run each policy five times per setting (Fig.~\ref{fig:model-measurement}d): two clean runs with different policy noise, two perturbed runs that each share the noise of one clean run, and a repeat of the first clean run, which checks that runs are reproducible. A perturbed run is always compared with the clean run that shares its noise. The two clean runs differ only in their policy noise, so their difference shows how much motion and outcomes vary without any perturbation. We use it as the reference for a perturbation's effect and call the second clean run a \emph{clean rerun}.
+
+\input{revised_sections/float_geometry}
+
+All averages weight tasks equally, and intervals resample whole tasks. Of the 2,680 planned outcomes of the paired executions, 39 are missing (technical failures or failed validation); on the 28 common tasks they affect only Light. We keep them in the denominator and report bounds (Supplement, Secs.~S1, S5, and~S6).

@@ -1,0 +1,167 @@
+\section{Paired Task Outcomes against a Repeat and a Clean Rerun}
+\label{sec:five-arm}
+Which runs lose success under a perturbation, which gain it, and how does that compare with a clean rerun? Camera costs net success in both policies, and Sensor Noise in $\pi_0$; under Background, $\pi_{0.5}$ loses and gains successes equally, so its net success is unchanged while outcomes still change (Table~\ref{tab:five-arm-outcomes}). Lost successes exceed the clean-rerun level under Camera and Sensor Noise in both policies; gained successes exceed it in no family. This supports Sec.~\ref*{M-sec:sensitivity} and Fig.~\ref*{M-fig:behavior} of the main paper: net success hides lost and gained successes. Figure~\ref{fig:supp-complete-outcomes} gives the full comparison with the repeat and the clean rerun. These executions are separate from the internal recordings.
+
+\subsection{Paired success, lost and gained successes}
+\paragraph{Design.}
+Each policy--setting record holds five runs, $R_0,T_0,R_1,T_1,R'_0$, with policy-noise draws $0,0,1,1,0$, all from the setting's matched initial state: two clean runs, two perturbed runs that each share one clean run's noise, and a repeat of $R_0$. $R_0$ versus $R_1$ is the clean rerun; $R_0$ versus $R'_0$ is the repeat, which checks reproducibility. Each policy keeps its own definition of the policy noise, and every comparison is formed within one record. Estimates average the two perturbed--clean comparisons equally, then settings within tasks, then tasks equally. Whole-task resampling keeps both noise draws and all five runs together, so intervals describe variation over tasks given the recorded noise draws. The episode budget is fixed within each comparison; in the spatial suite it is 220 controls for $\pi_0$ and 280 for $\pi_{0.5}$.
+
+\paragraph{Coverage.}
+The study plans 268 settings per policy (536 noise pairs per policy), 536 policy--setting records across both policies and 2,680 run outcomes. Every planned record, including the six specified $\pi_{0.5}$ Light settings, exists. Table~\ref{tab:five-arm-coverage} keeps the full denominator: 2,641 outcomes are validated and 39 unknown, 25 through technically missing runs and 14 through failed validation.
+
+\begin{table}[t]
+\caption{\textbf{The paired executions cover all planned settings; 39 of 2,680 run outcomes are unknown.} 268 planned settings per policy, five runs each; counts on the planned support, no interval. Recorded settings and validated outcomes are counted separately; unknown outcomes enter the bounds over missing outcomes.}
+
+\centering\small
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{lrr}
+\toprule
+Coverage & $\pi_{0.5}$ & $\pi_0$\\
+\midrule
+Recorded policy--setting records & 268/268 & 268/268\\
+All five outcomes validated & 257 & 263\\
+Validated run outcomes & 1,314/1,340 & 1,327/1,340\\
+Unknown outcomes & 26 & 13\\
+\quad Technically missing & 17 & 8\\
+\quad Failed validation & 9 & 5\\
+\bottomrule
+\end{tabular}
+
+\label{tab:five-arm-coverage}
+\end{table}
+
+The primary comparison uses the 28 common tasks and the 202 settings per policy that LIBERO-Plus assigns a difficulty level: 48 Background, 51 Camera, 48 Light and 55 Sensor Noise. Each noise draw has weight one half. The families share tasks, and each keeps its own selected settings and difficulty distribution; results describe this panel.
+
+\input{sections/supp_outcome_identity}
+
+\paragraph{Definitions.}
+For binary outcomes $Y_R,Y_T$ of a clean and a perturbed run, a lost success (SF, harm) has probability $\Pr(Y_R=1,Y_T=0)$ and a gained success (FS, recovery) $\Pr(Y_R=0,Y_T=1)$, both unconditional paired probabilities under the stated weights. The success change (RD) is
+\begin{equation}
+ \mathrm{RD}=\mathrm{SR}(T)-\mathrm{SR}(R)
+            =\mathrm{recovery}-\mathrm{harm},
+\end{equation}
+and the rate of changed outcomes is their sum. Unknown outcomes take every possible value on the planned support, giving bounds over missing outcomes; sampling intervals are separate.
+
+\begin{table*}[t]
+\caption{\textbf{Camera costs net success in both policies, and Sensor Noise in $\pi_0$; under Background, $\pi_{0.5}$ loses and gains equally and its net success is unchanged.} Primary support of 28 tasks and 202 settings per policy. Success, lost and gained successes in percent; success change and its interval in percentage points. Bracketed estimates, including all incomplete Light estimates, are bounds over missing outcomes; the last column is the 98.75\% whole-task bootstrap interval, Bonferroni-adjusted over the four families within each policy.}
+
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrrl}
+\toprule
+Policy/family & SR($R$) & SR($T$) & Lost & Gained & \shortstack{Success\\change} & Adjusted interval for success change\\
+\midrule
+$\pi_{0.5}$ / B & 94.64 & 94.64 & 3.57 & 3.57 & 0.00 & [-7.14,8.93]\\
+$\pi_{0.5}$ / C & 94.64 & 74.11 & 25.00 & 4.46 & -20.54 & [-39.29,-1.79]\\
+$\pi_{0.5}$ / L & 91.07 & [91.07,99.11] & [0.00,5.36] & [5.36,8.04] & [0.00,8.04] & Not identified\\
+$\pi_{0.5}$ / S & 92.86 & 84.82 & 14.29 & 6.25 & -8.04 & [-23.21,5.36]\\
+$\pi_0$ / B & 89.29 & 85.71 & 7.14 & 3.57 & -3.57 & [-13.39,5.36]\\
+$\pi_0$ / C & 86.61 & 66.07 & 22.32 & 1.79 & -20.54 & [-35.71,-6.25]\\
+$\pi_0$ / L & 87.50 & [84.82,92.86] & [1.79,6.25] & [3.57,7.14] & [-2.68,5.36] & Not identified\\
+$\pi_0$ / S & 92.86 & 78.57 & 16.07 & 1.79 & -14.29 & [-28.57,-2.68]\\
+\bottomrule
+\end{tabular}
+
+\label{tab:five-arm-outcomes}
+\end{table*}
+
+\paragraph{Net success hides lost and gained successes, measured against the clean rerun.}
+Under Background, $\pi_{0.5}$ loses and gains 3.57\% of outcomes each: its success change is zero while 7.14\% of outcomes change. The adjusted intervals use 2,000 whole-task draws with the fixed setting and noise-draw weights; the two Camera point estimates coincide, and each policy has its own interval. The table below compares the rate of changed outcomes between perturbed and clean runs ($T_n$ vs.\ $R_n$) with that of the clean rerun ($R_0$ vs.\ $R_1$), in task-equal percentages on complete records with intervals from 2{,}000 whole-task draws. Under Camera and Sensor Noise, perturbations change more outcomes than a clean rerun in both policies; under Background they do not (Light is incomplete). Split by direction, with the rerun's changed outcomes divided equally between the two directions, lost successes exceed the rerun level under Camera and Sensor Noise in both policies (excess $+10.71$ to $+23.21$ points, lower interval limits $+0.89$ to $+11.61$), and gained successes exceed it in no family ($-0.96$ to $+2.68$, every interval including zero). Table~\ref{tab:five-arm-flips} adds the repeat.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Policy / family & Perturbed & Clean rerun & Excess [95\% interval]\\
+\midrule
+$\pi_{0.5}$ / B & 7.14 & 3.57 & $+3.57\ [-2.68,+8.93]$\\
+$\pi_{0.5}$ / C & 29.46 & 3.57 & $+25.89\ [+13.39,+39.29]$\\
+$\pi_{0.5}$ / S & 20.54 & 7.14 & $+13.39\ [+2.68,+25.00]$\\
+$\pi_0$ / B & 10.71 & 7.14 & $+3.57\ [-5.36,+12.50]$\\
+$\pi_0$ / C & 24.11 & 5.36 & $+18.75\ [+4.46,+32.14]$\\
+$\pi_0$ / S & 17.86 & 0.00 & $+17.86\ [+9.82,+26.79]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\begin{table}[t]
+\caption{\textbf{Perturbed runs change more outcomes than the repeat of the first clean run, which changes no validated outcome, under Background, Camera and Sensor Noise.} Population and weights as above; rates of changed outcomes (lost plus gained) in percent, brackets are bounds over missing outcomes, no intervals. Columns: perturbed run, repeat of the first clean run (same noise), clean rerun (different noise). Light is reported with its bounds.}
+
+\centering\small
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{lrrr}
+\toprule
+Policy/family & \shortstack{Perturbed\\$T$ vs.\ $R$} & \shortstack{Repeat\\$R_0$ vs.\ $R'_0$} & \shortstack{Clean rerun\\$R_0$ vs.\ $R_1$}\\
+\midrule
+$\pi_{0.5}$ / B & 7.14 & 0.00 & 3.57\\
+$\pi_{0.5}$ / C & 29.46 & 0.00 & 3.57\\
+$\pi_{0.5}$ / L & [5.36,13.39] & [0.00,10.71] & 10.71\\
+$\pi_{0.5}$ / S & 20.54 & 0.00 & 7.14\\
+$\pi_0$ / B & 10.71 & 0.00 & 7.14\\
+$\pi_0$ / C & 24.11 & 0.00 & 5.36\\
+$\pi_0$ / L & [5.36,13.39] & [0.00,8.93] & 3.57\\
+$\pi_0$ / S & 17.86 & 0.00 & 0.00\\
+\bottomrule
+\end{tabular}
+
+\label{tab:five-arm-flips}
+\end{table}
+
+\subsection{Commands and motion on the same executions}
+Camera changes the commands and moves the end effector most in both policies; Light has the smallest means and incomplete support (Table~\ref{tab:five-arm-motion}). Plans hold ten actions ($\pi_{0.5}$) and fifty ($\pi_0$); the comparison uses the first five commands, end-effector positions at fixed control steps, and each run's final observation. Each row uses the settings where the metric and control step are available for $T_0$ vs.\ $R_0$, $T_1$ vs.\ $R_1$, and $R_0$ vs.\ $R_1$; outcome estimates keep the full planned denominator.
+
+\begin{table}[t]
+\caption{\textbf{Camera changes commands and moves the end effector most in both policies; Light has the smallest means and incomplete support.} Primary-panel settings whose perturbed--clean and clean-rerun records share metric and control step ($N$/tasks); no row replaces the planned outcome denominator. Task-equal perturbed--clean means, no intervals. Translation RMS over the first five commands in command units; EEF5/EEF60 are end-effector position distances after controls 5 and 60, stored in metres, shown in centimetres. Supports for each metric, control step and reference, including unequal final steps, are recorded separately.}
+
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+\shortstack{Policy/\\family} & \shortstack{Joint\\$N$/tasks} & \shortstack{Translation\\RMS} & \shortstack{EEF5\\(cm)} & \shortstack{EEF60\\(cm)}\\
+\midrule
+$\pi_{0.5}$ / B & 48/28 & 0.03813 & 0.291 & 2.441\\
+$\pi_{0.5}$ / C & 51/28 & 0.09916 & 0.836 & 4.046\\
+$\pi_{0.5}$ / L & 43/26 & 0.02269 & 0.181 & 1.588\\
+$\pi_{0.5}$ / S & 55/28 & 0.05344 & 0.411 & 2.975\\
+$\pi_0$ / B & 48/28 & 0.04750 & 0.374 & 2.849\\
+$\pi_0$ / C & 51/28 & 0.08016 & 0.625 & 5.424\\
+$\pi_0$ / L & 44/27 & 0.01933 & 0.144 & 1.713\\
+$\pi_0$ / S & 55/28 & 0.04465 & 0.351 & 3.349\\
+\bottomrule
+\end{tabular}
+
+\label{tab:five-arm-motion}
+\end{table}
+
+End-effector positions at controls 0, 5, 15, 30 and 60 are read when the corresponding environment call returns; controller commands and contact histories are separate measurements. Final observations follow each run's own last step rather than a shared step; missing poses are neither interpolated nor replaced by final poses.
+
+\paragraph{Internal states in the paired executions.}
+The $\pi_{0.5}$ internal states stored here are recomputed (prefix H before each block, action-expert H after each block), unlike the states recorded during the policy's own generation in the internal recordings; their availability is checked per run. The archived $\pi_0$ runs stored no internal states; Sec.~\ref{sec:supp-pi0-internals} regenerates first-query states for 369 pairs. The other comparisons between the policies concern commands, motion and paired outcomes.
+
+\paragraph{A family can change commands more yet cost less success.}
+A ranking comparison listed in advance asks how often one family has the larger command or motion change while another has the larger net loss of success. All six ordered comparisons among Background, Camera and Sensor Noise are stored for the primary command measure; each fraction is the share of 2,000 resampled task sets in which the reversal holds strictly (ties count as none). For $\pi_0$, Background against Sensor Noise, the fractions are 69.9\% for commands, 67.75\% for EEF5 and 2.8\% for EEF60, so the reversal depends on the measure and the control step.
+
+\paragraph{Estimators that could not be computed.}
+A planned estimator of the difference between correlations is undefined on these executions: for both policies and all five fixed primary command and end-effector metrics, none of the 2,000 draws defines it on the fixed support. The aggregation and lost-success comparisons that can be estimated use the studies in Secs.~\ref{supp:legacy} and~\ref{sec:plus-p0}. The timing of exposure is examined in the separate 552-episode study (Sec.~\ref{sec:window552}), which compares $C/F_{30}/R_{30}/N_{30}$ schedules within $\pi_{0.5}$ on its own cases.
+
+\paragraph{Motion size and lost success, by family (post hoc).}
+The table below gives the AUROC of Sec.~\ref{sec:supp-matched-motion} (motion ratio after control 5; lost against joint successes) per policy and family, with lost/joint-success pair counts in parentheses; the last row uses motion after control 60. Light has too few lost-success pairs. New draws make the $\pi_0$ Sensor Noise interval differ slightly from Sec.~\ref{sec:supp-matched-motion}.
+
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Family & $\pi_{0.5}$ & $\pi_0$\\
+\midrule
+Background & $0.39\ [0.13,0.68]$ (4/89) & $0.67\ [0.25,0.90]$ (8/80)\\
+Camera & $0.57\ [0.40,0.73]$ (27/71) & $0.57\ [0.38,0.74]$ (24/65)\\
+Sensor Noise & $0.74\ [0.57,0.89]$ (16/86) & $0.49\ [0.29,0.69]$ (18/84)\\
+Pooled & $0.72\ [0.62,0.82]$ (47/328) & $0.64\ [0.48,0.77]$ (51/309)\\
+Pooled, control 60 & $0.60\ [0.47,0.72]$ & $0.68\ [0.57,0.77]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+

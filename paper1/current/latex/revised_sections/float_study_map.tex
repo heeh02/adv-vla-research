@@ -1,0 +1,14 @@
+\begin{table}[ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.25\columnwidth}>{\raggedright\arraybackslash}p{0.7\columnwidth}@{}}
+\toprule
+Study & Comparison, timing, and data\\\midrule
+Internal recordings ($\pi_{0.5}$) & Clean vs.\ perturbed features and commands at the first query: 404 pairs on 28 tasks (536 on all 40; Sec.~\ref{sec:shared})\\\addlinespace[2pt]
+Restoration ($\pi_{0.5}$) & Six runs per case: clean, perturbed, restoration, two controls, and the whole L9 state replaced; commands and final success: 96 Camera and 120 Sensor Noise cases, 1,296 rollouts on 31 held-out tasks (Sec.~\ref{sec:restoration})\\\addlinespace[2pt]
+Paired executions (both policies) & Two clean, two perturbed, and one repeat run per setting; commands, motion after 5 and 60 controls, final success. Per policy: 268 settings on 40 tasks (primary: 202 on 28 tasks); 2,680 planned rollouts across both policies (Sec.~\ref{sec:motion})\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Three paired studies, from features to task outcomes.} Setting: one task under one visual variant. Pair or case: one setting under one policy-noise input; its runs share a start state.}
+\label{tab:study-map}
+\end{table}

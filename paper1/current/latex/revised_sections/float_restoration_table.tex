@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Camera} & \multicolumn{3}{c}{Sensor Noise}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Run & error & succ. & edit & error & succ. & edit\\
+\midrule
+Perturbed, unedited & 0.409 & 73.15 & -- & 0.209 & 83.33 & --\\
+Random directions & 0.407 & 73.15 & 9.7 & 0.209 & 85.00 & 9.6\\
+Clean-feature directions & 0.404 & 76.85 & 7.8 & 0.205 & 83.33 & 7.7\\
+Restoration & 0.312 & 75.00 & 46.2 & 0.199 & 86.67 & 51.5\\
+Whole L9 state & 0.297 & 80.56 & 74.2 & 0.194 & 89.17 & 72.8\\
+Clean & 0 & 98.15 & -- & 0 & 97.50 & --\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{The six runs of the restoration test.} Command error (distance of the first five commands from those of the clean run), task success (\%), and edit size (summed change written into the L9 state over an episode, in thousands), averaged with equal weight per task over 96 Camera and 120 Sensor Noise cases. Intervals for the comparisons: Figs.~\ref{fig:teaser}b and~\ref{fig:native-restoration}; Supplement, Tables~S31--S33.}
+\label{tab:restoration}
+\end{table}

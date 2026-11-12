@@ -1,0 +1,110 @@
+\section{Restoration of the Shared L9 Directions}
+\label{sec:allstep-restoration}
+
+Restoration copies clean values back along the shared directions at L9: at every generation step of every query, it computes the L9 state under a clean observation of the same physical state and writes the clean values along the shared directions into the perturbed run. It needs that clean observation, so it is a controlled test, not a deployable method. Fixed in advance were the site, task success as the primary endpoint, the error of the first five commands as the second, and six simultaneous comparisons per endpoint: restoration against the unedited run and two controls (clean-feature and random directions), under Camera and Sensor Noise, on held-out tasks. Command error falls against the unedited run and both controls; the shared directions reach most of what replacing the whole L9 state does; the controls write less, and with edit size matched in development restoration is better under Camera but not under Sensor Noise; observed success is higher with intervals that include zero, and replacing the whole L9 state raises success (post hoc, pointwise). This supports main Sec.~\ref*{M-sec:restoration}, Table~\ref*{M-tab:restoration} and Figs.~\ref*{M-fig:teaser}b and~\ref*{M-fig:native-restoration}.
+
+\subsection{Directions, tasks and cases}
+
+\paragraph{Directions and site.}
+The policy is the LIBERO-finetuned $\pi_{0.5}$ of the representation study. The edit acts on the action expert's L9 post-block state (ten ordered action positions, 1,024 channels). L9, the middle recorded layer, was fixed before the confirmation runs as a compromise between the response coverage of L1 and the command prediction of L18 (main Sec.~\ref*{M-sec:layers}); one site, and two of the four families (Camera and Sensor Noise), keep six runs per case tractable. The shared and clean-feature directions are the first sixteen directions of the position-centered LIBERO-Plus fits of Sec.~\ref{sec:mean-controls}, learned at the first query and first generation step; the confirmation uses the Camera and Sensor Noise fits from folds 1, 2 and 4 of that analysis. A set has sixteen channel directions, shared by all positions.
+
+\paragraph{Held-out tasks.}
+Development uses folds 0 and 3, confirmation folds 1, 2 and 4: nine and 31 distinct tasks, with no overlap. Each task is assigned the fit from its fold of the original joint task-component/family split, so its own task component and the tested family are excluded from that fit's training data. Camera confirmation has 27 tasks and 48 settings; Sensor Noise has 30 tasks and 60 settings; the two share 26 tasks. Each setting has one start state, two policy-noise draws and six runs, giving $108\times2\times6=1{,}296$ episodes. All planned command measurements and outcomes are recorded.
+
+\subsection{Restoration and the six runs}
+
+\paragraph{A clean observation of each run's own current state.}
+Let $s_q^a$ be the physical and controller state of run $a$ at query $q$, and $x_{qj}^a,t_j$ its current plan and time at generation step $j$. Both observations are rendered from this $s_q^a$. For Camera, the clean observation restores the setting's complete clean visual configuration; for Sensor Noise, it removes the image transform from the same underlying image. Rendering it leaves the simulator, controller and random-number states unchanged.
+
+Two forward passes with these observations and the same $x_{qj}^a,t_j$ give $H_T,H_C\in\mathbb R^{10\times1024}$ at L9, so $H_C$ is the clean value for the run's current state. Restoration sets
+\begin{equation}
+ D=H_T-H_C,\qquad
+ H'=H_T-\alpha D B B^\top,\qquad \alpha=1,
+ \label{eq:allstep-restoration}
+\end{equation}
+where $B\in\mathbb R^{1024\times16}$ has orthonormal columns. Up to the precision of the write, $H'B=H_CB$, while the orthogonal complement keeps its perturbed value. Position centering is used only to fit $B$; the edit projects the full current difference $D$ onto the fixed directions. After the write, later blocks continue with the perturbed image prefix.
+
+\paragraph{The six runs.}
+The clean run $N_C$ and the perturbed run $N_T$ are unedited. Restoration $R_{\mathrm{resp}}$ and the controls $R_{\mathrm{clean}}$ and $R_{\mathrm{rand}}$ apply Eq.~\eqref{eq:allstep-restoration} with the shared, clean-feature and random directions, at all ten generation steps of every policy query, with $\alpha=1$. $R_{\mathrm{full}}$ replaces the whole L9 state, $H'=H_C$, at the same site and schedule; its later blocks also read the perturbed prefix.
+
+The random control uses a fixed mixture of three random sets of 16 orthonormal directions, assigned within task and family, with both noise draws of a setting receiving the same set. One set is the first sixteen columns of the 32-direction random set of Sec.~\ref{sec:mean-controls}; the other two come from the same generator with separately fixed seeds. All six runs start from the same simulator and controller state and use the same policy noise at each query. Once an edit changes generation, each run follows its own plan and trajectory, and each later clean observation follows that run's own state.
+
+\input{sections/table_allstep_restoration_contrasts}
+
+\subsection{Endpoints and simultaneous intervals}
+
+\paragraph{Command error.}
+Let $A_{tvn}^a\in\mathbb R^{5\times3}$ hold the translation parts of the first five commands of the first query, for task $t$, setting $v$, noise draw $n$ and run $a$. The command error is
+\begin{equation}
+ e_{tvn}^a=\left\|A_{tvn}^a-A_{tvn}^{N_C}\right\|_F,
+ \label{eq:allstep-command-error}
+\end{equation}
+the Euclidean norm over fifteen numbers, in command units after the adapter. All 1,296 records contain the five commands, each logged after the environment step returned, and they match the first five positions of the corresponding ten-position plans exactly. The clean target is paired by setting, start state and noise draw.
+
+\paragraph{Task-equal contrasts and fixed scales.}
+Write $\langle z\rangle_f$ for the average over the two noise draws, then over settings within a task, then equally over the tasks of family $f$. For comparator $b\in\{N_T,R_{\mathrm{clean}},R_{\mathrm{rand}}\}$, the command-error reduction and the success change are
+\begin{align}
+ G_{f,b}&=\frac{\langle e^b-e^{R_{\mathrm{resp}}}\rangle_f}{S_f},\\
+ \Delta^{Y}_{f,b}&=100\left\langle Y^{R_{\mathrm{resp}}}-Y^b\right\rangle_f,
+\end{align}
+where $Y$ is the final binary outcome. The family scales, fixed in advance, are $S_{\mathrm{Camera}}=0.316943$ and $S_{\mathrm{Sensor}}=0.200099$ in the same command units. They are constants, so $G$ is in units of $S_f$, not a percentage of each case's error. Main Figs.~\ref*{M-fig:teaser}b and~\ref*{M-fig:native-restoration}a show these contrasts in command units, multiplying each gain and its interval endpoints by the same $S_f$: Fig.~\ref*{M-fig:teaser}b the contrast with $N_T$, and Fig.~\ref*{M-fig:native-restoration}a those with $R_{\mathrm{clean}}$ and $R_{\mathrm{rand}}$.
+
+\paragraph{Six simultaneous comparisons for each endpoint.}
+Each endpoint has its own family of six comparisons: three comparators under two perturbation families. The prespecified procedure uses 10,000 bootstrap draws of whole tasks, keeping all paired observations of each drawn task. Within a perturbation family, the same task draws serve all three comparators and both endpoints. The simultaneous 95\% intervals use percentile tails $0.05/(2\times6)$ and $1-0.05/(2\times6)$, with linear interpolation between ordered draws. Table~\ref{tab:allstep-restoration-contrasts} reports all twelve intervals.
+
+\subsection{Results: command error and task success}
+
+\paragraph{Command error falls against the unedited run and both controls.}
+All six command intervals are above zero (Table~\ref{tab:allstep-restoration-contrasts}). Against $N_T$, restoration lowers the task-equal command error from $0.4093$ to $0.3120$ under Camera and from $0.2091$ to $0.1987$ under Sensor Noise. In units of $S_f$, it reduces the error by $0.2908$ and $0.0337$ more than the clean-feature control, and by $0.2999$ and $0.0516$ more than the random control.
+
+\input{sections/supp_restoration_task_distribution}
+
+\input{sections/supp_issued_command_direction}
+
+\paragraph{The 16 directions reach most of what replacing the whole L9 state does; the controls write less.}
+Replacing the whole L9 state lowers the mean command error to $0.2973$ (Camera) and $0.1943$ (Sensor Noise), only somewhat below restoration (Table~\ref{tab:allstep-restoration-arms}); the remaining error enters through the later blocks, which still read the perturbed image. These values are a reference, not one of the six comparisons. From Tables~\ref{tab:allstep-restoration-arms} and~\ref{tab:issued-command-direction}, replacing the whole state removes 27\% (Camera) and 7\% (Sensor Noise) of the command error of $N_T$, restoration removes 24\% and 5\%, and restoration thus reaches 86.9\% and 70.7\% of the whole-state reduction (computed from unrounded values); these are the percentages quoted in the main paper. Restoration's edit size is 62\% and 71\% of the whole-state edit and five to seven times that of the controls, so per unit of edit it removes 1.4 times as much command error as replacing the whole state under Camera and as much under Sensor Noise. Restoration and the two controls share the number of directions, the coefficient and the schedule, but the controls write far less.
+
+\input{sections/table_allstep_restoration_arms}
+
+\paragraph{Observed success is higher, with intervals that include zero.}
+Restoration raises observed success from $73.15\%$ to $75.00\%$ under Camera and from $83.33\%$ to $86.67\%$ under Sensor Noise; the clean runs succeed in $98.15\%$ and $97.50\%$ (Table~\ref{tab:allstep-restoration-arms}). The paired gains over $N_T$ are $+1.85$ and $+3.33$ percentage points. All six simultaneous success intervals include zero, the one against the clean-feature control under Sensor Noise with its lower end at zero (Table~\ref{tab:allstep-restoration-contrasts}). Under Camera, the clean-feature control has higher observed success than restoration.
+
+\input{sections/supp_restoration_paired_outcomes}
+
+\subsection{Development checks: generation schedule and matched edit size}
+\label{sec:dev-restoration-controls}
+
+On the development tasks, restoring at every generation step matters, and with edit size matched, restoration beats clean-feature directions under Camera but not under Sensor Noise. These are descriptive means without intervals.
+
+\paragraph{Saved states and plan endpoint.}
+Camera covers eight settings on five tasks; Sensor Noise covers seventeen settings on nine tasks. Each setting has two noise draws and four saved query states, $q=0,2,5,10$, from the unedited perturbed run, giving 64 Camera and 136 Sensor Noise cases, all complete. Clean and perturbed observations share the saved physical state, every candidate generation starts from the same recorded policy noise, and each case keeps its assigned directions.
+
+The endpoint is the first five positions of the generated translation plan, and its improvement is
+\begin{equation}
+ g^a=\frac{\|A^{N_T}-A^{N_C}\|_F-\|A^a-A^{N_C}\|_F}{S_f},
+ \label{eq:dev-plan-gain}
+\end{equation}
+with the fixed family scales defined above. Means average the four saved queries and both noise draws within settings, then settings within tasks, with equal weight per task (Table~\ref{tab:dev-restoration-controls}). This endpoint is a plan at a saved state; the confirmation endpoint above is the first five commands of a complete rollout.
+
+\input{sections/dev_restoration_controls_table}
+
+\paragraph{Restoring at every generation step matters.}
+Both schedules use Eq.~\eqref{eq:allstep-restoration} with the shared directions. Moving from restoring only at $j=0$ to restoring at $j=0,\ldots,9$ raises the mean gain from $0.00475$ to $0.15468$ for Camera and from $0.00188$ to $0.06687$ for Sensor Noise. The schedule changes both the sequence of writes and the later generation states. The edit on original LIBERO, which acts only at the first step, is reported in Sec.~\ref{sec:supp-native-ablation}.
+
+\paragraph{A common edit size at each position.}
+For the shared, clean-feature and assigned random directions $B_k$, let $p_k=(H_T-H_C)B_kB_k^\top$ at one action position. The matched-size rule sets
+\begin{equation}
+ s=\min_{k\in\{\mathrm{resp,clean,rand}\}}\|p_k\|_2,
+ \qquad H'_k=H_T-s\frac{p_k}{\|p_k\|_2}.
+ \label{eq:dev-common-target}
+\end{equation}
+A zero target leaves the state unchanged. The actual written changes, $H_{\rm after}-H_{\rm before}$, are recorded; their shared-minus-clean-feature norm differences take both signs. Under complete generation, each run reapplies this rule at its own current state.
+
+\paragraph{Clean-feature edits change the local output more.}
+Applying each candidate write at the same state of the unedited perturbed generation, we measure the change in the 32-dimensional normalized flow velocity, $\delta v_k=v_k-v_{N_T}$, separately for plan positions 0--4 and 5--9. Clean-feature edits give a larger $\|\delta v\|_2$ than shared-direction edits in every recorded task--query--generation-step--position-group mean: $400/400$ for Camera ($5\times4\times10\times2$) and $720/720$ for Sensor Noise ($9\times4\times10\times2$). These grids repeat measurements of the same five and nine tasks; all norm comparisons are defined. The clean local velocity was not recorded.
+
+\paragraph{With edit size matched, the ranking differs between families.}
+Under complete generation with matched edit size, the gains for shared/clean-feature directions are $0.02539/0.01763$ for Camera and $0.00975/0.01881$ for Sensor Noise. Restoration is thus better than clean-feature directions under Camera and worse under Sensor Noise, although clean-feature directions change the local output more in both: local output size is not plan correction.
+
+\paragraph{Implementation notes.}
+Projections and edit sizes are computed at higher precision than the policy's own execution, which writes the edited state at its native precision; writes that round to zero at that precision remain in the data.

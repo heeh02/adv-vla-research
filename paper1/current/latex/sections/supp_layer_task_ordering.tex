@@ -1,0 +1,17 @@
+\paragraph{Within most tasks, L1 retains most and L18 predicts best.}
+We compare retained response energy and affine translation-prediction MSE at L1, L9 and L18 within each task, on the same pairs. In the table below, \emph{best-layer separation} counts tasks in which L1 retains strictly more response energy than both other layers and L18 has strictly lower prediction MSE than both. This holds in 24--27 of the 28 tasks in each family. The \emph{full ordering} column also requires both retention and prediction MSE to decrease strictly from L1 through L9 to L18, and so also checks the position of L9; it holds in fewer tasks. The same 28 tasks appear in all four families. These are descriptive counts, reported without an inferential test.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+Family & \shortstack{Best-layer\\separation} & \shortstack{Full\\ordering}\\
+\midrule
+Background & 24/28 & 11/28\\
+Camera & 26/28 & 18/28\\
+Light & 27/28 & 15/28\\
+Sensor Noise & 27/28 & 17/28\\
+\bottomrule
+\end{tabular}
+\end{center}

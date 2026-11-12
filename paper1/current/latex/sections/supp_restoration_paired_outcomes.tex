@@ -1,0 +1,20 @@
+\paragraph{Lost and gained successes in every run; replacing the whole L9 state raises success.}
+The table counts, unweighted, cases whose outcome differs from the unedited run $N_T$ with the same noise draw: failures that become successes (gained) and the reverse (lost). Gained successes grow with how much of the clean state is copied, while every edited run also loses some. The counts are descriptive; the simultaneous intervals are in Table~\ref{tab:allstep-restoration-contrasts}. In a post hoc analysis with pointwise intervals, outside the six simultaneous comparisons, $R_{\mathrm{full}}$ minus $N_T$ is $+7.41\ [+0.93,+14.81]$ (Camera) and $+5.83\ [0.00,+12.50]$ (Sensor Noise): this layer matters for the outcome, and restoration delivers part of that gain.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Camera (96 cases)} & \multicolumn{3}{c}{Sensor Noise (120 cases)}\\
+Run & Successes & Gained & Lost & Successes & Gained & Lost\\
+\midrule
+$N_T$ & 69 & -- & -- & 100 & -- & --\\
+$R_{\mathrm{rand}}$ & 68 & 3 & 4 & 102 & 5 & 3\\
+$R_{\mathrm{clean}}$ & 72 & 6 & 3 & 100 & 3 & 3\\
+$R_{\mathrm{resp}}$ & 71 & 7 & 5 & 104 & 7 & 3\\
+$R_{\mathrm{full}}$ & 76 & 10 & 3 & 107 & 10 & 3\\
+$N_C$ & 94 & 26 & 1 & 117 & 19 & 2\\
+\bottomrule
+\end{tabular}
+\end{center}

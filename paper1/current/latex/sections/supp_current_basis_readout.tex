@@ -1,0 +1,39 @@
+\subsection{The 404-pair subset and the linear command readout}
+\label{sec:current-basis-readout}
+
+On the 404 pairs of main Fig.~\ref*{M-fig:token-structure}, the position-centered shared directions retain $36.5$--$83.6\%$ of the response energy around the fitting-data mean, against $0.5$--$10.2\%$ for clean-feature and $1.3$--$1.9\%$ for random directions: the C1 numbers of the main paper. An exploratory linear readout of the same 16 coordinates predicts the change in the first five commands better than predicting no change at L18 in all four families, but not at L1 and L9 (Table~\ref{tab:current-basis-control}; main Fig.~\ref*{M-fig:token-structure}b). This supports main Sec.~\ref*{M-sec:shared} with two qualifications: at L18 the shared coordinates predict no better than clean-feature coordinates, and first flow predicts better than any set of coordinates.
+
+\paragraph{What the readout is compared with.}
+Affine readouts are compared on the same held-out cases with predicting no change (absolute accuracy), clean-feature and random coordinates (choice of directions), the full hidden response (prediction before compression) and first flow (information beyond a downstream output; it beats no change in every family). Table~\ref{tab:current-basis-control} puts all layers on one translation-error scale; the figures keep all command components.
+
+\paragraph{Retention and prediction peak at different layers on the same cases.}
+At L1 and L9, shared-direction coordinates reduce affine translation error by $20$--$75\%$ and $27$--$71\%$ relative to centered clean-feature coordinates. On the absolute scale, however, the shared-direction readout has higher error than predicting no change in 7 of these 8 cells, and the clean-feature readout in all 8 (point estimates). The first compares coordinates within a layer; the second asks whether a readout beats keeping the clean commands. Against the full-hidden readout, 8 of 12 translation intervals include zero (3 favor the shared directions, 1 the full readout).
+
+\input{sections/supp_layer_task_ordering}
+
+\paragraph{At L9 the advantage over clean-feature coordinates depends on centering.}
+At L9, shared-direction coordinates improve translation readout relative to centered clean-feature coordinates in each family. Uncentered clean-feature coordinates, however, give lower prediction error than the centered ones (Table~\ref{tab:current-basis-control}), while the intervals for position-centered versus uncentered shared directions span zero in every family. The relative gain at L9 thus depends on how the clean-feature coordinates are built.
+
+\paragraph{At L18 the shared directions do not beat clean-feature coordinates.}
+At L18, translation and rotation readout differences against centered clean-feature coordinates have intervals spanning zero in every family. Continuous-gripper readout errors exceed those of the magnitude baseline in every family. The rotation and gripper figures show this component-specific pattern: reconstruction is scored once, prediction per component.
+
+\paragraph{Adding shared coordinates to first flow rarely helps.}
+Of the 36 first-flow-plus-shared-direction comparisons, one pointwise interval is positive, fifteen are negative and twenty span zero. The positive Camera/L1 translation contrast reduces error by $8.66\%$; the uncentered shared directions already give an $8.81\%$ point reduction on the same support. Since first flow is already a downstream prediction, this measures additional command information available to the readout.
+
+\paragraph{The directions are reused without refitting.}
+The cached first-five adapter differences match all 35 returned command coordinates in each of the 404 cases. Translation, rotation and continuous gripper are scored separately; the gripper target precedes sign formatting. The saved position-centered shared, clean-feature and random directions are used without refitting or choosing their number from command results; each has sixteen channel directions with coefficients at ten positions. Comparators are the uncentered shared, clean-feature and random directions, ten positionwise response magnitudes, the full $10\times1024$ hidden difference, the first flow difference of the policy's own generation, zero prediction and the training target mean. The sixty joint task/family splits are kept, five held-out folds joined per family and layer. Training uses the LIBERO-Plus recordings; evaluation uses the matched subset on 28 tasks, with 96/102/96/110 cases for Background/Camera/Light/Sensor Noise.
+
+\paragraph{Training the command readout.}
+A weighted affine ridge readout predicts the target vector before or after the output adapter. Each feature block is centered on training data and divided by its training scalar RMS; the intercept is unpenalized and $\lambda=0.01$ is fixed. Features are never pooled across layers or plan positions; adding the shared coordinates to first flow uses one training scale per block. The full-hidden readout has more features, so this compares prediction under fixed estimator and feature budgets.
+
+\paragraph{Readout and reconstruction share cases and draws.}
+Command and reconstruction comparisons share the 404 test cases; within tasks, noise and setting weights follow the original protocol. Reconstruction divides task-weighted error by task-weighted residual energy about the saved training position mean and averages task scores. Readout contrasts compare task MSEs on the same 2,000 whole-task-component draws per family/layer and report the relative error reduction $1-\mathrm{MSE}_{\mathrm{candidate}}/\mathrm{MSE}_{\mathrm{baseline}}$. Intervals are pointwise 95\%, conditional on the fitted directions and readouts; the repeated family/layer/component comparisons share data.
+
+\input{sections/current_basis_control_table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/supp_full_readout_controls.pdf}
+\caption{\textbf{Shared coordinates mostly match the full hidden response and rarely add to first flow.} All 24 translation contrasts across three layers and four families, on the 404 matched LIBERO-Plus pairs and original task/family holdouts. Left: shared-direction coordinates versus the full hidden response. Right: first flow plus shared coordinates versus first flow. Error reduction is $100(1-\mathrm{MSE}_{\rm candidate}/\mathrm{MSE}_{\rm baseline})$; positive favors the candidate. Bars are pointwise 95\% task-component intervals under fixed fitted readouts.}
+\label{fig:full-readout-controls}
+\end{figure}

@@ -1,0 +1,56 @@
+{
+  "schema": "paper2-user-directed-research-closeout-v1",
+  "UTC": "2026-10-21T16:57:34.647107+00:00",
+  "status": "RESEARCH_CLOSED_NO_FURTHER_AUTOMATIC_WORK",
+  "user_request": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/research-closeout-20261022-v1/USER-CLOSEOUT.json",
+    "bytes": 517,
+    "sha256": "13c7a2333113df755c0815879e84ff8d1f19ded5b28d1ef270e131ac79fbfef9"
+  },
+  "scientific_closeout": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/research-closeout-20261022-v1/SCIENTIFIC-CLOSEOUT-zh.md",
+    "bytes": 2562,
+    "sha256": "ee1135f118f0b773ba2370e30a40166d668581a5dfa245a0812cfefe30941c52"
+  },
+  "current_manuscript": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/DELIVERY.json",
+    "bytes": 1194,
+    "sha256": "098c68d46a68fe8cdecf8df2f557564a042f9c52e0a1a67666e71e17a0b1fc6a"
+  },
+  "notion_status_readback": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/notion/research-closeout-20261022-v1/RECEIPT.json",
+    "bytes": 263,
+    "sha256": "7d49024dc3c7d109775e4d09a360d8f3fadd4d73c64e7f9cdfcb350ddd9fff1b"
+  },
+  "fresh_resource_observation": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/research-closeout-20261022-v1/LIVE-OWNED-JOBS.json",
+    "bytes": 16448,
+    "sha256": "44dbe4ac2494e8c4a7aaf381c8eb15c803d3e406bd916664050b4e4c5b959a40"
+  },
+  "older_release_evidence": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/research-closeout-20261022-v1/ARCHIVED-RELEASE-RECONCILIATION-v2.json",
+    "bytes": 25032,
+    "sha256": "b797c20b4226dd35bfc2a543754cca3491e9476e7f219413fe574adb2112db1c"
+  },
+  "registered_jobs_with_release_evidence": 38,
+  "fresh_terminal_verified": 11,
+  "older_archived_terminal_verified": 27,
+  "fresh_old_job_describe_errors_preserved": true,
+  "new_compute_or_Stop_in_closeout": 0,
+  "unexecuted_drafts": {
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/research-closeout-20261022-v1/UNEXECUTED-WORK.json",
+    "bytes": 1713,
+    "sha256": "c7b2ea66efc5202ee018905183614aaa2b8d8c4c46ae574376a559034ad9f39e"
+  },
+  "active_development_agents": 0,
+  "source_agent_status": {
+    "decisive_design": "completed",
+    "population_sources": "completed",
+    "prospective_reuse_audit": "interrupted_by_root"
+  },
+  "new_scientific_work_allowed": false,
+  "explicit_user_restart_required": true,
+  "goal_pause_requested": true,
+  "RSS_objective_achieved": false,
+  "new_submission_to_RSS": false
+}

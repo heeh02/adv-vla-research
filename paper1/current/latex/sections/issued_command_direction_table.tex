@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\caption{\textbf{How each run changes the first five commands: progress toward the clean commands and change in other directions.} Descriptive task-equal means on all confirmation cases: 96 Camera cases (48 settings, 27 tasks) and 120 Sensor Noise cases (60 settings, 30 tasks), two noise draws per setting. Each quantity is computed per record from the translation parts of the first five commands, then averaged. $d_\parallel,d_\perp$ are defined in Eq.~\ref{eq:issued-command-direction}; $e$ is the command error. Command units; means without intervals. The geometric identity holds per record, not for the means.}
+
+\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+& \multicolumn{3}{c}{Camera} & \multicolumn{3}{c}{Sensor Noise}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Run & Along $d_\parallel$ & Orthogonal $d_\perp$ & Error $e$ & Along $d_\parallel$ & Orthogonal $d_\perp$ & Error $e$\\\midrule
+Clean ($N_C$) & 0.40928 & 0.00000 & 0.00000 & 0.20913 & 0.00000 & 0.00000\\
+Perturbed, unedited ($N_T$) & 0.00000 & 0.00000 & 0.40928 & 0.00000 & 0.00000 & 0.20913\\
+\midrule
+Restoration ($R_{\mathrm{resp}}$) & 0.10365 & 0.04660 & 0.31205 & 0.01139 & 0.01229 & 0.19867\\
+Clean-feature directions ($R_{\mathrm{clean}}$) & 0.00529 & 0.01001 & 0.40422 & 0.00388 & 0.00633 & 0.20541\\
+Random directions ($R_{\mathrm{rand}}$) & 0.00221 & 0.00391 & 0.40710 & 0.00016 & 0.00246 & 0.20900\\
+Whole L9 state ($R_{\mathrm{full}}$) & 0.11974 & 0.05176 & 0.29733 & 0.01671 & 0.01918 & 0.19433\\
+\bottomrule\end{tabular}
+
+\label{tab:issued-command-direction}
+\end{table*}

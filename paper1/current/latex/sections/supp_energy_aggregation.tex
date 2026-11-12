@@ -1,0 +1,42 @@
+\clearpage
+\section{Sensitivity to the Aggregation of Response Energy}
+\label{sec:supp-energy-aggregation}
+Does the C1 result depend on how response energy is averaged over tasks? No. When task energies are summed before taking the ratio, the shared directions retain $38.4$--$84.0\%$ of the response energy, against $0.46$--$10.91\%$ for clean-feature and $1.35$--$1.98\%$ for random directions, and they exceed both controls in all 12 layer--family cells (Table~\ref{tab:supp-energy-aggregation}). This supports Sec.~\ref*{M-sec:shared} of the main paper. It is a descriptive check with no new intervals; the task-equal score of the main paper remains the primary measure.
+
+\paragraph{Two ways of aggregating.}
+Let $E_t$ be task $t$'s mean squared response magnitude around the fitting-data position mean, and $S_{t,m}$ its mean squared reconstruction error for directions $m$. The main score gives tasks equal weight, $|T|^{-1}\sum_t(1-S_{t,m}/E_t)$. The alternative sums errors and energies first,
+\begin{equation}
+R_m^{\mathrm{energy}}=1-\frac{\sum_t S_{t,m}}{\sum_t E_t},
+\end{equation}
+which gives more weight to tasks with larger responses. Both use the same saved predictions, fitting means and joint task/family holdouts, with nothing refitted. The inputs reproduce all 36 main layer--family--direction means and use the same tasks and energy denominators for all directions.
+
+\paragraph{The result.}
+The shared-direction values differ by at most a few percentage points between the two aggregations (Table~\ref{tab:supp-energy-aggregation}). Both scores keep the fitting-data position mean, so their response energy includes offsets between fitting and held-out families.
+
+\begin{table}[h]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llrrrr}
+\toprule
+& & Main & \multicolumn{3}{c}{Energy summed over tasks}\\
+Layer & Family & Shared & Shared & Clean-feature & Random\\
+\midrule
+L1 & Background & 65.14 & 66.39 & 2.27 & 1.43 \\
+L1 & Camera & 76.35 & 77.45 & 1.70 & 1.38 \\
+L1 & Light & 83.58 & 84.00 & 1.89 & 1.84 \\
+L1 & Sensor Noise & 74.44 & 76.98 & 1.10 & 1.60 \\
+\midrule
+L9 & Background & 44.42 & 42.62 & 0.52 & 1.51 \\
+L9 & Camera & 63.42 & 67.30 & 0.46 & 1.68 \\
+L9 & Light & 61.23 & 61.01 & 0.88 & 1.69 \\
+L9 & Sensor Noise & 43.98 & 47.22 & 0.64 & 1.35 \\
+\midrule
+L18 & Background & 39.29 & 38.40 & 8.73 & 1.66 \\
+L18 & Camera & 40.47 & 41.80 & 10.91 & 1.75 \\
+L18 & Light & 49.84 & 49.36 & 8.01 & 1.75 \\
+L18 & Sensor Noise & 36.50 & 38.90 & 8.93 & 1.98 \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{The shared directions retain far more response energy than the controls under either aggregation.} Share of the response energy around the fitting-data mean (\%) on the same 404 held-out pairs and 28 tasks. Main: the main paper's mean of task ratios. The last three columns take the ratio after summing task-level errors and energies. Each cell includes all 28 tasks, with 96/102/96/110 pairs for Background/Camera/Light/Sensor Noise. Descriptive values without intervals.}
+\label{tab:supp-energy-aggregation}
+\end{table}

@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{\textbf{Development: plan gains depend on the schedule and on the edit-size rule.} Descriptive task-equal means of Eq.~\ref{eq:dev-plan-gain} on all 64 Camera and 136 Sensor Noise cases: 8/17 settings on 5/9 tasks, two noise draws and saved queries $q=0,2,5,10$. First/all: edit at $j=0$ or at $j=0,\ldots,9$. Matched: Eq.~\ref{eq:dev-common-target} applied at each run's current state. $N_T$ has zero gain by definition.}
+
+\centering\small
+\begin{tabular}{lrr}\toprule
+Rule & Camera / $S_f$ & Sensor Noise / $S_f$\\\midrule
+Clean ($N_C$) & 1.20070 & 1.19909\\
+Unedited ($N_T$) & 0.00000 & 0.00000\\
+\midrule
+Shared, first & 0.00475 & 0.00188\\
+Shared, all & 0.15468 & 0.06687\\
+Clean-feature, all & 0.02056 & 0.02137\\
+Random, all & 0.00364 & 0.00118\\
+Whole L9 state, all & 0.22249 & 0.12432\\
+\midrule
+Matched: shared & 0.02539 & 0.00975\\
+Matched: clean-feature & 0.01763 & 0.01881\\
+Matched: random & 0.00308 & 0.00044\\
+\bottomrule\end{tabular}
+
+\label{tab:dev-restoration-controls}
+\end{table}

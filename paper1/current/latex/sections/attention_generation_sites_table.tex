@@ -1,0 +1,14 @@
+\begin{table*}[t]
+\caption{\textbf{Over generation, the attention-output response grows; the post-block response shrinks in raw size but grows relative to its clean scale.} L18 of the first query on the same 404 matched LIBERO-Plus pairs: 96/102/96/110 pairs for Background/Camera/Light/Sensor Noise, each on 28 tasks. Entries are task-equal means, averaging noises within settings and settings within tasks. Raw: per-case Frobenius norm over the square root of tensor size; relative: divided by the clean tensor norm before averaging. $W$ is recomputed from saved states, before gating; $H$ is recorded after the block.}
+\centering\small
+\begin{tabular}{lrrr}\toprule
+Family & Attention output $W$: raw RMS & Post-block $H$: raw RMS & Post-block $H$: relative $L_2$\\
+ & $j=0\!\rightarrow9$ & $j=0\!\rightarrow9$ & $j=0\!\rightarrow9$\\\midrule
+Background & $1.387\!\rightarrow1.528$ & $3.436\!\rightarrow2.434$ & $0.073\!\rightarrow0.147$\\
+Camera & $2.225\!\rightarrow2.513$ & $5.555\!\rightarrow3.791$ & $0.119\!\rightarrow0.228$\\
+Light & $0.895\!\rightarrow1.035$ & $2.218\!\rightarrow1.609$ & $0.047\!\rightarrow0.097$\\
+Sensor Noise & $1.434\!\rightarrow1.587$ & $3.993\!\rightarrow2.662$ & $0.085\!\rightarrow0.160$\\
+\bottomrule\end{tabular}
+
+\label{tab:attention-generation-sites}
+\end{table*}

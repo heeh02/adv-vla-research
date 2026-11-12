@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\caption{\textbf{Success contrasts: what the edit costs against the unedited policy, and how it compares with the control edits.} Every row is Shared-large minus the named comparator, in percentage points. Bounds enumerate the 111 missing outcomes of the 6,048-episode plan. Points and intervals use the 5,937 known outcomes (post hoc whole-task bootstrap, 16 tasks, 2,000 draws). The 99.44\% intervals are Bonferroni-adjusted across the nine contrasts. Bounds and sampling intervals describe different sources of uncertainty. Random mean averages the three random direction sets.}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llrrrr}\toprule
+Condition & Comparator & \shortstack{Bounds over\\missing outcomes} & \shortstack{Known-outcome\\point} & 95\% interval & 99.44\% interval\\\midrule
+Clean & Unedited ($D$) & $[-2.8,0.0]$ & $-1.0$ & $[-3.0,+1.0]$ & $[-3.8,+1.7]$\\
+Clean & Clean-feature ($Q$) & $[-1.0,+2.4]$ & $+0.7$ & $[-1.9,+3.3]$ & $[-3.0,+4.8]$\\
+Clean & Random mean ($R$) & $[-2.2,+1.2]$ & $-0.8$ & $[-2.5,+0.8]$ & $[-3.5,+1.3]$\\
+\midrule
+Camera & Unedited ($D$) & $[-1.4,+2.8]$ & $+0.7$ & $[-0.7,+2.1]$ & $[-1.2,+2.8]$\\
+Camera & Clean-feature ($Q$) & $[+2.8,+6.6]$ & $+5.0$ & $[+0.7,+10.2]$ & $[+0.3,+13.2]$\\
+Camera & Random mean ($R$) & $[-0.6,+3.2]$ & $+1.6$ & $[+0.6,+2.7]$ & $[+0.3,+3.2]$\\
+\midrule
+Headlight & Unedited ($D$) & $[-0.3,+3.8]$ & $+1.4$ & $[-1.6,+4.0]$ & $[-2.8,+5.3]$\\
+Headlight & Clean-feature ($Q$) & $[-3.5,+1.0]$ & $-1.4$ & $[-5.9,+1.4]$ & $[-8.0,+2.4]$\\
+Headlight & Random mean ($R$) & $[-2.5,+1.6]$ & $-0.7$ & $[-2.5,+0.9]$ & $[-3.2,+1.4]$\\
+\bottomrule\end{tabular}
+
+\label{tab:supp-native-contrasts}
+\end{table*}

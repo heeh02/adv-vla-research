@@ -1,0 +1,742 @@
+[
+  {
+    "path": "protocols/Current_basis_protocol.md",
+    "origin": "docs/data-transfer/google-drive-20261017/analysis-ready/Current_basis_protocol.md",
+    "sha256": "491707f75dad7ed7919b6049a34cf9e09e944ddc2069057f39de46f3be967c4c"
+  },
+  {
+    "path": "protocols/D3_protocol.md",
+    "origin": "docs/data-transfer/google-drive-20261017/analysis-ready/D3_protocol.md",
+    "sha256": "b527d99ff49824c1ae5d401d0070ded1381c0a1f1d6739911a8582e6a8b9a77d"
+  },
+  {
+    "path": "protocols/Five_arm_protocol.md",
+    "origin": "docs/data-transfer/google-drive-20261017/analysis-ready/Five_arm_protocol.md",
+    "sha256": "144d7de16472e6de9cf9139e15833e26554e087c4b41d8cbfc4ecb579bd81672"
+  },
+  {
+    "path": "protocols/Glossary.md",
+    "origin": "docs/data-transfer/google-drive-20261017/analysis-ready/Glossary.md",
+    "sha256": "21e00faa9ba2e2abc423d6ff6c2e9985e16230d35e0bb2bec1e670889c8253e4"
+  },
+  {
+    "path": "analysis/ablation/fill_ablation.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/ablation/fill_ablation.py",
+    "sha256": "3d0b8945475cbdccc3529b274edebe4e54a4da7bf85d8ccc31df980fa78b57de"
+  },
+  {
+    "path": "analysis/ablation/recompute_cloud.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/ablation/recompute_cloud.py",
+    "sha256": "ff7f3c8c932c44a11babfa4cd51ce5acf05b3956d9b6caab9b4c795865b120ba"
+  },
+  {
+    "path": "analysis/aggregation-replay/original_estimators.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/aggregation-replay/original_estimators.py",
+    "sha256": "a3e42eccc5cd44f71fe6b590d6a9c799d25574688ae4295ac820933d26130b94"
+  },
+  {
+    "path": "analysis/aggregation-replay/replay_s10_2.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/aggregation-replay/replay_s10_2.py",
+    "sha256": "1ddd72890b3f7e3fabe53fd7816422326d9c4404c65e3ae2c15063a5e353de23"
+  },
+  {
+    "path": "analysis/aggregation-replay/requirements.txt",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/aggregation-replay/requirements.txt",
+    "sha256": "9e6daa404f8daf9017c97c60813cc291a074de5eac41dcac657b3336ea0534a2"
+  },
+  {
+    "path": "analysis/case-analysis/pipeline.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/case-analysis/pipeline.py",
+    "sha256": "e19246a9b5c8ae8ef9303a0b6b3bea91b44960e187f8efebc43dc2842c453fe3"
+  },
+  {
+    "path": "analysis/case-analysis/render.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/case-analysis/render.py",
+    "sha256": "efb10c23278c3c30775ff1e17b22d0053733362fe0950aa384c54786b2f5a153"
+  },
+  {
+    "path": "analysis/case-analysis/tests/test_pipeline.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/case-analysis/tests/test_pipeline.py",
+    "sha256": "3188b34a15a8a6d0197a8747b0a4c4dca10e72dbf98f74c718e95263f578271d"
+  },
+  {
+    "path": "analysis/case-analysis/verify_outputs.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/case-analysis/verify_outputs.py",
+    "sha256": "3041f3220ccb32078d7aeb417062b5743597f775adf87079c1f8d799d899b2db"
+  },
+  {
+    "path": "analysis/current-basis-replay/producer-reference/legacy_math.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/current-basis-replay/producer-reference/legacy_math.py",
+    "sha256": "d179b8b49e4c49306dab1c2c7f8e1f3684bb439fad8f413f3cfaa0229eebe558"
+  },
+  {
+    "path": "analysis/current-basis-replay/producer-reference/readout.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/current-basis-replay/producer-reference/readout.py",
+    "sha256": "193a3915f6808049616cf9cd953c39e124de97c9d4cddef1ddff0db7a1953734"
+  },
+  {
+    "path": "analysis/current-basis-replay/replay.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/current-basis-replay/replay.py",
+    "sha256": "6cdbaad9659e23e7d246a063ad1226869f160c914d121796a6c93dc223c40fcc"
+  },
+  {
+    "path": "analysis/current-basis-replay/test_replay.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/current-basis-replay/test_replay.py",
+    "sha256": "425bf720a71bd6aabf1911ab9847b5c40c887f8f0eca36e5ce9787402e4466b0"
+  },
+  {
+    "path": "analysis/historical-r1/r1_controls.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/historical-r1/r1_controls.py",
+    "sha256": "f8a2e311e47ff4a771c6d6c3bca16bdd8ccdb12e3342627eeabda0b9dd20b519"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/basis_hn.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/basis_hn.py",
+    "sha256": "0e38cadb3a24af76fae783249fee44fdc0c08966b7aee19c0a98091497f57716"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/d_entry.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/d_entry.py",
+    "sha256": "d998c32229a8dc2bec7c2e44e14eb17528a2cf4906237495a62344363c8d7746"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/d_readout.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/d_readout.py",
+    "sha256": "b80580d2b11251c9910c409c6690ac4088c7ab4cc426e9a42abf669dcd92fedc"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/legacy_math_hn.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/legacy_math_hn.py",
+    "sha256": "04dd0ec2647754092d463ae357abac462658043bcdf38632680c8847de2ccab0"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/readout_hn.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/readout_hn.py",
+    "sha256": "aa467219810c6648bacc4a90587c880f13c98368094d71a1daed1b7c7e963bcd"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/test_port.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/test_port.py",
+    "sha256": "7001ff4d895034936dbcf64906886b5c0cef143fd9a3f39fb02027ca6eb865a6"
+  },
+  {
+    "path": "analysis/pi0-internals/analysis/test_readout_hn.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/pi0-internals/analysis/test_readout_hn.py",
+    "sha256": "a86d2d4c206c5ae088eb8ca1790f89596b66c5ea5e9ad971365554850b2fa016"
+  },
+  {
+    "path": "analysis/readout-capacity/cloud_readout.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/readout-capacity/cloud_readout.py",
+    "sha256": "9d3b448c83ec22a021106139d57b605f099c511ff7059db6060e20db293f6fb6"
+  },
+  {
+    "path": "analysis/readout-capacity/cloud_readout_v2.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/readout-capacity/cloud_readout_v2.py",
+    "sha256": "acdd9f2367d9d99578111a59efa777a19e31e9d71157380edfc43da508f0dcbb"
+  },
+  {
+    "path": "analysis/readout-capacity/e5_readout_math.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/readout-capacity/e5_readout_math.py",
+    "sha256": "f7e12846bd24b22a778877fe0ef3977612120a6f7af93b1bf0c2de53e197ffae"
+  },
+  {
+    "path": "analysis/readout-capacity/e5_worker.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/readout-capacity/e5_worker.py",
+    "sha256": "77f7952da193ae611b69b664d065ff814f51e0b259bff350cedb8e9032f413e8"
+  },
+  {
+    "path": "analysis/readout-capacity/e5_worker_v2.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/readout-capacity/e5_worker_v2.py",
+    "sha256": "edb45f91cda73ed7425a084d883575a5da839ae1751091348c33c13d0ac95533"
+  },
+  {
+    "path": "analysis/reanalysis/reproduce.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/reanalysis/reproduce.py",
+    "sha256": "09ad62f3630e2ddf2c1c53d1c65fa95f5ed0d43bb6c9cba288e7d6eecdb75832"
+  },
+  {
+    "path": "analysis/reanalysis/run_e.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/reanalysis/run_e.py",
+    "sha256": "6c34f3cf660cfa13ccf91588764347ba09d0297ffbf8a5361ba05ed833525cb2"
+  },
+  {
+    "path": "analysis/reanalysis/test_e.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/reanalysis/test_e.py",
+    "sha256": "318822529db4779c1035009da5247bfeef9e0a14cb1a58eb0ab6e29841fc6656"
+  },
+  {
+    "path": "analysis/reanalysis/test_portability.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/reanalysis/test_portability.py",
+    "sha256": "c59703e9d07d61776db9bde148448ba9428afdc54ff5768f22841f36715c9e8d"
+  },
+  {
+    "path": "analysis/statistics/internal_link_pure.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/statistics/internal_link_pure.py",
+    "sha256": "3758575c3641dfcab9b34726afa15f1fbc970c9675ea4f35f05d098473ba7716"
+  },
+  {
+    "path": "analysis/statistics/replay_s4.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/AdvVLA_Paper1_Cloud_Analysis_20261029/03_Experiment_Evidence/E_Reusable_Scalar_Data/statistics/replay_s4.py",
+    "sha256": "5415fad7ac25a447455e1af3d317ed21989b7c34433cb8759e6a4c063ea013e7"
+  },
+  {
+    "path": "nov02-source/build_paper.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/build_paper.py",
+    "sha256": "9a55c747dcaf461e32341d1e0e46fa7d80690bdff246b64ab487517876934a76"
+  },
+  {
+    "path": "nov02-source/plot_sources/behavior_case_audit/build_case_audit.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/behavior_case_audit/build_case_audit.py",
+    "sha256": "75a4fbb170ff8f5cac1b6b6e8cdd63af252a7676e6507b53ab8962fe793a1551"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_allstep_restoration_tables.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_allstep_restoration_tables.py",
+    "sha256": "c19de723a625a999486dc73e849a54e95ad46be194bbfdbb4547396f86862ae6"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_attention_profiles.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_attention_profiles.py",
+    "sha256": "e0014daffa03344b4ab4198421e4ae0f2d82930d248f65df2bad00c5a5a77412"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_command_direction_table.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_command_direction_table.py",
+    "sha256": "c437773062150055e773c73762f63415bd291773d51665fd3abcc1a4d501cf3e"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_dev_restoration_table.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_dev_restoration_table.py",
+    "sha256": "79802039945ad309fa0b6441b7185678cbb1cd745066c4e4d58a1abd878cf5f7"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_evidence_tables.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_evidence_tables.py",
+    "sha256": "9189183777196724f384782fbabb6d53e4280d148213fd84c4cb518834989d55"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_figures.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_figures.py",
+    "sha256": "cfefee7521c941cab38076539b7913c286027b28b1627f6188083e1dd1c9ddcb"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_overview.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_overview.py",
+    "sha256": "505a21a615963b564295f2aad03eb7b30a901f3054bf1a2e1962332097b03d1c"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_r11_results.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_r11_results.py",
+    "sha256": "4ac00f6c7e721281ba1639c213b27004be5dd79f71cddb3fadbabbb527845da8"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_results.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_results.py",
+    "sha256": "dfd0f5f4fab463cee62b90f02dae8c7905f35e917e075efa5b894b47db128b8f"
+  },
+  {
+    "path": "nov02-source/plot_sources/build_sensor_case_table.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/build_sensor_case_table.py",
+    "sha256": "fc0569cdf632815024bc8b998d2e08f5b86dc7037aa57d524dd523bc13a43890"
+  },
+  {
+    "path": "nov02-source/plot_sources/command_direction_audit/build_command_direction.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/command_direction_audit/build_command_direction.py",
+    "sha256": "9af9f32158f60e80138035402a51c4dfb9f57a557fb6cc9487937c818cca3aaf"
+  },
+  {
+    "path": "nov02-source/plot_sources/dev_controls/build_dev_controls.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/dev_controls/build_dev_controls.py",
+    "sha256": "b6dfc743a5c5454fd7b670b3e1b36d0b171cf072479da2ac47fe4033edcc25ab"
+  },
+  {
+    "path": "nov02-source/plot_sources/reader_result_figures.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/reader_result_figures.py",
+    "sha256": "b475a54deb63bcbf41f7605a79331e9033cb3360df38e5d868403b9fd872b152"
+  },
+  {
+    "path": "nov02-source/plot_sources/validate_reader_result_figures.py",
+    "origin": "docs/reviews/paper1-chapter-refinement-20261102/source/plot_sources/validate_reader_result_figures.py",
+    "sha256": "edcbcf8ec04e8e27e38c933b801f3061d8543d8f663b4500393365c227825601"
+  },
+  {
+    "path": "acquisition/five-arm/five_arm_collect.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/five_arm_collect.py",
+    "sha256": "8100757afac7a6df1a72fcacd394477e740f0f41fd29970ad0f2fa933da2ea4b"
+  },
+  {
+    "path": "acquisition/five-arm/five_arm_frame.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/five_arm_frame.py",
+    "sha256": "75be3fce16703ad318c40d2e728238ad8abcf21809cd4f478a155a1ef061fd2c"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/adapter.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/adapter.py",
+    "sha256": "8cfc16f72492ef58d4bdc27c6aa7f6f670ed0d6a709910e76b5579be72d07023"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/canonical_step_capture.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/canonical_step_capture.py",
+    "sha256": "aa24f388757b222d90d5039ad58530de5b21f798e66c076e15992fe739fa02a5"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/collect.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/collect.py",
+    "sha256": "dae3f9b3abe20564f446aa7c45466c7cb09969dc56b86f4ee116636935b5f889"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/entry.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/entry.py",
+    "sha256": "65f96b0f50786e0f8f7d7165894af9f38a89b87ccae3c5d4c5fdbca89d860a32"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/environments.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/environments.py",
+    "sha256": "26e4c67ab3142a71edad074e65d97a02ab6f032007d5bda0f3c78112cb98b49e"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/frame.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/frame.py",
+    "sha256": "4f096d52552e6d7f09ea85122a6e61508349f561949c090fa1c9e0cb8e6966a9"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/official_environment.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/official_environment.py",
+    "sha256": "fdb80249973c47b25872e9a379225911e4d7b5fd76796f831803d714d0a9cecd"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/orchestrator.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/orchestrator.py",
+    "sha256": "7b943d9edf46fcc2ea53f34d2e65cbeba6167eb1f03b4c712b956cfbd0c16c52"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/plus_contract.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/plus_contract.py",
+    "sha256": "86b10d3cbe967792c18998db7bc8ef8b88bffa1d934ae57e748dd63452e5327c"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/production.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/production.py",
+    "sha256": "64ce9dc17acc40c643f8fe8e4c0d1429d26d81bcd61e0e24437ba75ba0634762"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v4/runtime_snapshot.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v4/runtime_snapshot.py",
+    "sha256": "151c88ddeec4f47ec7f86f03dd6e5493baf97b8ac8b2b7485b5471aeba5d81c1"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/adapter.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/adapter.py",
+    "sha256": "8cfc16f72492ef58d4bdc27c6aa7f6f670ed0d6a709910e76b5579be72d07023"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/canonical_step_capture.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/canonical_step_capture.py",
+    "sha256": "aa24f388757b222d90d5039ad58530de5b21f798e66c076e15992fe739fa02a5"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/collect.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/collect.py",
+    "sha256": "f267f8965b24b3ff1a5c9cec1e925de3b31e3b653cb340ac3fc7662b1ee7f181"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/entry.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/entry.py",
+    "sha256": "65f96b0f50786e0f8f7d7165894af9f38a89b87ccae3c5d4c5fdbca89d860a32"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/environments.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/environments.py",
+    "sha256": "0d0755c4bc7eb0ad2a48a551a9851f00756e6796c756e2d025eb5e9b79794dc7"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/frame.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/frame.py",
+    "sha256": "0d64f545330dbc4c3f24a97dff0ef7a3a8fcb51822e86b2838497cffac94026c"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/official_environment.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/official_environment.py",
+    "sha256": "fdb80249973c47b25872e9a379225911e4d7b5fd76796f831803d714d0a9cecd"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/orchestrator.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/orchestrator.py",
+    "sha256": "7b943d9edf46fcc2ea53f34d2e65cbeba6167eb1f03b4c712b956cfbd0c16c52"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/plus_contract.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/plus_contract.py",
+    "sha256": "86b10d3cbe967792c18998db7bc8ef8b88bffa1d934ae57e748dd63452e5327c"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/production.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/production.py",
+    "sha256": "64ce9dc17acc40c643f8fe8e4c0d1429d26d81bcd61e0e24437ba75ba0634762"
+  },
+  {
+    "path": "acquisition/five-arm/runtime-v6/runtime_snapshot.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/runtime-v6/runtime_snapshot.py",
+    "sha256": "151c88ddeec4f47ec7f86f03dd6e5493baf97b8ac8b2b7485b5471aeba5d81c1"
+  },
+  {
+    "path": "acquisition/five-arm/smoke_two_rows.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/smoke_two_rows.py",
+    "sha256": "a0f360f757eba67db624835806c0a8c524998ec3e8c9e1e97371b0ea8885d920"
+  },
+  {
+    "path": "acquisition/five-arm/src/openpi/eval/campaign_policy.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/src/openpi/eval/campaign_policy.py",
+    "sha256": "324cefe6676304131723a6d2b8df0aa97d615deff74eaa0f2137068c757bfe9e"
+  },
+  {
+    "path": "acquisition/five-arm/static_gate.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paired-evaluation-protocol-20261011-v2/submission-v1/five-arm-worker-v1/static_gate.py",
+    "sha256": "afb5a0a868636545c69d7d70aa7c0f6db158ce5edbe95d6b47245f8c6bb0cee6"
+  },
+  {
+    "path": "acquisition/plus-collection/collect.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/collect.py",
+    "sha256": "0f548d9c5af015981009ea13f7637336a8e46e00d8371e33d3d47258a5343f9b"
+  },
+  {
+    "path": "acquisition/plus-collection/entry.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/entry.py",
+    "sha256": "65f96b0f50786e0f8f7d7165894af9f38a89b87ccae3c5d4c5fdbca89d860a32"
+  },
+  {
+    "path": "acquisition/plus-collection/environments.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/environments.py",
+    "sha256": "26e4c67ab3142a71edad074e65d97a02ab6f032007d5bda0f3c78112cb98b49e"
+  },
+  {
+    "path": "acquisition/plus-collection/frame.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/frame.py",
+    "sha256": "15eb262f5fa4a55731bf9454cf1c93e1f1d7e9f21b031c633c47fba8c4efae0a"
+  },
+  {
+    "path": "acquisition/plus-collection/production.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/production.py",
+    "sha256": "64ce9dc17acc40c643f8fe8e4c0d1429d26d81bcd61e0e24437ba75ba0634762"
+  },
+  {
+    "path": "acquisition/plus-collection/test_collection.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/test_collection.py",
+    "sha256": "c0daba7f7568ac92df1aa6bf68e1ecd5814e98455b221df5372f514bc297dbc5"
+  },
+  {
+    "path": "acquisition/plus-collection/test_single_active.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/parallel-collection-runtime-v3/test_single_active.py",
+    "sha256": "34d94d1b07877c7669f2f87d8ef5a3caf8d2fd5f83310a5911bc35ca9016bb2a"
+  },
+  {
+    "path": "acquisition/readout/math_core.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/math_core.py",
+    "sha256": "1e87b261e0736323dbbebf5260d26397c7ddb45371825dc2e9ae5860cffb5cba"
+  },
+  {
+    "path": "acquisition/readout/native_evidence.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/native_evidence.py",
+    "sha256": "d12091e2b15bf6500b0b8a3b3f037c1166762fcf849e5bcd6e38cf898317d625"
+  },
+  {
+    "path": "acquisition/readout/range_source.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/range_source.py",
+    "sha256": "829dfe85d04625655ed660716748de1ede4ed2b077b8a3bf783d0fc770d6f61c"
+  },
+  {
+    "path": "acquisition/readout/reader.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/reader.py",
+    "sha256": "cb0c06457c764e7df429e76ccb8c56535dc69710142068bb928272115465c3dd"
+  },
+  {
+    "path": "acquisition/readout/readset_contract.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/readset_contract.py",
+    "sha256": "fabacfbaa6a0340a5197f4e16c3433b18f0f0c8f2b20428ba44d1fcf17b0cac8"
+  },
+  {
+    "path": "acquisition/readout/science_core.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/science_core.py",
+    "sha256": "1f2fe26d110e0df3d21c6b777ef4dcea5b2f4997c9fa272b341e992133a89f24"
+  },
+  {
+    "path": "acquisition/readout/tar_source.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/tar_source.py",
+    "sha256": "cdb27f9be51ae505b9aee004f36f4afe176186fdf1765f983f45d84df1bb4eab"
+  },
+  {
+    "path": "acquisition/readout/worker.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/action-readout-v3/worker.py",
+    "sha256": "85782960993ce6785d0b713f0bb9f6f5bc3414773f13b902e8390659d92870b8"
+  },
+  {
+    "path": "acquisition/plus-outcomes/analyze.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/paired-outcome-analysis-v1/analyze.py",
+    "sha256": "244460fe653d07ff1d1688bdf91d1432b0d4219ed0f0b1dd22ead803f94be625"
+  },
+  {
+    "path": "acquisition/plus-outcomes/analyze_v3.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/paired-outcome-analysis-v1/analyze_v3.py",
+    "sha256": "c77bb291dd3e0779b53b9e8ef835568f6cf3e62831d4daaaea796963bf39e888"
+  },
+  {
+    "path": "acquisition/plus-outcomes/test_analyze.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/paired-outcome-analysis-v1/test_analyze.py",
+    "sha256": "29190689e022fd3296148d719790e36a1b315e8e0cc21f47192b898275a26f11"
+  },
+  {
+    "path": "acquisition/plus-outcomes/test_analyze_v3.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/paired-outcome-analysis-v1/test_analyze_v3.py",
+    "sha256": "0935a3ab0659615d87c6010fcd3ca1275813e7cd6f1ff8e68fa3f95cb2058afd"
+  },
+  {
+    "path": "acquisition/motion/inventory_math.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/inventory_math.py",
+    "sha256": "9ecc1ca21b46b1355216cbaca15b09f28a7d0c82f96f27d66efea082ce9fdc11"
+  },
+  {
+    "path": "acquisition/motion/metadata_reader.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/metadata_reader.py",
+    "sha256": "60e18e6f1a2dc9e4974638a7b235df1f3e20fdc9f4f57b0b5330aad47f362dd3"
+  },
+  {
+    "path": "acquisition/motion/range_source.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/range_source.py",
+    "sha256": "829dfe85d04625655ed660716748de1ede4ed2b077b8a3bf783d0fc770d6f61c"
+  },
+  {
+    "path": "acquisition/motion/reader.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/reader.py",
+    "sha256": "92ac72d34a699078e08a5bcab0ffeabaca4430ae1a43cad4e7756c559405a73d"
+  },
+  {
+    "path": "acquisition/motion/readset_contract.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/readset_contract.py",
+    "sha256": "fabacfbaa6a0340a5197f4e16c3433b18f0f0c8f2b20428ba44d1fcf17b0cac8"
+  },
+  {
+    "path": "acquisition/motion/science_core.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/science_core.py",
+    "sha256": "1f2fe26d110e0df3d21c6b777ef4dcea5b2f4997c9fa272b341e992133a89f24"
+  },
+  {
+    "path": "acquisition/motion/tar_source.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/tar_source.py",
+    "sha256": "cdb27f9be51ae505b9aee004f36f4afe176186fdf1765f983f45d84df1bb4eab"
+  },
+  {
+    "path": "acquisition/motion/test_inventory.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/test_inventory.py",
+    "sha256": "7b68e3badb253c855b467c229bf3bc37f551fbdb78389bc02e1a557ea3c739ef"
+  },
+  {
+    "path": "acquisition/motion/worker.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/plus-primary-confirmation-20261010-v1/query-motion-analysis-v1/worker.py",
+    "sha256": "47842ec50f21f86aff653ff3ec682a12867355c50517c7d1b329e1ba4ec1b2cd"
+  },
+  {
+    "path": "acquisition/p08/p08_reader.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paper-consolidation-goals-20261012-v1/p08-dynamic-v1/p08_reader.py",
+    "sha256": "d94ff8ea6eb4ccb0fccd9330f53638415e6ae606593595390389ceb7c2b28df8"
+  },
+  {
+    "path": "acquisition/p08/statistics.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paper-consolidation-goals-20261012-v1/p08-dynamic-v1/statistics.py",
+    "sha256": "b55487a16640124ec2fbf4c6e5f5e1630f634bd60953d61c2a1f9023e850d5af"
+  },
+  {
+    "path": "acquisition/p08/test_p08_reader.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paper-consolidation-goals-20261012-v1/p08-dynamic-v1/test_p08_reader.py",
+    "sha256": "6aaf452651b6f3048565324b94240afe4438378b394a8405547d53ed89d57e79"
+  },
+  {
+    "path": "acquisition/p08/test_statistics.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paper-consolidation-goals-20261012-v1/p08-dynamic-v1/test_statistics.py",
+    "sha256": "81a8bae778ce0ee554a9d05e302a8e6e0d7358f115204712b39cc119043b6f7c"
+  },
+  {
+    "path": "acquisition/p08/worker.py",
+    "origin": "docs/experiments/first-paper-evidence-upgrade-20261008-v1/paper-consolidation-goals-20261012-v1/p08-dynamic-v1/worker.py",
+    "sha256": "06fbf43788bd1621045d434b07cbb5e4717e728e61932d96299b34b769fb9475"
+  },
+  {
+    "path": "acquisition/cfr-worker/__init__.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "acquisition/cfr-worker/bases.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/bases.py",
+    "sha256": "c5d672303d0c42606aee37800816c5a87e617b2ae6705442d115dd73b7c220f5"
+  },
+  {
+    "path": "acquisition/cfr-worker/call_log.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/call_log.py",
+    "sha256": "e0a67c9027dd89e82972bb5c73c164ef5f0cd0b23a5d78eb727a5a9fd2ed162f"
+  },
+  {
+    "path": "acquisition/cfr-worker/common.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/common.py",
+    "sha256": "12fd3e0284c86856f7b94fca8ab9b183b72b714102ff37fcfaa2f380a0940375"
+  },
+  {
+    "path": "acquisition/cfr-worker/counterfactual.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/counterfactual.py",
+    "sha256": "fc25ab5fcef7604cf8bcb070c929fc96b9e4d7c222f738974f2132008338c7ce"
+  },
+  {
+    "path": "acquisition/cfr-worker/episode.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/episode.py",
+    "sha256": "f07f552ad5f41b08f4429e0e44867e8c7ff8bc3fd5b049742af6b265dfeee319"
+  },
+  {
+    "path": "acquisition/cfr-worker/jobs.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/jobs.py",
+    "sha256": "3a49b944ac8d787ad3a5983ead60ea85094682ff24c997a87d30f4b448f171ab"
+  },
+  {
+    "path": "acquisition/cfr-worker/noise.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/noise.py",
+    "sha256": "c8a59b3ebf0b16cb650158f029492c7b146cbec129bd1d56a3b8f9b4a2aff194"
+  },
+  {
+    "path": "acquisition/cfr-worker/outputs.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/outputs.py",
+    "sha256": "b7648416ebd152e464dcb0ba096abb17cd1908aa23b5df51071a8c7b43456c1b"
+  },
+  {
+    "path": "acquisition/cfr-worker/plus_env.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/plus_env.py",
+    "sha256": "ff24b5682a700b255bfe3431c2ac594f0f874a82c555e140f05ecadb31e5cef0"
+  },
+  {
+    "path": "acquisition/cfr-worker/policy.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/policy.py",
+    "sha256": "f8985c952178f27bc75f77f9999512c4ef65300f42a411cc11b2bf4bd48c1b0a"
+  },
+  {
+    "path": "acquisition/cfr-worker/repair_graph.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/repair_graph.py",
+    "sha256": "dfeed10bf19c4fb5e94e2d894024321d8e47dc431c98d37a9f6e65a7a06a47ee"
+  },
+  {
+    "path": "acquisition/cfr-worker/repair_math.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/repair_math.py",
+    "sha256": "82cf139e02c6a6b68726f265fb5315cb189a3e263dd52e153d4020b360f28d84"
+  },
+  {
+    "path": "acquisition/cfr-worker/rng_guard.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/rng_guard.py",
+    "sha256": "321f32b209dc0c249da1c260524f6accb8fdd0ca748db59d29aee4dbad0533e5"
+  },
+  {
+    "path": "acquisition/cfr-worker/selection.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/selection.py",
+    "sha256": "362d42f0790ab6209aabcc3618193b4cc5e38d660d0181a61cb2611fe770adba"
+  },
+  {
+    "path": "acquisition/cfr-worker/snapshot.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/snapshot.py",
+    "sha256": "0d3734517a395bd5a1539ccd41b47461cc44840e154918fc75999189cc7a8b98"
+  },
+  {
+    "path": "acquisition/cfr-worker/tests_1a.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/tests_1a.py",
+    "sha256": "7d8e210c1dca7034d3fc11a18dd6588fd45672ae6f3554c9ba52c52a5b2ea8d5"
+  },
+  {
+    "path": "acquisition/cfr-worker/unit.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/worker/cfr/unit.py",
+    "sha256": "77d5668e9c561d54d6a79e4ebb9aad82b2ffc117511fc60036e934d70e3f07cb"
+  },
+  {
+    "path": "acquisition/cfr-model/build_gemma_overlay.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/openpi_overlay/build_gemma_overlay.py",
+    "sha256": "724d02acfd255792d0c901a08921a4ef1657c4749f62408b14552c8a2a8f18b7"
+  },
+  {
+    "path": "acquisition/cfr-model/src/openpi/models/cfr_repair_rules.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/openpi_overlay/src/openpi/models/cfr_repair_rules.py",
+    "sha256": "4f6760902f7ca5c4eb71618233d605b90f3aff4d44225ef3c2edd63a3e3a241f"
+  },
+  {
+    "path": "acquisition/cfr-model/src/openpi/models/gemma.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/stage1a/jd-worker/openpi_overlay/src/openpi/models/gemma.py",
+    "sha256": "89b66a8f00344aaa6dab94a9d00a1532c7130219345633a3a59ad97ba61a5dc3"
+  },
+  {
+    "path": "acquisition/cfr-analysis/cloud_readout.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/recovery-20261019-takeover/engine/confirm-readout-v2/cloud_readout.py",
+    "sha256": "445165e837b040887d771f30ebff344f6fba1b49a545386247435fbfe9b51073"
+  },
+  {
+    "path": "acquisition/cfr-analysis/test_readout.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/recovery-20261019-takeover/engine/confirm-readout-v2/test_readout.py",
+    "sha256": "c92192392710e03af2cab734f4a9e8bdda054780f44b35133009828896780b83"
+  },
+  {
+    "path": "acquisition/cfr-behavior/readout.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/recovery-20261019-takeover/engine/confirm-behavior-readout-v1/readout.py",
+    "sha256": "149f11a17c234304504c77c3e3cb8414fc646d4b3e52e248d3808674b8610905"
+  },
+  {
+    "path": "acquisition/cfr-behavior/test_readout.py",
+    "origin": "docs/experiments/counterfactual-repair-v1/recovery-20261019-takeover/engine/confirm-behavior-readout-v1/test_readout.py",
+    "sha256": "53b1b5a265280cadac191dbef5d02d36141ac371676c92cd4aad8d2f824e7f69"
+  },
+  {
+    "path": "acquisition/pi0-recorder/e1_recorder.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E1-pi0-internal/c2-recorder/e1_recorder.py",
+    "sha256": "024e022d22bd1bbeeebf745a2a7e113341f7b6c7bc59a81b4a29410a37a0bc11"
+  },
+  {
+    "path": "acquisition/pi0-recorder/paired_trace_original.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E1-pi0-internal/c2-recorder/paired_trace_original.py",
+    "sha256": "a8bc2d10ed9f8007fd2439c33977aca86a2a33ba2e0cbfa573a3e3e892fa4460"
+  },
+  {
+    "path": "acquisition/pi0-recorder/paired_trace_patched.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E1-pi0-internal/c2-recorder/paired_trace_patched.py",
+    "sha256": "e872879402fbc0597f4ff67a44063c4fccc76d1477092ae664c438db8d22cf81"
+  },
+  {
+    "path": "acquisition/pi0-recorder/pi0_original.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E1-pi0-internal/c2-recorder/pi0_original.py",
+    "sha256": "1e45b66374ebc4ade11a89df25c444d7b736a0670c6865597d2722f097442bdf"
+  },
+  {
+    "path": "acquisition/pi0-recorder/pi0_patched.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E1-pi0-internal/c2-recorder/pi0_patched.py",
+    "sha256": "4b90496dd01f17ae3ae99486f2d7bc6491fda422a5e0887cc8e52ff9633b6400"
+  },
+  {
+    "path": "acquisition/nonlinear-readout/bos_fetch.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E5-readout-capacity/src/bos_fetch.py",
+    "sha256": "57259703749d79987f6c7c7b364d06b34deb334366497037bedebb6d091c5e26"
+  },
+  {
+    "path": "acquisition/nonlinear-readout/e5_readout_math.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E5-readout-capacity/src/e5_readout_math.py",
+    "sha256": "f7e12846bd24b22a778877fe0ef3977612120a6f7af93b1bf0c2de53e197ffae"
+  },
+  {
+    "path": "acquisition/nonlinear-readout/e5_worker.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E5-readout-capacity/src/e5_worker.py",
+    "sha256": "77f7952da193ae611b69b664d065ff814f51e0b259bff350cedb8e9032f413e8"
+  },
+  {
+    "path": "acquisition/nonlinear-readout/test_e5.py",
+    "origin": "docs/experiments/first-paper-minimal-20261017-v1/E5-readout-capacity/src/test_e5.py",
+    "sha256": "6d5b15f1a7a1f8cd4682b20e6ebb3dce72f80cd02c7e801a667a919735d4e283"
+  },
+  {
+    "path": "historical-export/export_tables.py",
+    "origin": "docs/data-transfer/google-drive-20261017/prepare_analysis.py",
+    "sha256": "655371a34b59e31ced2475331e07535d488d8e54324a6c48f5527fc70cbcfa0f"
+  },
+  {
+    "path": "historical-export/assemble_analysis.py",
+    "origin": "docs/exports/paper1-cloud-analysis-20261029/finalize_package.py",
+    "sha256": "4868021b1b69ba0d2eafd3b097bce28c431173f9af5576a93e3971b519774e60"
+  }
+]

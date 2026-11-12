@@ -1,0 +1,34 @@
+{
+  "status": "STOPPED_UNEXECUTED_AND_UNFINISHED_WHERE_APPLICABLE",
+  "files": [
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/implementation/fresh_prediction_input_v1/converter.py",
+      "bytes": 11911,
+      "sha256": "e6b69bcdd6c5b61c9246c54cd6a6dbf5d68dadde03b119cdc46b83ffc5e934c3"
+    },
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/implementation/fresh_prediction_input_v1/test_converter.py",
+      "bytes": 8259,
+      "sha256": "185d2e186ebc2a6a1017c303e93254e51e0e3a4020b1ea657c0695b5588333f2"
+    },
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/decisive-prediction-study-20261022-v1/EXECUTION-COST-SOURCE-AUDIT.json",
+      "bytes": 42463,
+      "sha256": "6eb082a040df864e45f1286d7403a2c1d10ed797048bc46adb1c7d983903a3b8"
+    },
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/decisive-prediction-study-20261022-v1/INDEPENDENT-DESIGN.json",
+      "bytes": 22673,
+      "sha256": "6a37765043a6aaf9a461ada09cd060c2b6245f1c2b2f39b4a6cd474da9cdb1c0"
+    },
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/decisive-prediction-study-20261022-v1/RECORDED-INITIALIZATION-EXPOSURE.json",
+      "bytes": 59953,
+      "sha256": "c75613862137b0337a813019b59371ce67b02cfc2603528e821818811b0020e9"
+    }
+  ],
+  "new_population_collection_executed": false,
+  "fresh_input_scientific_qualification_claimed": false,
+  "finish_this_package": false,
+  "new_submission_authorized": false
+}

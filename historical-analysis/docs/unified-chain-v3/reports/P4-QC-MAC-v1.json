@@ -1,0 +1,15 @@
+{
+ "QC_H_E_median": 0.00213036,
+ "QC_H_E_p99": 0.005004954999999999,
+ "QC_H_E_max": 0.00769739,
+ "QC_H_32_median": 0.00221535,
+ "QC_X_x0eq": 1.0,
+ "QC_X_closure_max": 5.96e-08,
+ "dt_dev_max": 7.3e-08,
+ "QC_N_R_vs_P1_median": 0.0003380283596725042,
+ "QC_N_R_vs_P1_p99": 0.0013122038467315513,
+ "QC_N_V_vs_P1_max": 4.977850798226768e-09,
+ "n_merged": 8673,
+ "QC_H_pass": true,
+ "QC_N_pass": true
+}

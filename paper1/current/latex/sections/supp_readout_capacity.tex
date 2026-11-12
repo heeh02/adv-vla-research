@@ -1,0 +1,80 @@
+\section{How the Readout Estimator Changes Command Comparisons}
+\label{sec:supp-readout-capacity}
+
+Does the finding that commands are read best at L18 depend on the linear readout? We refit the readout with two nonlinear estimators on the same coordinates, pairs and splits. The layer ordering holds: the random-feature readout of the shared coordinates has higher translation error than predicting no change in 4 of 4 families at L1, 1 of 4 at L9 and 0 of 4 at L18 (Table~\ref{tab:readout-capacity}). Which directions predict better, however, depends on the estimator: of 216 comparisons, the random-feature readout changes the interval category of 102 and the MLP of 76. This supports Sec.~\ref*{M-sec:shared} of the main paper (Fig.~\ref*{M-fig:token-structure}b): a linear readout predicts commands best at L18 and poorly at L1 and L9, and rankings depend on the readout.
+
+\paragraph{What was compared.}
+The main paper uses a fixed affine ridge readout (Sec.~\ref{sec:current-basis-readout}). Here a random Fourier feature (RFF) ridge readout and a one-hidden-layer MLP read the same 16 coordinates along the shared and the clean-feature directions, on the same 404 pairs and held-out splits. Predicting no change does not depend on the readout. Table~\ref{tab:readout-capacity-full} adds rotation and gripper. The 216 comparisons per readout are the 36 layer--family--command cells, each comparing the shared directions with the full hidden state, the magnitude baseline, the centered clean-feature directions, random directions and the uncentered shared directions, plus first flow with the shared coordinates against first flow alone.
+
+\paragraph{The ranking of shared over clean-feature directions depends on the estimator.}
+Under the random-feature readout the L9 advantage of the shared directions becomes a zero-spanning difference in Background, Camera and Sensor Noise ($+49.6\%\to-0.1\%$, $+27.4\%\to-3.7\%$, $+56.3\%\to-5.0\%$) and stays positive in Light ($+71.0\%\to+49.8\%$; Table~\ref{tab:readout-capacity-full}). At L1 the affine advantage ($+20.3$ to $+74.7\%$, all four intervals above zero) stays positive under random features in Light ($+21.9\%$) and Sensor Noise ($+17.1\%$), and under the MLP in all four families. For Camera translation at L18, the random-feature readout favors the shared directions by $13.4\%$ $[7.1,20.5]$, where the affine interval spans zero; its error is $10.909\times10^{-3}$, against $3.737\times10^{-3}$ for the affine readout and $15.414\times10^{-3}$ for no change (Table~\ref{tab:readout-capacity}). At L18 under the MLP, the shared directions have higher translation error than the clean-feature directions in Background and Camera, and higher rotation error in every family. 
+
+\paragraph{Absolute accuracy limits what the nonlinear readouts show.}
+The MLP has higher error than predicting no change in every layer--family cell for every feature, first flow included (point estimates). Its comparison therefore describes this estimator and cannot determine how much command information the coordinates hold. For this reason the main paper reports the fixed affine readout, and relies on the removal test (Sec.~\ref{sec:supp-native-ablation}) and restoration (Sec.~\ref{sec:allstep-restoration}) to measure directly how edits along the directions change the computation and the commands.
+
+\input{sections/readout_capacity_absolute_table}
+
+\begin{table*}[t]\centering\footnotesize
+\caption{\textbf{Which directions predict commands better depends on the readout.} Error reduction (\%) of the shared over the centered clean-feature directions for the first five commands, task-equal over 28 tasks, with pointwise 95\% whole-task bootstrap intervals (2{,}000 draws shared across readouts); 404 pairs with matched commands across the four families (96, 102, 96 and 110 in Background, Camera, Light and Sensor Noise). RFF ridge: random Fourier feature ridge readout. Affine values agree with the main-paper readout at the displayed precision.}
+\label{tab:readout-capacity-full}
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{@{}lllrrr@{}}\toprule
+Layer & Family & Command & Affine & RFF ridge & MLP\\\midrule
+L1 & Background & translation & $+57.9$ $[+45.4,+70.3]$ & $+10.0$ $[-7.2,+29.9]$ & $+87.2$ $[+83.6,+90.6]$\\
+L1 & Background & rotation & $+31.1$ $[+17.9,+45.2]$ & $-0.3$ $[-12.8,+10.1]$ & $+90.6$ $[+88.8,+92.4]$\\
+L1 & Background & gripper & $+57.7$ $[+40.4,+69.1]$ & $+4.4$ $[-8.5,+13.8]$ & $+87.4$ $[+83.1,+91.6]$\\
+L1 & Camera & translation & $+20.3$ $[+1.0,+33.7]$ & $+3.5$ $[-3.6,+9.0]$ & $+78.5$ $[+72.3,+83.7]$\\
+L1 & Camera & rotation & $+21.5$ $[+9.2,+32.6]$ & $+5.9$ $[-2.3,+11.5]$ & $+91.9$ $[+90.5,+93.2]$\\
+L1 & Camera & gripper & $+24.7$ $[+12.2,+34.3]$ & $-7.5$ $[-17.5,-0.2]$ & $+92.3$ $[+90.4,+93.9]$\\
+L1 & Light & translation & $+74.7$ $[+64.4,+82.5]$ & $+21.9$ $[+3.1,+37.1]$ & $+94.2$ $[+92.4,+95.7]$\\
+L1 & Light & rotation & $+68.4$ $[+58.5,+76.9]$ & $+13.3$ $[+0.7,+25.4]$ & $+96.1$ $[+95.6,+96.5]$\\
+L1 & Light & gripper & $+53.2$ $[+41.1,+62.3]$ & $+6.4$ $[-5.5,+16.1]$ & $+96.3$ $[+95.1,+97.2]$\\
+L1 & Sensor Noise & translation & $+31.8$ $[+8.6,+48.3]$ & $+17.1$ $[+2.3,+29.6]$ & $+62.0$ $[+54.0,+68.8]$\\
+L1 & Sensor Noise & rotation & $+39.5$ $[+14.8,+56.6]$ & $+6.1$ $[-3.2,+19.7]$ & $+68.3$ $[+58.9,+74.6]$\\
+L1 & Sensor Noise & gripper & $+31.7$ $[-0.9,+55.0]$ & $-23.9$ $[-34.2,-12.4]$ & $+66.2$ $[+49.6,+77.0]$\\
+\midrule
+L9 & Background & translation & $+49.6$ $[+25.6,+67.9]$ & $-0.1$ $[-31.0,+19.1]$ & $+72.0$ $[+60.7,+80.8]$\\
+L9 & Background & rotation & $+34.2$ $[+11.3,+53.8]$ & $-1.9$ $[-13.2,+8.6]$ & $+79.7$ $[+73.2,+85.1]$\\
+L9 & Background & gripper & $+30.8$ $[+17.9,+42.1]$ & $+0.9$ $[-13.7,+14.6]$ & $+81.6$ $[+71.7,+88.6]$\\
+L9 & Camera & translation & $+27.4$ $[+5.7,+40.3]$ & $-3.7$ $[-9.8,+5.5]$ & $+14.6$ $[-8.1,+30.9]$\\
+L9 & Camera & rotation & $+5.0$ $[-12.9,+17.9]$ & $-8.7$ $[-16.9,+2.2]$ & $+15.5$ $[-9.9,+35.0]$\\
+L9 & Camera & gripper & $+25.9$ $[+5.6,+39.9]$ & $-4.7$ $[-20.7,+9.2]$ & $+20.7$ $[-6.2,+43.9]$\\
+L9 & Light & translation & $+71.0$ $[+63.3,+77.5]$ & $+49.8$ $[+30.1,+59.5]$ & $+83.2$ $[+78.4,+86.9]$\\
+L9 & Light & rotation & $+54.0$ $[+38.2,+66.3]$ & $+19.7$ $[+5.0,+34.0]$ & $+82.5$ $[+77.8,+86.2]$\\
+L9 & Light & gripper & $+42.0$ $[+29.4,+52.1]$ & $+6.7$ $[+0.2,+12.8]$ & $+82.6$ $[+77.0,+86.8]$\\
+L9 & Sensor Noise & translation & $+56.3$ $[+33.1,+72.1]$ & $-5.0$ $[-26.8,+9.4]$ & $+79.7$ $[+75.9,+83.2]$\\
+L9 & Sensor Noise & rotation & $+59.2$ $[+50.6,+69.5]$ & $-12.6$ $[-46.1,+2.6]$ & $+80.0$ $[+77.0,+82.6]$\\
+L9 & Sensor Noise & gripper & $+51.5$ $[+40.7,+61.5]$ & $+0.4$ $[-7.6,+7.1]$ & $+84.9$ $[+78.8,+89.1]$\\
+\midrule
+L18 & Background & translation & $-7.4$ $[-38.2,+18.6]$ & $+0.1$ $[-25.0,+23.5]$ & $-48.8$ $[-103.0,-10.1]$\\
+L18 & Background & rotation & $+2.6$ $[-22.8,+25.1]$ & $+22.3$ $[+4.6,+38.5]$ & $-77.1$ $[-141.5,-22.3]$\\
+L18 & Background & gripper & $-33.5$ $[-69.1,-3.9]$ & $-0.0$ $[-17.2,+14.4]$ & $-71.8$ $[-156.0,-6.0]$\\
+L18 & Camera & translation & $-8.1$ $[-32.2,+15.5]$ & $+13.4$ $[+7.1,+20.5]$ & $-72.2$ $[-114.3,-38.5]$\\
+L18 & Camera & rotation & $-3.3$ $[-69.4,+34.9]$ & $+21.2$ $[+12.6,+28.6]$ & $-83.5$ $[-146.8,-35.7]$\\
+L18 & Camera & gripper & $-39.7$ $[-66.6,-16.0]$ & $-19.3$ $[-40.1,-3.0]$ & $-125.9$ $[-219.4,-58.6]$\\
+L18 & Light & translation & $+12.7$ $[-7.9,+31.0]$ & $-4.4$ $[-46.1,+26.2]$ & $-17.0$ $[-55.1,+13.1]$\\
+L18 & Light & rotation & $-13.3$ $[-71.3,+30.6]$ & $+9.7$ $[-12.3,+29.0]$ & $-36.5$ $[-75.5,-6.5]$\\
+L18 & Light & gripper & $-10.7$ $[-35.1,+5.9]$ & $+4.0$ $[-10.0,+16.9]$ & $-37.1$ $[-98.9,+5.1]$\\
+L18 & Sensor Noise & translation & $-3.9$ $[-51.5,+25.8]$ & $+5.0$ $[-11.2,+16.9]$ & $-28.4$ $[-67.2,+7.3]$\\
+L18 & Sensor Noise & rotation & $+21.2$ $[-18.6,+54.1]$ & $+28.9$ $[+16.5,+45.5]$ & $-28.1$ $[-53.5,-2.3]$\\
+L18 & Sensor Noise & gripper & $-18.7$ $[-39.6,+1.1]$ & $+6.8$ $[-9.4,+20.1]$ & $-75.0$ $[-155.6,-22.3]$\\\\\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Implementation notes: matched fitting and resampling.}
+The nonlinear-readout analysis was specified before its results were inspected. It uses the same 404 matched pairs, the same fixed position-centered shared, clean-feature and random directions, the same 60 joint task/family holdout splits and 2{,}000 whole-task bootstrap draws, with the same pair weights and scoring.
+Each input block was centered by its outer-training weighted mean and divided by its scalar RMS, using all outer-training rows before any inner split; flow and response blocks were standardized separately before concatenation.
+The random map, the inner-fold assignment and the MLP were each seeded deterministically from the readout, family, layer, fold and feature block.
+
+\paragraph{Random-feature ridge.}
+The map was $\phi(z)=\sqrt{2/D}\cos(z\Omega/\sigma+b)$, with standard-normal entries in $\Omega$, phases uniform on $[0,2\pi)$, and $D=2{,}048$ except for the ten-dimensional magnitude baseline ($D=40$).
+The bandwidth $\sigma$ was the median off-diagonal pairwise Euclidean distance among standardized outer-training rows, using one if the median was zero.
+Five-fold cross-validation over outer-training task groups, keeping tasks that share a clean scene together, selected $\lambda\in\{0.001,0.01,0.1,1,10\}$ by mean validation error; exact ties kept the smaller value.
+The map was fixed before inner fitting; ridge then re-centered and scalar-scaled the mapped features within each inner training fold, with an unpenalized intercept.
+
+\paragraph{MLP fitting and stopping.}
+The MLP had one hidden layer of 256 ReLU units and a linear 390-dimensional output in raw/adapter units, trained by full-batch Adam with learning rate $10^{-3}$, $(\beta_1,\beta_2)=(0.9,0.999)$ and $\epsilon=10^{-8}$ for at most 500 updates.
+A seeded permutation reserved approximately 20\% of outer-training task groups for validation (rounded to the nearest integer, at least one); the targets were centered using the remaining fitting rows and their normalized pair weights.
+Initial weights were Gaussian with standard deviations $\sqrt{2/d}$ and $\sqrt{1/256}$ for the input and output layers ($d$ is the input width), with zero biases.
+Validation MSE was checked after each update; training stopped after 25 consecutive updates without an improvement greater than $10^{-12}$, and predictions used the best validation weights.
+The archive keeps task-level scores and aggregate results, but not the bandwidth, selected penalty or stopping update of each individual fit.

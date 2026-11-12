@@ -1,0 +1,64 @@
+{
+  "status": "ALL_FOUR_FIRST_SPARSE_STAGE_COMPLETED_ADOPTED_RELEASED",
+  "model_cases": 423,
+  "actual_new_model_cases_not_replays": true,
+  "fixed_panel_unchanged": true,
+  "source_native_thresholds_unchanged": true,
+  "units": [
+    {
+      "label": "floor-s0",
+      "adoption": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/results/floor-s0-rss-stage1-final-v1/ADOPTION-v1.json",
+        "bytes": 14727,
+        "sha256": "660c7d8ef561c65412fc71b69a4e37a18c679a075f3f8426f87254b7c64d55d6"
+      },
+      "release": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/floor-s0-rss-stage1-RELEASE-v1.json",
+        "bytes": 6420,
+        "sha256": "24963ea47f97f925d3299a5e47120bd933fe502e160bd5ffda65422dd6ca8f41"
+      }
+    },
+    {
+      "label": "floor-s1",
+      "adoption": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/results/floor-s1-rss-stage1-final-v1/ADOPTION-v1.json",
+        "bytes": 14835,
+        "sha256": "d246608a3adcfbfa4e417d1e8af484becd0398a4fd89516df5cc2de5250ef10a"
+      },
+      "release": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/floor-s1-rss-stage1-RELEASE-v1.json",
+        "bytes": 6443,
+        "sha256": "cbef35cbec50dc4791c790899e1dc64475d2d2da6736e23799e568780278989a"
+      }
+    },
+    {
+      "label": "reheat-s0",
+      "adoption": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/results/reheat-s0-rss-stage1-final-v1/ADOPTION-v1.json",
+        "bytes": 15271,
+        "sha256": "45656a5e850d4c4f7d088554ae11c9cb252884e3823eb495ab9feeb064388d80"
+      },
+      "release": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/reheat-s0-rss-stage1-RELEASE-v1.json",
+        "bytes": 6549,
+        "sha256": "04f9581a1c30b61055e1de6891f4424cb561edb6a7a20ac3fd2d90da31af4556"
+      }
+    },
+    {
+      "label": "reheat-s1",
+      "adoption": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/results/reheat-s1-rss-stage1-final-v1/ADOPTION-v1.json",
+        "bytes": 14839,
+        "sha256": "2878fe43143b8f775cde2b7e771cb6cdd0c99dc535ab43483193dcee2d660e5d"
+      },
+      "release": {
+        "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/root/reheat-s1-rss-stage1-RELEASE-v1.json",
+        "bytes": 6453,
+        "sha256": "d2d53f73f42adced95ee13659e90c9b03b0d92916070d177af16a91c62053f1d"
+      }
+    }
+  ],
+  "current_batch_active_GPU": 0,
+  "unknown_legacy_preparing_GPU_still_retained": 2,
+  "goal_complete": false
+}

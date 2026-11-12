@@ -1,0 +1,172 @@
+family,comparator,task_rank,control_minus_response_error
+Camera,Unedited,1,-0.02438
+Camera,Unedited,2,-0.00274
+Camera,Unedited,3,0.00140
+Camera,Unedited,4,0.00197
+Camera,Unedited,5,0.00674
+Camera,Unedited,6,0.00733
+Camera,Unedited,7,0.01091
+Camera,Unedited,8,0.01445
+Camera,Unedited,9,0.01491
+Camera,Unedited,10,0.01662
+Camera,Unedited,11,0.04872
+Camera,Unedited,12,0.05002
+Camera,Unedited,13,0.05487
+Camera,Unedited,14,0.05572
+Camera,Unedited,15,0.08321
+Camera,Unedited,16,0.12160
+Camera,Unedited,17,0.12534
+Camera,Unedited,18,0.13148
+Camera,Unedited,19,0.14497
+Camera,Unedited,20,0.14855
+Camera,Unedited,21,0.14985
+Camera,Unedited,22,0.15376
+Camera,Unedited,23,0.17178
+Camera,Unedited,24,0.17514
+Camera,Unedited,25,0.24499
+Camera,Unedited,26,0.29403
+Camera,Unedited,27,0.42400
+Camera,Clean PCA,1,-0.03372
+Camera,Clean PCA,2,-0.01041
+Camera,Clean PCA,3,-0.00570
+Camera,Clean PCA,4,-0.00362
+Camera,Clean PCA,5,0.00179
+Camera,Clean PCA,6,0.00750
+Camera,Clean PCA,7,0.00792
+Camera,Clean PCA,8,0.00886
+Camera,Clean PCA,9,0.00955
+Camera,Clean PCA,10,0.01230
+Camera,Clean PCA,11,0.04361
+Camera,Clean PCA,12,0.04503
+Camera,Clean PCA,13,0.05080
+Camera,Clean PCA,14,0.05377
+Camera,Clean PCA,15,0.08442
+Camera,Clean PCA,16,0.11584
+Camera,Clean PCA,17,0.12321
+Camera,Clean PCA,18,0.12863
+Camera,Clean PCA,19,0.13223
+Camera,Clean PCA,20,0.13666
+Camera,Clean PCA,21,0.14513
+Camera,Clean PCA,22,0.14543
+Camera,Clean PCA,23,0.16986
+Camera,Clean PCA,24,0.18065
+Camera,Clean PCA,25,0.24516
+Camera,Clean PCA,26,0.27803
+Camera,Clean PCA,27,0.41569
+Camera,Random,1,-0.02517
+Camera,Random,2,-0.00268
+Camera,Random,3,0.00099
+Camera,Random,4,0.00227
+Camera,Random,5,0.00523
+Camera,Random,6,0.00871
+Camera,Random,7,0.00998
+Camera,Random,8,0.01353
+Camera,Random,9,0.01375
+Camera,Random,10,0.01646
+Camera,Random,11,0.04696
+Camera,Random,12,0.04840
+Camera,Random,13,0.05000
+Camera,Random,14,0.05519
+Camera,Random,15,0.07983
+Camera,Random,16,0.11968
+Camera,Random,17,0.12331
+Camera,Random,18,0.12842
+Camera,Random,19,0.14062
+Camera,Random,20,0.14378
+Camera,Random,21,0.14461
+Camera,Random,22,0.15452
+Camera,Random,23,0.16658
+Camera,Random,24,0.17476
+Camera,Random,25,0.23965
+Camera,Random,26,0.29087
+Camera,Random,27,0.41606
+Sensor,Unedited,1,-0.01014
+Sensor,Unedited,2,-0.00689
+Sensor,Unedited,3,-0.00679
+Sensor,Unedited,4,-0.00630
+Sensor,Unedited,5,-0.00611
+Sensor,Unedited,6,-0.00308
+Sensor,Unedited,7,0.00004
+Sensor,Unedited,8,0.00082
+Sensor,Unedited,9,0.00124
+Sensor,Unedited,10,0.00127
+Sensor,Unedited,11,0.00127
+Sensor,Unedited,12,0.00476
+Sensor,Unedited,13,0.00494
+Sensor,Unedited,14,0.00522
+Sensor,Unedited,15,0.00532
+Sensor,Unedited,16,0.00676
+Sensor,Unedited,17,0.00690
+Sensor,Unedited,18,0.00852
+Sensor,Unedited,19,0.00976
+Sensor,Unedited,20,0.01036
+Sensor,Unedited,21,0.01344
+Sensor,Unedited,22,0.01638
+Sensor,Unedited,23,0.01766
+Sensor,Unedited,24,0.01768
+Sensor,Unedited,25,0.02104
+Sensor,Unedited,26,0.02400
+Sensor,Unedited,27,0.02439
+Sensor,Unedited,28,0.03335
+Sensor,Unedited,29,0.05030
+Sensor,Unedited,30,0.06792
+Sensor,Clean PCA,1,-0.01260
+Sensor,Clean PCA,2,-0.01063
+Sensor,Clean PCA,3,-0.01008
+Sensor,Clean PCA,4,-0.00918
+Sensor,Clean PCA,5,-0.00714
+Sensor,Clean PCA,6,-0.00609
+Sensor,Clean PCA,7,-0.00032
+Sensor,Clean PCA,8,0.00035
+Sensor,Clean PCA,9,0.00084
+Sensor,Clean PCA,10,0.00094
+Sensor,Clean PCA,11,0.00216
+Sensor,Clean PCA,12,0.00307
+Sensor,Clean PCA,13,0.00360
+Sensor,Clean PCA,14,0.00384
+Sensor,Clean PCA,15,0.00398
+Sensor,Clean PCA,16,0.00421
+Sensor,Clean PCA,17,0.00463
+Sensor,Clean PCA,18,0.00474
+Sensor,Clean PCA,19,0.00562
+Sensor,Clean PCA,20,0.00608
+Sensor,Clean PCA,21,0.00924
+Sensor,Clean PCA,22,0.01020
+Sensor,Clean PCA,23,0.01039
+Sensor,Clean PCA,24,0.01336
+Sensor,Clean PCA,25,0.01469
+Sensor,Clean PCA,26,0.01662
+Sensor,Clean PCA,27,0.02127
+Sensor,Clean PCA,28,0.02533
+Sensor,Clean PCA,29,0.03214
+Sensor,Clean PCA,30,0.06093
+Sensor,Random,1,-0.01085
+Sensor,Random,2,-0.00863
+Sensor,Random,3,-0.00799
+Sensor,Random,4,-0.00734
+Sensor,Random,5,-0.00486
+Sensor,Random,6,-0.00290
+Sensor,Random,7,0.00036
+Sensor,Random,8,0.00106
+Sensor,Random,9,0.00122
+Sensor,Random,10,0.00126
+Sensor,Random,11,0.00141
+Sensor,Random,12,0.00475
+Sensor,Random,13,0.00519
+Sensor,Random,14,0.00538
+Sensor,Random,15,0.00548
+Sensor,Random,16,0.00588
+Sensor,Random,17,0.00652
+Sensor,Random,18,0.00847
+Sensor,Random,19,0.00912
+Sensor,Random,20,0.00993
+Sensor,Random,21,0.01237
+Sensor,Random,22,0.01622
+Sensor,Random,23,0.01738
+Sensor,Random,24,0.01831
+Sensor,Random,25,0.02036
+Sensor,Random,26,0.02337
+Sensor,Random,27,0.02456
+Sensor,Random,28,0.03248
+Sensor,Random,29,0.05207
+Sensor,Random,30,0.06938

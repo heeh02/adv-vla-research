@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\caption{\textbf{Translation and rotation changes repeat across policy-noise draws; the gripper agrees less.} Primary 28-task plan per policy; Settings and Tasks give defined/planned support. Entries are task-equal means of the per-setting agreement $U/D$ with 95\% whole-task intervals. These are normalized inner products of the changes under the two draws, not energy percentages.}
+
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llccccc}
+\toprule
+Policy & Family & Settings & Tasks & Translation & Rotation & Continuous gripper\\
+\midrule
+$\pi_{0.5}$ & Background & 48/48 & 28/28 & $0.898\, [0.843,0.946]$ & $0.858\, [0.793,0.913]$ & $0.371\, [0.270,0.467]$\\
+$\pi_{0.5}$ & Camera & 51/51 & 28/28 & $0.920\, [0.872,0.957]$ & $0.818\, [0.733,0.892]$ & $0.362\, [0.282,0.442]$\\
+$\pi_{0.5}$ & Light & 43/48 & 26/28 & $0.884\, [0.810,0.943]$ & $0.848\, [0.778,0.907]$ & $0.143\, [0.009,0.279]$\\
+$\pi_{0.5}$ & Sensor Noise & 55/55 & 28/28 & $0.909\, [0.870,0.942]$ & $0.849\, [0.788,0.908]$ & $0.371\, [0.250,0.491]$\\
+\midrule
+$\pi_0$ & Background & 48/48 & 28/28 & $0.865\, [0.810,0.909]$ & $0.807\, [0.720,0.877]$ & $0.342\, [0.219,0.453]$\\
+$\pi_0$ & Camera & 51/51 & 28/28 & $0.889\, [0.840,0.928]$ & $0.814\, [0.756,0.866]$ & $0.325\, [0.185,0.460]$\\
+$\pi_0$ & Light & 44/48 & 27/28 & $0.799\, [0.711,0.880]$ & $0.719\, [0.633,0.797]$ & $0.077\, [-0.090,0.245]$\\
+$\pi_0$ & Sensor Noise & 55/55 & 28/28 & $0.844\, [0.780,0.896]$ & $0.822\, [0.762,0.876]$ & $0.228\, [0.078,0.388]$\\
+\bottomrule
+\end{tabular}
+
+\label{tab:q0-consistency-primary}
+\end{table*}

@@ -1,0 +1,72 @@
+\section{Removing the Shared L9 Directions without a Clean Observation}
+\label{sec:supp-native-ablation}
+
+Restoration (Sec.~\ref{sec:allstep-restoration}) needs a clean observation of the same state. This study needs none: in $\pi_{0.5}$ on original LIBERO, it removes part of the L9 state's component along the shared directions, measured from a clean training mean, under a camera change and a headlight removal, in 6{,}048 planned rollouts. The edit lowers the response at L18 by $8.8\%$ (Camera) and $7.6\%$ (headlight); clean-feature directions with the same mean edit size raise it ($-2.5/-3.6\%$ reduction), and random directions lower it by $0.1$--$0.3\%$. It moves the first five commands by only a small fraction of the change the perturbation causes, and no success change against the unedited policy excludes zero. This supports the second test in main Sec.~\ref*{M-sec:restoration}.
+
+\paragraph{Design.}
+The directions are the L9 shared directions of the cross-observation study (Sec.~\ref{sec:supp-p08-dynamic}), not the LIBERO-Plus fits. The design has 16 held-out tasks $\times$ 6 start states $\times$ 3 policy-noise draws $=$ 288 cases; each case runs 3 visual conditions (clean, Camera $+15^\circ$, headlight off) $\times$ 7 configurations (Unedited, Shared-small, Shared-large, Clean-feature, Random-1/2/3) $=$ 6{,}048 planned main episodes, plus 16 technical repeats. The edit is $H'=H-\lambda[(H-\mu_H)B]B^\top$ at the action-expert L9 post-block state for all ten plan positions, applied only at the first generation step of each policy query; later steps and all other layers run unchanged. The larger shared-direction edit is matched to the clean-feature and random edits by their training-set mean norm over the three conditions; the smaller one uses half that dose. Matching within each condition did not meet the 2\% tolerance, so the actual edit $L_2$ per condition is reported with the comparison. Table~\ref{tab:supp-native-definitions} gives $\mu_H$, each configuration's $\lambda$, the directions, the schedule and when the L18 response is measured.
+
+\paragraph{The L18 response falls along the shared directions.}
+The L18 response reduction is $1-\|\Delta_{\mathrm{edited}}\|^2/\|\Delta_{\mathrm{unedited}}\|^2$ per case, averaged with equal task weights. Beyond the values above for Shared-large and the controls, the half-dose edit (Shared-small) lowers it by $4.2/3.6\%$.
+
+\paragraph{The command change is small relative to the perturbation's.}
+The edit footprint, the edited-minus-unedited RMS of the first five commands (translation part) on the same input, is $0.0006$ (Camera) and $0.0006$ (headlight), about $0.5\%$ and $1.2\%$ of the change the perturbation itself causes (unedited perturbed-minus-clean RMS $0.128$ and $0.051$). Rotation and the continuous gripper value are separate endpoints. In the 120-case interim analysis the formatted gripper output was identical in all 3{,}840 non-self pairs although the continuous gripper value differed in 3{,}837 (an interim finding, not recomputed on the full population). This edit acts only at the first generation step; restoration, which acts at every step, moves the commands far more (Sec.~\ref{sec:dev-restoration-controls}).
+
+\begin{table*}[t]\centering\small
+\caption{\textbf{Edits along the shared directions lower the L18 response; matched controls do not; all command footprints are small.} Prespecified 288-case plan, task-equal means. Edit $L_2$: actual edit norm per condition; L18 red.: per-case reduction of the L18 response energy (\%); footprint: edited-minus-unedited RMS of the first five commands (translation) as a percentage of the unedited perturbed-minus-clean RMS; SR: closed-loop success over all planned episodes; $\Delta$SR: edited minus unedited. SR and $\Delta$SR are bounds over the 111 missing planned outcomes (lower--upper, \%): they enumerate every possible assignment of the missing outcomes, so a range that excludes zero keeps its sign under every assignment; sampling uncertainty needs a separate analysis (Table~\ref{tab:supp-native-contrasts}). Random rows give the range over the three random direction sets.}
+\label{tab:supp-native-ablation}
+\begin{tabular}{llrrrrr}\toprule
+Condition & Configuration & Edit $L_2$ & L18 red. (\%) & Footprint (\%) & SR & $\Delta$SR [bounds]\\
+\midrule
+clean & Unedited & -- & -- & -- & 92.4--93.4 & --\\
+ & Shared-large & 148.4 & -- & -- & 90.6--92.4 & $[-2.8,0.0]$\\
+ & Shared-small & 74.2 & -- & -- & 92.4--93.4 & $[-1.0,+1.0]$\\
+ & Clean-feature & 141.0 & -- & -- & 89.9--91.7 & $[-3.5,-0.7]$\\
+ & Random-1/2/3 (range) & 139.9--142.2 & -- & -- & 89.9--93.8 & see text\\
+\midrule
+Camera & Unedited & -- & -- & -- & 91.0--93.1 & --\\
+ & Shared-large & 132.8 & 8.8 & 0.5 & 91.7--93.8 & $[-1.4,+2.8]$\\
+ & Shared-small & 66.4 & 4.2 & 0.4 & 89.2--91.3 & $[-3.8,+0.3]$\\
+ & Clean-feature & 141.0 & $-$2.5 & 0.6 & 87.2--88.9 & $[-5.9,-2.1]$\\
+ & Random-1/2/3 (range) & 139.7--141.9 & 0.2--0.3 & 0.5 & 89.2--93.1 & see text\\
+\midrule
+headlight & Unedited & -- & -- & -- & 87.5--89.6 & --\\
+ & Shared-large & 143.0 & 7.6 & 1.2 & 89.2--91.3 & $[-0.3,+3.8]$\\
+ & Shared-small & 71.5 & 3.6 & 1.1 & 89.2--91.3 & $[-0.3,+3.8]$\\
+ & Clean-feature & 141.0 & $-$3.6 & 1.4 & 90.3--92.7 & $[+0.7,+5.2]$\\
+ & Random-1/2/3 (range) & 139.8--142.1 & 0.1--0.2 & 1.1 & 89.2--92.0 & see text\\\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]\centering\small
+\caption{\textbf{Definition of the edit: training mean, directions, dose, schedule and response measurement.}}
+\label{tab:supp-native-definitions}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.10\textwidth}p{0.58\textwidth}>{\raggedright\arraybackslash\scriptsize}p{0.23\textwidth}}\toprule
+Quantity & Definition & \multicolumn{1}{l}{\small Role}\\\midrule
+$\mu_H$ & Clean action-expert L9 post-block $H$ at generation step 0, averaged over the 1,404 training-task records of the cross-observation study with that study's record weights (summing to one); the 16 held-out tasks are excluded. One 1024-vector per action position ($10\times1024$), subtracted position by position. Its first five positions agree with the cross-observation clean fit center to $4.9\times10^{-4}$ (declared tolerance $2.6\times10^{-3}$). & Training mean\\
+$B$ & 16 directions for every edit: the cross-observation L9 shared directions (Shared-small/large), its L9 clean-feature directions (Clean-feature) and three random orthonormal sets from PCG64 seeds 20261014--20261016 (Random-1/2/3); all use the same $\mu_H$. & Directions\\
+$\lambda$ & Shared-large $0.7521$; Shared-small $0.3760$ (half); Clean-feature $0.1721$; Random-1/2/3 $0.9427$, $0.9826$, $1.0000$. Rule: on training first queries, each set's mean edit $L_2$ (equal weight per task, then per condition) equals a common budget of $141.1$ that every set attains with $\lambda\le1$ (Random-3 at $\lambda=1$); fixed before the evaluation outcomes were observed. Matching within each condition exceeded the 2\% tolerance and remains unmatched. & Matched mean edit\\
+Schedule & The edit is applied at the first generation step ($j=0$) of every policy query, at all ten action positions; later steps and all other layers run unchanged. & Intervention time\\
+L18 response & Action-expert L18 post-block $H$ at the first generation step of the episode's first policy query (before the first environment step), all ten positions and 1024 channels. Per case and condition, $\Delta H$ is the condition minus clean under the same configuration, and the reduction is $1-\sum(\Delta H_{\rm edited})^2/\sum(\Delta H_{\rm unedited})^2$; means average noise draws within start state, start states within task and tasks equally. & Response endpoint\\\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{No success change against the unedited policy excludes zero.}
+Success is reported as bounds over missing outcomes, because the prespecified rule withholds point estimates and ordinary intervals whenever a planned outcome is missing (Table~\ref{tab:supp-native-ablation}). Within each condition, the known lost and gained successes from unedited to Shared-large are $2.4/1.4$, $2.4/3.1$ and $1.4/3.1\%$ of planned pairs (clean/Camera/headlight; unknown pairs $1.7$--$2.1\%$). Table~\ref{tab:supp-native-contrasts} gives the nine prespecified contrasts: Shared-large minus Unedited ($D$), minus Clean-feature ($Q$), or minus the mean of the three random sets ($R$), under each visual condition.
+
+\input{sections/native_contrasts_table}
+
+Over the 111 missing planned outcomes, only Camera $Q$ keeps its sign under every assignment: it is positive, favoring the shared directions over the clean-feature directions. The other eight bounds include zero. The Clean-feature edit's own bounds exclude zero in each condition (Table~\ref{tab:supp-native-ablation}): it lowers success under clean input and Camera and raises it under headlight removal. For the unedited policy, Camera's success bounds are $91.0$--$93.1\%$, against $92.4$--$93.4\%$ under clean input, whereas headlight removal costs $2.8$--$5.9$ points. 
+
+\paragraph{Post hoc sampling intervals on the known outcomes.}
+A post hoc bootstrap of the 5,937 known outcomes over the 16 held-out tasks (2,000 draws, task-equal means inside each draw) assesses sampling variation. Table~\ref{tab:supp-native-contrasts} reports its point estimates, pointwise 95\% intervals and Bonferroni-adjusted intervals at $1-0.05/9$ beside the bounds. Camera $Q$ and $R$ have positive pointwise and adjusted intervals; the other seven intervals include zero. For Camera $Q$, the adjusted interval $[+0.3,+13.2]$ and the bounds $[+2.8,+6.6]$ both favor the shared directions over the clean-feature directions. For Camera $R$, the adjusted interval is positive while the bounds include zero, so the comparison with random directions depends on the analysis of known outcomes. Shared-large against Unedited includes zero in all three conditions.
+
+\paragraph{Missing outcomes.}
+Acquisition resumed in the prespecified order after a pause; interim results had been observed, but case selection did not depend on outcomes. 281 cases completed all 21 runs, 6 completed partially (90 missing runs), and one was interrupted after creation; none remained unexecuted. In total, 5,937 of 6{,}048 main outcomes are known. All planned outcomes remain in the estimand.
+
+\paragraph{Development check of the schedule.}
+With edits only at the first generation step, the L18 difference at the last step retains 3.7--5.5\% of the first-step difference (12 development inputs); editing every generation step changes the commands about ten times more, with a reduction of about 2\% in the visual difference (Spatial task 7, Camera).
+
+\paragraph{Edits and readouts answer different questions.}
+A readout asks what the coordinates predict about the commands; this study measures what changes when they are edited inside the policy.

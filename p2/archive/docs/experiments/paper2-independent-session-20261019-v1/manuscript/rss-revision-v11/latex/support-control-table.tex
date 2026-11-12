@@ -1,0 +1,25 @@
+\begin{table}[!h]
+\centering
+\caption{Source-defined command-interface mapping. Counts are unequal positions among the eight fixed snapshots. All three contrasts are retained. Raw and mapped are numeric comparisons; mapped gripper values are sign symbols, not actuator targets. First-five/full-ten denominators are 40/80 dependent positions.}
+\label{tab:control-map}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Gripper contrast & Window & Raw unequal & Sign unequal & Comparisons\\\midrule
+S--N & First 5 & 28 & 0 & 40\\
+S--N & Full 10 & 57 & 0 & 80\\
+R--N & First 5 & 28 & 0 & 40\\
+R--N & Full 10 & 54 & 0 & 80\\
+S--R & First 5 & 29 & 0 & 40\\
+S--R & Full 10 & 54 & 0 & 80\\
+\bottomrule\end{tabular}
+\medskip
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Arm coordinate & \multicolumn{3}{c}{First 5: raw / mapped unequal} & \multicolumn{3}{c}{Full 10: raw / mapped unequal}\\
+ & S--N & R--N & S--R & S--N & R--N & S--R\\\midrule
+Translation x & 27 / 27 & 30 / 30 & 36 / 36 & 51 / 51 & 57 / 57 & 60 / 60\\
+Translation y & 32 / 32 & 33 / 33 & 31 / 31 & 65 / 65 & 65 / 65 & 61 / 61\\
+Translation z & 24 / 24 & 27 / 27 & 28 / 28 & 51 / 51 & 50 / 50 & 59 / 59\\
+Rotation x & 35 / 35 & 28 / 28 & 30 / 30 & 64 / 64 & 55 / 55 & 59 / 59\\
+Rotation y & 34 / 34 & 20 / 20 & 32 / 32 & 65 / 65 & 46 / 46 & 58 / 58\\
+Rotation z & 31 / 31 & 28 / 28 & 29 / 29 & 58 / 58 & 53 / 53 & 58 / 58\\
+\bottomrule\end{tabular}
+\end{table}

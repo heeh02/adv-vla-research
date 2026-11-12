@@ -1,0 +1,144 @@
+{
+  "schema": "T30-curves-v2-actual-delivery-v1",
+  "job_id": "redacted-14c2591e8a04",
+  "status": "complete",
+  "complete": true,
+  "terminal": {
+    "allocation_release_proven": true,
+    "instance_or_pod_container_present": true,
+    "instance_or_pod_states": [
+      "Succeeded"
+    ],
+    "instance_rows_observed": 1,
+    "job_id": "redacted-14c2591e8a04",
+    "observed_epoch": 1792374134.124738,
+    "provider_status": "Succeeded",
+    "release_basis": "provider_terminal_and_explicit_detail_instances_terminal_or_empty"
+  },
+  "source_package": {
+    "bytes": 29701,
+    "sha256": "1d9666717a9dc2fc617a5ba40e0c086ffd2ea1ba7cb924cfd442d9ed21fc43e4"
+  },
+  "input_objects_verified": 66,
+  "actual_input_body_bytes": 115343822,
+  "model_calls": 0,
+  "env_steps": 0,
+  "JPFS_bytes": 0,
+  "summary": {
+    "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/SUMMARY-v1.json",
+    "bytes": 24993,
+    "sha256": "000862e8211f0b71093dfe24edff253e607b0d2bdf3aad1259d9c8dc59717368"
+  },
+  "baseline_difference": {
+    "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/BASELINE20K-DIFFERENCES-v2.json",
+    "bytes": 20022,
+    "sha256": "0093cb9bd437cf977b678d4378cc7fe1cbc7f44bad97739a08adf84694801897"
+  },
+  "source_readback": {
+    "path": "/Users/researcher/Adv-VLA-\u03c00.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/summary/SOURCE-READBACK-v1.json",
+    "bytes": 39639,
+    "sha256": "21a0d800237042dbce868d485b4f03e5c788c5db30d9ba7c36d34b8d2bd6cded"
+  },
+  "cache_objects": [
+    {
+      "bytes": 9452970,
+      "relative": "cache/VERIFIED-INPUTS-v2.tar.gz",
+      "sha256": "3781abcc99c9ff1560cd2d60e50ca6a39d3dd75dcb80ac139b3c7d5151f553bc",
+      "uri": "redacted-5c4b77200a1c"
+    },
+    {
+      "bytes": 6910160,
+      "relative": "science/PARSED-CACHE-v2.json.gz",
+      "sha256": "2409d78117901d82079bf7ba89eb65c6d88d6a2ec93a5615281e7caa3e1792f8",
+      "uri": "redacted-0d692d42027f"
+    },
+    {
+      "bytes": 6910124,
+      "relative": "science/CACHE-v1.json.gz",
+      "sha256": "0fe9b72fb3d56410b144aca8d4b0957633ea47d1b50b328d3f43d5c21fcbbc12",
+      "uri": "redacted-651f67096a58"
+    }
+  ],
+  "figure_objects": [
+    {
+      "bytes": 747513,
+      "relative": "science/F01-online-training.png",
+      "sha256": "f53caa0812c442ced8ec35371c0493c567ce9b26288db27e73ff8b40f1a93009",
+      "uri": "redacted-e6589d051819"
+    },
+    {
+      "bytes": 2522035,
+      "relative": "science/F01-online-training.svg",
+      "sha256": "85315f8d9ad4f7a045451ef162f762b98b2e03362c354ba8134ffd61996a3c8f",
+      "uri": "redacted-f5003427f241"
+    },
+    {
+      "bytes": 361709,
+      "relative": "science/F02-internal-EMA-validation.png",
+      "sha256": "eb07212e2d39dbcf00b71a3bd0a7bb2f0c92c751aa21757ccb3ddbb14b74121e",
+      "uri": "redacted-68a94d6f8e39"
+    },
+    {
+      "bytes": 180096,
+      "relative": "science/F02-internal-EMA-validation.svg",
+      "sha256": "66ef19231df25f72c7a21d3abf5cd77b853127b774b86342e008d98ee760c172",
+      "uri": "redacted-686b2a048733"
+    },
+    {
+      "bytes": 346611,
+      "relative": "science/F03-fixed-probe-EMA-C_old.png",
+      "sha256": "2258ed61eb89c68f28e253976c3df557c709c002fde7c2710c44708de21cfd96",
+      "uri": "redacted-7803d8f8f7fc"
+    },
+    {
+      "bytes": 145816,
+      "relative": "science/F03-fixed-probe-EMA-C_old.svg",
+      "sha256": "ddfd2071c4463c699d79762267ec3673b5fde6223c131ca1125c3aae07185f5c",
+      "uri": "redacted-0b1d93ee1705"
+    },
+    {
+      "bytes": 344153,
+      "relative": "science/F03-fixed-probe-EMA-T_added.png",
+      "sha256": "3795825addbeca9be37f6e1cd5346f936b8dc7a7d6bdf704caab80c4e44f4a28",
+      "uri": "redacted-d0bd88d42c31"
+    },
+    {
+      "bytes": 148851,
+      "relative": "science/F03-fixed-probe-EMA-T_added.svg",
+      "sha256": "0e8d90103faa53f1d84ea96037cb6494f117c42e8fc9c97ae19b193ef364722f",
+      "uri": "redacted-4a73b9bc97fa"
+    },
+    {
+      "bytes": 325041,
+      "relative": "science/F03-fixed-probe-online-C_old.png",
+      "sha256": "aeb94fad49373fd664e8eebfce911ff3cfdec869d27c3644f441b1d2d6cabb7e",
+      "uri": "redacted-ba05129ff8e2"
+    },
+    {
+      "bytes": 144343,
+      "relative": "science/F03-fixed-probe-online-C_old.svg",
+      "sha256": "b48a1063c02986d189aecb6de51bd9c958860edab3d8202ee6e156aefe56d416",
+      "uri": "redacted-e2522d90ad2c"
+    },
+    {
+      "bytes": 348002,
+      "relative": "science/F03-fixed-probe-online-T_added.png",
+      "sha256": "b451ccaa90738a5d0edffabe1397e2db91fe2a7d2f6457944efa0c399f117440",
+      "uri": "redacted-38a6feafbd2c"
+    },
+    {
+      "bytes": 154268,
+      "relative": "science/F03-fixed-probe-online-T_added.svg",
+      "sha256": "36ed441615e03f8c2c01c14cf9e24c60f3737018861b64de819535e687bc2138",
+      "uri": "redacted-62898ce3fc29"
+    }
+  ],
+  "visual_QA": "root_responsibility_not_claimed_by_subagent",
+  "missing_tail_runs": [
+    "floor-s1",
+    "reheat-s0"
+  ],
+  "missing_tail_classification": "actual_update30000_previously_observed_but_finalization_failed_and_archived_full_curves_not_available",
+  "original_v1_failure_preserved": true,
+  "model_or_bridge_gate_relaxed": false
+}

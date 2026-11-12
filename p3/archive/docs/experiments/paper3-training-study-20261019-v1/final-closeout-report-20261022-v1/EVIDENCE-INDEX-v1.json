@@ -1,0 +1,149 @@
+[
+  {
+    "id": "E01",
+    "title": "C/T实际训练合同",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/contract/CONTRACT-AUDIT-v1.md",
+    "bytes": 9231,
+    "sha256": "98673e8e2f6fdf2c6e4f72ac509f8fd7d757492ad8ec2fd5f642b0a816fce7a4"
+  },
+  {
+    "id": "E02",
+    "title": "C/T完整曲线读出",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/REPORT.md",
+    "bytes": 8241,
+    "sha256": "09a745fc5dd936e7136be1be55ec36e096d55d76235d601757559c61e9d3a3e6"
+  },
+  {
+    "id": "E03",
+    "title": "时间曝光与0.001复核",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/reassessment-0p001-v1/REPORT.md",
+    "bytes": 10559,
+    "sha256": "a4e4b0010d17fed23cfb70bc77de9b57cf478dbf2895918b343e3e7a54ffb789"
+  },
+  {
+    "id": "E04",
+    "title": "C/T任务异质性",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/heterogeneity/actual-v1/science/SUMMARY-v1.json",
+    "bytes": 117874,
+    "sha256": "eb3e0a0bd540eb83bf69f7ddd3c2c8eee4c2cda1e598a685b8f05a785bd72ebd"
+  },
+  {
+    "id": "E05",
+    "title": "T30冻结科学决定",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/SCIENTIFIC_DECISION-v1.json",
+    "bytes": 2041,
+    "sha256": "405dab2987f6f9f42ba785182779461c9488ebddefad7f90688447d53baac012"
+  },
+  {
+    "id": "E06",
+    "title": "T30曲线实际归档",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "bytes": 7084,
+    "sha256": "9d2dca11a50cd724d3f32bc9f013f14743bed1d1e9bac03a1eeb3f10089f2ec6"
+  },
+  {
+    "id": "E07",
+    "title": "训练曲线实际摘要",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/SUMMARY-v1.json",
+    "bytes": 24993,
+    "sha256": "000862e8211f0b71093dfe24edff253e607b0d2bdf3aad1259d9c8dc59717368"
+  },
+  {
+    "id": "E08",
+    "title": "全部已有Plus统一接入",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "bytes": 3001,
+    "sha256": "00256f4a2e43431352d29b12b36295f4a730d57526f4a4dc18e8d4e08cc9fb54"
+  },
+  {
+    "id": "E09",
+    "title": "Plus配对数值",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/cpu0-package-v1/run-v1/readback/RESULT-v1.json",
+    "bytes": 82400,
+    "sha256": "146c977517f61e8303befdedaaee5a9bef829736d7c73115f3aa4cbc03e0e81d"
+  },
+  {
+    "id": "E10",
+    "title": "全历史与面板覆盖",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/after-stage1-closeout-v6/CENSUS-v1.json",
+    "bytes": 36045,
+    "sha256": "ae31135fbf73719c9a2f6a18c34515eddf5aba12cc47eb22a7dffaf247924fae"
+  },
+  {
+    "id": "E11",
+    "title": "最终缺口分类",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/execution-audit-v8/GAP-SUMMARY-v1.json",
+    "bytes": 795,
+    "sha256": "cdcd9e7f3cdd3959f7898b83a16b4b279783d79b9bc07daacaba576fefb826ea"
+  },
+  {
+    "id": "E12",
+    "title": "107对q0字段审计",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-source-audit-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "bytes": 2904,
+    "sha256": "a2ab71661426bc3b16a5807fa1000d65c275145a2477db1530e23d050c901380"
+  },
+  {
+    "id": "E13",
+    "title": "两个原始输入数值见证",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "bytes": 3817,
+    "sha256": "d29fe9b5b80a5a3d475531b03c9fa179ae3311c68aa7a1933eb7e44591dd147b"
+  },
+  {
+    "id": "E14",
+    "title": "C/U/L七模型自定义L10-300",
+    "path": "/Users/researcher/.codex/worktrees/adv-vla-research-20260924/Adv-VLA-π0.5/docs/experiments/analysis-system-20260929/native-write-flow-20261006-v1/cul-final-L10-complete-analysis-20261009-v1/REPORT-v1.md",
+    "bytes": 10565,
+    "sha256": "06a01dff9d4a57c299542955e27ef3d130bad767f4f1d03294f78728e106c480"
+  },
+  {
+    "id": "E15",
+    "title": "C/U全40任务-1200",
+    "path": "/Users/researcher/.codex/worktrees/adv-vla-research-20260924/Adv-VLA-π0.5/docs/experiments/analysis-system-20260929/native-write-flow-20261006-v1/cul-final-CU-complete1200-analysis-20261009-v1/REPORT-v1.md",
+    "bytes": 10074,
+    "sha256": "12b7e58ef095048ae5aa98a6c8afa30ca846aa3664a67e6061848c23160023df"
+  },
+  {
+    "id": "E16",
+    "title": "历史Plus基线补全界",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/behavior/actual-complete-v1/SINGLE-ENDPOINT-BASELINE-v2.json",
+    "bytes": 3364,
+    "sha256": "800b13f1259f6d02287ca0446d11a7eab498ebad0b835d051ea3d70a68950f32"
+  },
+  {
+    "id": "E17",
+    "title": "第三篇停止投入裁决",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/closeout-decision-20261022-v1/SCIENTIFIC-CLOSEOUT.md",
+    "bytes": 3136,
+    "sha256": "444556e6639883a37fb3f803d80a38b3b3240dc260804900bedd330f414fb173"
+  },
+  {
+    "id": "E18",
+    "title": "固定面板和权重",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/WEIGHTS-v1.json",
+    "bytes": 335000,
+    "sha256": "203d3800cf1658fc584fd6f17a840611a48b103ca5fc10f2b2ab7b47c860f3c9"
+  },
+  {
+    "id": "E19",
+    "title": "阶段423收尾",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/rss-panel-execution-v1/STAGE1-CLOSEOUT-v1.json",
+    "bytes": 2974,
+    "sha256": "c3564ad32c86e94b3127592040afa81a88dec1179c0880c2fa59dd0dac755ec6"
+  },
+  {
+    "id": "E20",
+    "title": "原RSS工作稿状态",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/STATUS.json",
+    "bytes": 3735,
+    "sha256": "8923727aff83d983ade6dc3c16ac721ee110504482fffc24688f2cc62328b31d"
+  },
+  {
+    "id": "E21",
+    "title": "C/U/L/T训练审查",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-paper3-supplement-plan-20261019-v1/reviews/paper3-training.md",
+    "bytes": 18563,
+    "sha256": "3d2b72515aa424bd93132eebc84387a6d79c9eb8108d39765cd028ef9aef9783"
+  }
+]

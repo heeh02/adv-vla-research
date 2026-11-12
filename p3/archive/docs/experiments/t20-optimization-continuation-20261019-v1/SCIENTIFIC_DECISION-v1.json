@@ -1,0 +1,70 @@
+{
+  "GPU_per_run": 1,
+  "JPFS_growth_budget_bytes": 0,
+  "branches": {
+    "floor": {
+      "learning_rate": 2.5e-06,
+      "schedule": "original_callable_floor_unchanged"
+    },
+    "reheat": {
+      "cosine_decay_updates": 9500,
+      "count_20000": 2.5e-06,
+      "count_20500": 2.5e-05,
+      "count_30000": 2.5e-06,
+      "last_update_count": 29999,
+      "linear_ramp_updates": 500,
+      "optimizer_count_not_reset": true
+    }
+  },
+  "checkpoint_steps": [
+    25000,
+    30000
+  ],
+  "common_EMA_validation": "unchanged original 400demo 800anchors four conditions every1000 updates",
+  "date": "2026-10-19",
+  "first_paper_modified": false,
+  "fixed_contract": [
+    "original1600train_demos",
+    "frozen50epoch_temporal_schedule",
+    "batch32_16starts_x2",
+    "nativeBF16_model_requiredFP32",
+    "AdamW moments and count",
+    "EMA",
+    "RNG",
+    "AE_update_range",
+    "flow_MSE_H10_D32"
+  ],
+  "fixed_train_probe": {
+    "actual7_padding25_and_prefix5_H10": true,
+    "checkpoints": [
+      20000,
+      25000,
+      30000
+    ],
+    "independent_rng_from_training": true,
+    "new_T_consumed_starts_per_demo": 2,
+    "old_C_starts_per_demo": 2,
+    "parameter_views": [
+      "online",
+      "EMA"
+    ],
+    "selection": "SHA deterministic, no outcome/loss selection, no replacement for unavailable new starts",
+    "train_demos_per_task": 5
+  },
+  "human_authorization": "那就继续再20k基础上继续训练，然后再继续完成实验",
+  "initial_training_runs": 4,
+  "loss_0p001_is_stopping_rule": false,
+  "new_scientific_conditions_or_models": false,
+  "old_scientific_thresholds_changed": false,
+  "partial_checkpoint_on_stop": true,
+  "question": "Does T20 retain useful optimization headroom under a longer or reheated learning-rate schedule?",
+  "schema": "t30-optimization-decision-v1",
+  "seeds": [
+    0,
+    1
+  ],
+  "start_effective_updates": 20000,
+  "target_effective_updates": 30000,
+  "total_account_GPU_active_queued_preparing_max": 8,
+  "training_status": "authorized_preparing_not_submitted"
+}

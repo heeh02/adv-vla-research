@@ -1,0 +1,302 @@
+{
+ "camera_minus15": {
+  "mean_unit": [
+   0.291,
+   0.059,
+   -0.129
+  ],
+  "resultant": 0.324,
+  "per_suite": {
+   "libero_10": [
+    0.19,
+    0.27,
+    -0.11
+   ],
+   "libero_goal": [
+    0.45,
+    0.44,
+    -0.17
+   ],
+   "libero_object": [
+    0.38,
+    -0.65,
+    -0.06
+   ],
+   "libero_spatial": [
+    0.11,
+    0.27,
+    -0.17
+   ]
+  }
+ },
+ "camera_minus15_surface_cool": {
+  "mean_unit": [
+   0.292,
+   0.073,
+   -0.048
+  ],
+  "resultant": 0.305,
+  "per_suite": {
+   "libero_10": [
+    0.21,
+    0.28,
+    -0.05
+   ],
+   "libero_goal": [
+    0.38,
+    0.5,
+    -0.06
+   ],
+   "libero_object": [
+    0.43,
+    -0.66,
+    -0.02
+   ],
+   "libero_spatial": [
+    0.12,
+    0.25,
+    -0.06
+   ]
+  }
+ },
+ "camera_minus30": {
+  "mean_unit": [
+   0.304,
+   0.106,
+   -0.144
+  ],
+  "resultant": 0.353,
+  "per_suite": {
+   "libero_10": [
+    0.1,
+    0.33,
+    -0.24
+   ],
+   "libero_goal": [
+    0.29,
+    0.44,
+    -0.12
+   ],
+   "libero_object": [
+    0.35,
+    -0.65,
+    -0.19
+   ],
+   "libero_spatial": [
+    0.4,
+    0.39,
+    -0.07
+   ]
+  }
+ },
+ "camera_plus15": {
+  "mean_unit": [
+   0.32,
+   -0.147,
+   -0.135
+  ],
+  "resultant": 0.377,
+  "per_suite": {
+   "libero_10": [
+    0.14,
+    0.07,
+    -0.25
+   ],
+   "libero_goal": [
+    0.33,
+    0.14,
+    -0.09
+   ],
+   "libero_object": [
+    0.24,
+    -0.92,
+    -0.13
+   ],
+   "libero_spatial": [
+    0.5,
+    0.21,
+    -0.12
+   ]
+  }
+ },
+ "camera_plus15_surface_warm": {
+  "mean_unit": [
+   0.269,
+   -0.097,
+   -0.142
+  ],
+  "resultant": 0.319,
+  "per_suite": {
+   "libero_10": [
+    0.11,
+    0.16,
+    -0.14
+   ],
+   "libero_goal": [
+    0.25,
+    0.18,
+    -0.09
+   ],
+   "libero_object": [
+    0.12,
+    -0.83,
+    -0.28
+   ],
+   "libero_spatial": [
+    0.53,
+    0.21,
+    -0.06
+   ]
+  }
+ },
+ "camera_plus30": {
+  "mean_unit": [
+   0.25,
+   -0.09,
+   -0.134
+  ],
+  "resultant": 0.297,
+  "per_suite": {
+   "libero_10": [
+    0.13,
+    0.36,
+    -0.11
+   ],
+   "libero_goal": [
+    0.17,
+    0.23,
+    -0.15
+   ],
+   "libero_object": [
+    0.35,
+    -0.85,
+    -0.07
+   ],
+   "libero_spatial": [
+    0.31,
+    0.08,
+    -0.2
+   ]
+  }
+ },
+ "headlight_off": {
+  "mean_unit": [
+   0.237,
+   -0.092,
+   -0.142
+  ],
+  "resultant": 0.291,
+  "per_suite": {
+   "libero_10": [
+    -0.24,
+    -0.08,
+    -0.05
+   ],
+   "libero_goal": [
+    0.34,
+    0.05,
+    -0.08
+   ],
+   "libero_object": [
+    0.42,
+    -0.56,
+    -0.29
+   ],
+   "libero_spatial": [
+    0.24,
+    0.23,
+    -0.1
+   ]
+  }
+ },
+ "matched_global": {
+  "mean_unit": [
+   -0.075,
+   0.053,
+   0.081
+  ],
+  "resultant": 0.123,
+  "per_suite": {
+   "libero_10": [
+    -0.15,
+    0.22,
+    -0.33
+   ],
+   "libero_goal": [
+    -0.22,
+    -0.22,
+    0.33
+   ],
+   "libero_object": [
+    0.18,
+    0.16,
+    0.11
+   ],
+   "libero_spatial": [
+    -0.14,
+    0.12,
+    0.05
+   ]
+  }
+ },
+ "surface_cool": {
+  "mean_unit": [
+   0.041,
+   0.052,
+   0.088
+  ],
+  "resultant": 0.11,
+  "per_suite": {
+   "libero_10": [
+    -0.07,
+    -0.24,
+    0.2
+   ],
+   "libero_goal": [
+    0.08,
+    0.25,
+    0.15
+   ],
+   "libero_object": [
+    0.16,
+    0.07,
+    0.01
+   ],
+   "libero_spatial": [
+    -0.05,
+    0.01,
+    0.05
+   ]
+  }
+ },
+ "surface_warm": {
+  "mean_unit": [
+   -0.039,
+   0.141,
+   0.055
+  ],
+  "resultant": 0.156,
+  "per_suite": {
+   "libero_10": [
+    0.18,
+    0.07,
+    -0.02
+   ],
+   "libero_goal": [
+    0.05,
+    0.2,
+    0.51
+   ],
+   "libero_object": [
+    0.17,
+    0.28,
+    -0.23
+   ],
+   "libero_spatial": [
+    -0.47,
+    -0.02,
+    -0.07
+   ]
+  }
+ }
+}

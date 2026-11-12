@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\caption{\textbf{Restoration against the unedited run and both controls: command error falls in all six comparisons; success intervals all include zero.} Restoration $R_{\mathrm{resp}}$ against each comparator. Positive values favor restoration: first five commands closer to those of the clean run $N_C$ (in units of a fixed family scale $S_f$), or more successes. Each endpoint has its own family of six simultaneous 95\% whole-task bootstrap intervals. Camera: 27 tasks, 48 settings and 96 cases; Sensor Noise: 30 tasks, 60 settings and 120 cases. Every success interval includes zero; against $R_{\mathrm{clean}}$ under Sensor Noise its lower end is zero.}
+
+\centering\small
+\setlength{\tabcolsep}{7pt}
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Family & Comparator & Command-error reduction $G_{f,b}$ [simultaneous interval] & Success change (pp) [simultaneous interval]\\
+\midrule
+Camera & $N_{\mathrm{T}}$ & $0.3068\;[0.1573,0.4821]$ & $+1.85\;[-8.33,11.11]$\\
+Camera & $R_{\mathrm{clean}}$ & $0.2908\;[0.1423,0.4641]$ & $-1.85\;[-12.04,7.41]$\\
+Camera & $R_{\mathrm{rand}}$ & $0.2999\;[0.1530,0.4724]$ & $+1.85\;[-9.26,12.96]$\\
+\midrule
+Sensor Noise & $N_{\mathrm{T}}$ & $0.0523\;[0.0179,0.0985]$ & $+3.33\;[-1.67,9.17]$\\
+Sensor Noise & $R_{\mathrm{clean}}$ & $0.0337\;[0.0035,0.0740]$ & $+3.33\;[0.00,8.33]$\\
+Sensor Noise & $R_{\mathrm{rand}}$ & $0.0516\;[0.0165,0.0996]$ & $+1.67\;[-2.50,6.67]$\\
+\bottomrule
+\end{tabular}
+
+\label{tab:allstep-restoration-contrasts}
+\end{table*}

@@ -1,0 +1,57 @@
+G1 same-task layer ordering: source and insertion note
+2026-11-08
+
+Scope
+This handoff copies already-audited CSV files byte-for-byte. No re-fitting,
+re-sampling, simulator execution, model invocation, or numerical re-aggregation
+was performed for this handoff. Row counts and file-byte identity were checked.
+
+Recommended integration
+Current section: narrative_refined_20261106/source/sections/supp_current_basis_readout.tex
+Current label: sec:current-basis-readout (Supplement S3.4).
+Place \input{sections/supp_layer_task_ordering} after the paragraph headed
+“Coverage and prediction select different layers on the same cases.” and before
+“Centering defines which clean-coordinate comparison is being made.”
+This is immediately after the current paragraph ending
+“(3 favor the dictionary, 1 the full readout).”
+
+The candidate input uses a paragraph and an unnumbered tabular only: no section,
+subsection, equation, figure, or table counter is introduced. Existing S3.4,
+Table S6 and later references therefore retain their numbering. Main-text G1
+counts can point to Supplement S3.4 without inventing a new table number.
+The formal manuscript files were not modified by this subtask.
+
+Source files
+Copied from /workspace/scratch/e8030a3042cc/section4_reaudit_20261107/results/.
+three_layer_task_checks.csv contains 112 family/task rows (4 families x the same
+28 task components), with g_L1/g_L9/g_L18, MSE_L1/MSE_L9/MSE_L18, zero_mse and the
+saved joint_endpoints/full_strict_order/L18_beats_zero indicators.
+ordering_counts.csv is the saved four-family count summary.
+three_layer_summary.csv contains the 12 family/layer means; its
+mse_ratio_of_task_means must not be confused with mean_task_ratios_DIFFERENT_ESTIMAND.
+
+Meaning
+joint_endpoints: g_L1 > max(g_L9,g_L18) AND MSE_L18 < min(MSE_L1,MSE_L9).
+full_strict_order: g_L1 > g_L9 > g_L18 AND MSE_L1 > MSE_L9 > MSE_L18.
+Each row of the displayed table has denominator 28. These are not 112 independent
+tasks, and the joint endpoint counts are not complete three-layer ordering counts.
+The complete-order counts 11/18/15/17 are a descriptive derivation from preserved
+results, not a new independent experiment or a prespecified PRIMARY_49 inferential
+endpoint. The table adds no p-value, confidence interval or causal layer-function
+claim. Mean retention and mean prediction error both decrease across the sampled
+layers, corresponding to lower retained fraction but better prediction.
+
+Underlying retained package
+Google Drive Deep_Experiment_Analysis_20261105.zip:
+removed-private-link
+Member: Deep_Experiment_Analysis_20261105/stage4/geometry/portable-inputs/current_basis_task_scores.json.gz
+Saved input SHA-256: a9429a6c183ad2ffa1e116aa46ad8b0ee50461e0a16b43b1fb9c84f7856763db
+Audit: section4_reaudit_20261107/results/AUDIT.json and
+section4_reaudit_20261107/agents/independent_check.md.
+Persistent redraw pack:
+removed-private-link
+
+Byte-identical copied files
+three_layer_task_checks.csv: 112 data rows; SHA-256 8881c9bbd956b95fc762dc31ca23eff6f9e1cb3f35d6bcf5d60eaee363371f66
+ordering_counts.csv: 4 data rows; SHA-256 e9915cc3647778eca681ae2a754043015f186798db9adb1f9c46dc6a7d9a705b
+three_layer_summary.csv: 12 data rows; SHA-256 77b8cdd257081d98b984e9823194e2f2c73c48559fa56a9a961ab93099902705

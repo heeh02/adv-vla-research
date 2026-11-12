@@ -1,0 +1,172 @@
+\section{Further Studies on Original LIBERO}
+\label{supp:legacy}
+This section reports seven studies of $\pi_{0.5}$ on original LIBERO, each with its own tasks, start states and unit of analysis. Two back Sec.~5.2 of the main paper (the size of a change is not its cost): the ten-condition study (Sec.~\ref{supp:legacy-d3}) and the headlight-versus-matched-dimming comparison (Sec.~\ref{supp:legacy-d2}). The others are additional studies; the main paper does not rely on them.
+
+\subsection{Predicting a larger-angle camera response from a smaller-angle one}
+\label{supp:identification}
+Can the response to a smaller camera rotation predict the response to a larger one? Partly: the observed response beats copying it and an unconditional template, and keeping all ten plan positions beats compressing them to their mean (Table~\ref{tab:legacy-calibration}). This is an additional study; the main paper does not rely on it.
+
+\paragraph{Data.}
+The first cohort has 234 complete curves among 240 planned, from 80 start states (indices 12/13) on 40 tasks; the six unavailable curves remain missing; inclusion depends on source availability, not success. A second cohort has 240 cases from start states 22/23 on the same tasks, recorded separately, and reuses the fitted predictors. Each curve has a clean and four camera conditions ($\pm15^\circ,\pm30^\circ$); the camera's attached headlight moves with it. Five task-held-out folds use 32 training and eight test tasks; training includes the target angle. Responses are taken at the first query and generation step, over all ten plan positions, after L1, L9 and L18.
+
+\paragraph{Loss and averaging.}
+Let $\mathcal H$ average noise within state, states within task, tasks within suite, and suites equally. For case prediction error $e_i$ and copying error $c_i$, $R=\mathcal H(e_i/c_i)$ differs from $Q=\mathcal H(e_i)/\mathcal H(c_i)$. The loss $L$ averages mean squared error normalized by the target response. The full representation alone has $R=0.794/0.814$ and beats direct copying in 36/40 tasks in each cohort. Keeping full positions lowers aggregate $L$ by 41.15\%/40.44\% relative to the compact mean (mean-only correction); taskwise percentages would define a different quantity.
+
+\paragraph{Representations compared.}
+Write $X=\mathcal Q_B(D_{15}-\mu_{15})$, with means fitted on training tasks. The mean-only representation repeats the position mean of $X$ across ten rows; the mean--contrast representation adds the fixed contrast between the first five and last five positions; the full representation keeps all rows. In real-valued notation the full base is $B=D_{15}+\mu_{30}-\mu_{15}$; compact bases replace case-specific position detail with their reconstruction. Every method observes the full smaller-angle response, so the comparison measures retained information, not a saving in observation.
+
+\paragraph{Inputs.}
+A context block holds 350 coordinates: the 15 smaller-angle translation commands, their 15-coordinate difference from clean, and 320 policy-noise coordinates. A separate block holds three norms of the smaller-angle response. The held-out $D_{30}$ and larger-angle commands are used only for scoring. For the second cohort, inputs come from the five-condition LIBERO study and targets from the larger-angle run, with its own clean reference.
+
+\paragraph{One weighted ridge fit serves all representations.}
+Tasks are weighted equally, then states and noises within their parents. Context and norm coordinates are standardized on training data, each block scaled by the square root of its number of varying coordinates. A representation block is centered and scaled by one training RMS Frobenius norm, without channel whitening. Weighted linear ridge has a free intercept; at the primary penalty $\lambda=10$, the dual system is
+\begin{equation}
+ (\sqrt W K\sqrt W+10I)\alpha=\sqrt W(Y-\bar Y),
+\end{equation}
+where $K$ sums the normalized block kernels and $W$ contains weights scaled to the training case count. All preprocessing stays within the training fold.
+
+\begin{table}[t]\centering\small
+\caption{\textbf{Compressing the observed response to fewer positions loses predictive information.} Response-normalized loss $L$ (lower is better) at $\lambda=10$, on the same 40 tasks, first 234-curve and second 240-case cohort, task-held-out folds. The mean-only representation keeps the position mean; the joint mean--contrast representation uses the mean-plus-half block; compact bases use their reconstruction. Point losses without intervals; the six unavailable curves are outside the measured data.}
+\label{tab:legacy-calibration}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}\toprule
+Base and correction & First 234 & Second 240\\\midrule
+Full, repeated context & 0.255363 & 0.266813\\
+Full, mean only & 0.241199 & 0.250142\\
+Compact mean, mean only & 0.409871 & 0.420015\\
+Full, joint mean--contrast & 0.238654 & 0.248661\\
+Compact mean--contrast, joint & 0.326003 & 0.340889\\
+Full, separate mean/contrast & 0.23725 & 0.24779\\
+Full, repeated mean & 0.24184 & 0.25031\\
+Full, all positions & 0.237290 & 0.248179\\\bottomrule
+\end{tabular}\end{table}
+
+\paragraph{Implementation notes.}
+L1/L9/L18 are post-block residuals of zero-based blocks 0/8/17. The constructed mean-plus-contrast base and directly computed half means use different operation orders and can differ at the bit level.
+
+\subsection{Command change ranks conditions by success change, but not task--condition cells}
+\label{supp:legacy-d3}
+Does a larger command change mean a larger loss of success? Across conditions, yes: a condition's mean command change ranks its mean success change with rank correlation $-0.903$ $[-0.952,-0.309]$ over the ten condition means. Across the 400 task--condition cells, the correlation is $-0.075$ $[-0.195,+0.043]$, an interval that includes zero (Table~\ref{tab:legacy-aggregation-readout}). This supports Sec.~5.2 of the main paper: the command change orders conditions but hardly tells which tasks lose success.
+
+\paragraph{Data: 2,344 of 2,400 planned pairs.}
+The study runs ten persistent visual conditions on 40 tasks, two start states and three policy-noise draws. Paired internal measurements and outcomes are available for 2,344/2,400 planned perturbed/clean pairs: 2,110 joint successes, 104 lost successes, 83 gained successes and 47 joint failures. Of the 400 task--condition cells, 364 have six pairs, 20 have four and 16 have five; missing pairs remain missing. The 236 observed clean episodes are reused across conditions with their original outcome labels.
+
+\paragraph{What is measured, and when.}
+Unlike the main paper's first-query measure, features and commands are taken at two scheduled mid-episode controls: 20/40 for Spatial, 25/55 for Object, 30/60 for Goal and 50/100 for LIBERO-10, at the first generation step and relative to a clean evaluation of the same state. The command change uses the first five planned commands (translation part, 15 numbers). The L18 response magnitude is the relative RMS over five positions and 1,024 channels. Main-camera conditional total variation (TV) of attention requires all eight heads. The two steps are averaged within each episode, and each outcome is counted once. Condition means weight episodes equally within condition; cell means are ranked equally. The lost-success AUROCs compare lost successes (SF) with joint successes (SS) within conditions and weight the 21,405 SF--SS comparisons, not tasks.
+
+\begin{table}[t]
+\centering\small
+\caption{\textbf{The command change ranks condition means by success change, but not task--condition cells.} Ten-condition study, 2,344 perturbed/clean pairs, 40 tasks, ten conditions; each scalar is averaged over two observations. First two rows: rank correlation between the mean command change (translation part) and the mean success change, across the ten condition means and across the 400 task--condition cells. Last three: lost-success AUROC, comparing lost with kept successes within conditions and weighting SF--SS pairs, unlike the task-equal AUROC of Sec.~\ref{sec:supp-bounded-internal}. Estimates use case-level scalars; the correlation intervals in the text come from the same 1,000 whole-task draws (40 tasks resampled with replacement, each carrying its start states, noises, conditions and shared clean episodes; ranks recomputed; percentile intervals with linear interpolation).}
+\label{tab:legacy-aggregation-readout}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.76\columnwidth}r}
+\toprule
+Comparison & Estimate\\
+\midrule
+Command change--success change, condition means & $-0.903$\\
+Command change--success change, task--condition cells & $-0.075$\\
+L18-response lost-success AUROC & $0.535$\\
+Main-camera conditional-TV lost-success AUROC & $0.581$\\
+Command-change lost-success AUROC & $0.421$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Within conditions, response size barely separates lost from kept successes.}
+All three lost-success AUROCs are near chance ($0.5$); the command-change AUROC is below it, so within a condition, pairs that lose a success have, if anything, smaller command changes than pairs that keep it.
+
+\paragraph{After removing task and condition effects, the internal measures co-vary but hardly predict success.}
+We rank each variable globally with average ties and remove additive task and condition effects. Pearson correlation of the residual ranks is $0.722$ between L18 response and command change, $0.401$ between L18 response and main-camera TV, and $0.286$ between main-camera TV and command change. Their correlations with the success change $\Delta Y$ are $-0.0009\ [-0.0422,0.0395]$, $-0.0280\ [-0.0694,0.0194]$ and $+0.0542\ [0.0093,0.0998]$ for L18 response, main-camera TV and command change. Intervals use 1,000 draws of 40 task clusters that keep nested states, noises, conditions, missing pairs and reused clean episodes, without suite stratification or multiplicity adjustment. These coefficients describe association in the observed data after removing additive task and condition effects.
+
+\paragraph{Attention mass and attention shape carry different associations.}
+A separate first-query comparison on the same 2,344 pairs centers percentile ranks within condition. The signed change of main-camera attention mass correlates $-0.00351$ with the command change; a Jensen--Shannon (JS) summary of the attention distribution correlates $+0.493$. Both average the first five positions over ten generation steps, three layers and eight heads; unlike conditional TV, JS pools layers. Both are point estimates without intervals.
+
+\paragraph{Implementation notes.}
+Commands are in adapter coordinates; acknowledgements of execution are recorded separately. Both bootstrap analyses use seed 20261008.
+
+\subsection{Command changes are consistent across three policy-noise draws}
+\label{supp:p13}
+Is a perturbation's command change systematic, or does it depend on the policy noise? For the arm, it is systematic: across three noise draws, translation and rotation changes share a large common component, while continuous-gripper changes agree less and more often oppose one another (Table~\ref{tab:p13-components}). This is an additional study of the first query's planned commands; the two-draw agreement of executed commands cited in the main paper is in Sec.~\ref{sec:supp-q0-consistency}.
+
+\paragraph{Data.}
+The analysis uses 764 complete groups (one start state under one condition) over 40 tasks and the ten conditions of the ten-condition study. Each group has three noise-matched perturbed--clean differences of the first query's first five planned commands, with its outcome records.
+
+\paragraph{Common component and noise-dependent variation.}
+For one command component, write the flattened differences as $d_1,d_2,d_3$, with $\bar d=(d_1+d_2+d_3)/3$. Define
+\begin{align}
+D&=\tfrac13\sum_{s=1}^3\|d_s\|^2, & M&=\|\bar d\|^2,\\
+V&=\tfrac13\sum_{s=1}^3\|d_s-\bar d\|^2, & D&=M+V,\\
+U&=M-\tfrac12V
+ =\tfrac13\sum_{s<t}d_s^\top d_t.
+\end{align}
+$D$ is the energy of the command change. Under independent, identically distributed noise, $U$ estimates the squared mean change without the finite-sample bias in $M$; $U/D$ does not inherit that unbiasedness. Negative group values are kept.
+
+\begin{table}[t]\centering\small
+\caption{\textbf{Translation and rotation changes agree more across three noise draws than continuous-gripper changes.} 764 complete three-draw groups of the ten-condition study (40 tasks, ten conditions); group ratio $U/D$ for the first five planned commands of the first query, averaged within task and over suites equally per condition. Columns: range of the condition means; number of groups with negative $U$, which are kept. Point ranges; intervals are in the component tables.}
+\label{tab:p13-components}
+\begin{tabular}{lrr}\toprule
+Planned component & $U/D$ range & $U<0$ groups\\\midrule
+Translation & 0.909--0.967 & 1\\
+Rotation & 0.816--0.860 & 0\\
+Continuous gripper & 0.096--0.437 & 187\\\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Gripper changes alter amplitude, not sign.}
+Across all 11,460 planned gripper positions in these groups, no perturbed--clean sign change was observed. This concerns planned signs at the first query, not executed closing or contact. The component intervals use 10,000 suite-stratified whole-task draws that keep all nested groups.
+
+\paragraph{Large camera command changes do not imply lost success.}
+Camera command changes are several times the spread between clean runs, also when that spread uses $n-1$ instead of $n=3$: medians over seven coordinates are 2.996, 3.841, 5.238 and 5.291 for $-15^\circ,+15^\circ,-30^\circ,+30^\circ$, without a common physical unit. Groups above this reference that lose no success across their three repeats include joint successes, gained successes and joint failures. No lost success can also mean the clean run already failed, so outcome codes must be read together.
+
+\paragraph{Implementation notes.}
+The component intervals use seed 20261001.
+
+\input{sections/supp_legacy_attention}
+\input{sections/supp_spatial_attention}
+
+\subsection{Headlight removal and a dimming matched in image statistics}
+\label{supp:legacy-d2}
+Removing the headlight changes the first five commands 5.12 times as much as a global dimming matched in initial image statistics, yet both succeed on 77/80 cases, each on two cases where the other fails. This supports Sec.~5.2 of the main paper: a fivefold larger command change comes with the same success count, and equal counts hide changed outcomes.
+
+\paragraph{Fivefold command change, equal success counts, exchanged failures.}
+The command change is the RMS of the 15 translation coordinates of the first five commands. Its mean is 0.0570 for headlight removal and 0.0111 for matched dimming (ratio of means 5.12); the paired difference is $0.0459\ [0.0363,0.0562]$ (95\% interval over task clusters), and the headlight change is larger on 76 cases and smaller on four. The paired success difference is $0\ [-5,5]$ pp; this interval describes the observed comparison, and an equivalence test was not prespecified.
+
+\paragraph{Data and runs.}
+The study has 80 cases from 40 tasks and start states 10/11, each run clean, with the headlight off and with matched dimming. Each run succeeds on 77 of 80 cases, and each pair of runs shares one failure (75 joint successes, 2 and 2 single failures, 1 joint failure). The runs share the start state and ten settling steps, checked before the first query.
+
+\paragraph{The dimming is matched on initial image statistics only.}
+Initial RGB images have shape $256\times256\times3$. For each camera, matching uses the image mean and the mean absolute difference from clean. A gain $g\in\{0.25,0.275,\ldots,0.75\}$ is chosen to minimize the largest of the four statistic mismatches, ties going to the larger gain. Dimming scales the ambient, diffuse and specular RGB of the active lights, including the headlight, and uses no policy output or outcome. All 80 cases meet the criterion of five code values and stay in the analysis: the largest mismatch is 3.94, gains lie in [0.35,0.55], and each gain stays fixed for the episode. Spatial lighting patterns and later images can still differ.
+
+\begin{figure*}[t]\centering
+\includegraphics[width=\textwidth]{figures/supp_legacy_d2_inputs_print_v2.pdf}
+\caption{\textbf{Images matched in summary statistics can still change the commands differently.} Main and wrist images of the first complete case in fixed order (LIBERO-10 task 0, start state 10, global gain 0.425), chosen by order, not by response or outcome; pixels and orientation as recorded. The command comparison in the text uses all 80 cases and the RMS over 15 translation coordinates, in command units rather than displacement.}
+\label{fig:legacy-d2-inputs}
+\end{figure*}
+
+\paragraph{A separate prediction of policy outputs from response features.}
+A probe on these cases tests response features as predictors of the policy's outputs (results in Sec.~\ref{sec:supp-dynamic-visual}). It uses fixed random projections with 32 coordinates per condition, concatenated into a 64-dimensional pair and divided by the saved norms. Flow and final-plan targets cover all ten positions and seven action coordinates; the plan target is taken before the robot adapter. Averaging the two start states within each task gives 40 samples. Four leave-one-suite-out folds use 30 training and ten test tasks and a fixed ridge penalty 10, with no hyperparameter search.
+
+\subsection{From commands to later motion and task outcomes}
+\label{supp:legacy-execution}
+How do first-query command differences carry into motion and outcome? In the 480-pair camera study, arm-command differences come with different end-effector poses in every pair, while gripper signs stay matched; a brief visual change can leave a changed physical history after it ends, with either outcome. This is an additional study; the main paper does not rely on it.
+
+\paragraph{Shared clean runs; most pairs succeed in both conditions.}
+The larger-angle run contains 720 unique episodes and 480 perturbed/clean pairs: 418 joint successes, 40 lost successes, 14 gained successes and 8 joint failures, a net change of $-26/480=-5.4$ points. The two angles share their clean runs, so the 480 pairs are not 480 independent tasks. Each first-query plan is $10\times32$ before and $10\times7$ after the robot adapter. The first twenty controls come from four successive plans, not from the first plan; every pair reaches control twenty.
+
+\paragraph{Matched gripper signs coexist with different arm poses.}
+At each physics substep, the Panda gripper controller updates its persistent two-finger command by a bounded term proportional to $[-1,+1]\,0.01\operatorname{sign}(g)$. Equal initial controller state, equal command signs and equal substep counts therefore give equal normalized gripper output, and the first twenty command signs agree in all 480 pairs. Controller state was not logged at every substep, so this combines observed sign agreement with a property of the controller code. Saved finger positions still differ after five controls in every pair. The first five commands keep all six arm coordinates within the controller's input bounds, so clipping preserves their differences, and the next saved observations show different end-effector positions and orientations in every pair. Sensor timestamps precede query timestamps by about 2\,ms. These observations link the arm commands to early state differences.
+
+\paragraph{The same first query can lead to different outcomes.}
+A pulse analysis applies a visual change only for the first five controls and compares it with the persistent change and with clean. It keeps 697/720 planned three-run comparisons: 233 headlight, 232 camera $+15^\circ$ and 232 warm-surface cases. The 697 pulse/persistent pairs match on 17 recorded checks of initial input and history, including the first commands and boundary physics; despite the shared first query, outcomes differ in 24 cases. Paired internal traces are unavailable at query 1. At the two later scheduled steps, the pulse run has zero visual response in raw and adapter coordinates, yet its physical state differs from clean: all 657 pulse/clean joint-success cases have different physical snapshots, and three other cases succeed clean and fail with the pulse. A restored image can have zero response while the robot keeps a changed physical history.
+
+The pulse-minus-clean success change is $+3.75$ pp with observed 95\% interval [0.97,7.08], computed post hoc. It averages noise within start state and mechanism, mechanisms within start state, start states within task, and tasks and suites equally; it is not $(18-3)/697$. The interval uses 20,000 suite-stratified task draws. The separate range [-0.83,4.03] pp gives bounds over missing outcomes in the 720-case population, not sampling uncertainty; both are reported.
+
+\paragraph{The last query can precede successful completion.}
+A geometry reconstruction uses the five-condition LIBERO and larger-angle runs: 2,160 episodes across 40 tasks, with 4,320 query slots and 5,400 goal-clause slots, of which 4,104 clause slots have measurements. Site measures are unavailable for three LIBERO-10 tasks. Containment and contact follow the benchmark's definitions; object--support XY distance measures position.
+
+On the 12 single-containment tasks, the last recorded query fails containment in 69/70 successful clean episodes of the five-condition study and 69/70 of the larger-angle run, 138/140 in total; the episode ends one to five controls later. Across all conditions, including clean, the counts are 413/417 and 209/210 successful episodes. The gap reflects timing between the last stored query and the successful end; task success is evaluated at the later terminal state.
+
+On the same 12 tasks, each visual condition has 72 paired episodes. At the last query, target--receiver XY distance changes by $+2.04/-1.37$ mm for camera $-15^\circ/+15^\circ$ and by $+5.09/-0.182$ mm for $-30^\circ/+30^\circ$. Query times can differ between runs. These distances describe query-time geometry, with asymmetric changes and opposite outcome shifts across conditions.
+
+\paragraph{Implementation notes.}
+The pulse interval uses seed 2026092817.

@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\caption{\textbf{The six runs: command error, task success and edit size.} Descriptive task-equal means on the confirmation cases. $e$: command error (Eq.~\ref{eq:allstep-command-error}), zero for $N_C$ by definition. Edit size: actual change written into the L9 state (tokenwise $\ell_2$), summed over every query of the run's own episode, so it depends on both the writes and the episode length. Restoration and the controls share the number of directions, coefficient and schedule, yet write different amounts. $R_{\mathrm{full}}$ (whole L9 state) is a reference, not one of the six prespecified comparisons.}
+
+\centering\small
+\setlength{\tabcolsep}{9pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Camera} & \multicolumn{3}{c}{Sensor Noise}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Run & Error $e$ & Success (\%) & Edit size ($10^3$) & Error $e$ & Success (\%) & Edit size ($10^3$)\\
+\midrule
+$N_{\mathrm{C}}$ & 0.0000 & 98.15 & 0.00 & 0.0000 & 97.50 & 0.00\\
+$N_{\mathrm{T}}$ & 0.4093 & 73.15 & 0.00 & 0.2091 & 83.33 & 0.00\\
+$R_{\mathrm{resp}}$ & 0.3120 & 75.00 & 46.20 & 0.1987 & 86.67 & 51.47\\
+$R_{\mathrm{clean}}$ & 0.4042 & 76.85 & 7.79 & 0.2054 & 83.33 & 7.74\\
+$R_{\mathrm{rand}}$ & 0.4071 & 73.15 & 9.65 & 0.2090 & 85.00 & 9.64\\
+$R_{\mathrm{full}}$ & 0.2973 & 80.56 & 74.20 & 0.1943 & 89.17 & 72.77\\
+\bottomrule
+\end{tabular}
+
+\label{tab:allstep-restoration-arms}
+\end{table*}

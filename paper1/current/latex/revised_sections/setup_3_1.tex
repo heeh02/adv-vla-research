@@ -1,0 +1,17 @@
+\subsection{How the Policy Turns an Observation into Commands}
+\label{sec:generation}
+Each time the policy is called (a \emph{query}), a vision-language network encodes the two camera images and the task instruction into context tokens, the \emph{prefix} $C$ (Fig.~\ref{fig:model-measurement}a). An \emph{action expert}, a transformer with 18 blocks, then generates a plan: a short sequence of future actions. Every block attends to the prefix, so the image enters at every layer.
+
+The plan starts as random noise $x_0$, the \emph{policy noise}, and is refined in ten \emph{generation steps}:
+\begin{equation}
+x_{j+1}=x_j+\Delta t_j F_\theta(C,x_j,t_j),\quad j=0,\ldots,9,
+\label{eq:generation}
+\end{equation}
+where $F_\theta$ is the action expert's update at generation time $t_j$. Because the noise is random, two runs produce different plans even from identical observations. A plan holds ten actions for $\pi_{0.5}$ and fifty for $\pi_0$; each action commands a translation and a rotation of the end effector and a gripper movement. The robot executes the first five actions, takes a new observation, and queries again. We call each executed action a \emph{control}, and the translations commanded by an episode's first five controls, 15 numbers, the \emph{first five commands}.
+
+To see what a perturbation changes inside the policy, we record $\pi_{0.5}$'s hidden states after blocks 1, 9, and 18 of the action expert (L1, L9, L18; Fig.~\ref{fig:teaser}a; Supplement, Sec.~S1). With $H^c_{\ell,j}$ and $H^p_{\ell,j}$ the states after block $\ell$ at generation step $j$ under the clean and the perturbed observation (Fig.~\ref{fig:model-measurement}b), the \emph{response} to the perturbation is their difference:
+\begin{equation}
+\Delta H_{\ell,j}=H^p_{\ell,j}-H^c_{\ell,j}.
+\label{eq:response}
+\end{equation}
+For $\pi_{0.5}$, $\Delta H_{\ell,j}\in\mathbb R^{10\times1024}$: one row per planned action, 1024 channels.

@@ -1,0 +1,15 @@
+\paragraph{Wrist-camera values respond at L9 and L18 but not at L1.}
+The Camera and Sensor Noise subsets contain 102 and 110 recorded pairs, each on the same 28 tasks. At the first query, we measure the norm of the wrist-value difference relative to the clean wrist-value norm. These prefix values are recomputed once per query, so they have no generation-step axis. Means use task-equal weighting over two policy-noise draws per setting. Brackets are pointwise 95\% intervals from 2,000 whole-task bootstrap draws (descriptive, not simultaneous across rows).
+
+\begin{center}\small
+\begin{tabular}{llrr}\toprule
+Family & Layer & Relative response & Pointwise 95\% interval\\\midrule
+Camera & L1 & 0.000 & $[0.000,0.000]$\\
+ & L9 & 0.514 & $[0.480,0.550]$\\
+ & L18 & 0.275 & $[0.252,0.299]$\\
+Sensor Noise & L1 & 0.000 & $[0.000,0.000]$\\
+ & L9 & 0.415 & $[0.380,0.451]$\\
+ & L18 & 0.232 & $[0.207,0.259]$\\\bottomrule
+\end{tabular}
+\end{center}
+Both families have zero mean wrist-value response at L1 and nonzero responses at L9 and L18. This extends the layer comparison to the matched LIBERO-Plus panel; the separate fixed-state experiment in Sec.~\ref{supp:legacy-attention} shows the response with the wrist input explicitly unchanged.

@@ -1,0 +1,20 @@
+{
+  "report_utf8_bytes": 27922,
+  "report_characters": 13297,
+  "source_files_checked": 21,
+  "existing_figures_indexed": 11,
+  "selected_figures_embedded": 3,
+  "cloud_refs_indexed_not_revalidated": 25,
+  "primary_pair_counts_checked_against_actual_result": true,
+  "scientific_recomputation_this_delivery": false,
+  "new_cloud_compute": 0,
+  "new_experiments": 0,
+  "other_paper_sources_modified": false,
+  "citation_scope": "workspace primary reports and actual receipts; no new literature claims",
+  "report_status": "complete_local_and_Notion_text_tables_verified",
+  "notion_url": "removed-private-link",
+  "notion_blocks": 99,
+  "notion_tables_read_back": 12,
+  "notion_images_attached": 3,
+  "model_index_added": true
+}

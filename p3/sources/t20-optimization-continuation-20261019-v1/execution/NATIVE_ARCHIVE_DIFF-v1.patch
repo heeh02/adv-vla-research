@@ -1,0 +1,43 @@
+--- frozen-T20/native_tail_archive.py
++++ T30-overlay/native_tail_archive.py
+@@ -1,4 +1,4 @@
+-"""Owned 20k metadata adapter; native member PUT/GET publication body unchanged."""
++"""Owned 30k metadata adapter; native member PUT/GET publication body unchanged."""
+ import importlib.util
+ import json
+ import os
+@@ -25,7 +25,7 @@
+     """Called only after the native stock manager has waited for closed save."""
+     step_directory, sidecar, out = Path(step_directory), Path(sidecar), Path(out)
+     count = local_record["step"]
+-    require(contract["schema"] == "ct-full-state-continuation-20k-contract-v1" and 10000 < count <= 20000, "tail_checkpoint_step")
++    require(contract["schema"] == "T20-optimization-continuation-30k-contract-v1" and 20000 < count <= 30000, "tail_checkpoint_step")
+     prefix = "step-" + str(count).zfill(6) + "/"
+     objects = []
+     progress = out / ("CHECKPOINT_VERIFIED_OBJECTS-step" + str(count) + ".jsonl")
+@@ -57,7 +57,7 @@
+         require({k: receipt[k] for k in ("bytes", "sha256")} == identity(sidecar / name), "sidecar/BOS identity differs")
+         remember({**receipt, "cache_relative": "sidecar/" + str(count) + "/" + name, "role": "matching_state_cursor_sidecar"})
+     require(snapshot(step_directory) == before, "closed checkpoint changed before manifest commit")
+-    manifest = {"schema": "ct-tail-full-checkpoint-manifest-v1", "logical_run_id": contract["logical_run_id"],
++    manifest = {"schema": "T30-full-checkpoint-manifest-v1", "logical_run_id": contract["logical_run_id"],
+         "arm": contract["arm"], "training_seed": contract["seed"], "initialization_seed": 0,
+         "effective_updates": count, "scientific_contract_sha256": digest(contract),
+         "input_index_sha256": contract["input_index_identity"]["sha256"], "files": objects,
+@@ -68,12 +68,12 @@
+     write_new(target, manifest)
+     manifest_object = checkpoint_writer.put(target, prefix + "CHECKPOINT_MANIFEST-v1.json")
+     check_deadline()
+-    role = "new_endpoint20k" if count == 20000 else "recovery_process15k" if count == 15000 else "resume_partial"
++    role = "new_endpoint30k" if count == 30000 else "recovery_process25k" if count == 25000 else "resume_partial"
+     find = lambda name: next({k: r[k] for k in ("uri", "bytes", "sha256")} for r in objects if r.get("cache_relative", "").endswith("/" + name))
+-    trigger = {"schema": "ct-tail-native-checkpoint-commit-v1", "logical_run_id": contract["logical_run_id"],
++    trigger = {"schema": "T30-native-checkpoint-commit-v1", "logical_run_id": contract["logical_run_id"],
+         "arm": contract["arm"], "training_seed": contract["seed"], "initialization_seed": 0,
+-        "effective_updates": count, "actual_stock_step": count, "logical_target_updates": 20000,
+-        "checkpoint_role": role, "eval_eligible": count == 20000, "main_evaluation_parameters": "EMA",
++        "effective_updates": count, "actual_stock_step": count, "logical_target_updates": 30000,
++        "checkpoint_role": role, "eval_eligible": count == 30000, "main_evaluation_parameters": "EMA",
+         "scientific_contract_sha256": digest(contract), "input_index_sha256": contract["input_index_identity"]["sha256"],
+         "original_checkpoint_artifact_id": ORIGINAL, "checkpoint_manifest": manifest_object,
+         "full_state_identity": find("STATE_IDENTITY-v1.json"), "prefix_identity": find("PREFIX_IDENTITY-v1.json"),

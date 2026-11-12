@@ -1,0 +1,89 @@
+{
+  "conclusion": "Actual short-window physical response exists atmicrometretranslationscale; no evidence oftaskbenefit or generalization; randommatched alsoresponds andfinaltranslationlargerthansharedinthiscase.",
+  "contrasts": [
+    {
+      "all_observed_done_false": true,
+      "all_observed_success_false": true,
+      "contact_counts_N": [
+        29,
+        28,
+        27,
+        27,
+        27
+      ],
+      "contact_counts_arm": [
+        29,
+        28,
+        27,
+        27,
+        27
+      ],
+      "contrast": "S-N",
+      "final_orientation_distance_rad": 3.216787521586253e-05,
+      "final_position_distance_um": 7.652769869529603,
+      "gripper_direct_target_equal_all5": true,
+      "observed_slots": 5,
+      "orientation_distance_rad_by_slot": [
+        1.3491486239254623e-05,
+        2.1337935938439674e-05,
+        2.9886957973880406e-05,
+        3.042823150552921e-05,
+        3.216787521586253e-05
+      ],
+      "position_distance_m_by_slot": [
+        3.7138671956862994e-06,
+        5.193930615033118e-06,
+        7.132358492822371e-06,
+        6.920503876394781e-06,
+        7.652769869529603e-06
+      ],
+      "window_seconds": 0.25
+    },
+    {
+      "all_observed_done_false": true,
+      "all_observed_success_false": true,
+      "contact_counts_N": [
+        29,
+        28,
+        27,
+        27,
+        27
+      ],
+      "contact_counts_arm": [
+        29,
+        28,
+        27,
+        27,
+        28
+      ],
+      "contrast": "R-N",
+      "final_orientation_distance_rad": 1.8386061620687085e-05,
+      "final_position_distance_um": 35.74330921434809,
+      "gripper_direct_target_equal_all5": true,
+      "observed_slots": 5,
+      "orientation_distance_rad_by_slot": [
+        3.1059599102297188e-06,
+        2.977711829948026e-06,
+        7.9422765483587e-06,
+        1.5344139942221745e-05,
+        1.8386061620687085e-05
+      ],
+      "position_distance_m_by_slot": [
+        3.5094734639428853e-06,
+        1.0566854214162736e-05,
+        2.104764417055713e-05,
+        3.074293836292009e-05,
+        3.574330921434809e-05
+      ],
+      "window_seconds": 0.25
+    }
+  ],
+  "new_computation": "onlyunitconversionofalreadyderivedscalars;noarrayrefit",
+  "schema": "paper2-q11-observed-physical-readout-v1",
+  "scientific_unit": "onefixedT00R00/q11",
+  "source": {
+    "bytes": 8010,
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/cloud-intents/q11-remaining-native-v1/run-v1/readback-01/science/PHYSICAL-CONTRASTS.json",
+    "sha256": "b02c8f294c15441c051e0f238eb3c0f9376b4ebdba3ca614609097021973bed8"
+  }
+}

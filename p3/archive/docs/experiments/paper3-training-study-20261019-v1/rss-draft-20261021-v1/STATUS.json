@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-21T14:28:26.777383+00:00",
+  "scope": "paper3 only; approved fixed1053 Plus +clean50",
+  "draft": "manuscript/main.pdf",
+  "revision": "common-panel-v2",
+  "format": "5content+1references",
+  "scientific_cutoff_adopted": 7675,
+  "historical_population_not_mandatory": 41320,
+  "fixed_panel_T30_endpoints_missing": 3157,
+  "baseline_panel_missing": 229,
+  "submission_ready": false,
+  "main_claim_status": "Stable continuation benefit unestablished; direct LR mixed; structured parent q0 mismatch documented",
+  "PDF_validation": {
+    "status": "PASS_VISUAL_REVIEW_ALL6_PAGES",
+    "main_pdf": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/manuscript/main.pdf",
+      "bytes": 265077,
+      "sha256": "14f41343ba4e6ff71f68b94d5f128d98c436146705fff2641818377fa7a8fc12"
+    },
+    "main_tex": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/manuscript/main.tex",
+      "bytes": 26508,
+      "sha256": "b937fbc877ed2f9c9f68fdb9da8db44169e32ca10a3a5fe8ae58bff95a25dec9"
+    },
+    "body_pages": 5,
+    "reference_pages": 1,
+    "rendered_pages": 6,
+    "visually_inspected_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "overlap_or_clipping_observed": false,
+    "figure_counters_checked": true,
+    "layout_repair_plot_data_unchanged": true,
+    "submission_ready": false,
+    "remaining_limitations": [
+      "Scientific fixed-panel coverage incomplete",
+      "T20 structured q0 mismatch limits causal interpretation",
+      "Final submission font/version preflight not claimed"
+    ],
+    "notion_receipt": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/notion-q0-draft-v6/RECEIPT.json",
+      "bytes": 411,
+      "sha256": "e5c595d20cb54da2cf6a4a9f1bc845ad9a4c002eab5b267b8ecb8722240bad47"
+    }
+  },
+  "original_draft_preserved": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/revision-before-common-panel-v2",
+  "numeric_witness_revision": {
+    "status": "COMPILED_AND_ALL6_PAGES_VISUALLY_INSPECTED",
+    "main_pdf": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/manuscript/main.pdf",
+      "bytes": 265711,
+      "sha256": "62613e85883d75ddc46b9294ff97f5546342d238878d437bb32de29b4b7ea748"
+    },
+    "main_tex": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/manuscript/main.tex",
+      "bytes": 26851,
+      "sha256": "5218b9522b10add91122a06000b5913c4b04f8f7f11fe103009630a7f6da881b"
+    },
+    "body_pages": 5,
+    "reference_pages": 1,
+    "visually_inspected_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "overlap_or_clipping_observed": false,
+    "numeric_witness_actual": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+      "bytes": 3817,
+      "sha256": "d29fe9b5b80a5a3d475531b03c9fa179ae3311c68aa7a1933eb7e44591dd147b"
+    },
+    "submission_ready": false,
+    "new_main_figure": false,
+    "change": "Added exact numeric and image magnitude diagnostics; original eligibility gate and paired outcome counts unchanged"
+  },
+  "research_disposition": "archived_working_draft_not_submission_ready_no_further_compute",
+  "closeout_decision": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/closeout-decision-20261022-v1/SCIENTIFIC-CLOSEOUT.md"
+}

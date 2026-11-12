@@ -1,0 +1,53 @@
+--- frozen-T20/temporal_tail.py
++++ T30-overlay/temporal_tail.py
+@@ -1,6 +1,6 @@
+-"""Global 50..99 cursors over unchanged physical 0..49 source bindings."""
++"""Global 100..149 cursors over unchanged physical 0..49 source bindings."""
+ import copy
+-import tail_contract as C
++import continuation_contract as C
+ 
+ class TailSchedule:
+     def __init__(self,base,tail):
+@@ -8,23 +8,23 @@
+         C.need(base.sha256 == tail['continuation']['T_original_schedule_sha256'], 'parent_schedule_identity')
+         self.base=base;self.tail_contract_sha256=C.digest(tail)
+         self.sha256=base.sha256;self.synthetic=base.synthetic;self._document=base._document
+-        self.epochs=100;self.total_updates=20000
++        self.epochs=150;self.total_updates=30000
+         self.anchors_per_batch=base.anchors_per_batch;self.batches_per_epoch=base.batches_per_epoch
+     @property
+     def slot_ids(self): return self.base.slot_ids
+     def physical_epoch(self,epoch):
+-        C.need(type(epoch) is int and 50<=epoch<100,'tail_global_epoch_bounds')
++        C.need(type(epoch) is int and 100<=epoch<150,'tail_global_epoch_bounds')
+         return epoch%50
+     def resolve(self,epoch,slot):
+         # EXACT original dict required by qualified EpochBackend.__call__.
+         return self.base.resolve(self.physical_epoch(epoch),slot)
+     def epoch_sha(self,epoch):
+-        if epoch==100:return None
++        if epoch==150:return None
+         return C.digest(dict(global_epoch=epoch,physical_epoch=self.physical_epoch(epoch),
+             original_physical_map_sha256=self.base.epoch_sha(epoch%50),tail_contract_sha256=self.tail_contract_sha256))
+     def checkpoint_binding(self,cursor,native_step,*,active_reader_epoch=None):
+         c=copy.deepcopy(cursor);step=c['completed_updates']
+-        C.need(type(step) is int and step==native_step and 10000<=step<=20000,'tail_native_cursor_step')
++        C.need(type(step) is int and step==native_step and 20000<=step<=30000,'tail_native_cursor_step')
+         C.need(c['contract_sha256']==self.tail_contract_sha256,'tail_cursor_contract')
+         epoch,offset=divmod(step,self.batches_per_epoch)
+         C.need((c['next_epoch'],c['next_batch_in_epoch'])==(epoch,offset),'global_next_unconsumed_position')
+@@ -32,10 +32,10 @@
+         C.need((not offset or plan is not None) and (plan is None or plan['epoch']==epoch),'persist_global_epoch_bank')
+         C.need(c['active_epoch_plan_sha256']==(C.digest(plan) if plan else None),'global_plan_SHA')
+         if active_reader_epoch is not None:
+-            C.need(type(active_reader_epoch) is int and 50<=active_reader_epoch<100 and (active_reader_epoch==epoch or (offset==0 and active_reader_epoch==epoch-1)),'global_active_reader_position')
+-        return dict(schema='ct-tail-temporal-next-cursor-binding-v1',tail_contract_sha256=self.tail_contract_sha256,
++            C.need(type(active_reader_epoch) is int and 100<=active_reader_epoch<150 and (active_reader_epoch==epoch or (offset==0 and active_reader_epoch==epoch-1)),'global_active_reader_position')
++        return dict(schema='T30-temporal-next-cursor-binding-v1',tail_contract_sha256=self.tail_contract_sha256,
+             original_schedule_sha256=self.base.sha256,native_cursor_sha256=C.digest(c),effective_updates=step,
+-            next_global_epoch=epoch,next_physical_epoch=None if epoch==100 else self.physical_epoch(epoch),
++            next_global_epoch=epoch,next_physical_epoch=None if epoch==150 else self.physical_epoch(epoch),
+             next_batch_in_epoch=offset,next_epoch_map_sha256=self.epoch_sha(epoch),
+             active_global_reader_epoch=active_reader_epoch,
+             active_physical_reader_epoch=None if active_reader_epoch is None else self.physical_epoch(active_reader_epoch),

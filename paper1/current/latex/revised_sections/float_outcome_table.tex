@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & Motion & \multicolumn{2}{c}{Success} & \multicolumn{3}{c}{Perturbation} & Rerun\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-7}
+Family & ratio & clean & pert. & lost & gained & all & all\\
+\midrule
+\multicolumn{8}{@{}l}{$\pi_{0.5}$}\\
+Background & 0.93 & 94.6 & 94.6 & 3.6 & 3.6 & 7.1 & 3.6\\
+Camera & 2.68 & 94.6 & 74.1 & 25.0 & 4.5 & 29.5 & 3.6\\
+Light$^\dagger$ & 0.57 & 91.1 & -- & -- & -- & -- & --\\
+Sensor Noise & 1.32 & 92.9 & 84.8 & 14.3 & 6.3 & 20.5 & 7.1\\
+\multicolumn{8}{@{}l}{$\pi_0$}\\
+Background & 0.62 & 89.3 & 85.7 & 7.1 & 3.6 & 10.7 & 7.1\\
+Camera & 1.03 & 86.6 & 66.1 & 22.3 & 1.8 & 24.1 & 5.4\\
+Light$^\dagger$ & 0.24 & 87.5 & -- & -- & -- & -- & --\\
+Sensor Noise & 0.58 & 92.9 & 78.6 & 16.1 & 1.8 & 17.9 & 0.0\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{How far each perturbation moves the robot, and what it does to task outcomes.} Motion ratio: Sec.~\ref{sec:sensitivity}. The other columns are percentages over the 28 common tasks: success of the clean and the perturbed run; outcomes that succeed when clean and fail when perturbed (lost), the reverse (gained), and both (all); and outcomes that differ between the two clean runs (rerun). $^\dagger$Some Light outcomes were not recorded, so no rates are given; Fig.~\ref{fig:behavior} shows the recorded ones (bounds: Supplement, Sec.~S6).}
+\label{tab:outcomes}
+\end{table}

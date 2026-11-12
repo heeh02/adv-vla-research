@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\caption{\textbf{Along the shared directions, the affine and random-feature readouts beat predicting no change at L18 in every family; the MLP never does.} Translation error (MSE $\times10^3$) of the first five commands, task-equal on the same 404 matched pairs across 28 tasks; lower is better. Every estimator uses the same position-centered 16 shared and clean-feature directions; No-change is common to all. RFF ridge: random Fourier feature ridge readout. Error reductions with pointwise 95\% intervals, including rotation and gripper: Table~\ref{tab:readout-capacity-full}.}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llrrrrrrr}\toprule
+ & & \multicolumn{2}{c}{Affine} & \multicolumn{2}{c}{RFF ridge} & \multicolumn{2}{c}{MLP} & \\
+Layer & Family & Shared & Clean & Shared & Clean & Shared & Clean & No-change\\\midrule
+L1 & Background & 4.297 & 10.213 & 2.450 & 2.723 & 16.543 & 129.003 & 2.084\\
+L1 & Camera & 16.280 & 20.428 & 16.404 & 17.002 & 21.546 & 100.024 & 15.414\\
+L1 & Light & 1.875 & 7.400 & 1.303 & 1.668 & 4.418 & 76.428 & 1.063\\
+L1 & Sensor Noise & 18.564 & 27.219 & 4.914 & 5.930 & 139.285 & 366.620 & 4.609\\
+\midrule
+L9 & Background & 3.825 & 7.597 & 1.929 & 1.927 & 16.318 & 58.358 & 2.084\\
+L9 & Camera & 14.407 & 19.831 & 18.427 & 17.776 & 89.104 & 104.278 & 15.414\\
+L9 & Light & 1.365 & 4.713 & 0.968 & 1.930 & 4.285 & 25.489 & 1.063\\
+L9 & Sensor Noise & 6.331 & 14.484 & 4.028 & 3.836 & 26.858 & 132.264 & 4.609\\
+\midrule
+L18 & Background & 1.035 & 0.964 & 0.786 & 0.787 & 33.596 & 22.576 & 2.084\\
+L18 & Camera & 3.737 & 3.457 & 10.909 & 12.590 & 155.875 & 90.506 & 15.414\\
+L18 & Light & 0.433 & 0.496 & 0.321 & 0.307 & 11.097 & 9.487 & 1.063\\
+L18 & Sensor Noise & 1.538 & 1.480 & 1.953 & 2.056 & 67.980 & 52.938 & 4.609\\
+\bottomrule\end{tabular}
+
+\label{tab:readout-capacity}
+\end{table*}

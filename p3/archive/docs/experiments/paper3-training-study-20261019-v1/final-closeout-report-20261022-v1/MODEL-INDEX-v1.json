@@ -1,0 +1,98 @@
+{
+  "schema": "paper3-closeout-model-index-v1",
+  "models": [
+    {
+      "model_id": "T-floor-s0-u30000-EMA",
+      "checkpoint": {
+        "bytes": 12323,
+        "sha256": "55b7f134d300d2f91165b03d2e86a8e234c0c1de7f68235db4cb32edd881520b",
+        "uri": "redacted-58b234754e77"
+      },
+      "parent_T20": {
+        "bytes": 12996,
+        "sha256": "f9b67edcbbac4b045d0b4489319d393712eec90ed7542c16bda929628ed0be05",
+        "uri": "redacted-94d2c73f84f1"
+      },
+      "training_seed": 0,
+      "source_kind": "fullkeeper",
+      "parameter_role": "EMA",
+      "effective_updates": 30000,
+      "full_optimizer_resume_eligible": true,
+      "current_recovery_or_execution_authorized": false,
+      "new_model_restore_performed": false
+    },
+    {
+      "model_id": "T-floor-s1-u30000-EMA",
+      "checkpoint": {
+        "bytes": 11802,
+        "sha256": "92fa282c124c0e63cd4ac51922d141af0f61d56c24c53977aa467e4034885fd9",
+        "uri": "redacted-d8ea2cf46c49"
+      },
+      "parent_T20": {
+        "bytes": 12997,
+        "sha256": "12d1e1426ed799dfece2c39fc0463a90a98d5bdf81d7c7490d2c5966920ec12b",
+        "uri": "redacted-6b5caa5ed832"
+      },
+      "training_seed": 1,
+      "source_kind": "recovered_ema_inference_only",
+      "parameter_role": "EMA",
+      "effective_updates": 30000,
+      "full_optimizer_resume_eligible": false,
+      "current_recovery_or_execution_authorized": false,
+      "new_model_restore_performed": false
+    },
+    {
+      "model_id": "T-reheat-s0-u30000-EMA",
+      "checkpoint": {
+        "bytes": 12449,
+        "sha256": "1164df83c0f9ee7d7587418354baa5d6434cc1c41d7310c03cbf5aa9fa984b2a",
+        "uri": "redacted-36857c6443d2"
+      },
+      "parent_T20": {
+        "bytes": 12996,
+        "sha256": "f9b67edcbbac4b045d0b4489319d393712eec90ed7542c16bda929628ed0be05",
+        "uri": "redacted-94d2c73f84f1"
+      },
+      "training_seed": 0,
+      "source_kind": "recovered_ema_inference_only",
+      "parameter_role": "EMA",
+      "effective_updates": 30000,
+      "full_optimizer_resume_eligible": false,
+      "current_recovery_or_execution_authorized": false,
+      "new_model_restore_performed": false
+    },
+    {
+      "model_id": "T-reheat-s1-u30000-EMA",
+      "checkpoint": {
+        "bytes": 12942,
+        "sha256": "5f14691cea8b362ee36949b0f2187ce18a1f8bc2baa37d300d85c298e5a06749",
+        "uri": "redacted-97553af6a6b3"
+      },
+      "parent_T20": {
+        "bytes": 12997,
+        "sha256": "12d1e1426ed799dfece2c39fc0463a90a98d5bdf81d7c7490d2c5966920ec12b",
+        "uri": "redacted-6b5caa5ed832"
+      },
+      "training_seed": 1,
+      "source_kind": "fullkeeper",
+      "parameter_role": "EMA",
+      "effective_updates": 30000,
+      "full_optimizer_resume_eligible": true,
+      "current_recovery_or_execution_authorized": false,
+      "new_model_restore_performed": false
+    }
+  ],
+  "source_metadata": [
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/INPUT-PLAN-v1.json",
+      "bytes": 3653,
+      "sha256": "cb9d4c9931bdbd92f5913e98e2f368db6c8d25b3868e54a9a617b722e437701b"
+    },
+    {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-cloud-bridge-v1/inputs-2648-v1/INPUT-SPEC-v1.json",
+      "bytes": 23047,
+      "sha256": "17fb8019ae281250bc4ab22b4b1e71fddbdb546579bf57205881c8220a3a6002"
+    }
+  ],
+  "interpretation": "SHA identifies original commit/artifact metadata, not a claimed byte hash of one parameter file; follow its members and original restore checks. No new recovery or remote verification in this closeout."
+}

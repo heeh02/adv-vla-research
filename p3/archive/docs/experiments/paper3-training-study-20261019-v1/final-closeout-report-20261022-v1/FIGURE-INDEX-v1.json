@@ -1,0 +1,156 @@
+[
+  {
+    "id": "F01",
+    "title": "C/T内部EMA曲线",
+    "source_evidence": "E02",
+    "reuse_limit": "内部留出，非成功率",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/actual-v1/science/F1_EMA_MONITOR-v1.png",
+    "bytes": 251052,
+    "sha256": "5422f017b6938575ab564994023adea2283f1e88767afb49ba80056301bf3ad6",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/actual-v1/science/F1_EMA_MONITOR-v1.svg",
+      "bytes": 110003,
+      "sha256": "0a27faea495c12485c712e5cb20fa691cb550025527676576e89e43e2b8c5353"
+    }
+  },
+  {
+    "id": "F02",
+    "title": "C/T在线loss-LR-grad",
+    "source_evidence": "E02",
+    "reuse_limit": "不同训练支持不能直接比较经验风险",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/actual-v1/science/F2_OPTIMIZER-v1.png",
+    "bytes": 893921,
+    "sha256": "7bddc935379522a73d68ec4e8ee150583605de61136e041c43a428a4d2fb4a6a",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/actual-v1/science/F2_OPTIMIZER-v1.svg",
+      "bytes": 666555,
+      "sha256": "9fe8c57cd8e1414cce93db5c3909ebfdbc507f942ca327cf13809e9fc8e1cd99"
+    }
+  },
+  {
+    "id": "F03",
+    "title": "C/T全部40任务散点",
+    "source_evidence": "E04",
+    "reuse_limit": "最适合复用；四条件两seed均40任务，H10D32内部目标",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/heterogeneity/actual-v1/science/F1_TASK_PAIRED_ENDPOINTS-v1.png",
+    "bytes": 264542,
+    "sha256": "31bda63312104fea844ab230ce259ab96f8d75d52066fbf3b16c283d68ffb000",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/heterogeneity/actual-v1/science/F1_TASK_PAIRED_ENDPOINTS-v1.svg",
+      "bytes": 108905,
+      "sha256": "83b43aba9a1a79eb922ef8fbe3a7bd5d41a57ee4b2dbaf275a8d1da3e1b2e0c6"
+    }
+  },
+  {
+    "id": "F04",
+    "title": "T30在线loss-LR-grad",
+    "source_evidence": "E06",
+    "reuse_limit": "仅两支完整日志，缺失不能插补",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F01-online-training.png",
+    "bytes": 747513,
+    "sha256": "f53caa0812c442ced8ec35371c0493c567ce9b26288db27e73ff8b40f1a93009",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F01-online-training.svg",
+      "bytes": 2522035,
+      "sha256": "85315f8d9ad4f7a045451ef162f762b98b2e03362c354ba8134ffd61996a3c8f"
+    }
+  },
+  {
+    "id": "F05",
+    "title": "T30内部EMA留出",
+    "source_evidence": "E06",
+    "reuse_limit": "D32不能反推D7，原20k与restored分开",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F02-internal-EMA-validation.png",
+    "bytes": 361709,
+    "sha256": "eb07212e2d39dbcf00b71a3bd0a7bb2f0c92c751aa21757ccb3ddbb14b74121e",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F02-internal-EMA-validation.svg",
+      "bytes": 180096,
+      "sha256": "66ef19231df25f72c7a21d3abf5cd77b853127b774b86342e008d98ee760c172"
+    }
+  },
+  {
+    "id": "F06",
+    "title": "T30固定probe EMA旧点",
+    "source_evidence": "E06",
+    "reuse_limit": "C_old表示T模型的旧训练起点probe，不是C模型",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-C_old.png",
+    "bytes": 346611,
+    "sha256": "2258ed61eb89c68f28e253976c3df557c709c002fde7c2710c44708de21cfd96",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-C_old.svg",
+      "bytes": 145816,
+      "sha256": "ddfd2071c4463c699d79762267ec3673b5fde6223c131ca1125c3aae07185f5c"
+    }
+  },
+  {
+    "id": "F07",
+    "title": "T30固定probe EMA新增点",
+    "source_evidence": "E06",
+    "reuse_limit": "推荐复用；真实D7/paddingD25分解，H5非执行动作",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-T_added.png",
+    "bytes": 344153,
+    "sha256": "3795825addbeca9be37f6e1cd5346f936b8dc7a7d6bdf704caab80c4e44f4a28",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-T_added.svg",
+      "bytes": 148851,
+      "sha256": "0e8d90103faa53f1d84ea96037cb6494f117c42e8fc9c97ae19b193ef364722f"
+    }
+  },
+  {
+    "id": "F08",
+    "title": "T30固定probe online旧点",
+    "source_evidence": "E06",
+    "reuse_limit": "与EMA视图分开",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-online-C_old.png",
+    "bytes": 325041,
+    "sha256": "aeb94fad49373fd664e8eebfce911ff3cfdec869d27c3644f441b1d2d6cabb7e",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-online-C_old.svg",
+      "bytes": 144343,
+      "sha256": "b48a1063c02986d189aecb6de51bd9c958860edab3d8202ee6e156aefe56d416"
+    }
+  },
+  {
+    "id": "F09",
+    "title": "T30固定probe online新增点",
+    "source_evidence": "E06",
+    "reuse_limit": "与EMA视图分开",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-online-T_added.png",
+    "bytes": 348002,
+    "sha256": "b451ccaa90738a5d0edffabe1397e2db91fe2a7d2f6457944efa0c399f117440",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-online-T_added.svg",
+      "bytes": 154268,
+      "sha256": "36ed441615e03f8c2c01c14cf9e24c60f3737018861b64de819535e687bc2138"
+    }
+  },
+  {
+    "id": "F10",
+    "title": "首次阶段配对与拒配",
+    "source_evidence": "E19",
+    "reuse_limit": "仅首次423阶段/共同102，不能改标为最新全已有支持",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-stage1-v2/STAGE1-EVIDENCE.png",
+    "bytes": 204132,
+    "sha256": "cf29fed554479b8de8ee5cf076b4b6058f9c69b39ea90ef0aa455ed14afcc9ef",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-stage1-v2/STAGE1-EVIDENCE.svg",
+      "bytes": 28676,
+      "sha256": "a598cb7a2fd16cd1ea0d52aee503ec2ae76f040ada4bcc10717ce2f86b55aa8c"
+    }
+  },
+  {
+    "id": "F11",
+    "title": "两个真实query0原图与差图",
+    "source_evidence": "E13",
+    "reuse_limit": "不是attention；0-255差图1级差接近黑，需同报数值",
+    "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-q0-witness-v1/Q0-WITNESSES.png",
+    "bytes": 787379,
+    "sha256": "eb8feaf13d0369f21776e88f39c24a0ee5b7000493665efeee475caaea7dde47",
+    "vector": {
+      "path": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-q0-witness-v1/Q0-WITNESSES.svg",
+      "bytes": 731624,
+      "sha256": "934f469d6fdda612e8db04437fcbc03642a37c1f2c5ba2c9d340bdda5e2b0399"
+    }
+  }
+]

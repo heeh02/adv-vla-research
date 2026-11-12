@@ -1,0 +1,38 @@
+\section{Information Used for Reconstruction, Prediction, and Readout}
+\label{sec:information-budget}
+Each test of a response receives different information and scores a different target (Table~\ref{tab:supp-information-budget}). Reconstruction, the C1 test, observes the response it scores: the 16 directions are fixed in advance, but their 160 coefficients per query come from the test response. C1 therefore shows that fixed directions, fitted without the test tasks and family, capture new responses, not that a response can be predicted unobserved. Templates, camera calibration and command readout are listed for contrast.
+
+\begin{table*}[t]
+\caption{\textbf{Four tests, four information conditions.} Columns give what each test observes, its scored target and its question. $M$ is a training mean or position template, $B$ a learned channel basis (for example the shared directions). Camera calibration trains on tasks including the target angle and withholds only the test case's larger-angle target; reconstruction and its clean-feature and random controls project the same test response. Task holdouts concern analysis fits, not policy pretraining.}
+
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{p{0.15\textwidth}p{0.32\textwidth}p{0.20\textwidth}p{0.25\textwidth}}
+\toprule
+Comparison & Information used to produce a test output & Scored target & Question\\
+\midrule
+Fixed template & Training response mean or position template; no test response & Unobserved response $D$ & Can a population template transfer?\\
+Conditional calibration & Measured $D_{15}$; full correction also receives smaller-angle translation commands, generation noise, and response norms & Unobserved $D_{30}$ of that case & Does an observed probe response help predict a known target angle?\\
+Response reconstruction & Observed $D$; coefficients $DB$ or $(D-M)B$ & The same observed $D$ & Do learned channel directions represent new responses?\\
+Command readout & Paired first-query response features, paired first-flow difference, or both & Paired difference of the commands (before or after the output adapter) & What command information remains beyond strong baselines?\\
+\bottomrule
+\end{tabular}
+
+\label{tab:supp-information-budget}
+\end{table*}
+
+\paragraph{Reconstruction observes the response it scores.}
+For one layer, $D\in\mathbb{R}^{10\times1024}$ is the paired response over ten plan positions, $M$ a broadcast global training mean or a ten-position training template, and $B\in\mathbb{R}^{1024\times16}$ an orthonormal channel basis. Fixed-template prediction is $\widehat D=M$; reconstruction projects the residual of the observed response onto the basis:
+\begin{equation}
+ \widehat D=M+[(D-M)B]B^\top.
+\end{equation}
+The $10\times16$ coefficients are computed from the test response. Sixteen directions therefore give 16 coefficients at each position, 160 per query, in addition to the stored directions and template. The test evaluates reuse of the directions, not of the coefficients.
+
+The clean-feature control learns directions from training clean features but projects the same test residual around the same template, so both sets of directions have the same target and test information. Mean-span controls also observe the target through their projection coefficients, unlike mean-only prediction: a global mean direction uses ten coefficients, a rank-ten span of the position means 100.
+
+\paragraph{Calibration predicts a larger-angle response from a measured probe.}
+Camera calibration keeps the measured $D_{15}$ and adds the training shift $\mu_{30}-\mu_{15}$; its full correction also receives the additional observations in the table, detailed in Sec.~\ref{supp:identification}. The calibration gain measures the value of a smaller-angle probe; template transfer tests a prediction from training data only.
+
+\paragraph{Command readout compares response coordinates with the first flow output.}
+The first-flow baseline is the clean--perturbed difference $\Delta v_0$ in the initial predicted velocity, with 320 coordinates. Response coefficients contribute 160 coordinates; their concatenation with $\Delta v_0$ contributes 480. Comparing the concatenation with first flow alone tests the additional command information available to the fitted readout. Only sets of directions of equal size match the coefficient budget. Final commands, measured motion and task success remain separate endpoints.

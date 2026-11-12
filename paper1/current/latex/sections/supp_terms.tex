@@ -1,0 +1,70 @@
+\section*{Reading Guide and Measurement Definitions}
+\label{sec:supp-terms}
+\newenvironment{guidelist}{\small\begin{list}{}{\setlength{\leftmargin}{0.9em}\setlength{\itemindent}{-0.9em}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}}}{\end{list}}
+Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated limits, Part 3 the studies and terms. Recording sites and interval conventions are in Sec.~\ref{supp:recording-overview}; a reusable protocol and recomputation checks in Sec.~\ref{sec:supp-protocol-card}. Results are for $\pi_{0.5}$ unless stated.
+
+\paragraph{1. How this supplement supports the main paper.}
+\textbf{C1: perturbations change the features along 16 shared directions per layer} (main Sec.~\ref{M-sec:shared}, Fig.~\ref{M-fig:token-structure}a).
+\begin{guidelist}
+\item \textbf{Sec.~\ref{sec:mean-controls}, Table~\ref{tab:mean-centered-controls}.} Held-out tasks and families, all 536 pairs: 36.7--84.2\% of the energy around the fitting-data mean, against 0.5--10.6\% (clean-feature) and 1.3--1.9\% (random); 16.26--75.00\% of the raw energy.
+\item \textbf{Sec.~\ref{sec:current-basis-readout}.} The 404-pair subset of main Fig.~\ref{M-fig:token-structure}: 36.5--83.6\%, against 0.5--10.2\% and 1.3--1.9\%.
+\item \textbf{Table~\ref{tab:mean-controls}.} Not the mean: uncentered shared directions retain 32.4--75.3\% of the raw energy, the span of the position means 13.5--30.4\%.
+\item \textbf{Sec.~\ref{sec:rank-sensitivity}, Figs.~\ref{fig:supp-rank-joint},~\ref{fig:supp-rank-known}.} Same ordering for 1 to 32 directions.
+\item \textbf{Secs.~\ref{sec:supp-energy-aggregation}, \ref{sec:supp-pi0-internals}, \ref{sec:supp-p08-dynamic}.} Energy-weighted tasks: 38.4--84.0\%. $\pi_0$: 39--77\%, against 1--28\% and about 1.5\%. A later observation (original LIBERO; tasks held out, conditions seen in fitting): 32.7--64.2\%, against 0.8--11.0\% and 1.4--1.8\%.
+\item \textbf{Sec.~\ref{sec:information-budget}.} A reconstruction uses 160 coefficients from the response it scores.
+\end{guidelist}
+\textbf{C1, linear readout} (main Fig.~\ref{M-fig:token-structure}b).
+\begin{guidelist}
+\item \textbf{Sec.~\ref{sec:current-basis-readout}, Table~\ref{tab:current-basis-control}.} The 16 coordinates predict the command change better than no change at L18 in all families, worse at L1 and L9 in 7 of 8 cells. At L18 they match clean-feature coordinates (intervals span zero); first flow predicts best in every row.
+\item \textbf{Sec.~\ref{sec:supp-readout-capacity}.} Nonlinear readouts change 102 and 76 of 216 interval categories.
+\end{guidelist}
+\textbf{C2: restoration at L9 reduces command error} (main Sec.~\ref{M-sec:restoration}, Figs.~\ref{M-fig:teaser}b,~\ref{M-fig:native-restoration}).
+\begin{guidelist}
+\item \textbf{Sec.~\ref{sec:allstep-restoration}, Tables~\ref{tab:allstep-restoration-contrasts}--\ref{tab:allstep-restoration-arms}.} 216 held-out cases: error 0.409 to 0.312 (Camera), 0.209 to 0.199 (Sensor Noise), lower in 25 of 27 and 24 of 30 tasks. Success $+1.85$ and $+3.33$ points, intervals include zero. The 16 directions reach 86.9\% and 70.7\% of replacing the whole L9 state, which gains 7.41 and 5.83 points (post hoc).
+\item \textbf{Sec.~\ref{sec:dev-restoration-controls}.} At matched edit size, restoration beats clean-feature directions under Camera only.
+\item \textbf{Sec.~\ref{sec:supp-native-ablation}.} No clean observation (6,048 planned rollouts): L18 response lower by 8.8\% and 7.6\%; random directions at most 0.3\%.
+\end{guidelist}
+\textbf{C3: command changes reach the robot} (main Sec.~\ref{M-sec:early}).
+\begin{guidelist}
+\item \textbf{Sec.~\ref{sec:early-late-association}, Fig.~\ref{fig:supp-early-late}.} Rank correlation with end-effector separation 0.95/0.97 after 5 controls, 0.47/0.41 after 60.
+\item \textbf{Secs.~\ref{sec:supp-q0-consistency},~\ref{supp:p13}.} Agreement across noise draws 0.88--0.92 and 0.80--0.89; lower for the gripper.
+\end{guidelist}
+\textbf{C4: the size of a change is not its cost} (main Sec.~\ref{M-sec:sensitivity}, Fig.~\ref{M-fig:behavior}).
+\begin{guidelist}
+\item \textbf{Sec.~\ref{sec:supp-matched-motion}, Table~\ref{tab:sensor-case-reference}.} $\pi_0$, Sensor Noise: 0.58 times a clean rerun's motion, 14.3 points lost; every lost case listed.
+\item \textbf{Sec.~\ref{sec:five-arm}.} Lost and gained successes against the clean rerun; bounds for 39 of 2,680 missing outcomes. Lost successes exceed the rerun level under Camera and Sensor Noise, gained ones do not. AUROC 0.72/0.64 pooled, 0.62/0.55 within a family (post hoc).
+\item \textbf{Secs.~\ref{supp:legacy-d3},~\ref{supp:legacy-d2}.} Rank correlation $-0.90$ across ten condition means, $-0.075$ across 400 cells. Headlight: 5.1 times the command change of matched dimming, both 77 of 80 (Fig.~\ref{fig:legacy-d2-inputs}).
+\item \textbf{Sec.~\ref{sec:supp-complete-panels}.} Complete main-paper panels.
+\end{guidelist}
+\textbf{Additional studies, not relied on by the main paper:} internal associations (Sec.~\ref{sec:supp-bounded-internal}, Table~\ref{tab:supp-internal-links}), exposure timing (Sec.~\ref{sec:window552}), original LIBERO (Sec.~\ref{supp:legacy}), LIBERO-Plus outcomes (Sec.~\ref{sec:supp-plus}), attention (Sec.~\ref{sec:supp-attention-analysis}, Table~\ref{tab:attention-context}, Fig.~\ref{fig:attention-trends}; details in Secs.~\ref{supp:legacy-attention}, \ref{sec:supp-spatial-attention}, \ref{sec:supp-plus-joint-readout}, Figs.~\ref{fig:supp-attention-main-view},~\ref{fig:supp-attention-estimates}).
+
+\paragraph{2. Limits stated in the main paper and where they are documented} (main Sec.~\ref{M-sec:discussion}).
+\begin{guidelist}
+\item \textbf{Sensitivity is measured at the episode start:} Sec.~\ref{supp:recording-overview}; the command--motion link weakens by 60 controls (Sec.~\ref{sec:early-late-association}); one later observation (Sec.~\ref{sec:supp-p08-dynamic}).
+\item \textbf{Restoration: one layer, 16 directions, two families, 216 cases, needs a clean observation:} Sec.~\ref{sec:allstep-restoration}; the test without one: Sec.~\ref{sec:supp-native-ablation}.
+\item \textbf{The shared directions carry the Background response, which costs $\pi_{0.5}$ no net success:} Table~\ref{tab:mean-centered-controls}; Sec.~\ref{sec:five-arm}.
+\item \textbf{Simulation, two related policies, moderate settings:} Table~\ref{tab:cohorts}; Sec.~\ref{sec:supp-plus}.
+\end{guidelist}
+
+\paragraph{3. Study index.}
+\begin{guidelist}
+\item \textbf{Internal recordings} ($\pi_{0.5}$, LIBERO-Plus): 536 pairs on 40 tasks fit the shared directions (Secs.~\ref{sec:mean-controls}, \ref{sec:supp-plus}); 404 pairs on 28 common tasks link features, commands, motion and outcomes (Sec.~\ref{sec:supp-bounded-internal}).
+\item \textbf{Restoration} ($\pi_{0.5}$): 31 held-out tasks, 108 settings, two draws, six runs, 1,296 rollouts (Sec.~\ref{sec:allstep-restoration}).
+\item \textbf{Paired executions} ($\pi_{0.5}$, $\pi_0$): five runs per setting; 268 settings per policy on 40 tasks, 202 on 28 for outcomes (Sec.~\ref{sec:five-arm}). Same settings as the recordings; $\pi_0$ internals regenerated on 369 of 404 pairs (Sec.~\ref{sec:supp-pi0-internals}).
+\item \textbf{Original LIBERO} ($\pi_{0.5}$): later observation, 3,360 episodes (Sec.~\ref{sec:supp-p08-dynamic}; its L9 directions are the ones removed in Sec.~\ref{sec:supp-native-ablation}); removal without a clean observation, 288 cases $\times$ 3 conditions (clean, Camera $+15^\circ$, headlight off) $\times$ 7 runs; matched lighting, 80 initial states (Sec.~\ref{supp:legacy-d2}); 480-pair camera study (Sec.~\ref{supp:legacy}); fixed-state camera $0^\circ\!\rightarrow15^\circ$, 36 tasks (Table~\ref{tab:legacy-attention}); ten conditions, 2,344 of 2,400 pairs on 40 tasks.
+\end{guidelist}
+
+\paragraph{Glossary.}
+\begin{guidelist}
+\item \textbf{Setting, pair, case.} Setting: one task under one visual variant. Pair: one setting under one policy-noise draw (label 0 or 1); its clean and perturbed runs share task, start state and noise. Case: a pair in the restoration study. Start state: task, initial state and, where used, noise label.
+\item \textbf{Runs.} Clean $R_0,R_1$; perturbed $T_0,T_1$ (noise of $R_0,R_1$); $R'_0$ repeats $R_0$; clean rerun: $R_1$ vs.\ $R_0$. Restoration: $N_C$ clean, $N_T$ perturbed unedited, $R_{\rm resp}$ restoration, $R_{\rm clean}$, $R_{\rm rand}$ controls, $R_{\rm full}$ whole L9 state.
+\item \textbf{Directions.} Sixteen channel directions fitted to responses (shared; ``Response'' in tables), to clean features (``Clean'') or random (``Random''); position-centered fits subtract the ten position means of the fitting data.
+\item \textbf{Energy shares.} One minus reconstruction error over the energy around the fitting-data mean (main Eq.~\ref{M-eq:p08-reconstruction}), or over the raw energy.
+\item \textbf{Computation.} Query: one observation and plan; generation step $j=0,\ldots,9$; plan position: one planned action; control: one executed action. First five commands: their translation part, 15 numbers. First flow: clean--perturbed difference of the step-0 update.
+\item \textbf{Internal quantities.} Prefix H, normalized Z, cached values V; action-expert H after a block; attention probability P; attention output W before gating (Table~\ref{tab:recording-roles}). Conditional TV: redistribution within a region; mass-weighted TV rescales it by the region's mass. Participation: effective number of channels (tokens) carrying a response. Raw output response: a difference RMS; relative response divides it by the matched-clean norm.
+\item \textbf{Command change, footprint.} Perturbed minus clean first five commands; an edit's footprint is its edited-minus-unedited change as a fraction of it.
+\item \textbf{Outcomes.} Clean then perturbed (S success, F failure): SF lost, FS gained success. Success change (RD in some tables): perturbed minus clean success rate. Command--cost correlation: across the ten conditions.
+\item \textbf{Intervals} resample whole tasks. \textbf{Bounds over missing outcomes} cover all feasible values of unknown outcomes.
+\item \textbf{Difficulty level:} LIBERO-Plus level 1--5, higher is harder. \textbf{Camera:} Camera Viewpoints family; on original LIBERO, $+15^\circ$ unless stated.
+\item \textbf{Abbreviations.} RMS root mean square; MSE mean squared error; EEF end effector; TV total variation; AUROC (AUC in some tables) area under the ROC curve; pp percentage points.
+\end{guidelist}

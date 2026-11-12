@@ -1,0 +1,110 @@
+\section{Relating LIBERO-Plus Responses to Commands and Task Outcomes}
+\label{sec:supp-plus}
+
+This section describes the paired clean and perturbed $\pi_{0.5}$ recordings on LIBERO-Plus to which the shared directions are fitted, and what these pairs show about commands, motion and outcomes. On the common tasks, Camera and Sensor Noise cost success; perturbed runs end farther from their clean runs than a clean rerun does, even when both succeed; and a prespecified test of whether response size identifies lost successes reaches neither prespecified conclusion. This describes the data of main Sec.~\ref*{M-sec:shared} and is consistent with main Sec.~\ref*{M-sec:sensitivity}; the main paper's outcome figures come from the separate paired executions (Sec.~\ref{sec:five-arm}). Related analyses: Secs.~\ref{sec:current-basis-readout} and~\ref{sec:supp-bounded-internal}.
+
+\subsection{Task outcomes of the recorded pairs}
+
+\paragraph{The recordings: 536 pairs on 40 tasks.}
+The recordings contain 268 settings, each run under two policy-noise draws: 536 clean--perturbed pairs on 40 tasks, covering the LIBERO-Plus categories Background Textures, Camera Viewpoints, Light Conditions and Sensor Noise. Two inspected Light settings change texture assets as well as lighting, so the Light family denotes the benchmark's prescribed settings, not an isolated lighting factor. Each pair has its own executed clean run; the 80 clean-run recipes fix initialization and noise settings and are not 80 trajectories reused across pairs. Outcomes (clean$\to$perturbed) are 447 joint successes (SS), 56 lost successes (SF), 20 gained successes (FS) and 13 joint failures (FF). Pairs are nested within tasks.
+
+\paragraph{The common-task comparison: 404 pairs on 28 tasks.}
+The common-task comparison uses the 28 tasks shared by all four families and excludes 18 Light pairs without a LIBERO-Plus difficulty level, leaving 202 settings and 404 pairs (Table~\ref{tab:plus-population}). All feature, command, motion and outcome quantities below use these same pairs. The estimates describe the selected settings; full-panel summaries and full-benchmark rankings refer to different populations.
+
+\begin{table}[!ht]
+\caption{\textbf{Pairs per family in the full panel and on the common tasks.} $\pi_{0.5}$ LIBERO-Plus recordings: pairs/tasks in the full panel, pairs/settings on the common tasks, and common tasks per family. The full Light panel includes 18 pairs without a difficulty level. The common tasks are shared, but families still differ in settings, difficulty levels and number of settings per task.}
+
+\centering\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lrrr}
+\toprule
+Family & Full: pairs/tasks & Common: pairs/settings & Tasks\\
+\midrule
+Background & 118/34 & 96/48 & 28\\
+Camera & 112/32 & 102/51 & 28\\
+Light & 152/40 & 96/48 & 28\\
+Sensor Noise & 154/39 & 110/55 & 28\\
+\bottomrule
+\end{tabular}
+
+\label{tab:plus-population}
+\end{table}
+
+\paragraph{Camera and Sensor Noise cost success.}
+The success change, perturbed minus clean, is $+2.679$, $-17.857$, $+2.679$ and $-12.500$ percentage points for Background, Camera, Light and Sensor Noise on the common tasks, with pointwise 95\% intervals $[-5.357,11.607]$, $[-30.379,-6.250]$, $[-7.143,13.393]$ and $[-22.321,-4.464]$, and simultaneous 95\% intervals over the four families (Bonferroni-adjusted percentiles) of $[-7.143,13.393]$, $[-34.821,-3.571]$, $[-8.929,16.071]$ and $[-25.893,-2.679]$. The Camera and Sensor Noise intervals exclude zero; Background and Light have positive point estimates with intervals that include both gains and losses. Estimates average the two noise draws within a setting, settings within a task--family, and then tasks equally; intervals use 10,000 bootstrap draws of whole tasks. Each change is measured against the family's own clean runs and mix of difficulty levels.
+
+\subsection{Definitions of the response and attention measures}
+\label{sec:plus-sites}
+This subsection defines the measures: absolute size measures a difference, relative size compares it with the clean tensor, and attention total variation (TV) measures a change in how attention is allocated.
+
+\paragraph{Recording sites.}
+The first policy query is $q=0$; $j$ indexes generation steps and $p$ plan positions. We record L1, L9 and L18 (zero-based block indices 0, 8, and 17). Prefix measurements replay the prefix computation with masks for valid tokens and defined queries. $H$ is the block input and $Z$ the pre-attention RMSNorm output supplied to attention, so a larger $H$ response at depth need not mean a larger change in what attention receives. Action-expert (AE) hidden states follow the policy's own generation and keep the ten ordered plan positions at each generation step. Channel indices belong to their own representation and layer; equal indices in different spaces do not imply a shared direction.
+
+\paragraph{Absolute and relative responses can move in opposite directions.}
+For a selected set of $N$ scalar coordinates, let $X_R$ and $X_T$ denote the clean and perturbed tensors and $\Delta X=X_T-X_R$. We report
+\begin{align}
+ d_{\rm RMS}(X)&=\|\Delta X\|_F/\sqrt{N},\\
+ r(X)&=\|\Delta X\|_F/\|X_R\|_F.
+\end{align}
+In these recordings, the absolute AE L18 response falls from the first to the last generation step in every family--suite cell, while the relative response rises because the clean norm falls, also in every cell. A relative trend therefore mixes response size with the clean scale. Ratios are formed per pair before averaging and are undefined for a zero clean norm; a ratio of family-average norms is a different estimator.
+
+\paragraph{Attention change is measured over all visible keys.}
+The attention probabilities $P$ come from a separate observational probe at the recorded generation states. For each valid action query and attention head, the total variation over all visible keys is
+\begin{equation}
+ \operatorname{TV}(P_T,P_R)=\tfrac12\sum_{k\in\mathcal V}|P_T(k)-P_R(k)|,
+\end{equation}
+where $\mathcal V$ is the common visible-key set. We average over valid queries and heads and keep the probability mass on visual, text and other visible keys. The regional net mass change sums the signed probability change in a region; the regional conditional-distribution change first normalizes each run by its regional mass. Neither substitutes for full-key TV. The text region contains text tokens; the recorded configuration does not append the numerical joint state as discrete text.
+
+\paragraph{Attention output combines allocation and transformed values.}
+The content readout recomputes the attention output from prefix and action-side values, after projection and before the residual gate. Values and their weighted combination can change even when probability shifts decrease. This diagnostic replay measures each branch at its saved generation state, separately from the recording of the policy's own generation (Table~\ref{tab:recording-roles}).
+
+\paragraph{Commands and motion keep their own units.}
+The policy output record separates the policy's 32-coordinate actions from the seven-coordinate LIBERO commands after the adapter. We score translation, rotation and gripper components over the first five and over all ten plan positions. Command RMS uses saved command units; end-effector (EEF) distance uses simulator observations in the simulator's length units, without conversion to metres or millimetres. Orientation distance is the quaternion geodesic angle in radians. Gripper-state distance is the Euclidean difference of two recorded joint coordinates, not an opening width.
+
+\subsection{An earlier readout: direction, size and the first generation update}
+\label{sec:plus-readout}
+This earlier, exploratory analysis asks whether response coordinates carry command information beyond response size, clean-feature coordinates and the policy's first generation update (the first flow). Shared-direction coordinates predict translation and rotation better than response size, but not clearly better than clean-feature coordinates, and add no measurable gain to the first flow. It uses uncentered directions on the full panel; the main paper does not rely on it (its readout is Sec.~\ref{sec:current-basis-readout}).
+
+\paragraph{Held-out tasks and perturbation families.}
+The analysis uses all 536 pairs and 72 fixed, split-specific sets of 16 directions from the uncentered LIBERO-Plus fits. Its primary evaluation holds out a perturbation family and a whole-task component; five folds give one held-out prediction per task, for 60 family--layer--fold splits. Twelve known-task, held-out-family splits form the secondary analysis. The primary split keeps tasks that share a clean-run recipe together. These directions differ from the separate five-position LIBERO directions of Sec.~\ref{sec:supp-p08-dynamic}; the centered refit is described in Sec.~\ref{sec:mean-controls}.
+
+\paragraph{Compact representations and prediction controls.}
+Inputs come from the first policy query and first generation step; each layer is fitted separately with the ten plan positions in order. Four compact representations use 16 coordinates per position, or 160 coefficients each: shared directions, clean-feature directions, fixed random directions and the largest response coordinates. Clean-feature coordinates project the response onto directions fitted to clean features. The other baselines are zero prediction, the training target mean, ten positionwise magnitudes and the full 10,240-coordinate response. The 320-coordinate paired difference in the first flow is used alone and together with the shared-direction coefficients. Only the four compact representations match in coefficient count; the full response and the first flow have different capacities.
+
+\paragraph{Direction beats size for translation and rotation; the choice of directions is unresolved.}
+At L18, shared-direction coefficients give lower error than magnitude in all eight family-by-scope translation comparisons and all eight rotation comparisons; magnitude gives lower error in all eight gripper comparisons. Comparing shared and clean-feature coordinates of equal size tests the choice of directions: all eight translation intervals include zero, one rotation interval favors the shared directions and seven include zero. For the gripper, shared-direction coefficients improve on the full response in all 24 layer--family--scope comparisons, while magnitude gives lower error in 21 and the paired-difference intervals cross zero in three. The best representation depends on the command component.
+
+\paragraph{Response coordinates add nothing measurable to the first flow.}
+The first flow already contains a downstream prediction of the generation update. Adding the compact response to it gives 29 higher-error intervals and 43 that include zero among the 72 component--scope--layer--family comparisons. The secondary known-task comparison gives 26 higher-error intervals and 46 that include zero. None of the gain intervals is positive. These 72 overlapping comparisons describe the additional prediction of this linear estimator on shared data; their counts are descriptive, with no multiplicity-adjusted global test.
+
+\paragraph{Estimator.}
+We fit weighted affine ridge regression with an unpenalized intercept, fixed penalty 0.01, training-set centering and one training RMS scale per feature block. Nested task-component, family, setting and noise weights sum to one. Flow-only and augmented models share the flow-block scale. Targets are paired differences in the final generated plans, scored separately in model coordinates and in command units after the adapter. Pointwise intervals come from 2,000 bootstrap draws of task components.
+
+\subsection{Motion compared with the clean rerun}
+\label{sec:plus-motion}
+After 60 controls, perturbed runs are farther from their clean runs than a clean rerun is in every family, and under Camera and Sensor Noise also when both runs succeed. Two references give the separation a scale: the clean rerun, which changes only the policy noise, and a repeat of the clean run with the same inputs and noise.
+
+\paragraph{Command differences are followed by motion.}
+All 404 common-task pairs start at zero EEF-position, orientation and gripper-state distance, and all issue their first five commands. After 5 controls, the task-equal EEF distances are 0.002911, 0.008362, 0.002027 and 0.004108 for Background, Camera, Light and Sensor Noise, with pointwise intervals above zero. After 60 controls the means are 0.024468, 0.041819, 0.018961 and 0.030180. Each family keeps all 28 tasks over this window. Later differences also reflect the different states the two runs reach. The repeat matches the recorded initial inputs, configuration, random-number state and policy noise; for each case it averages all eligible, independently executed repeats, whose remaining variation need not be pure floating-point error. The clean rerun compares the two policy-noise draws within each setting. All 202 settings support the clean-rerun comparison; the repeat supports 396 of the 404 cases. Both references keep the case's clean--perturbed pair.
+
+\paragraph{After 60 controls, separation exceeds the clean rerun.}
+Let $\overline d_{TR,f}(60)$ be the task-equal clean--perturbed EEF distance for family $f$ and $\overline d_{RR,f}(60)$ the corresponding distance between the two clean runs. After 60 controls their ratios are 1.51, 2.39, 1.17 and 1.68 for Background, Camera, Light and Sensor Noise. Each ratio divides two family means; it is not an average of per-task or per-setting ratios, and no interval for it has been estimated. The paired distance-difference intervals (2,000 bootstrap draws of the fixed 28 tasks, pointwise 95\%) are in the released analysis package.
+
+\paragraph{Extra motion and net success measure different effects.}
+Background has a positive interval for motion beyond the clean rerun while its success interval includes zero. With the repeat as reference, the Background/Camera/Light/Sensor Noise reference distances are 0.002518/0.001873/0.002512/0.002565 on 28/26/26/28 tasks; the two references keep their own populations and means.
+
+\paragraph{Runs that both succeed still move apart.}
+Outcome groups refer to the case's own clean--perturbed pair: ALL includes SS, SF, FS and FF, and SS and SF use that pair's final outcomes, not those of every repeat. After 60 controls, with the clean rerun as reference, Camera has $d_{TR}=0.04360$ in SS (75 cases, 25 tasks) and $0.04291$ in SF (23 cases, 12 tasks); Sensor Noise has $0.02872$ in SS (91 cases, 27 tasks) and $0.03456$ in SF (16 cases, 10 tasks). The SS intervals for motion beyond the clean rerun are positive for Camera, $0.02619\ [0.01678,0.03596]$, and Sensor Noise, $0.01047\ [0.00181,0.01859]$, while those of Background, $0.00730\ [-0.00019,0.01414]$, and Light, $0.00228\ [-0.00348,0.00756]$, include zero. These outcome-defined groups have different support. Both runs of a pair can thus succeed along different paths. Beyond 60 controls, finished episodes shrink the paired set, so later values need their task and case counts.
+
+\subsection{Does response size identify lost successes?}
+\label{sec:plus-p0}
+This prespecified test asks whether response size ranks lost successes (SF) above joint successes (SS), within task. Its adjusted intervals cross the thresholds of both prespecified criteria, so it supports neither conclusion; the secondary pooled AUROCs are modest. This is consistent with main Sec.~\ref*{M-sec:sensitivity} but does not by itself establish it.
+
+\paragraph{Four directed scores fixed before the test.}
+The comparison starts from all 518 labelled pairs, separately from the display on the 28 shared tasks, and uses four fixed scalar scores: the relative AE L18 response over the ten plan positions at the first generation step, the relative prefix main-camera L18 response, the L18 full-key attention TV at the first generation step, and the RMS change of the first five commands (translation). Larger values always rank as a more likely lost success; this direction was fixed in advance and kept after the results were seen.
+
+\paragraph{Within-task discrimination with prespecified criteria.}
+The primary AUROC compares SF with SS within each task, with half credit for ties, weighting eligible tasks equally; a task lacking either outcome has no primary AUROC. Camera contributes ten eligible tasks with 15 SF and 23 SS cases; Sensor Noise contributes 13 with 18 SF and 32 SS cases. The 98.75\% intervals for this restricted support (20,000 whole-task bootstrap draws shared across quantities and families, Bonferroni-adjusted over the four scores within each family) are in the released analysis package. The positive criterion requires the same score's adjusted lower bound to exceed 0.60 under both Camera and Sensor Noise; the alternative criterion of no practical discrimination requires all eight adjusted upper bounds to lie below 0.70. The adjusted intervals cross the thresholds of both criteria.
+
+\paragraph{A secondary pooled comparison uses different support.}
+The pooled secondary analysis keeps all SF and SS cases, takes the logarithm of each score with a fixed $10^{-12}$ floor, subtracts its task--family mean and computes a pooled AUROC. Camera has 25 SF and 83 SS cases, with AUROCs 0.623/0.636/0.587/0.648 for the four scores; Sensor Noise has 22 SF and 125 SS, with 0.548/0.527/0.581/0.608. The adjusted intervals of the command score are [0.501,0.817] and [0.408,0.802]. Comparing higher with lower LIBERO-Plus difficulty levels under Camera and Sensor Noise, several responses increase while the within-task success-change intervals cross zero.

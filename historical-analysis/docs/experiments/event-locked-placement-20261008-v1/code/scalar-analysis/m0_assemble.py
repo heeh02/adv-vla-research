@@ -1,0 +1,21 @@
+import pandas as pd, numpy as np
+R='/Users/researcher/.codex/worktrees/adv-vla-research-20260924/Adv-VLA-π0.5/docs/experiments'
+A=R+'/libero-light-v1/integrated-analysis-20260928/atlas-v1/results-v1/'
+sup=pd.read_csv(A+'support.csv',low_memory=False)
+ep=sup[sup.anchor_slot==0][['episode_id','suite','task','init','noise_repeat','condition','result_status','success']].copy()
+print('episodes',len(ep), ep.result_status.value_counts().to_dict())
+ep['succ']=ep.success.map({True:1,False:0,'True':1,'False':0})
+print('success missing',ep.succ.isna().sum())
+ep['root']=ep.suite+'-t'+ep.task.astype(str).str.zfill(2)+'-i'+ep.init.astype(str)
+anc=pd.read_csv(A+'per-anchor-scalar.csv',low_memory=False)
+anc['root']=anc.suite+'-t'+anc.task.astype(str).str.zfill(2)+'-i'+anc.init.astype(str)
+anc=anc.merge(ep[['episode_id','succ']],on='episode_id',how='left')
+# clean partner outcome (same root & noise)
+cl=ep[ep.condition=='clean'][['root','noise_repeat','succ']].rename(columns={'succ':'clean_succ'})
+ep=ep.merge(cl,on=['root','noise_repeat'],how='left')
+anc=anc.merge(cl,on=['root','noise_repeat'],how='left')
+ep.to_pickle('ep.pkl'); anc.to_pickle('anc.pkl')
+el=pd.read_csv(R+'/analysis-system-20260929/comprehensive-review-20260930/late-evidence-synthesis-v1/joint-results-v2/episode-layer.csv.gz',low_memory=False)
+el.to_pickle('el.pkl')
+print(anc.shape, anc.groupby('anchor_slot').size().to_dict())
+print(ep.groupby('condition').agg(n=('succ','count'),sr=('succ','mean')).round(3).to_string())

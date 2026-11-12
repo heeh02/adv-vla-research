@@ -1,0 +1,82 @@
+{
+ "headlight_off~camera_plus30": [
+  0.823,
+  [
+   0.587,
+   0.913
+  ],
+  72
+ ],
+ "headlight_off~camera_minus30": [
+  0.758,
+  [
+   0.445,
+   0.888
+  ],
+  72
+ ],
+ "headlight_off~camera_plus15": [
+  0.717,
+  [
+   0.567,
+   0.867
+  ],
+  72
+ ],
+ "headlight_off~camera_minus15": [
+  0.829,
+  [
+   0.639,
+   0.912
+  ],
+  72
+ ],
+ "matched_global~headlight_off": [
+  0.068,
+  [
+   -0.346,
+   0.643
+  ],
+  72
+ ],
+ "matched_global~camera_plus30": [
+  -0.166,
+  [
+   -0.553,
+   0.151
+  ],
+  72
+ ],
+ "surface_warm~surface_cool": [
+  0.695,
+  [
+   0.18,
+   0.84
+  ],
+  72
+ ],
+ "surface_warm~camera_plus30": [
+  -0.191,
+  [
+   -0.46,
+   0.192
+  ],
+  72
+ ],
+ "camera_plus15~camera_plus30": [
+  0.965,
+  [
+   0.938,
+   0.986
+  ],
+  72
+ ],
+ "camera_minus15~camera_minus30": [
+  0.945,
+  [
+   0.852,
+   0.971
+  ],
+  72
+ ]
+}

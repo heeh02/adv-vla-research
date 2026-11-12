@@ -1,0 +1,24 @@
+\begin{table*}[ht]
+\caption{\textbf{The linear readout beats predicting no change only at L18, and there it matches clean-feature coordinates.} Task-equal translation MSE of the first five commands $\times10^3$, in squared adapter-command units; lower is better. All columns use the same 404 held-out cases on 28 tasks. Response, Clean and Random are 16 position-centered shared, clean-feature and random directions; the last two columns use uncentered fits. Full $H$ uses the complete hidden response, and First flow the clean--perturbed difference in the initial predicted velocity. First flow and No-change are the same at every layer. Main Fig.~\ref*{M-fig:token-structure}b shows the errors of the 16-direction sets relative to No-change; First flow is kept here as a downstream comparator. Paired readout intervals appear in Table~\ref{tab:readout-capacity-full} and Fig.~\ref{fig:full-readout-controls}.}
+\centering\small
+\setlength{\tabcolsep}{3.3pt}
+\begin{tabular}{llrrrrrrrr}\toprule
+Layer & Family & Response & Clean & Random & Full $H$ & First flow & No-change & \shortstack{Uncentered\\response} & \shortstack{Uncentered\\clean}\\\midrule
+L1 & Background & 4.297 & 10.213 & 7.298 & 6.877 & 0.453 & 2.084 & 4.282 & 9.030\\
+L1 & Camera & 16.280 & 20.428 & 18.038 & 15.072 & 1.258 & 15.414 & 16.263 & 19.629\\
+L1 & Light & 1.875 & 7.400 & 3.937 & 3.578 & 0.227 & 1.063 & 1.881 & 6.898\\
+L1 & Sensor Noise & 18.564 & 27.219 & 29.106 & 30.301 & 0.655 & 4.609 & 18.978 & 20.971\\
+\midrule
+L9 & Background & 3.825 & 7.597 & 5.069 & 2.771 & 0.453 & 2.084 & 3.935 & 3.423\\
+L9 & Camera & 14.407 & 19.831 & 16.383 & 13.418 & 1.258 & 15.414 & 14.442 & 17.308\\
+L9 & Light & 1.365 & 4.713 & 2.478 & 1.693 & 0.227 & 1.063 & 1.351 & 2.278\\
+L9 & Sensor Noise & 6.331 & 14.484 & 8.915 & 6.484 & 0.655 & 4.609 & 6.193 & 7.433\\
+\midrule
+L18 & Background & 1.035 & 0.964 & 4.194 & 0.686 & 0.453 & 2.084 & 1.040 & 0.872\\
+L18 & Camera & 3.737 & 3.457 & 11.073 & 4.349 & 1.258 & 15.414 & 3.940 & 3.568\\
+L18 & Light & 0.433 & 0.496 & 1.482 & 0.389 & 0.227 & 1.063 & 0.416 & 0.435\\
+L18 & Sensor Noise & 1.538 & 1.480 & 4.028 & 1.510 & 0.655 & 4.609 & 1.564 & 1.268\\
+\bottomrule\end{tabular}
+
+\label{tab:current-basis-control}
+\end{table*}

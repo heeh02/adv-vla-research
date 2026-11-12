@@ -1,0 +1,262 @@
+[
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 1401818,
+      "relative": "NEW-PAIR-TRACE-v1.jsonl.gz",
+      "sha256": "85e75f825cec8c6272ecf505638101a849a447f802412a8ad514d93c38c4978c",
+      "uri": "redacted-3b70606bf0d0",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 8016660,
+      "relative": "NORMALIZED-NEW-v1.jsonl.gz",
+      "sha256": "8e41dee3ef6908c78b606cda3fc51f456e5ba7c14882900b415d26492e543349",
+      "uri": "redacted-11b1290efae2",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 226671,
+      "relative": "INPUT-RECEIPT-v1.json",
+      "sha256": "d1d4f619075f718c1ef0ffd6e10891802e747f20e3c51f7d5f6f0e43088301ea",
+      "uri": "redacted-b04d6f3cb854",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-panel-existing-join-v1/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 82400,
+      "relative": "RESULT-v1.json",
+      "sha256": "146c977517f61e8303befdedaaee5a9bef829736d7c73115f3aa4cbc03e0e81d",
+      "uri": "redacted-224172ed18ff",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 6045,
+      "relative": "NEW-PAIR-TRACE-v1.jsonl.gz",
+      "sha256": "829623243c6c4b92393862788fc7cd2d6965d8f82bd7d94248123f5124b2dc8b",
+      "uri": "redacted-331ca26ac3a3",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 6045,
+      "relative": "NORMALIZED-NEW-v1.jsonl.gz",
+      "sha256": "829623243c6c4b92393862788fc7cd2d6965d8f82bd7d94248123f5124b2dc8b",
+      "uri": "redacted-46008eb7e851",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 2979,
+      "relative": "INPUT-RECEIPT-v1.json",
+      "sha256": "05230fbc62965fe855d6d4d1eee214000d90b040b975425363954a2584e57d8d",
+      "uri": "redacted-69b223964887",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 20405,
+      "relative": "RESULT-v1.json",
+      "sha256": "de0886b81f6e0106c86db6d189bcbb7332108867224b32cebbe23fa495ff02f0",
+      "uri": "redacted-d5f0371ea647",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 787379,
+      "relative": "Q0-WITNESSES.png",
+      "sha256": "eb8feaf13d0369f21776e88f39c24a0ee5b7000493665efeee475caaea7dde47",
+      "uri": "redacted-6fd3bf55d4d4",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/eval-closeout-v1/comparison-v1/rss-q0-numeric-witness-v2/ACTUAL-ACCEPTANCE-v1.json",
+    "object": {
+      "bytes": 731624,
+      "relative": "Q0-WITNESSES.svg",
+      "sha256": "934f469d6fdda612e8db04437fcbc03642a37c1f2c5ba2c9d340bdda5e2b0399",
+      "uri": "redacted-6a13df42b4f6",
+      "whole_GET_SHA_verified": true
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 9452970,
+      "relative": "cache/VERIFIED-INPUTS-v2.tar.gz",
+      "sha256": "3781abcc99c9ff1560cd2d60e50ca6a39d3dd75dcb80ac139b3c7d5151f553bc",
+      "uri": "redacted-5c4b77200a1c"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 6910160,
+      "relative": "science/PARSED-CACHE-v2.json.gz",
+      "sha256": "2409d78117901d82079bf7ba89eb65c6d88d6a2ec93a5615281e7caa3e1792f8",
+      "uri": "redacted-0d692d42027f"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 6910124,
+      "relative": "science/CACHE-v1.json.gz",
+      "sha256": "0fe9b72fb3d56410b144aca8d4b0957633ea47d1b50b328d3f43d5c21fcbbc12",
+      "uri": "redacted-651f67096a58"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 747513,
+      "relative": "science/F01-online-training.png",
+      "sha256": "f53caa0812c442ced8ec35371c0493c567ce9b26288db27e73ff8b40f1a93009",
+      "uri": "redacted-e6589d051819"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 2522035,
+      "relative": "science/F01-online-training.svg",
+      "sha256": "85315f8d9ad4f7a045451ef162f762b98b2e03362c354ba8134ffd61996a3c8f",
+      "uri": "redacted-f5003427f241"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 361709,
+      "relative": "science/F02-internal-EMA-validation.png",
+      "sha256": "eb07212e2d39dbcf00b71a3bd0a7bb2f0c92c751aa21757ccb3ddbb14b74121e",
+      "uri": "redacted-68a94d6f8e39"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 180096,
+      "relative": "science/F02-internal-EMA-validation.svg",
+      "sha256": "66ef19231df25f72c7a21d3abf5cd77b853127b774b86342e008d98ee760c172",
+      "uri": "redacted-686b2a048733"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 346611,
+      "relative": "science/F03-fixed-probe-EMA-C_old.png",
+      "sha256": "2258ed61eb89c68f28e253976c3df557c709c002fde7c2710c44708de21cfd96",
+      "uri": "redacted-7803d8f8f7fc"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 145816,
+      "relative": "science/F03-fixed-probe-EMA-C_old.svg",
+      "sha256": "ddfd2071c4463c699d79762267ec3673b5fde6223c131ca1125c3aae07185f5c",
+      "uri": "redacted-0b1d93ee1705"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 344153,
+      "relative": "science/F03-fixed-probe-EMA-T_added.png",
+      "sha256": "3795825addbeca9be37f6e1cd5346f936b8dc7a7d6bdf704caab80c4e44f4a28",
+      "uri": "redacted-d0bd88d42c31"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 148851,
+      "relative": "science/F03-fixed-probe-EMA-T_added.svg",
+      "sha256": "0e8d90103faa53f1d84ea96037cb6494f117c42e8fc9c97ae19b193ef364722f",
+      "uri": "redacted-4a73b9bc97fa"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 325041,
+      "relative": "science/F03-fixed-probe-online-C_old.png",
+      "sha256": "aeb94fad49373fd664e8eebfce911ff3cfdec869d27c3644f441b1d2d6cabb7e",
+      "uri": "redacted-ba05129ff8e2"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 144343,
+      "relative": "science/F03-fixed-probe-online-C_old.svg",
+      "sha256": "b48a1063c02986d189aecb6de51bd9c958860edab3d8202ee6e156aefe56d416",
+      "uri": "redacted-e2522d90ad2c"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 348002,
+      "relative": "science/F03-fixed-probe-online-T_added.png",
+      "sha256": "b451ccaa90738a5d0edffabe1397e2db91fe2a7d2f6457944efa0c399f117440",
+      "uri": "redacted-38a6feafbd2c"
+    },
+    "this_turn_cloud_revalidated": false
+  },
+  {
+    "acceptance": "/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/ACTUAL-RESULT-v2.json",
+    "object": {
+      "bytes": 154268,
+      "relative": "science/F03-fixed-probe-online-T_added.svg",
+      "sha256": "36ed441615e03f8c2c01c14cf9e24c60f3737018861b64de819535e687bc2138",
+      "uri": "redacted-62898ce3fc29"
+    },
+    "this_turn_cloud_revalidated": false
+  }
+]
