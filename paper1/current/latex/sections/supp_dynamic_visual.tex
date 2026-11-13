@@ -1,35 +1,32 @@
 \section{Response Structure at a Later Observation}
 \label{sec:supp-dynamic-visual}
-This section follows the response beyond the first query to a later observation of the same episode. Sec.~\ref{sec:supp-p08-dynamic} shows that shared directions fitted at one observation of an episode still retain most of the response at a later observation, far more than clean-feature or random directions; this supports the statement in main Sec.~\ref*{M-sec:shared} that the result holds at a later observation.
-
-\paragraph{Figures.}
-Later observation: Fig.~\ref{fig:supp-p08-full} (episodes, step $j=0$) and Table~\ref{tab:p08-dynamic-ranges} (condition means).
+Does the response keep its shared structure later in an episode? Shared directions fitted at one mid-episode observation retain far more of the response at a later observation than clean-feature or random directions (Sec.~\ref{sec:supp-p08-dynamic}). This supports main Sec.~\ref*{M-sec:shared}, though here only tasks are held out.
 
 \subsection{Shared directions fitted at one observation hold at a later observation}
 \label{sec:supp-p08-dynamic}
-Directions fitted at an earlier observation retain 50.8--64.2\% (L1), 35.7--45.7\% (L9) and 32.7--38.1\% (L18) of the centered response energy at a later observation on 16 held-out tasks, against at most 11.0\% for clean-feature directions and at most 1.8\% for random directions (Table~\ref{tab:p08-dynamic-ranges}). The advantage over both controls holds in all 30 condition--layer comparisons. Unlike the fit in main Sec.~\ref*{M-sec:shared}, this one holds out tasks but not perturbation conditions: the ten test conditions are also used for fitting.
+Directions fitted at an earlier observation retain 50.8--64.2\% (L1), 35.7--45.7\% (L9) and 32.7--38.1\% (L18) of the response energy around the fitting-data mean at a later observation on 16 held-out tasks, against at most 11.0\% for clean-feature and 1.8\% for random directions, in all 30 condition--layer comparisons (Table~\ref{tab:p08-dynamic-ranges}). Tasks are held out but conditions are not: the test tasks are never used in fitting, while the ten test conditions are.
 
 \paragraph{Data: two observations per episode.}
-The study runs $\pi_{0.5}$ on original LIBERO: 3,360 episodes with two observations each, 6,720 records. Features exist for 6,554 records; 83 missing episodes (166 records) stay missing. The two observations are taken after a suite-specific number of executed controls, Spatial 20/40, Object 25/55, Goal 30/60 and LIBERO-10 50/100, with no feature recording in between. At each observation, clean and perturbed images of the same visited state pass through the policy with the same initial noise; we record clean features and responses at L1, L9 and L18, first generation step ($j=0,t=1$), first five planned actions ($3\times5\times1024$ per observation). Between the observations, state, images and noise all change.
+Each episode is observed twice, so that directions fitted at one state are tested at another. The study runs $\pi_{0.5}$ on original LIBERO under ten persistent conditions, which stay on for the whole episode (Fig.~\ref{fig:supp-p08-full} legend): 3,360 episodes with two observations each, 6,720 records. Features exist for 6,554 records; 83 missing episodes (166 records) stay missing. The two observations are taken after a suite-specific number of executed controls, Spatial 20/40, Object 25/55, Goal 30/60 and LIBERO-10 50/100, with no feature recording in between. At each observation, clean and perturbed images of the same visited state pass through the policy with the same policy noise; we record clean features and responses at L1, L9 and L18, first generation step ($j=0,t=1$), first five planned actions ($3\times5\times1024$ per observation). Between the observations, state, images and noise all change.
 
 \paragraph{Fit: held-out tasks, seen conditions.}
-Of the 40 tasks, 24 are used for fitting and 16 are held out. Only the first observations of the fitting tasks under the ten persistent conditions enter the fit, 1,404/1,440 available observations, so the test conditions are seen during fitting. Tasks, conditions, start states, noise repeats and the five plan positions are weighted equally within their parents. Each layer has its own mean $\mu_p$ for each position $p$ and a channel scatter shared across positions,
+Of the 40 tasks, 24 are used for fitting and 16 are held out. Only the first observations of the fitting tasks enter the fit, 1,404/1,440 available observations. Tasks, conditions, start states, noise repeats and the five plan positions are each weighted equally within the level above. Each layer has its own mean $\mu_p$ for each position $p$ and a channel scatter shared across positions,
 \begin{equation}
 C=\sum_{i,p}\frac{w_i}{5}
 (\Delta H_{ip}-\mu_p)^\top(\Delta H_{ip}-\mu_p).
 \end{equation}
-Its top 16 eigenvectors form the shared directions $B\in\mathbb R^{1024\times16}$; the largest absolute loading of each fixes its sign. The rank is fixed and nothing is selected by outcome. Clean-feature directions use the same observations and weights but are fitted to clean features; random directions are a fixed Gaussian basis orthonormalized by QR. All three reconstruct the same response about the same $\mu_p$, with 16 coefficients per position computed from the test response, 80 per observation out of 5120 response entries. A mean-only baseline uses $\mu_p$ with zero coefficients.
+Its top 16 eigenvectors form the shared directions $B\in\mathbb R^{1024\times16}$; the largest absolute loading of each fixes its sign. The rank is fixed and nothing is selected by outcome. Clean-feature directions use the same observations and weights but are fitted to clean features; random directions are a fixed Gaussian basis orthonormalized by QR. All three reconstruct the same response about the same $\mu_p$, with 16 coefficients per position computed from the test response, 80 per observation out of 5120 response entries, so they differ only in their directions. A mean-only baseline uses $\mu_p$ with zero coefficients.
 
 \paragraph{Measures.}
-For one observation, let $E=\|\Delta H\|_F^2$, $E_c=\|\Delta H-\mu\|_F^2$ and $S_a=\|\Delta H-\widehat{\Delta H}^{(a)}\|_F^2$ be the raw energy, the centered energy and the reconstruction error of directions $a$. The plotted centered retention and the tested advantage over a control are
+For one observation, let $E=\|\Delta H\|_F^2$, $E_c=\|\Delta H-\mu\|_F^2$ and $S_a=\|\Delta H-\widehat{\Delta H}^{(a)}\|_F^2$ be the raw energy, the centered energy and the reconstruction error of directions $a$. The plotted centered retention and the tested advantage over a control (error saved, as a share of raw energy) are
 \begin{equation}
 R_a=1-\frac{S_a}{E_c},\qquad
 G_{\mathrm{response}-a}=\frac{S_a-S_{\mathrm{response}}}{E}.
 \end{equation}
-$R_a$ pools the energy of all five positions before forming the ratio. Negative values of $G$ are kept, and ratios with a zero denominator are undefined. Channel participation, the effective number of channels that carry the response energy, describes how widely the energy spreads; it is not a spectral rank or an intrinsic dimension.
+$R_a$ pools all five positions' energy before forming the ratio. Negative values of $G$ are kept, and ratios with a zero denominator are undefined. Channel participation, the effective number of channels carrying the response energy, describes its spread; it is not a spectral rank or an intrinsic dimension.
 
 \begin{table*}[t]\centering\small
-\caption{\textbf{At the later observation, shared directions retain far more of the response than both controls; retention falls with depth while participation rises.} 16 held-out tasks, ten persistent conditions; each cell has 94/96 defined observations and 16/16 tasks. Ranges are over condition means, averaging available noises within start states, start states within tasks, and tasks equally. All three sets of 16 directions reconstruct the same position-centered response. Retention pools the five positions' energies before forming the ratio; participation pools position energies on 1024 channels.}
+\caption{\textbf{At the later observation, shared directions retain far more of the response than both controls; retention falls with depth while participation rises.} Columns: centered retention (higher is better) of three sets of 16 directions, then channel participation. 16 held-out tasks, ten persistent conditions; each cell has 94/96 defined observations and 16/16 tasks. Ranges are over condition means, averaging available noises within start states, start states within tasks, and tasks equally. All three reconstruct the same position-centered response (plan-position means removed). Participation pools position energies on 1024 channels.}
 \label{tab:p08-dynamic-ranges}
 \begin{tabular}{lrrrr}\toprule
 Layer & Shared directions & Clean-feature directions & Random directions & Channel participation\\\midrule
@@ -40,10 +37,10 @@ L18 & 32.7--38.1\% & 8.2--11.0\% & 1.4--1.5\% & 186.2--229.0\\\bottomrule
 \end{table*}
 
 \paragraph{The advantage over both controls holds in every comparison.}
-All 30 condition--layer comparisons show a positive advantage over both controls, with positive 95\% lower bounds (descriptive). The intervals come from 2,000 whole-task bootstrap draws, which keep the dependence within tasks and among comparisons on the same 16 tasks, and condition on the fitted directions and the observed support. Retention changes little between the two observations: for the paired first-to-second-observation difference in retention of the shared directions, 28/30 intervals cross zero; the remaining two are pointwise contrasts without multiplicity adjustment.
+All 30 advantages have positive 95\% lower bounds (descriptive). Retention changes little between the two observations: for the paired first-to-second-observation difference in retention of the shared directions, 28/30 intervals cross zero; the remaining two are pointwise contrasts without multiplicity adjustment.
 
 \paragraph{Retention holds even when the response changes direction.}
-Fig.~\ref{fig:supp-p08-full} keeps all 960 planned held-out episodes under persistent conditions, 940 available and 20 missing. The horizontal axis is the cosine between the full $5\times1024$ responses at the two observations; the vertical axes are the second-observation retentions of the three sets of directions. Even near zero cosine, the shared directions retain appreciably more energy than clean-feature and random directions: the response changes, but it stays within the shared span. The scatter is descriptive, with no fitted threshold or association model; colors mark conditions, one point per episode.
+Fig.~\ref{fig:supp-p08-full} checks that retention does not merely reflect an unchanged response; it keeps all 960 planned held-out episodes (940 available, 20 missing). Its horizontal axis is the cosine between the full $5\times1024$ responses at the two observations. Even near zero cosine, the shared directions retain appreciably more energy than clean-feature and random directions: the response changes, but it stays within the shared span. The scatter is descriptive, with no fitted threshold or association model.
 
-\paragraph{Implementation notes.}
-The random directions and the bootstrap use a fixed seed (20261012).
+\paragraph{Statistics and implementation notes.}
+Intervals come from 2,000 whole-task bootstrap draws, which keep the dependence within tasks and among comparisons on the same 16 tasks, and condition on the fitted directions and the observed support. The random directions and the bootstrap use a fixed seed (20261012).

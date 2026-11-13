@@ -1,9 +1,9 @@
 \section{Information Used for Reconstruction, Prediction, and Readout}
 \label{sec:information-budget}
-Each test of a response receives different information and scores a different target (Table~\ref{tab:supp-information-budget}). Reconstruction, the C1 test, observes the response it scores: the 16 directions are fixed in advance, but their 160 coefficients per query come from the test response. C1 therefore shows that fixed directions, fitted without the test tasks and family, capture new responses, not that a response can be predicted unobserved. Templates and command readout are listed for contrast.
+Reconstruction, the C1 test, observes the response it scores: the 16 directions are fixed in advance, but their 160 coefficients per query come from the test response. C1 therefore shows that fixed directions, fitted without the test tasks and family, capture new responses, not that a response can be predicted unobserved. Table~\ref{tab:supp-information-budget} lists templates and the command readout for contrast.
 
 \begin{table*}[t]
-\caption{\textbf{Three tests, three information conditions.} Columns give what each test observes, its scored target and its question. $M$ is a training mean or position template, $B$ a learned channel basis (for example the shared directions). Reconstruction and its clean-feature and random controls project the same test response. Task holdouts concern analysis fits, not policy pretraining.}
+\caption{\textbf{Only reconstruction scores what it observes.} Columns: what each test observes, its scored target and its question. $M$ is a training mean or position template, $B$ a learned channel basis (for example the shared directions). Reconstruction and its clean-feature and random controls project the same test response. Task holdouts concern analysis fits, not policy pretraining.}
 
 \centering\footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -28,7 +28,7 @@ For one layer, $D\in\mathbb{R}^{10\times1024}$ is the paired response over ten p
 \end{equation}
 The $10\times16$ coefficients are computed from the test response. Sixteen directions therefore give 16 coefficients at each position, 160 per query, in addition to the stored directions and template. The test evaluates reuse of the directions, not of the coefficients.
 
-The clean-feature control learns directions from training clean features but projects the same test residual around the same template, so both sets of directions have the same target and test information. Mean-span controls also observe the target through their projection coefficients, unlike mean-only prediction: a global mean direction uses ten coefficients, a rank-ten span of the position means 100.
+The clean-feature control learns directions from training clean features but projects the same test residual around the same template, so both sets of directions have the same target and test information. Mean-span controls, projecting onto the span of training means, also observe the target through their projection coefficients, unlike mean-only prediction: a global mean direction uses ten coefficients, a rank-ten span of the position means 100.
 
 \paragraph{Command readout compares response coordinates with the first flow output.}
-The first-flow baseline is the clean--perturbed difference $\Delta v_0$ in the initial predicted velocity, with 320 coordinates. Response coefficients contribute 160 coordinates; their concatenation with $\Delta v_0$ contributes 480. Comparing the concatenation with first flow alone tests the additional command information available to the fitted readout. Only sets of directions of equal size match the coefficient budget. Final commands, measured motion and task success remain separate endpoints.
+The first-flow baseline is the clean--perturbed difference $\Delta v_0$ in the action expert's first update (initial predicted velocity), with 320 coordinates. Response coefficients contribute 160 coordinates; their concatenation with $\Delta v_0$ contributes 480. Comparing the concatenation with first flow alone tests the additional command information available to the fitted readout. Only sets of directions of equal size match the coefficient budget. Final commands, measured motion and task success remain separate endpoints.

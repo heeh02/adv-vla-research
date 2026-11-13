@@ -1,9 +1,9 @@
 \section*{Reading Guide and Measurement Definitions}
 \label{sec:supp-terms}
 \newenvironment{guidelist}{\small\begin{list}{}{\setlength{\leftmargin}{0.9em}\setlength{\itemindent}{-0.9em}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}}}{\end{list}}
-Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated limits, Part 3 the studies and terms. Recording sites and interval conventions are in Sec.~\ref{supp:recording-overview}; a reusable protocol and recomputation checks in Sec.~\ref{sec:supp-protocol-card}. Results are for $\pi_{0.5}$ unless stated.
+This guide maps each main-paper claim (C1--C4) to its evidence and key numbers (Part 1), each stated limit to its documentation (Part 2), and indexes the studies and terms (Part 3). Recording sites and interval conventions: Sec.~\ref{supp:recording-overview}; protocol and recomputation checks: Sec.~\ref{sec:supp-protocol-card}. Results are for $\pi_{0.5}$ unless stated.
 
-\paragraph{1. How this supplement supports the main paper.}
+\paragraph{1. Evidence for each main claim.}
 \textbf{C1: perturbations change the features along 16 shared directions per layer} (main Sec.~\ref{M-sec:shared}, Fig.~\ref{M-fig:token-structure}a).
 \begin{guidelist}
 \item \textbf{Sec.~\ref{sec:mean-controls}, Table~\ref{tab:mean-centered-controls}.} Held-out tasks and families, all 536 pairs: 36.7--84.2\% of the energy around the fitting-data mean, against 0.5--10.6\% (clean-feature) and 1.3--1.9\% (random); 16.26--75.00\% of the raw energy.
@@ -11,12 +11,12 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \item \textbf{Table~\ref{tab:mean-controls}.} Not the mean: uncentered shared directions retain 32.4--75.3\% of the raw energy, the span of the position means 13.5--30.4\%.
 \item \textbf{Sec.~\ref{sec:rank-sensitivity}, Figs.~\ref{fig:supp-rank-joint},~\ref{fig:supp-rank-known}.} Same ordering for 1 to 32 directions.
 \item \textbf{Secs.~\ref{sec:supp-energy-aggregation}, \ref{sec:supp-pi0-internals}, \ref{sec:supp-p08-dynamic}.} Energy-weighted tasks: 38.4--84.0\%. $\pi_0$: 39--77\%, against 1--28\% and about 1.5\%. A later observation (original LIBERO; tasks held out, conditions seen in fitting): 32.7--64.2\%, against 0.8--11.0\% and 1.4--1.8\%.
-\item \textbf{Sec.~\ref{sec:information-budget}.} A reconstruction uses 160 coefficients from the response it scores.
+\item \textbf{Sec.~\ref{sec:information-budget}.} Each reconstruction uses 160 coefficients from the response it scores.
 \end{guidelist}
 \textbf{C1, linear readout} (main Fig.~\ref{M-fig:token-structure}b).
 \begin{guidelist}
 \item \textbf{Sec.~\ref{sec:current-basis-readout}, Table~\ref{tab:current-basis-control}.} The 16 coordinates predict the command change better than no change at L18 in all families, worse at L1 and L9 in 7 of 8 cells. At L18 they match clean-feature coordinates (intervals span zero); first flow predicts best in every row.
-\item \textbf{Sec.~\ref{sec:supp-readout-capacity}.} Nonlinear readouts change 102 and 76 of 216 interval categories.
+\item \textbf{Sec.~\ref{sec:supp-readout-capacity}.} Nonlinear readouts keep the layer ordering but change 102 and 76 of 216 interval categories.
 \end{guidelist}
 \textbf{C2: restoration at L9 reduces command error} (main Sec.~\ref{M-sec:restoration}, Figs.~\ref{M-fig:teaser}b,~\ref{M-fig:native-restoration}).
 \begin{guidelist}
@@ -38,7 +38,7 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \end{guidelist}
 \textbf{Additional studies, not relied on by the main paper:} internal associations (Sec.~\ref{sec:supp-bounded-internal}, Table~\ref{tab:supp-internal-links}), gripper timing (Sec.~\ref{sec:supp-landmark-final}), LIBERO-Plus outcomes (Sec.~\ref{sec:supp-plus}).
 
-\paragraph{2. Limits stated in the main paper and where they are documented} (main Sec.~\ref{M-sec:discussion}).
+\paragraph{2. Where the main paper's stated limits are documented} (main Sec.~\ref{M-sec:discussion}).
 \begin{guidelist}
 \item \textbf{Sensitivity is measured at the episode start:} Sec.~\ref{supp:recording-overview}; the command--motion link weakens by 60 controls (Sec.~\ref{sec:early-late-association}); one later observation (Sec.~\ref{sec:supp-p08-dynamic}).
 \item \textbf{Restoration: one layer, 16 directions, two families, 216 cases, needs a clean observation:} Sec.~\ref{sec:allstep-restoration}; the test without one: Sec.~\ref{sec:supp-native-ablation}.

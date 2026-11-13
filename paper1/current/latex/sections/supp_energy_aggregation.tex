@@ -1,10 +1,10 @@
 \clearpage
 \section{Sensitivity to the Aggregation of Response Energy}
 \label{sec:supp-energy-aggregation}
-Does the C1 result depend on how response energy is averaged over tasks? No. When task energies are summed before taking the ratio, the shared directions retain $38.4$--$84.0\%$ of the response energy, against $0.46$--$10.91\%$ for clean-feature and $1.35$--$1.98\%$ for random directions, and they exceed both controls in all 12 layer--family cells (Table~\ref{tab:supp-energy-aggregation}). This supports Sec.~\ref*{M-sec:shared} of the main paper. It is a descriptive check with no new intervals; the task-equal score of the main paper remains the primary measure.
+Does the C1 result depend on how response energy is averaged over tasks? No. When task energies are summed before taking the ratio, the shared directions retain $38.4$--$84.0\%$ of the response energy, against $0.46$--$10.91\%$ for clean-feature and $1.35$--$1.98\%$ for random directions, and they exceed both controls in all 12 layer--family cells (Table~\ref{tab:supp-energy-aggregation}). This supports main Sec.~\ref*{M-sec:shared}. It is a descriptive check with no new intervals; the task-equal score of the main paper remains the primary measure.
 
 \paragraph{Two ways of aggregating.}
-Let $E_t$ be task $t$'s mean squared response magnitude around the fitting-data position mean, and $S_{t,m}$ its mean squared reconstruction error for directions $m$. The main score gives tasks equal weight, $|T|^{-1}\sum_t(1-S_{t,m}/E_t)$. The alternative sums errors and energies first,
+Let $E_t$ be task $t$'s mean squared response magnitude around the fitting-data mean at each plan position, and $S_{t,m}$ its mean squared reconstruction error for directions $m$. The main score gives tasks equal weight, $|T|^{-1}\sum_t(1-S_{t,m}/E_t)$. The alternative sums errors and energies first,
 \begin{equation}
 R_m^{\mathrm{energy}}=1-\frac{\sum_t S_{t,m}}{\sum_t E_t},
 \end{equation}

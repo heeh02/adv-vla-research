@@ -1,12 +1,12 @@
 \subsection{Influence of individual Camera tasks}
 \label{sec:auc-influence}
-The Camera attention-output AUROC is not carried by a single task: it stays above one half when any one task is removed (Table~\ref{tab:auc-influence}). Before deletion it is $0.842$ for the L18 attention output at the first generation step, on ten eligible tasks with 15 lost successes and 23 joint successes.
+Is the Camera attention-output AUROC carried by a single task? No: it stays above one half when any one task is removed (Table~\ref{tab:auc-influence}). Before deletion it is $0.842$ (L18, first generation step), on ten eligible tasks with 15 lost and 23 joint successes.
 
 \paragraph{Method.}
-Each same-task SF--SS comparison keeps its original setting and noise-draw weights, and eligible tasks are weighted equally. Each eligible task is removed once, and the table gives the average over the remaining tasks. The deletion rule was fixed before these calculations but after the association had been seen, so this is a post hoc influence analysis.
+Each eligible task is removed once, and the table gives the average over the remaining tasks; SF--SS comparisons keep their setting and noise-draw weights, and tasks are weighted equally. The deletion rule was fixed before these calculations but after the association had been seen, so this is a post hoc influence analysis.
 
 \begin{table}[h]
-\caption{\textbf{The Camera attention-output AUROC stays above one half after each single-task deletion.} All ten deletions are shown; task indices follow the released table. Each entry is the exact mean after removing the indicated task.}
+\caption{\textbf{The Camera attention-output AUROC stays above one half after each single-task deletion.} All ten deletions; task indices follow the released table. Last column: exact mean after removing that task.}
 \centering\small
 \begin{tabular}{lrrrr}\toprule
 Task & SF & SS & Task AUROC & After deletion\\\midrule

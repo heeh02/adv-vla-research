@@ -3,13 +3,13 @@
 Does a perturbation change the commands in the same way under a different draw of policy noise? For the arm it does: across the four families, the agreement of the translation changes is $0.884$--$0.920$ in $\pi_{0.5}$ and $0.799$--$0.889$ in $\pi_0$, where 1 means identical changes (Table~\ref{tab:q0-consistency-primary}). This supports Sec.~\ref*{M-sec:early} of the main paper: the first five commands are a repeatable readout of a perturbation. Gripper changes agree much less.
 
 \paragraph{Rotation repeats nearly as well; the gripper does not.}
-Rotation agreement spans $0.818$--$0.858$ in $\pi_{0.5}$ and $0.719$--$0.822$ in $\pi_0$. Agreement of the continuous gripper command is lower, $0.143$--$0.371$ and $0.077$--$0.342$. These ranges span the family point estimates; Table~\ref{tab:q0-consistency-primary} gives the intervals for each component.
+Rotation agreement spans $0.818$--$0.858$ in $\pi_{0.5}$ and $0.719$--$0.822$ in $\pi_0$. Agreement of the continuous gripper command is lower, $0.143$--$0.371$ and $0.077$--$0.342$. Ranges span the family point estimates; Table~\ref{tab:q0-consistency-primary} gives the intervals.
 
 \paragraph{The same perturbation under two noise draws.}
-We use the commands of the paired executions (Sec.~\ref{sec:five-arm}). Within each policy--setting record, $R_0/T_0$ and $R_1/T_1$ share a policy-noise draw. All four runs must have five commands at the first query ($q=0$), with verified initial state, source, noise draw and command positions; a command stays missing if its environment call did not return. All outcome groups, including joint failure, are eligible.
+We use the paired executions (Sec.~\ref{sec:five-arm}), where $R_0/T_0$ and $R_1/T_1$ share a policy-noise draw, so the two command changes of a setting differ only in that draw. All four runs need five commands at the first query ($q=0$), with verified initial state, source, noise draw and command positions; a command stays missing if its environment call did not return. All outcome groups, including joint failure, are eligible.
 
 \paragraph{A signed agreement score.}
-The score divides the inner product of the two noise-matched changes by their mean squared size, so equal changes score one, unequal changes in the same direction score below one, and opposing changes score below zero. Flatten the first five commands and write $d_n=T_n-R_n$, $n\in\{0,1\}$; translation and rotation have 15 coordinates each and the gripper five. Define
+The score divides the inner product of the two changes by their mean squared size: equal changes score one, unequal changes in the same direction less, and opposing changes below zero. Flatten the first five commands and write $d_n=T_n-R_n$, $n\in\{0,1\}$; translation and rotation have 15 coordinates each and the gripper five. Define
 \begin{align}
 D&=\tfrac12(\|d_0\|^2+\|d_1\|^2),\\
 M&=\left\|\tfrac12(d_0+d_1)\right\|^2,
@@ -25,18 +25,19 @@ s=\frac{U}{D}
 =\frac{2r\cos\theta}{1+r^2},\quad s\in[-1,1],
 \label{eq:q0-consistency}
 \end{equation}
-where the last form requires both norms to be positive and $r=\|d_1\|/\|d_0\|$. If both changes are zero, $s$ is undefined; if only one is zero, $s=0$ while the cosine is undefined. Ratios use the observed changes directly, without an epsilon or clipping. Reading $U$ as a squared population mean would require independent, identically distributed noise; the ratio is a descriptive score for the two recorded draws, not an unbiased estimator of a population ratio.
+where the last form requires both norms to be positive and $r=\|d_1\|/\|d_0\|$. If both changes are zero, $s$ is undefined; if only one is zero, $s=0$ while the cosine is undefined. No epsilon or clipping is used. Reading $U$ as a squared population mean would require independent, identically distributed noise; the ratio is a descriptive score for the two recorded draws, not an unbiased estimator of a population ratio.
 
 \paragraph{Support and weighting.}
 The primary plan has 202 settings on 28 common tasks per policy. All four runs have the first five commands in 197/202 settings for $\pi_{0.5}$ and 198/202 for $\pi_0$; Light has 43/48 settings on 26 tasks and 44/48 on 27, while the other families keep all primary settings and 28 tasks (Table~\ref{tab:q0-consistency-primary}). The full sensitivity scope keeps 258/268 and 263/268 settings (stored full-scope table); its families originally cover 34 Background, 32 Camera, 40 Light and 39 Sensor Noise tasks. Command eligibility and outcome availability are counted separately; the 39 unknown outcomes stay in the denominator of 2,680 runs.
 
-Per-setting scores are averaged within task, and tasks equally, per policy, family and component; the estimate is a mean of ratios. The 2,000 whole-task bootstrap draws share their task resampling across series, keep settings and noise pairs nested, and are all valid; the 95\% percentile intervals are pointwise and condition on the two noise draws and the selected settings.
+\paragraph{Statistics.}
+Per-setting scores are averaged within task, then over tasks equally, per policy, family and component (a mean of ratios). The 2,000 whole-task bootstrap draws share their task resampling across series, keep settings and noise pairs nested, and are all valid; the 95\% percentile intervals are pointwise and condition on the two noise draws and the selected settings.
 
 \input{sections/supp_q0_table_common28}
 
 \paragraph{Opposing changes and zero changes stay in the comparison.}
-The continuous gripper changes in opposite directions ($U<0$) in 36/197 and 62/198 primary settings, and the $\pi_0$ Light gripper interval crosses zero in both scopes. Translation never has $U<0$; $\pi_0$ Sensor Noise rotation has it once. All scores are defined and no setting has only one zero change; the rules for zero changes remain in the protocol. In the full scope the gripper has $U<0$ in 52/258 and 75/263 settings; this larger scope is a sensitivity analysis, not an independent replication.
+The continuous gripper changes in opposite directions ($U<0$) in 36/197 and 62/198 primary settings, and the $\pi_0$ Light gripper interval crosses zero in both scopes. Translation never has $U<0$; $\pi_0$ Sensor Noise rotation has it once. All scores are defined; no setting has only one zero change. In the full scope the gripper has $U<0$ in 52/258 and 75/263 settings; this larger scope is a sensitivity analysis, not an independent replication.
 
-Light has different eligible settings in the two policies, so a direct comparison of the policies requires their common settings. The gripper command can also be read as an event: Sec.~\ref{sec:supp-landmark-final} tests whether the timing of its first opening-to-closing transition adds information about lost success at a fixed cutoff.
+Light has different eligible settings in the two policies, so a direct comparison of the policies needs their common settings. Section~\ref{sec:supp-landmark-final} reads the gripper command as an event instead.
 
 \input{sections/supp_landmark_final}
