@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="机器人策略对视觉变化的反应强弱，并不能说明它是否会失败：视觉—语言—动作策略中的共享视觉响应与任务结果。">
+<link rel="canonical" href="https://heeh02.github.io/adv-vla-research/zh-CN.html">
+<link rel="alternate" hreflang="en" href="https://heeh02.github.io/adv-vla-research/">
+<link rel="alternate" hreflang="zh-CN" href="https://heeh02.github.io/adv-vla-research/zh-CN.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23003366'/%3E%3Crect x='7' y='9' width='18' height='5' rx='1.5' fill='%23c9d6e6'/%3E%3Crect x='7' y='18' width='10.5' height='5' rx='1.5' fill='%23e3b95a'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="敏感不等于脆弱 | Sensitivity Is Not Fragility">
+<meta property="og:description" content="机器人策略对视觉变化的反应强弱，并不能说明它是否会失败：视觉—语言—动作策略中的共享视觉响应与任务结果。">
+<meta property="og:url" content="https://heeh02.github.io/adv-vla-research/zh-CN.html">
+<meta property="og:image" content="https://heeh02.github.io/adv-vla-research/assets/figure1.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>敏感不等于脆弱 | Sensitivity Is Not Fragility</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Palette: the blue and gold of the university where this work was done; no emblem is shown.
+   Layout: a blue opening band, then a left-aligned reading column inside a wide measure; each finding pairs its text with one small
+   to-scale chart, then gives the paper's own figure a full-width white plate. Section eyebrows name the
+   link of the chain (image -> features -> commands -> motion -> outcome) that the finding belongs to. */
+:root {
+  --bg: #f6f7f9;            /* cool paper */
+  --surface: #ffffff;       /* cards and chart surfaces */
+  --ink: #0f1c2e;
+  --ink-2: #3f4c5e;
+  --muted: #5f6b7a;
+  --rule: #d9dee6;
+  --heading: #003366;       /* UST Blue (web colour 003366): headings, links, the opening band */
+  --accent: #003366;
+  --gold: #996600;          /* UST Gold (web colour 996600): rules and small marks */
+  --gold-text: #7a5200;     /* the gold, darkened one step for small text on the page ground */
+  --accent-wash: #e6edf5;
+  --mark: #1d5fa8;          /* chart blue, a lighter step of UST Blue: shared directions, restoration, gained */
+  --pert: #c2452d;          /* the perturbed run and lost successes, as in the paper's figures */
+  --gain: #1d5fa8;
+  --kept: #8a96a1;          /* clean reruns and kept successes: context, not the story */
+  --both: #3b4753;
+  --flag: rgba(0, 51, 102, 0.08);
+  --band: #003366;          /* the opening band */
+  --band-ink: #ffffff;
+  --band-ink-2: #c9d6e6;
+  --band-gold: #e3b95a;     /* the gold, lightened to read on the blue */
+  --band-line: rgba(255, 255, 255, 0.55);
+  --band-btn-ink: #00264d;
+  --plate: #ffffff;         /* figures keep a white ground in both themes */
+  --code-bg: #eaeef3;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1220; --surface: #111c2c; --ink: #e9eef5; --ink-2: #b5c0cf; --muted: #8c99aa; --rule: #233146;
+    --heading: #e9eef5; --accent: #8db7ea; --gold: #d9ad55; --gold-text: #d9ad55; --accent-wash: #16263c;
+    --mark: #4a94dc; --pert: #e56a4f; --gain: #4a94dc; --kept: #7d8a96; --both: #aab4bd; --flag: rgba(74, 148, 220, 0.13);
+    --band: #0d2a4d; --band-ink: #ffffff; --band-ink-2: #c9d6e6; --band-gold: #e3b95a; --band-line: rgba(255, 255, 255, 0.5); --band-btn-ink: #00264d;
+    --plate: #ffffff; --code-bg: #0d1726; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+    --bg: #0a1220; --surface: #111c2c; --ink: #e9eef5; --ink-2: #b5c0cf; --muted: #8c99aa; --rule: #233146;
+    --heading: #e9eef5; --accent: #8db7ea; --gold: #d9ad55; --gold-text: #d9ad55; --accent-wash: #16263c;
+    --mark: #4a94dc; --pert: #e56a4f; --gain: #4a94dc; --kept: #7d8a96; --both: #aab4bd; --flag: rgba(74, 148, 220, 0.13);
+    --band: #0d2a4d; --band-ink: #ffffff; --band-ink-2: #c9d6e6; --band-gold: #e3b95a; --band-line: rgba(255, 255, 255, 0.5); --band-btn-ink: #00264d;
+    --plate: #ffffff; --code-bg: #0d1726; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 var(--font-body); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+p { margin: 0; }
+sub { font-size: 0.72em; line-height: 0; }
+
+.wrap { max-width: 70rem; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.page { display: flex; flex-direction: column; gap: clamp(3.5rem, 8vw, 6rem); padding-block: clamp(3rem, 7vw, 5rem) 4rem; }
+.measure { max-width: 38rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.stack { display: flex; flex-direction: column; gap: 1.75rem; min-width: 0; }
+
+.topbar { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; justify-content: space-between; font-size: 0.875rem; }
+.topbar .mark { font-family: var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.topbar nav a { color: var(--ink-2); text-decoration: none; }
+.topbar nav a:hover { color: var(--accent); text-decoration: underline; }
+
+.eyebrow { font: 500 0.78rem/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-text); }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; color: var(--heading); }
+h1 { font-size: clamp(2.9rem, 8.4vw, 5.6rem); line-height: 0.94; letter-spacing: -0.025em; font-weight: 300; }
+h1 strong { font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.35rem); line-height: 1.08; letter-spacing: -0.015em; font-weight: 700; }
+h3 { font-size: 1.15rem; line-height: 1.25; font-weight: 700; }
+.subtitle { font: 500 clamp(1.05rem, 2vw, 1.3rem)/1.3 var(--font-display); color: var(--ink-2); max-width: 32rem; }
+.lede { font-size: 1.125rem; color: var(--ink); }
+.muted { color: var(--muted); }
+.num { font-family: var(--font-mono); font-size: 0.94em; white-space: nowrap; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: clamp(2rem, 5vw, 4rem); align-items: end; }
+.hero-text { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.authors { font-size: 0.9375rem; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.btn { display: inline-flex; align-items: center; min-height: 2.6rem; padding: 0.45rem 1rem; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); background: transparent; font: 500 0.9375rem/1.2 var(--font-body); text-decoration: none; }
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+
+/* opening band */
+.band { background: var(--band); color: var(--band-ink); border-bottom: 4px solid var(--gold); }
+.band .wrap { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); padding-block: clamp(1.1rem, 2.5vw, 1.6rem) clamp(2.5rem, 6vw, 4.5rem); }
+.band h1 { color: var(--band-ink); }
+.band h1 strong { color: var(--band-gold); }
+.band .subtitle, .band .authors, .band .topbar .mark { color: var(--band-ink-2); }
+.band .lede { color: var(--band-ink); }
+.band .topbar nav a { color: var(--band-ink); }
+.band .topbar nav a:hover { color: var(--band-gold); }
+.band .btn { border-color: var(--band-line); color: var(--band-ink); }
+.band .btn:hover { background: var(--band-ink); border-color: var(--band-ink); color: var(--band-btn-ink); }
+.band .btn.primary { background: var(--band-gold); border-color: var(--band-gold); color: var(--band-btn-ink); }
+.band .btn.primary:hover { background: var(--band-ink); border-color: var(--band-ink); color: var(--band-btn-ink); }
+.band a:focus-visible { outline-color: var(--band-gold); }
+.band .card { border-color: transparent; }
+.band .card h3 { color: var(--heading); }
+
+/* chart cards */
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(1rem, 2.4vw, 1.5rem); display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.card h3 { font-size: 1.05rem; }
+.card .note { font-size: 0.8125rem; line-height: 1.45; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.8125rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.sw { width: 0.8rem; height: 0.8rem; border-radius: 3px; flex: none; }
+.sw.dot { border-radius: 50%; }
+.sw.pert { background: var(--pert); } .sw.kept { background: var(--kept); } .sw.acc { background: var(--mark); } .sw.both { background: var(--both); }
+
+.bars { --valw: 6.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+.bars.w8 { --valw: 8.2rem; }
+.bars.w9 { --valw: 8.6rem; }
+.bars .cap { font: 500 0.8125rem/1.35 var(--font-body); color: var(--ink-2); }
+.bar-row { display: grid; grid-template-columns: minmax(0, 8.2rem) minmax(0, 1fr) var(--valw); gap: 0.6rem; align-items: center; font-size: 0.875rem; }
+.bar-row .name { color: var(--ink-2); line-height: 1.25; }
+.bar-row .val { font-family: var(--font-mono); font-size: 0.875rem; color: var(--ink); text-align: right; white-space: nowrap; }
+.track { position: relative; height: 18px; border-left: 1px solid var(--muted); }
+.track .fill { position: absolute; top: 2px; bottom: 2px; left: 0; border-radius: 0 4px 4px 0; min-width: 2px; }
+.track .fill.pert { background: var(--pert); } .track .fill.kept { background: var(--kept); } .track .fill.acc { background: var(--mark); }
+.track.range { border-left: 0; background: linear-gradient(var(--rule), var(--rule)) left center / 100% 1px no-repeat; }
+.track.range .fill { border-radius: 4px; }
+.track .pt { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
+.track .pt.kept { background: var(--kept); } .track .pt.acc { background: var(--mark); }
+.track .link { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--mark); opacity: 0.45; }
+.axis { display: grid; grid-template-columns: minmax(0, 8.2rem) minmax(0, 1fr) var(--valw); gap: 0.6rem; font: 400 0.75rem/1 var(--font-mono); color: var(--muted); }
+.axis .ticks { display: flex; justify-content: space-between; }
+@media (max-width: 30rem) {
+  .bar-row, .axis { grid-template-columns: minmax(0, 1fr) var(--valw); }
+  .bar-row .name { grid-column: 1 / -1; }
+  .axis .sp { display: none; }
+}
+
+/* chain */
+.chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; }
+.chain li { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 0.7rem 0.8rem; display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; position: relative; }
+.chain .stage { font: 700 1.05rem/1.2 var(--font-display); color: var(--heading); }
+.chain .what { font-size: 0.8125rem; line-height: 1.35; color: var(--muted); }
+.chain li + li::before { content: "\2192"; position: absolute; left: -0.25rem; top: 50%; transform: translate(-50%, -50%); color: var(--gold-text); font: 500 1rem/1 var(--font-mono); }
+.questions { margin: 0; padding: 0 0 0 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.questions li::marker { font-family: var(--font-mono); color: var(--muted); }
+.questions em { font-style: normal; font-weight: 600; }
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0; }
+.terms div { border-top: 2px solid var(--gold); padding-top: 0.7rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.terms dt { font: 700 1.15rem/1.2 var(--font-display); color: var(--heading); }
+.terms dd { margin: 0; color: var(--ink-2); font-size: 0.9688rem; }
+@media (max-width: 46rem) {
+  .chain { grid-template-columns: minmax(0, 1fr); }
+  .chain li + li::before { content: "\2193"; left: 1.2rem; top: -0.25rem; transform: translate(0, -50%); }
+  .terms { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* findings */
+.split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+@media (max-width: 56rem) { .hero, .split { grid-template-columns: minmax(0, 1fr); } .hero { align-items: start; } }
+.plate { margin: 0; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.plate-img { background: var(--plate); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(0.6rem, 2vw, 1.25rem); overflow-x: auto; }
+.plate-img img { display: block; width: 100%; min-width: 40rem; height: auto; }
+.plate figcaption { font-size: 0.875rem; line-height: 1.5; color: var(--muted); max-width: 46rem; }
+.plate figcaption b { color: var(--ink-2); font-weight: 600; }
+
+/* threshold explorer */
+.explorer { gap: 1rem; }
+.control { display: flex; flex-direction: column; gap: 0.5rem; }
+.control label { font-size: 0.9375rem; color: var(--ink); }
+.control output { font: 500 1rem/1 var(--font-mono); background: var(--accent-wash); color: var(--ink); padding: 0.15rem 0.45rem; border-radius: 4px; }
+input[type="range"] { width: 100%; accent-color: var(--mark); min-height: 2rem; margin: 0; }
+#pairs-plot { position: relative; min-width: 0; }
+#pairs-svg { display: block; width: 100%; touch-action: pan-y; }
+#pairs-svg text { font-family: var(--font-body); fill: var(--ink-2); font-size: 12px; }
+#pairs-svg .rowlab { fill: var(--ink); font-weight: 600; }
+#pairs-svg .rowsub { fill: var(--muted); }
+#pairs-svg .tick { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
+#pairs-svg .grid { stroke: var(--rule); stroke-width: 1; }
+#pairs-svg .one { stroke: var(--muted); stroke-width: 1; }
+#pairs-svg .flagzone { fill: var(--flag); }
+#pairs-svg .thr { stroke: var(--mark); stroke-width: 2; }
+#pairs-svg .thrlab { fill: var(--ink); font-size: 11.5px; font-weight: 500; }
+#pairs-svg circle { stroke: var(--surface); stroke-width: 2; transition: opacity 0.12s linear; }
+#pairs-svg .d-SS { fill: var(--kept); } #pairs-svg .d-SF { fill: var(--pert); } #pairs-svg .d-FS { fill: var(--gain); } #pairs-svg .d-FF { fill: var(--both); }
+#pairs-svg .off { opacity: 0.42; }
+#pairs-svg .hot { stroke: var(--ink); }
+#pairs-tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 0.8125rem; line-height: 1.35; padding: 0.35rem 0.55rem; border-radius: 6px; max-width: 14rem; z-index: 2; }
+#pairs-tip b { font-family: var(--font-mono); font-weight: 500; }
+.readout { display: flex; flex-direction: column; gap: 0.55rem; }
+.readout .say { font-size: 0.9688rem; color: var(--ink); }
+details { font-size: 0.875rem; color: var(--ink-2); }
+summary { cursor: pointer; color: var(--accent); width: fit-content; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 0.875rem; min-width: 100%; }
+th, td { text-align: left; padding: 0.5rem 0.9rem 0.5rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-2); }
+td.n, th.n { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; padding-right: 0; padding-left: 0.9rem; }
+
+/* closing sections */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2.5rem; }
+.pair > div { border-top: 2px solid var(--gold); padding-top: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+.pair p { color: var(--ink-2); }
+.limits { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--ink-2); }
+@media (max-width: 46rem) { .pair { grid-template-columns: minmax(0, 1fr); } }
+.codebox { position: relative; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px; min-width: 0; }
+.codebox pre { margin: 0; padding: 1rem 1rem 1rem 1rem; overflow-x: auto; font: 400 0.8438rem/1.6 var(--font-mono); color: var(--ink); }
+.codebox button { position: absolute; top: 0.5rem; right: 0.5rem; font: 500 0.75rem/1 var(--font-body); padding: 0.4rem 0.65rem; border-radius: 6px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.codebox button:hover { border-color: var(--ink); }
+.codebox pre.withbtn { padding-top: 2.6rem; }
+footer { border-top: 1px solid var(--rule); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { #pairs-svg circle { transition: none; } }
+.topbar-actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; }
+.topbar .lang-btn { min-height: 2rem; padding: 0.3rem 0.8rem; font-size: 0.8125rem; flex: none; }
+html[lang="zh-CN"] {
+  --font-display: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+html[lang="zh-CN"] h1 { font-weight: 500; line-height: 1.08; }
+html[lang="zh-CN"] h2 { line-height: 1.25; }
+</style>
+</head>
+<body>
+<div class="band"><div class="wrap">
+
+  <header class="topbar">
+    <span class="mark">冻结的 &pi;<sub>0.5</sub> 和 &pi;<sub>0</sub> &middot; LIBERO 与 LIBERO-Plus</span>
+    <div class="topbar-actions">
+      <nav aria-label="页面章节">
+        <a href="#path">研究路径</a>
+        <a href="#findings">主要发现</a>
+        <a href="#setup">实验设置</a>
+        <a href="#reproduce">复现</a>
+        <a href="#cite">引用</a>
+      </nav>
+      <a class="btn lang-btn" href="index.html" hreflang="en" lang="en" aria-label="Switch to the English version">EN</a>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-text">
+      <h1 id="title">敏感不等于<br><strong>脆弱</strong></h1>
+      <p class="subtitle">视觉—语言—动作策略中的共享视觉响应与任务结果</p>
+      <p class="lede">机器人策略可能对视觉变化反应强烈，却依然完成任务；也可能几乎没有反应，却以失败告终。我们沿着特征、指令、运动和任务结果，追踪视觉扰动在两个冻结策略中的传递，并测量反应与失效在何处分离。</p>
+      <p class="authors" data-placeholder="authors">作者名单待补充。</p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/main.pdf" target="_blank" rel="noopener">论文</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/supplement.pdf" target="_blank" rel="noopener">补充材料</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research" target="_blank" rel="noopener">代码与数据</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.zh-CN.md" target="_blank" rel="noopener">逐图指南</a>
+      </div>
+    </div>
+
+    <div class="card" role="group" aria-labelledby="hero-chart-title">
+      <h3 id="hero-chart-title">&pi;<sub>0</sub> 在传感器噪声下：运动小于无扰动重跑，失败却更多</h3>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw kept"></i>第二次无扰动运行（新的策略噪声）</span>
+        <span><i class="sw pert"></i>传感器噪声运行</span>
+      </div>
+      <div class="bars">
+        <p class="cap">五个控制步后与无扰动运行的距离</p>
+        <div class="bar-row"><span class="name">第二次无扰动运行</span><span class="track"><i class="fill kept" style="width:100%"></i></span><span class="val">6.1 mm</span></div>
+        <div class="bar-row"><span class="name">传感器噪声运行</span><span class="track"><i class="fill pert" style="width:57.4%"></i></span><span class="val">3.5 mm</span></div>
+      </div>
+      <div class="bars">
+        <p class="cap">损失的任务成功率</p>
+        <div class="bar-row"><span class="name">第二次无扰动运行</span><span class="track"></span><span class="val">0.0 个百分点</span></div>
+        <div class="bar-row"><span class="name">传感器噪声运行</span><span class="track"><i class="fill pert" style="width:100%"></i></span><span class="val">14.3 个百分点</span></div>
+      </div>
+      <p class="note">28 个 LIBERO 任务上的 110 次配对运行。这些策略从随机噪声生成动作，因此两次无扰动运行也会产生不同运动。无扰动重跑正是全文使用的参照尺度。</p>
+    </div>
+  </section>
+
+</div></div>
+
+<div class="wrap page">
+
+  <section id="path" class="stack" aria-labelledby="path-h">
+    <div class="measure">
+      <p class="eyebrow">研究问题</p>
+      <h2 id="path-h">从像素到任务结果，追踪一次扰动</h2>
+      <p>相机位置移动、图像噪声等视觉变化并不改变任务本身，却可能显著降低视觉—语言—动作策略的成功率。要让这些策略更稳健，就需要知道扰动改变了策略内部的什么，以及如何评价一种修正。我们在路径的每个环节，比较从同一物理状态、相同策略噪声开始的一次无扰动运行和一次扰动运行。</p>
+    </div>
+    <ol class="chain" aria-label="扰动的传递路径">
+      <li><span class="stage">图像</span><span class="what">无扰动或扰动后的观测</span></li>
+      <li><span class="stage">特征</span><span class="what">动作专家第 L1、L9、L18 层的状态</span></li>
+      <li><span class="stage">指令</span><span class="what">发送给机器人的前五条指令</span></li>
+      <li><span class="stage">运动</span><span class="what">第 5 和第 60 个控制步后的末端执行器位置</span></li>
+      <li><span class="stage">结果</span><span class="what">回合结束时任务是否成功</span></li>
+    </ol>
+    <div class="split">
+      <ol class="questions">
+        <li><em>从图像到特征。</em>不同扰动是否让特征沿共享方向变化？</li>
+        <li><em>从特征到指令。</em>沿这些方向恢复无扰动数值，能否让指令回到接近无扰动运行的位置？</li>
+        <li><em>从指令到运动和结果。</em>指令变化与运动、任务成功之间有什么关系？</li>
+      </ol>
+      <dl class="terms">
+        <div><dt>敏感性</dt><dd>扰动使特征、指令或运动改变了多少。</dd></div>
+        <div><dt>脆弱性</dt><dd>扰动使任务成功率付出了多少代价。</dd></div>
+      </dl>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure1.png" width="2750" height="1166" alt="策略示意图：无扰动图像和扰动图像依次经过视觉编码器、VLM 前缀和包含 18 个块的动作专家。在 L1、L9、L18 块后记录特征差，并在 L9 后沿 16 个共享方向恢复无扰动数值。侧栏显示，在相机变化和传感器噪声下，恢复会减小指令误差并提高任务成功率。"></div>
+      <figcaption><b>在冻结的 &pi;<sub>0.5</sub> 中，扰动效应的记录与恢复位置。</b>响应指动作专家 L1、L9、L18 块后，扰动特征减去无扰动特征的差值。恢复则是在 L9 后，沿 16 个共享方向把无扰动数值复制回去。</figcaption>
+    </figure>
+  </section>
+
+  <div id="findings" class="page" style="padding-block:0">
+
+  <section class="stack" aria-labelledby="f1-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">图像 &rarr; 特征</p>
+        <h2 id="f1-h">不同扰动让特征沿相同的少数方向变化</h2>
+        <p>在 &pi;<sub>0.5</sub> 中，我们在每一层用扰动引起的特征变化拟合 16 个方向。每次拟合同时留出待测试的任务和扰动族，因此，用 Camera 响应测试的方向从未见过 Camera 响应。</p>
+        <p>面对这些未见过的响应，16 个方向仍能捕获大部分变化；而用无扰动特征拟合的 16 个方向或随机选取的方向几乎捕获不到。该结果在 &pi;<sub>0</sub> 中、使用其他方向数量时，以及在回合中较晚的观测上同样成立。</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c1-title">
+        <h3 id="c1-title">16 个方向捕获的未见响应比例</h3>
+        <div class="bars">
+          <div class="bar-row"><span class="name">共享方向</span><span class="track range"><i class="fill acc" style="left:36.5%;width:47.1%"></i></span><span class="val">36.5&ndash;83.6%</span></div>
+          <div class="bar-row"><span class="name">无扰动特征方向</span><span class="track range"><i class="fill kept" style="left:0.5%;width:9.7%"></i></span><span class="val">0.5&ndash;10.2%</span></div>
+          <div class="bar-row"><span class="name">随机方向</span><span class="track range"><i class="fill kept" style="left:1.3%;width:0.6%"></i></span><span class="val">1.3&ndash;1.9%</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0%</span><span>50%</span><span>100%</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">每条横杠覆盖三层、四个扰动族的范围。28 个任务上的 404 对无扰动—扰动样本；任务和扰动族同时留出。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure3.png" width="2750" height="1016" alt="两行四列面板，每列对应一个扰动族。上排显示共享方向、无扰动特征方向和随机方向在 L1、L9、L18 层保留的响应能量比例。下排显示用相同坐标的线性读出预测指令变化时，相对于不预测变化的误差。"></div>
+      <figcaption><b>共享方向保留的未见响应远多于对照；在最后一层，指令的预测效果最好。</b>小点表示任务，大点表示任务均值。</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f2-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">特征 &rarr; 指令</p>
+        <h2 id="f2-h">沿这些方向恢复无扰动数值，可以把指令拉回</h2>
+        <p>作为一项因果检验，我们在动作生成过程中，使用同一状态的无扰动观测，在中间层 L9 沿共享方向把无扰动数值复制回去。其他所有内容都保持扰动状态，包括后续块仍然读取的图像。</p>
+        <p>在 31 个留出任务上，前五条指令向无扰动运行的指令靠近。27 个 Camera 任务中有 25 个、30 个 Sensor Noise 任务中有 24 个误差下降。1,024 个通道中的 16 个方向，达到了替换整个层所能实现效果的 86.9% 和 70.7%。任务成功率也分别提高 1.85 和 3.33 个百分点。</p>
+        <p class="muted">该测试需要同一状态的无扰动观测，因此它是一项受控实验，而不是一种可以直接部署的方法。</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c2-title">
+        <h3 id="c2-title">恢复前后，前五条指令的误差</h3>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw dot kept"></i>扰动，未编辑</span>
+          <span><i class="sw dot acc"></i>恢复后</span>
+        </div>
+        <div class="bars w8">
+          <div class="bar-row"><span class="name">相机变化</span><span class="track range"><i class="link" style="left:62.4%;width:19.4%"></i><i class="pt kept" style="left:81.8%"></i><i class="pt acc" style="left:62.4%"></i></span><span class="val">0.409 &rarr; 0.312</span></div>
+          <div class="bar-row"><span class="name">传感器噪声</span><span class="track range"><i class="link" style="left:39.8%;width:2%"></i><i class="pt kept" style="left:41.8%"></i><i class="pt acc" style="left:39.8%"></i></span><span class="val">0.209 &rarr; 0.199</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0</span><span>0.25</span><span>0.5</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">与无扰动运行指令的距离，以指令单位表示；越小越接近无扰动运行。Camera 下下降 24%，Sensor Noise 下下降 5%。Camera 96 个案例、Sensor Noise 120 个案例，每个案例运行六次。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure4.png" width="2750" height="741" alt="森林图。各行分别比较恢复与未编辑的扰动运行、随机方向、无扰动特征方向，以及替换整个 L9 状态，展示相机变化和传感器噪声下的指令误差下降与任务成功率提升。"></div>
+      <figcaption><b>恢复与未编辑的扰动运行、两个对照，以及替换整个 L9 状态的比较。</b>正值有利于恢复。均值带同时 95% 区间；小点表示任务。</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f3-h">
+    <div class="measure">
+      <p class="eyebrow">指令 &rarr; 运动 &rarr; 结果</p>
+      <h2 id="f3-h">变化有多大，不等于代价有多大</h2>
+      <p>指令变化确实会传递到机器人。五个控制步后，指令变化的大小几乎能完美排出运动变化的大小（&pi;<sub>0.5</sub> 的秩相关为 0.95，&pi;<sub>0</sub> 为 0.97）；到第 60 个控制步，这种联系仍然可见（0.47 和 0.41）。</p>
+      <p>但一次运行移动了多远，并不能说明它是否会失败。按运动变化对运行排序时，混合所有扰动族得到的 AUROC 为 0.72 和 0.64，限定在同一扰动族内为 0.62 和 0.55，而 &pi;<sub>0</sub> 在 Sensor Noise 下仅为 0.49。AUROC 为 0.5 相当于随机判断。</p>
+    </div>
+
+    <div class="card explorer" role="group" aria-labelledby="ex-title">
+      <h3 id="ex-title">试着按机器人运动距离找出失败</h3>
+      <p class="note">每个点代表 110 次 &pi;<sub>0</sub> Sensor Noise 运行中的一次。横轴是五个控制步后它与无扰动运行的距离，相对于同一设定下一次无扰动重跑的距离。移动阈值，看看哪些运行会被标记。</p>
+      <div class="control">
+        <label for="thr">当运动距离超过无扰动重跑的 <output id="thr-out" for="thr">1.00&times;</output> 时，将该运行标记</label>
+        <input type="range" id="thr" min="0" max="240" step="1" value="170" aria-describedby="say">
+      </div>
+      <div id="pairs-plot">
+        <svg id="pairs-svg" role="img" aria-label="110 次运行的点图，横轴为对数刻度的运动比，按四种结果分为四行。丢失成功的运行与保持成功的运行覆盖相近的范围。"></svg>
+        <div id="pairs-tip" hidden></div>
+      </div>
+      <div class="readout">
+        <p class="say" id="say" aria-live="polite"></p>
+        <div class="bars w9">
+          <div class="bar-row"><span class="name">被标记的丢失成功运行</span><span class="track"><i class="fill pert" id="m-sf" style="width:0%"></i></span><span class="val" id="v-sf"></span></div>
+          <div class="bar-row"><span class="name">被标记的保持成功运行</span><span class="track"><i class="fill kept" id="m-ss" style="width:0%"></i></span><span class="val" id="v-ss"></span></div>
+        </div>
+        <p class="note">无论阈值放在哪里，两组被标记的比例都大致相同。这就是 AUROC 为 0.49 时的样子。</p>
+      </div>
+      <details>
+        <summary>以表格查看数量</summary>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>结果（先无扰动，后扰动）</th><th class="n">运行次数</th><th class="n">运动距离小于无扰动重跑</th></tr></thead>
+            <tbody>
+              <tr><td>保持成功</td><td class="n">84</td><td class="n">65</td></tr>
+              <tr><td>丢失成功</td><td class="n">18</td><td class="n">12</td></tr>
+              <tr><td>转为成功</td><td class="n">2</td><td class="n">2</td></tr>
+              <tr><td>两次均失败</td><td class="n">6</td><td class="n">4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="split">
+      <div class="measure">
+        <h3>净成功率会掩盖成功的丢失与新增</h3>
+        <p>扰动后，一些原本成功的运行会失败，一些原本失败的运行会成功，净变化只显示两者之差。在 Background 下，&pi;<sub>0.5</sub> 丢失 3.57% 的成功，也新增 3.57% 的成功：净成功率不变，但实际有 7.14% 的结果发生改变。</p>
+        <p>仅是一次无扰动重跑，也能改变多达 7.1% 的结果，因此必须参照无扰动重跑来解读这些变化。在两个策略中，Camera 和 Sensor Noise 下丢失的成功都超过重跑水平，新增的成功则没有。</p>
+      </div>
+      <div class="measure">
+        <h3>其他比较中的同一落差</h3>
+        <p>移除一个前灯对 &pi;<sub>0.5</sub> 前五条指令的改变，是图像统计量相匹配的调暗操作的 5.1 倍，但两者都在 80 次运行中成功 77 次。在一项包含十个条件的研究中，条件的平均指令变化可以排出平均成功率变化（秩相关为 &minus;0.90）；但看全部 400 个任务与条件组合时，相关性仅为 &minus;0.075。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure5.png" width="2750" height="1133" alt="三个面板。左图：两个策略在各扰动族下的运动比与成功率变化。右上：逐任务运动比，以及丢失和新增成功的比例。右下：全部 110 个 π0 Sensor Noise 配对，按结果分组。"></div>
+      <figcaption><b>微小的运动变化也可能伴随任务失败，净成功率还会掩盖成功的丢失与新增。</b>运动比：五个控制步后，扰动运行与无扰动运行之间的距离，相对于两次无扰动运行之间距离的比值。</figcaption>
+    </figure>
+  </section>
+
+  </div>
+
+  <section class="stack" aria-labelledby="gives-h">
+    <div class="measure">
+      <p class="eyebrow">对后续研究的启示</p>
+      <h2 id="gives-h">一个干预位置，一把评估标尺</h2>
+    </div>
+    <div class="pair">
+      <div><h3>共同的干预位置</h3><p>不同种类的扰动会沿策略内部相同的少数方向产生作用，而恢复这些方向会改变指令。不同干扰都可以通过同一组内部成分来研究和修正。</p></div>
+      <div><h3>评估标尺</h3><p>任何修正，包括我们的修正，都应该以无扰动重跑为参照，用配对任务结果来评价：哪些成功被丢失，哪些成功被新增，以及这与策略自身随机性造成的结果有何不同。</p></div>
+    </div>
+  </section>
+
+  <section id="setup" class="stack" aria-labelledby="setup-h">
+    <div class="measure">
+      <p class="eyebrow">实验设置</p>
+      <h2 id="setup-h">三项配对研究，约 4,000 次模拟器运行</h2>
+      <p>所有研究都在 LIBERO 模拟器中，使用经过 LIBERO 微调后冻结的 &pi;<sub>0.5</sub> 和 &pi;<sub>0</sub>，并测试 LIBERO-Plus 的四类扰动：Background、Camera、Light 和 Sensor Noise。每项比较都让同一设定从相同初始状态、相同策略噪声开始，分别进行一次无扰动运行和一次扰动运行，因此只有图像不同。</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>研究</th><th>比较内容</th><th>数据</th></tr></thead>
+        <tbody>
+          <tr><td>内部记录（&pi;<sub>0.5</sub>）</td><td>首次策略查询时的无扰动与扰动特征、指令</td><td>28 个任务上的 404 对（全部 40 个任务为 536 对）</td></tr>
+          <tr><td>恢复（&pi;<sub>0.5</sub>）</td><td>每个案例运行六次：无扰动、扰动、恢复、两个对照、替换整个 L9 状态</td><td>Camera 96 个案例、Sensor Noise 120 个案例；31 个留出任务上的 1,296 次运行</td></tr>
+          <tr><td>配对执行（两个策略）</td><td>每个设定两次无扰动、两次扰动和一次重复运行；记录指令、第 5 和第 60 个控制步后的运动，以及最终是否成功</td><td>每个策略在 40 个任务上有 268 个设定；计划 2,680 次运行</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure2.png" width="2750" height="1127" alt="四幅示意图：一次策略查询包含十步生成更新和五个执行控制步；从相同噪声开始配对记录无扰动与扰动分支；在每个生成步于 L9 进行恢复；以及从同一状态开始的五次运行在第 5 和第 60 个控制步后的比较。"></div>
+      <figcaption><b>策略如何运行，以及每项研究比较什么。</b>另一项在原始 LIBERO 上的测试计划进行 6,048 次运行，无需无扰动观测即可移除共享成分；结果见补充材料。</figcaption>
+    </figure>
+    <div class="measure">
+      <h3>局限</h3>
+      <ul class="limits">
+        <li>敏感性在回合开始时测量；后续与接触相关的关键步骤留待未来研究。</li>
+        <li>恢复实验只在 &pi;<sub>0.5</sub> 的一层、16 个方向、四类扰动中的两类和 216 个案例上测试，并且需要同一状态的无扰动观测。</li>
+        <li>共享方向也承载 Background 引起的响应，而这种扰动对 &pi;<sub>0.5</sub> 的净成功率没有影响。它们描述策略如何响应视觉变化，无论这种变化有害与否。</li>
+        <li>所有实验均为模拟实验，使用两个相关策略，并选用扰动程度适中的设定。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reproduce" class="stack" aria-labelledby="rep-h">
+    <div class="measure">
+      <p class="eyebrow">复现</p>
+      <h2 id="rep-h">一条命令核对主要数值</h2>
+      <p>检查只需 Python 3.9 或更高版本，以及 Python 标准库。它会重建共享方向结果背后的任务分数，重新计算 216 个恢复案例的指令误差，并重新计算配对结果。仓库还提供绘图脚本、采集代码和数据发布。</p>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-rep">复制</button>
+      <pre class="withbtn" id="code-rep">git clone https://github.com/heeh02/adv-vla-research.git
+cd adv-vla-research
+python3 -B reproduce/paper.py --output paper-results.json</pre>
+    </div>
+    <p class="muted"><a href="https://github.com/heeh02/adv-vla-research/blob/main/reproduce/README.md" target="_blank" rel="noopener">复现指南</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0" target="_blank" rel="noopener">数据发布</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.zh-CN.md" target="_blank" rel="noopener">中文逐图讲解</a></p>
+  </section>
+
+  <section id="cite" class="stack" aria-labelledby="cite-h">
+    <div class="measure">
+      <p class="eyebrow">引用</p>
+      <h2 id="cite-h">BibTeX</h2>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-bib">复制</button>
+      <pre class="withbtn" id="code-bib">@misc{sensitivity_not_fragility_2026,
+  title  = {Sensitivity Is Not Fragility: Shared Visual Responses and
+            Task Outcomes in Vision-Language-Action Policies},
+  author = {Author list to be added},
+  year   = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p>代码采用 Apache-2.0 许可；文字、图和派生数据采用 CC BY 4.0 许可。模型权重和基准测试资产保留其上游项目的条款。</p>
+    <p>关于干预与预测、训练接续的两项配套研究，也以草稿形式发布在同一仓库中，供其他研究者继续推进。</p>
+  </footer>
+</div>
+<script>
+(function () {
+  "use strict";
+  var PAIRS = [["SS",2.0862],["SS",2.0327],["SS",0.8971],["SS",0.9975],["SS",0.2575],["SS",0.234],["SS",0.4381],["SS",0.2923],["SS",1.8104],["SS",0.5729],["SS",0.6311],["SS",1.3663],["SS",0.2887],["SS",0.9482],["SS",4.4159],["SS",0.1274],["SS",2.0955],["SS",1.6646],["SS",0.7684],["SS",0.6359],["SS",0.6],["SS",0.3217],["SS",0.3148],["SS",0.0235],["SS",0.4919],["SS",0.5241],["SS",1.2452],["SS",1.0281],["SS",1.2167],["SS",0.8926],["SS",0.7555],["SS",1.0728],["SS",0.4148],["SS",0.759],["SS",0.38],["SS",0.4159],["SS",0.3812],["SS",0.403],["SS",0.3979],["SS",0.0628],["SS",0.0892],["SS",0.8656],["SS",0.772],["SS",0.3551],["SS",0.3668],["SS",0.6859],["SS",0.7791],["SS",0.5441],["SS",0.7695],["SS",0.3723],["SS",0.3593],["SS",2.1269],["SS",1.6438],["SS",1.8044],["SS",1.2938],["SS",0.3464],["SS",0.392],["SS",0.7666],["SS",0.8013],["SS",0.1701],["SS",0.1699],["SS",0.1518],["SS",0.1456],["SS",0.1546],["SS",0.1246],["SS",0.2668],["SS",0.2259],["SS",0.1312],["SS",0.2139],["SS",0.2185],["SS",0.1417],["SS",0.1457],["SS",0.7537],["SS",0.8731],["SS",0.7778],["SS",0.8027],["SS",0.1268],["SS",0.1414],["SS",0.2235],["SS",0.2057],["SS",2.6358],["SS",3.4342],["SS",1.5205],["SS",1.4318],["SF",2.3539],["SF",1.0534],["SF",1.0918],["SF",1.5493],["SF",0.3983],["SF",1.5977],["SF",3.6686],["SF",0.2401],["SF",0.694],["SF",0.0726],["SF",0.0514],["SF",0.0955],["SF",0.4661],["SF",0.302],["SF",0.3781],["SF",0.4089],["SF",0.3825],["SF",0.3075],["FS",0.5579],["FS",0.3128],["FF",1.3091],["FF",1.4672],["FF",0.5984],["FF",0.471],["FF",0.462],["FF",0.3545]];
+  var ZH = document.documentElement.lang === "zh-CN";
+  var ROWS = ZH ? [
+    { k: "SS", label: "保持成功", sub: "无扰动和扰动后均成功" },
+    { k: "SF", label: "丢失成功", sub: "无扰动成功，扰动后失败" },
+    { k: "FS", label: "转为成功", sub: "无扰动失败，扰动后成功" },
+    { k: "FF", label: "两次均失败", sub: "" }
+  ] : [
+    { k: "SS", label: "Kept success", sub: "succeeds clean and perturbed" },
+    { k: "SF", label: "Lost success", sub: "succeeds clean, fails perturbed" },
+    { k: "FS", label: "Gained success", sub: "fails clean, succeeds perturbed" },
+    { k: "FF", label: "Failed in both", sub: "" }
+  ];
+  var NAMES = ZH ?
+    { SS: "保持成功", SF: "丢失成功", FS: "转为成功", FF: "两次均失败" } :
+    { SS: "kept success", SF: "lost success", FS: "gained success", FF: "failed in both" };
+  var LO = -1.7, HI = 0.7, NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("pairs-svg"), box = document.getElementById("pairs-plot");
+  var slider = document.getElementById("thr"), out = document.getElementById("thr-out"), tip = document.getElementById("pairs-tip");
+  if (!svg || !slider) return;
+  var dots = [], thrLine = null, thrZone = null, thrLab = null, geom = null, hot = null;
+
+  function thr() { return Math.pow(10, LO + (+slider.value) / 100); }
+  function el(name, attrs, text) {
+    var e = document.createElementNS(NS, name);
+    for (var a in attrs) e.setAttribute(a, attrs[a]);
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function render() {
+    var W = Math.max(280, Math.floor(box.clientWidth)), padL = 8, padR = 12, S = 8.6, labH = 20, gap = 10;
+    var x = function (v) { return padL + (Math.log10(v) - LO) / (HI - LO) * (W - padL - padR); };
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    dots = [];
+    var y = 22, rows = [];
+    ROWS.forEach(function (r) {
+      var vals = PAIRS.filter(function (p) { return p[0] === r.k; }).map(function (p) { return p[1]; }).sort(function (a, b) { return a - b; });
+      var placed = [], maxLev = 0;
+      vals.forEach(function (v) {
+        var px = x(v), lev = 0, n = 0;
+        while (placed.some(function (q) { return q.lev === lev && Math.abs(q.px - px) < S; })) { n += 1; lev = (n % 2 ? 1 : -1) * Math.ceil(n / 2); }
+        placed.push({ px: px, lev: lev, v: v });
+        maxLev = Math.max(maxLev, Math.abs(lev));
+      });
+      var h = (2 * maxLev + 1) * S + 6;
+      rows.push({ r: r, top: y, h: h, placed: placed, n: vals.length });
+      y += labH + h + gap;
+    });
+    var plotBottom = y - gap + 2, H = plotBottom + 30;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+    thrZone = el("rect", { "class": "flagzone", y: 0, height: plotBottom });
+    svg.appendChild(thrZone);
+    [0.03, 0.1, 0.3, 1, 3].forEach(function (t) {
+      svg.appendChild(el("line", { "class": t === 1 ? "one" : "grid", x1: x(t), x2: x(t), y1: 18, y2: plotBottom }));
+      var lab = t === 1 ? (W > 520 ? (ZH ? "1× = 无扰动重跑" : "1× = a clean rerun") : "1×") : t + "×";
+      svg.appendChild(el("text", { "class": "tick", x: x(t), y: plotBottom + 16, "text-anchor": "middle" }, lab));
+    });
+    svg.appendChild(el("line", { "class": "one", x1: padL, x2: W - padR, y1: plotBottom, y2: plotBottom }));
+    rows.forEach(function (row) {
+      var t = el("text", { x: padL, y: row.top + 13 });
+      t.appendChild(el("tspan", { "class": "rowlab" }, row.r.label + " · " + row.n));
+      if (row.r.sub && W > 460) t.appendChild(el("tspan", { "class": "rowsub", dx: 8 }, row.r.sub));
+      svg.appendChild(t);
+      var cy = row.top + labH + row.h / 2;
+      row.placed.forEach(function (p) {
+        var c = el("circle", { "class": "d-" + row.r.k, cx: p.px, cy: cy + p.lev * S, r: 4.3 });
+        svg.appendChild(c);
+        dots.push({ c: c, x: p.px, y: cy + p.lev * S, v: p.v, k: row.r.k });
+      });
+    });
+    thrLine = el("line", { "class": "thr", y1: 0, y2: plotBottom });
+    thrLab = el("text", { "class": "thrlab", y: 11 }, ZH ? "标记 →" : "flagged →");
+    svg.appendChild(thrLine); svg.appendChild(thrLab);
+    geom = { x: x, W: W, padR: padR };
+    update();
+  }
+
+  function update() {
+    if (!geom) return;
+    var t = thr(), tx = geom.x(t), sf = 0, ss = 0;
+    thrLine.setAttribute("x1", tx); thrLine.setAttribute("x2", tx);
+    thrZone.setAttribute("x", tx); thrZone.setAttribute("width", Math.max(0, geom.W - tx));
+    var right = tx + 6 + 62 < geom.W;
+    thrLab.setAttribute("x", right ? tx + 6 : tx - 6);
+    thrLab.setAttribute("text-anchor", right ? "start" : "end");
+    thrLab.textContent = ZH ? "标记 →" : "flagged →";
+    dots.forEach(function (d) {
+      var on = d.v > t;
+      d.c.classList.toggle("off", !on);
+      if (on && d.k === "SF") sf += 1;
+      if (on && d.k === "SS") ss += 1;
+    });
+    var label = (t < 0.1 ? t.toFixed(3) : t.toFixed(2)) + "×";
+    out.textContent = label;
+    slider.setAttribute("aria-valuetext", ZH ? label + "，相对于无扰动重跑" : label + " a clean rerun");
+    document.getElementById("say").textContent = ZH ?
+      "该阈值找到了 18 次丢失成功运行中的 " + sf + " 次，同时也标记了 84 次保持成功运行中的 " + ss + " 次。" :
+      "This threshold catches " + sf + " of the 18 runs that lost success, and also flags " + ss + " of the 84 runs that kept it.";
+    document.getElementById("m-sf").style.width = (sf / 18 * 100) + "%";
+    document.getElementById("m-ss").style.width = (ss / 84 * 100) + "%";
+    document.getElementById("v-sf").textContent = ZH ? "18 次中的 " + sf + " 次（" + Math.round(sf / 18 * 100) + "%）" : sf + " of 18 (" + Math.round(sf / 18 * 100) + "%)";
+    document.getElementById("v-ss").textContent = ZH ? "84 次中的 " + ss + " 次（" + Math.round(ss / 84 * 100) + "%）" : ss + " of 84 (" + Math.round(ss / 84 * 100) + "%)";
+  }
+
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = ev.clientX - r.left, py = ev.clientY - r.top, best = null, bd = 24 * 24;
+    dots.forEach(function (d) { var q = (d.x - px) * (d.x - px) + (d.y - py) * (d.y - py); if (q < bd) { bd = q; best = d; } });
+    return best;
+  }
+  function showTip(ev) {
+    var d = nearest(ev);
+    if (hot && hot !== d) hot.c.classList.remove("hot");
+    hot = d;
+    if (!d) { tip.hidden = true; return; }
+    d.c.classList.add("hot");
+    tip.textContent = "";
+    var b = document.createElement("b");
+    b.textContent = (d.v < 0.1 ? d.v.toFixed(3) : d.v.toFixed(2)) + "×";
+    tip.appendChild(b);
+    tip.appendChild(document.createTextNode((ZH ? " 相对于无扰动重跑 · " : " a clean rerun · ") + NAMES[d.k]));
+    tip.hidden = false;
+    var w = tip.offsetWidth, left = Math.min(Math.max(0, d.x - w / 2), box.clientWidth - w);
+    tip.style.left = left + "px";
+    tip.style.top = Math.max(0, d.y - tip.offsetHeight - 12) + "px";
+  }
+  svg.addEventListener("pointermove", showTip);
+  svg.addEventListener("pointerdown", showTip);
+  svg.addEventListener("pointerleave", function () { if (hot) hot.c.classList.remove("hot"); hot = null; tip.hidden = true; });
+  slider.addEventListener("input", update);
+  if (window.ResizeObserver) { new ResizeObserver(function () { render(); }).observe(box); } else { window.addEventListener("resize", render); }
+  render();
+
+  function selectText(node) { var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var node = document.getElementById(btn.getAttribute("data-copy")), text = node.textContent;
+      var reset = function () { btn.textContent = ZH ? "复制" : "Copy"; };
+      var done = function () { btn.textContent = ZH ? "已复制" : "Copied"; setTimeout(reset, 1600); };
+      var fallback = function () { selectText(node); btn.textContent = ZH ? "已选择" : "Selected"; setTimeout(reset, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done).catch(fallback); } else { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

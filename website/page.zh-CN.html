@@ -1,0 +1,280 @@
+<div class="band"><div class="wrap">
+
+  <header class="topbar">
+    <span class="mark">冻结的 &pi;<sub>0.5</sub> 和 &pi;<sub>0</sub> &middot; LIBERO 与 LIBERO-Plus</span>
+    <div class="topbar-actions">
+      <nav aria-label="页面章节">
+        <a href="#path">研究路径</a>
+        <a href="#findings">主要发现</a>
+        <a href="#setup">实验设置</a>
+        <a href="#reproduce">复现</a>
+        <a href="#cite">引用</a>
+      </nav>
+      <a class="btn lang-btn" href="index.html" hreflang="en" lang="en" aria-label="Switch to the English version">EN</a>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-text">
+      <h1 id="title">敏感不等于<br><strong>脆弱</strong></h1>
+      <p class="subtitle">视觉—语言—动作策略中的共享视觉响应与任务结果</p>
+      <p class="lede">机器人策略可能对视觉变化反应强烈，却依然完成任务；也可能几乎没有反应，却以失败告终。我们沿着特征、指令、运动和任务结果，追踪视觉扰动在两个冻结策略中的传递，并测量反应与失效在何处分离。</p>
+      <p class="authors" data-placeholder="authors">作者名单待补充。</p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/main.pdf" target="_blank" rel="noopener">论文</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/supplement.pdf" target="_blank" rel="noopener">补充材料</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research" target="_blank" rel="noopener">代码与数据</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.zh-CN.md" target="_blank" rel="noopener">逐图指南</a>
+      </div>
+    </div>
+
+    <div class="card" role="group" aria-labelledby="hero-chart-title">
+      <h3 id="hero-chart-title">&pi;<sub>0</sub> 在传感器噪声下：运动小于无扰动重跑，失败却更多</h3>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw kept"></i>第二次无扰动运行（新的策略噪声）</span>
+        <span><i class="sw pert"></i>传感器噪声运行</span>
+      </div>
+      <div class="bars">
+        <p class="cap">五个控制步后与无扰动运行的距离</p>
+        <div class="bar-row"><span class="name">第二次无扰动运行</span><span class="track"><i class="fill kept" style="width:100%"></i></span><span class="val">6.1 mm</span></div>
+        <div class="bar-row"><span class="name">传感器噪声运行</span><span class="track"><i class="fill pert" style="width:57.4%"></i></span><span class="val">3.5 mm</span></div>
+      </div>
+      <div class="bars">
+        <p class="cap">损失的任务成功率</p>
+        <div class="bar-row"><span class="name">第二次无扰动运行</span><span class="track"></span><span class="val">0.0 个百分点</span></div>
+        <div class="bar-row"><span class="name">传感器噪声运行</span><span class="track"><i class="fill pert" style="width:100%"></i></span><span class="val">14.3 个百分点</span></div>
+      </div>
+      <p class="note">28 个 LIBERO 任务上的 110 次配对运行。这些策略从随机噪声生成动作，因此两次无扰动运行也会产生不同运动。无扰动重跑正是全文使用的参照尺度。</p>
+    </div>
+  </section>
+
+</div></div>
+
+<div class="wrap page">
+
+  <section id="path" class="stack" aria-labelledby="path-h">
+    <div class="measure">
+      <p class="eyebrow">研究问题</p>
+      <h2 id="path-h">从像素到任务结果，追踪一次扰动</h2>
+      <p>相机位置移动、图像噪声等视觉变化并不改变任务本身，却可能显著降低视觉—语言—动作策略的成功率。要让这些策略更稳健，就需要知道扰动改变了策略内部的什么，以及如何评价一种修正。我们在路径的每个环节，比较从同一物理状态、相同策略噪声开始的一次无扰动运行和一次扰动运行。</p>
+    </div>
+    <ol class="chain" aria-label="扰动的传递路径">
+      <li><span class="stage">图像</span><span class="what">无扰动或扰动后的观测</span></li>
+      <li><span class="stage">特征</span><span class="what">动作专家第 L1、L9、L18 层的状态</span></li>
+      <li><span class="stage">指令</span><span class="what">发送给机器人的前五条指令</span></li>
+      <li><span class="stage">运动</span><span class="what">第 5 和第 60 个控制步后的末端执行器位置</span></li>
+      <li><span class="stage">结果</span><span class="what">回合结束时任务是否成功</span></li>
+    </ol>
+    <div class="split">
+      <ol class="questions">
+        <li><em>从图像到特征。</em>不同扰动是否让特征沿共享方向变化？</li>
+        <li><em>从特征到指令。</em>沿这些方向恢复无扰动数值，能否让指令回到接近无扰动运行的位置？</li>
+        <li><em>从指令到运动和结果。</em>指令变化与运动、任务成功之间有什么关系？</li>
+      </ol>
+      <dl class="terms">
+        <div><dt>敏感性</dt><dd>扰动使特征、指令或运动改变了多少。</dd></div>
+        <div><dt>脆弱性</dt><dd>扰动使任务成功率付出了多少代价。</dd></div>
+      </dl>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure1.png" width="2750" height="1166" alt="策略示意图：无扰动图像和扰动图像依次经过视觉编码器、VLM 前缀和包含 18 个块的动作专家。在 L1、L9、L18 块后记录特征差，并在 L9 后沿 16 个共享方向恢复无扰动数值。侧栏显示，在相机变化和传感器噪声下，恢复会减小指令误差并提高任务成功率。"></div>
+      <figcaption><b>在冻结的 &pi;<sub>0.5</sub> 中，扰动效应的记录与恢复位置。</b>响应指动作专家 L1、L9、L18 块后，扰动特征减去无扰动特征的差值。恢复则是在 L9 后，沿 16 个共享方向把无扰动数值复制回去。</figcaption>
+    </figure>
+  </section>
+
+  <div id="findings" class="page" style="padding-block:0">
+
+  <section class="stack" aria-labelledby="f1-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">图像 &rarr; 特征</p>
+        <h2 id="f1-h">不同扰动让特征沿相同的少数方向变化</h2>
+        <p>在 &pi;<sub>0.5</sub> 中，我们在每一层用扰动引起的特征变化拟合 16 个方向。每次拟合同时留出待测试的任务和扰动族，因此，用 Camera 响应测试的方向从未见过 Camera 响应。</p>
+        <p>面对这些未见过的响应，16 个方向仍能捕获大部分变化；而用无扰动特征拟合的 16 个方向或随机选取的方向几乎捕获不到。该结果在 &pi;<sub>0</sub> 中、使用其他方向数量时，以及在回合中较晚的观测上同样成立。</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c1-title">
+        <h3 id="c1-title">16 个方向捕获的未见响应比例</h3>
+        <div class="bars">
+          <div class="bar-row"><span class="name">共享方向</span><span class="track range"><i class="fill acc" style="left:36.5%;width:47.1%"></i></span><span class="val">36.5&ndash;83.6%</span></div>
+          <div class="bar-row"><span class="name">无扰动特征方向</span><span class="track range"><i class="fill kept" style="left:0.5%;width:9.7%"></i></span><span class="val">0.5&ndash;10.2%</span></div>
+          <div class="bar-row"><span class="name">随机方向</span><span class="track range"><i class="fill kept" style="left:1.3%;width:0.6%"></i></span><span class="val">1.3&ndash;1.9%</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0%</span><span>50%</span><span>100%</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">每条横杠覆盖三层、四个扰动族的范围。28 个任务上的 404 对无扰动—扰动样本；任务和扰动族同时留出。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure3.png" width="2750" height="1016" alt="两行四列面板，每列对应一个扰动族。上排显示共享方向、无扰动特征方向和随机方向在 L1、L9、L18 层保留的响应能量比例。下排显示用相同坐标的线性读出预测指令变化时，相对于不预测变化的误差。"></div>
+      <figcaption><b>共享方向保留的未见响应远多于对照；在最后一层，指令的预测效果最好。</b>小点表示任务，大点表示任务均值。</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f2-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">特征 &rarr; 指令</p>
+        <h2 id="f2-h">沿这些方向恢复无扰动数值，可以把指令拉回</h2>
+        <p>作为一项因果检验，我们在动作生成过程中，使用同一状态的无扰动观测，在中间层 L9 沿共享方向把无扰动数值复制回去。其他所有内容都保持扰动状态，包括后续块仍然读取的图像。</p>
+        <p>在 31 个留出任务上，前五条指令向无扰动运行的指令靠近。27 个 Camera 任务中有 25 个、30 个 Sensor Noise 任务中有 24 个误差下降。1,024 个通道中的 16 个方向，达到了替换整个层所能实现效果的 86.9% 和 70.7%。任务成功率也分别提高 1.85 和 3.33 个百分点。</p>
+        <p class="muted">该测试需要同一状态的无扰动观测，因此它是一项受控实验，而不是一种可以直接部署的方法。</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c2-title">
+        <h3 id="c2-title">恢复前后，前五条指令的误差</h3>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw dot kept"></i>扰动，未编辑</span>
+          <span><i class="sw dot acc"></i>恢复后</span>
+        </div>
+        <div class="bars w8">
+          <div class="bar-row"><span class="name">相机变化</span><span class="track range"><i class="link" style="left:62.4%;width:19.4%"></i><i class="pt kept" style="left:81.8%"></i><i class="pt acc" style="left:62.4%"></i></span><span class="val">0.409 &rarr; 0.312</span></div>
+          <div class="bar-row"><span class="name">传感器噪声</span><span class="track range"><i class="link" style="left:39.8%;width:2%"></i><i class="pt kept" style="left:41.8%"></i><i class="pt acc" style="left:39.8%"></i></span><span class="val">0.209 &rarr; 0.199</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0</span><span>0.25</span><span>0.5</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">与无扰动运行指令的距离，以指令单位表示；越小越接近无扰动运行。Camera 下下降 24%，Sensor Noise 下下降 5%。Camera 96 个案例、Sensor Noise 120 个案例，每个案例运行六次。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure4.png" width="2750" height="741" alt="森林图。各行分别比较恢复与未编辑的扰动运行、随机方向、无扰动特征方向，以及替换整个 L9 状态，展示相机变化和传感器噪声下的指令误差下降与任务成功率提升。"></div>
+      <figcaption><b>恢复与未编辑的扰动运行、两个对照，以及替换整个 L9 状态的比较。</b>正值有利于恢复。均值带同时 95% 区间；小点表示任务。</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f3-h">
+    <div class="measure">
+      <p class="eyebrow">指令 &rarr; 运动 &rarr; 结果</p>
+      <h2 id="f3-h">变化有多大，不等于代价有多大</h2>
+      <p>指令变化确实会传递到机器人。五个控制步后，指令变化的大小几乎能完美排出运动变化的大小（&pi;<sub>0.5</sub> 的秩相关为 0.95，&pi;<sub>0</sub> 为 0.97）；到第 60 个控制步，这种联系仍然可见（0.47 和 0.41）。</p>
+      <p>但一次运行移动了多远，并不能说明它是否会失败。按运动变化对运行排序时，混合所有扰动族得到的 AUROC 为 0.72 和 0.64，限定在同一扰动族内为 0.62 和 0.55，而 &pi;<sub>0</sub> 在 Sensor Noise 下仅为 0.49。AUROC 为 0.5 相当于随机判断。</p>
+    </div>
+
+    <div class="card explorer" role="group" aria-labelledby="ex-title">
+      <h3 id="ex-title">试着按机器人运动距离找出失败</h3>
+      <p class="note">每个点代表 110 次 &pi;<sub>0</sub> Sensor Noise 运行中的一次。横轴是五个控制步后它与无扰动运行的距离，相对于同一设定下一次无扰动重跑的距离。移动阈值，看看哪些运行会被标记。</p>
+      <div class="control">
+        <label for="thr">当运动距离超过无扰动重跑的 <output id="thr-out" for="thr">1.00&times;</output> 时，将该运行标记</label>
+        <input type="range" id="thr" min="0" max="240" step="1" value="170" aria-describedby="say">
+      </div>
+      <div id="pairs-plot">
+        <svg id="pairs-svg" role="img" aria-label="110 次运行的点图，横轴为对数刻度的运动比，按四种结果分为四行。丢失成功的运行与保持成功的运行覆盖相近的范围。"></svg>
+        <div id="pairs-tip" hidden></div>
+      </div>
+      <div class="readout">
+        <p class="say" id="say" aria-live="polite"></p>
+        <div class="bars w9">
+          <div class="bar-row"><span class="name">被标记的丢失成功运行</span><span class="track"><i class="fill pert" id="m-sf" style="width:0%"></i></span><span class="val" id="v-sf"></span></div>
+          <div class="bar-row"><span class="name">被标记的保持成功运行</span><span class="track"><i class="fill kept" id="m-ss" style="width:0%"></i></span><span class="val" id="v-ss"></span></div>
+        </div>
+        <p class="note">无论阈值放在哪里，两组被标记的比例都大致相同。这就是 AUROC 为 0.49 时的样子。</p>
+      </div>
+      <details>
+        <summary>以表格查看数量</summary>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>结果（先无扰动，后扰动）</th><th class="n">运行次数</th><th class="n">运动距离小于无扰动重跑</th></tr></thead>
+            <tbody>
+              <tr><td>保持成功</td><td class="n">84</td><td class="n">65</td></tr>
+              <tr><td>丢失成功</td><td class="n">18</td><td class="n">12</td></tr>
+              <tr><td>转为成功</td><td class="n">2</td><td class="n">2</td></tr>
+              <tr><td>两次均失败</td><td class="n">6</td><td class="n">4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="split">
+      <div class="measure">
+        <h3>净成功率会掩盖成功的丢失与新增</h3>
+        <p>扰动后，一些原本成功的运行会失败，一些原本失败的运行会成功，净变化只显示两者之差。在 Background 下，&pi;<sub>0.5</sub> 丢失 3.57% 的成功，也新增 3.57% 的成功：净成功率不变，但实际有 7.14% 的结果发生改变。</p>
+        <p>仅是一次无扰动重跑，也能改变多达 7.1% 的结果，因此必须参照无扰动重跑来解读这些变化。在两个策略中，Camera 和 Sensor Noise 下丢失的成功都超过重跑水平，新增的成功则没有。</p>
+      </div>
+      <div class="measure">
+        <h3>其他比较中的同一落差</h3>
+        <p>移除一个前灯对 &pi;<sub>0.5</sub> 前五条指令的改变，是图像统计量相匹配的调暗操作的 5.1 倍，但两者都在 80 次运行中成功 77 次。在一项包含十个条件的研究中，条件的平均指令变化可以排出平均成功率变化（秩相关为 &minus;0.90）；但看全部 400 个任务与条件组合时，相关性仅为 &minus;0.075。</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure5.png" width="2750" height="1133" alt="三个面板。左图：两个策略在各扰动族下的运动比与成功率变化。右上：逐任务运动比，以及丢失和新增成功的比例。右下：全部 110 个 π0 Sensor Noise 配对，按结果分组。"></div>
+      <figcaption><b>微小的运动变化也可能伴随任务失败，净成功率还会掩盖成功的丢失与新增。</b>运动比：五个控制步后，扰动运行与无扰动运行之间的距离，相对于两次无扰动运行之间距离的比值。</figcaption>
+    </figure>
+  </section>
+
+  </div>
+
+  <section class="stack" aria-labelledby="gives-h">
+    <div class="measure">
+      <p class="eyebrow">对后续研究的启示</p>
+      <h2 id="gives-h">一个干预位置，一把评估标尺</h2>
+    </div>
+    <div class="pair">
+      <div><h3>共同的干预位置</h3><p>不同种类的扰动会沿策略内部相同的少数方向产生作用，而恢复这些方向会改变指令。不同干扰都可以通过同一组内部成分来研究和修正。</p></div>
+      <div><h3>评估标尺</h3><p>任何修正，包括我们的修正，都应该以无扰动重跑为参照，用配对任务结果来评价：哪些成功被丢失，哪些成功被新增，以及这与策略自身随机性造成的结果有何不同。</p></div>
+    </div>
+  </section>
+
+  <section id="setup" class="stack" aria-labelledby="setup-h">
+    <div class="measure">
+      <p class="eyebrow">实验设置</p>
+      <h2 id="setup-h">三项配对研究，约 4,000 次模拟器运行</h2>
+      <p>所有研究都在 LIBERO 模拟器中，使用经过 LIBERO 微调后冻结的 &pi;<sub>0.5</sub> 和 &pi;<sub>0</sub>，并测试 LIBERO-Plus 的四类扰动：Background、Camera、Light 和 Sensor Noise。每项比较都让同一设定从相同初始状态、相同策略噪声开始，分别进行一次无扰动运行和一次扰动运行，因此只有图像不同。</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>研究</th><th>比较内容</th><th>数据</th></tr></thead>
+        <tbody>
+          <tr><td>内部记录（&pi;<sub>0.5</sub>）</td><td>首次策略查询时的无扰动与扰动特征、指令</td><td>28 个任务上的 404 对（全部 40 个任务为 536 对）</td></tr>
+          <tr><td>恢复（&pi;<sub>0.5</sub>）</td><td>每个案例运行六次：无扰动、扰动、恢复、两个对照、替换整个 L9 状态</td><td>Camera 96 个案例、Sensor Noise 120 个案例；31 个留出任务上的 1,296 次运行</td></tr>
+          <tr><td>配对执行（两个策略）</td><td>每个设定两次无扰动、两次扰动和一次重复运行；记录指令、第 5 和第 60 个控制步后的运动，以及最终是否成功</td><td>每个策略在 40 个任务上有 268 个设定；计划 2,680 次运行</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure2.png" width="2750" height="1127" alt="四幅示意图：一次策略查询包含十步生成更新和五个执行控制步；从相同噪声开始配对记录无扰动与扰动分支；在每个生成步于 L9 进行恢复；以及从同一状态开始的五次运行在第 5 和第 60 个控制步后的比较。"></div>
+      <figcaption><b>策略如何运行，以及每项研究比较什么。</b>另一项在原始 LIBERO 上的测试计划进行 6,048 次运行，无需无扰动观测即可移除共享成分；结果见补充材料。</figcaption>
+    </figure>
+    <div class="measure">
+      <h3>局限</h3>
+      <ul class="limits">
+        <li>敏感性在回合开始时测量；后续与接触相关的关键步骤留待未来研究。</li>
+        <li>恢复实验只在 &pi;<sub>0.5</sub> 的一层、16 个方向、四类扰动中的两类和 216 个案例上测试，并且需要同一状态的无扰动观测。</li>
+        <li>共享方向也承载 Background 引起的响应，而这种扰动对 &pi;<sub>0.5</sub> 的净成功率没有影响。它们描述策略如何响应视觉变化，无论这种变化有害与否。</li>
+        <li>所有实验均为模拟实验，使用两个相关策略，并选用扰动程度适中的设定。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reproduce" class="stack" aria-labelledby="rep-h">
+    <div class="measure">
+      <p class="eyebrow">复现</p>
+      <h2 id="rep-h">一条命令核对主要数值</h2>
+      <p>检查只需 Python 3.9 或更高版本，以及 Python 标准库。它会重建共享方向结果背后的任务分数，重新计算 216 个恢复案例的指令误差，并重新计算配对结果。仓库还提供绘图脚本、采集代码和数据发布。</p>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-rep">复制</button>
+      <pre class="withbtn" id="code-rep">git clone https://github.com/heeh02/adv-vla-research.git
+cd adv-vla-research
+python3 -B reproduce/paper.py --output paper-results.json</pre>
+    </div>
+    <p class="muted"><a href="https://github.com/heeh02/adv-vla-research/blob/main/reproduce/README.md" target="_blank" rel="noopener">复现指南</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0" target="_blank" rel="noopener">数据发布</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.zh-CN.md" target="_blank" rel="noopener">中文逐图讲解</a></p>
+  </section>
+
+  <section id="cite" class="stack" aria-labelledby="cite-h">
+    <div class="measure">
+      <p class="eyebrow">引用</p>
+      <h2 id="cite-h">BibTeX</h2>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-bib">复制</button>
+      <pre class="withbtn" id="code-bib">@misc{sensitivity_not_fragility_2026,
+  title  = {Sensitivity Is Not Fragility: Shared Visual Responses and
+            Task Outcomes in Vision-Language-Action Policies},
+  author = {Author list to be added},
+  year   = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p>代码采用 Apache-2.0 许可；文字、图和派生数据采用 CC BY 4.0 许可。模型权重和基准测试资产保留其上游项目的条款。</p>
+    <p>关于干预与预测、训练接续的两项配套研究，也以草稿形式发布在同一仓库中，供其他研究者继续推进。</p>
+  </footer>
+</div>

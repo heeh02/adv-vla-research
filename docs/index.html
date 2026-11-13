@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="How strongly a robot policy reacts to a visual change says little about whether it fails. Shared visual responses and task outcomes in vision-language-action policies.">
 <link rel="canonical" href="https://heeh02.github.io/adv-vla-research/">
+<link rel="alternate" hreflang="en" href="https://heeh02.github.io/adv-vla-research/">
+<link rel="alternate" hreflang="zh-CN" href="https://heeh02.github.io/adv-vla-research/zh-CN.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23003366'/%3E%3Crect x='7' y='9' width='18' height='5' rx='1.5' fill='%23c9d6e6'/%3E%3Crect x='7' y='18' width='10.5' height='5' rx='1.5' fill='%23e3b95a'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sensitivity Is Not Fragility">
@@ -231,6 +233,14 @@ td.n, th.n { text-align: right; font-family: var(--font-mono); font-variant-nume
 .codebox pre.withbtn { padding-top: 2.6rem; }
 footer { border-top: 1px solid var(--rule); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { #pairs-svg circle { transition: none; } }
+.topbar-actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; }
+.topbar .lang-btn { min-height: 2rem; padding: 0.3rem 0.8rem; font-size: 0.8125rem; flex: none; }
+html[lang="zh-CN"] {
+  --font-display: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+html[lang="zh-CN"] h1 { font-weight: 500; line-height: 1.08; }
+html[lang="zh-CN"] h2 { line-height: 1.25; }
 </style>
 </head>
 <body>
@@ -238,13 +248,16 @@ footer { border-top: 1px solid var(--rule); padding-top: 1.5rem; display: flex; 
 
   <header class="topbar">
     <span class="mark">frozen &pi;<sub>0.5</sub> and &pi;<sub>0</sub> &middot; LIBERO and LIBERO-Plus</span>
-    <nav aria-label="Sections">
-      <a href="#path">The path</a>
-      <a href="#findings">Findings</a>
-      <a href="#setup">Setup</a>
-      <a href="#reproduce">Reproduce</a>
-      <a href="#cite">Cite</a>
-    </nav>
+    <div class="topbar-actions">
+      <nav aria-label="Sections">
+        <a href="#path">The path</a>
+        <a href="#findings">Findings</a>
+        <a href="#setup">Setup</a>
+        <a href="#reproduce">Reproduce</a>
+        <a href="#cite">Cite</a>
+      </nav>
+      <a class="btn lang-btn" href="zh-CN.html" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文版本">中文</a>
+    </div>
   </header>
 
   <section class="hero" aria-labelledby="title">
@@ -513,18 +526,25 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
     <p>Two companion studies, on intervention and prediction and on training continuation, are released in the same repository as drafts for others to continue.</p>
   </footer>
 </div>
-
 <script>
 (function () {
   "use strict";
   var PAIRS = [["SS",2.0862],["SS",2.0327],["SS",0.8971],["SS",0.9975],["SS",0.2575],["SS",0.234],["SS",0.4381],["SS",0.2923],["SS",1.8104],["SS",0.5729],["SS",0.6311],["SS",1.3663],["SS",0.2887],["SS",0.9482],["SS",4.4159],["SS",0.1274],["SS",2.0955],["SS",1.6646],["SS",0.7684],["SS",0.6359],["SS",0.6],["SS",0.3217],["SS",0.3148],["SS",0.0235],["SS",0.4919],["SS",0.5241],["SS",1.2452],["SS",1.0281],["SS",1.2167],["SS",0.8926],["SS",0.7555],["SS",1.0728],["SS",0.4148],["SS",0.759],["SS",0.38],["SS",0.4159],["SS",0.3812],["SS",0.403],["SS",0.3979],["SS",0.0628],["SS",0.0892],["SS",0.8656],["SS",0.772],["SS",0.3551],["SS",0.3668],["SS",0.6859],["SS",0.7791],["SS",0.5441],["SS",0.7695],["SS",0.3723],["SS",0.3593],["SS",2.1269],["SS",1.6438],["SS",1.8044],["SS",1.2938],["SS",0.3464],["SS",0.392],["SS",0.7666],["SS",0.8013],["SS",0.1701],["SS",0.1699],["SS",0.1518],["SS",0.1456],["SS",0.1546],["SS",0.1246],["SS",0.2668],["SS",0.2259],["SS",0.1312],["SS",0.2139],["SS",0.2185],["SS",0.1417],["SS",0.1457],["SS",0.7537],["SS",0.8731],["SS",0.7778],["SS",0.8027],["SS",0.1268],["SS",0.1414],["SS",0.2235],["SS",0.2057],["SS",2.6358],["SS",3.4342],["SS",1.5205],["SS",1.4318],["SF",2.3539],["SF",1.0534],["SF",1.0918],["SF",1.5493],["SF",0.3983],["SF",1.5977],["SF",3.6686],["SF",0.2401],["SF",0.694],["SF",0.0726],["SF",0.0514],["SF",0.0955],["SF",0.4661],["SF",0.302],["SF",0.3781],["SF",0.4089],["SF",0.3825],["SF",0.3075],["FS",0.5579],["FS",0.3128],["FF",1.3091],["FF",1.4672],["FF",0.5984],["FF",0.471],["FF",0.462],["FF",0.3545]];
-  var ROWS = [
+  var ZH = document.documentElement.lang === "zh-CN";
+  var ROWS = ZH ? [
+    { k: "SS", label: "保持成功", sub: "无扰动和扰动后均成功" },
+    { k: "SF", label: "丢失成功", sub: "无扰动成功，扰动后失败" },
+    { k: "FS", label: "转为成功", sub: "无扰动失败，扰动后成功" },
+    { k: "FF", label: "两次均失败", sub: "" }
+  ] : [
     { k: "SS", label: "Kept success", sub: "succeeds clean and perturbed" },
     { k: "SF", label: "Lost success", sub: "succeeds clean, fails perturbed" },
     { k: "FS", label: "Gained success", sub: "fails clean, succeeds perturbed" },
     { k: "FF", label: "Failed in both", sub: "" }
   ];
-  var NAMES = { SS: "kept success", SF: "lost success", FS: "gained success", FF: "failed in both" };
+  var NAMES = ZH ?
+    { SS: "保持成功", SF: "丢失成功", FS: "转为成功", FF: "两次均失败" } :
+    { SS: "kept success", SF: "lost success", FS: "gained success", FF: "failed in both" };
   var LO = -1.7, HI = 0.7, NS = "http://www.w3.org/2000/svg";
   var svg = document.getElementById("pairs-svg"), box = document.getElementById("pairs-plot");
   var slider = document.getElementById("thr"), out = document.getElementById("thr-out"), tip = document.getElementById("pairs-tip");
@@ -565,7 +585,7 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
     svg.appendChild(thrZone);
     [0.03, 0.1, 0.3, 1, 3].forEach(function (t) {
       svg.appendChild(el("line", { "class": t === 1 ? "one" : "grid", x1: x(t), x2: x(t), y1: 18, y2: plotBottom }));
-      var lab = t === 1 ? (W > 520 ? "1× = a clean rerun" : "1×") : t + "×";
+      var lab = t === 1 ? (W > 520 ? (ZH ? "1× = 无扰动重跑" : "1× = a clean rerun") : "1×") : t + "×";
       svg.appendChild(el("text", { "class": "tick", x: x(t), y: plotBottom + 16, "text-anchor": "middle" }, lab));
     });
     svg.appendChild(el("line", { "class": "one", x1: padL, x2: W - padR, y1: plotBottom, y2: plotBottom }));
@@ -582,7 +602,7 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
       });
     });
     thrLine = el("line", { "class": "thr", y1: 0, y2: plotBottom });
-    thrLab = el("text", { "class": "thrlab", y: 11 }, "flagged →");
+    thrLab = el("text", { "class": "thrlab", y: 11 }, ZH ? "标记 →" : "flagged →");
     svg.appendChild(thrLine); svg.appendChild(thrLab);
     geom = { x: x, W: W, padR: padR };
     update();
@@ -596,7 +616,7 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
     var right = tx + 6 + 62 < geom.W;
     thrLab.setAttribute("x", right ? tx + 6 : tx - 6);
     thrLab.setAttribute("text-anchor", right ? "start" : "end");
-    thrLab.textContent = right ? "flagged →" : "flagged →";
+    thrLab.textContent = ZH ? "标记 →" : "flagged →";
     dots.forEach(function (d) {
       var on = d.v > t;
       d.c.classList.toggle("off", !on);
@@ -605,12 +625,14 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
     });
     var label = (t < 0.1 ? t.toFixed(3) : t.toFixed(2)) + "×";
     out.textContent = label;
-    slider.setAttribute("aria-valuetext", label + " a clean rerun");
-    document.getElementById("say").textContent = "This threshold catches " + sf + " of the 18 runs that lost success, and also flags " + ss + " of the 84 runs that kept it.";
+    slider.setAttribute("aria-valuetext", ZH ? label + "，相对于无扰动重跑" : label + " a clean rerun");
+    document.getElementById("say").textContent = ZH ?
+      "该阈值找到了 18 次丢失成功运行中的 " + sf + " 次，同时也标记了 84 次保持成功运行中的 " + ss + " 次。" :
+      "This threshold catches " + sf + " of the 18 runs that lost success, and also flags " + ss + " of the 84 runs that kept it.";
     document.getElementById("m-sf").style.width = (sf / 18 * 100) + "%";
     document.getElementById("m-ss").style.width = (ss / 84 * 100) + "%";
-    document.getElementById("v-sf").textContent = sf + " of 18 (" + Math.round(sf / 18 * 100) + "%)";
-    document.getElementById("v-ss").textContent = ss + " of 84 (" + Math.round(ss / 84 * 100) + "%)";
+    document.getElementById("v-sf").textContent = ZH ? "18 次中的 " + sf + " 次（" + Math.round(sf / 18 * 100) + "%）" : sf + " of 18 (" + Math.round(sf / 18 * 100) + "%)";
+    document.getElementById("v-ss").textContent = ZH ? "84 次中的 " + ss + " 次（" + Math.round(ss / 84 * 100) + "%）" : ss + " of 84 (" + Math.round(ss / 84 * 100) + "%)";
   }
 
   function nearest(ev) {
@@ -628,7 +650,7 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
     var b = document.createElement("b");
     b.textContent = (d.v < 0.1 ? d.v.toFixed(3) : d.v.toFixed(2)) + "×";
     tip.appendChild(b);
-    tip.appendChild(document.createTextNode(" a clean rerun · " + NAMES[d.k]));
+    tip.appendChild(document.createTextNode((ZH ? " 相对于无扰动重跑 · " : " a clean rerun · ") + NAMES[d.k]));
     tip.hidden = false;
     var w = tip.offsetWidth, left = Math.min(Math.max(0, d.x - w / 2), box.clientWidth - w);
     tip.style.left = left + "px";
@@ -645,8 +667,9 @@ python3 -B reproduce/paper.py --output paper-results.json</pre>
   Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
     btn.addEventListener("click", function () {
       var node = document.getElementById(btn.getAttribute("data-copy")), text = node.textContent;
-      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
-      var fallback = function () { selectText(node); btn.textContent = "Selected"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var reset = function () { btn.textContent = ZH ? "复制" : "Copy"; };
+      var done = function () { btn.textContent = ZH ? "已复制" : "Copied"; setTimeout(reset, 1600); };
+      var fallback = function () { selectText(node); btn.textContent = ZH ? "已选择" : "Selected"; setTimeout(reset, 1600); };
       if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done).catch(fallback); } else { fallback(); }
     });
   });
