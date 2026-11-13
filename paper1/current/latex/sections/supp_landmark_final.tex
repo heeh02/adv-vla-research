@@ -3,7 +3,7 @@
 Does the timing of the first opening-to-closing gripper command add information about lost success beyond the size of the command changes? At a cutoff of 60 controls, fixed in advance, adding timing lowers the held-out Brier loss slightly in both policies, with intervals that include zero (Table~\ref{tab:landmark-final}). This is an additional, exploratory study; the main paper does not rely on it. The feature is a command event, not physical closure or object contact.
 
 \begin{table*}[t]
-\caption{\textbf{Adding gripper timing to the command-change sizes does not clearly lower the loss at a fixed cutoff of 60 controls.} Cutoff pairs (of 404 per policy) reach the cutoff with valid command records and outcomes; the subset whose clean run succeeds (N/tasks) is analysed. Improvement is baseline minus augmented out-of-fold Brier loss, positive when timing lowers the loss, with a 97.5\% paired whole-task interval. The denominator 404 is the fixed plan per policy; 375/360 pairs are analysed.}
+\caption{\textbf{Adding gripper timing to the command-change sizes does not clearly lower the loss at a fixed cutoff of 60 controls.} Cutoff pairs (of 404 per policy) reach the cutoff with valid command records and outcomes; the subset whose clean run succeeds (N/tasks) is analyzed. Improvement is baseline minus augmented out-of-fold Brier loss, positive when timing lowers the loss, with a 97.5\% paired whole-task interval. The denominator 404 is the fixed plan per policy; 375/360 pairs are analyzed.}
 
 \centering\small
 \begin{tabular}{lrrrrr}\toprule
@@ -24,5 +24,5 @@ Of the 404 primary pairs per policy, both runs must reach the cutoff with valid 
 \paragraph{Fitting on held-out tasks and intervals.}
 The ridge model, fixed in advance, uses penalty $\alpha=1$, an unpenalized intercept, centering and scaling on the training data only, and leave-one-task-out prediction clipped to $[0,1]$, with tasks weighted equally and families, settings and noise draws weighted equally within their parents. Both predictors use identical rows in each fold; a training fold with a single class would fall back to the training mean, and none does. Both initial-closing indicator columns are zero in all eligible rows and add no variation. The primary quantity is baseline minus augmented out-of-fold Brier loss. Paired whole-task resampling (2,000 draws) gives 97.5\% intervals per policy; the predictors are not refitted inside the bootstrap.
 
-\paragraph{Outcomes of the analysed pairs.}
+\paragraph{Outcomes of the analyzed pairs.}
 On the primary support the outcome counts are $328/47/17/4$ SS/SF/FS/FF with eight unknown pairs for $\pi_{0.5}$ and $309/51/10/27$ with seven unknown pairs for $\pi_0$; every validated pair is kept whether or not a transition occurs. Pairs whose clean run succeeds number $93/98/82/102$ (Background/Camera/Light/Sensor Noise) for $\pi_{0.5}$ and $88/89/81/102$ for $\pi_0$. The estimates in Table~\ref{tab:landmark-final} apply to this conditional support; cutoff, features and penalty were fixed in advance.

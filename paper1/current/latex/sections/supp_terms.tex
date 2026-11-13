@@ -20,14 +20,14 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \end{guidelist}
 \textbf{C2: restoration at L9 reduces command error} (main Sec.~\ref{M-sec:restoration}, Figs.~\ref{M-fig:teaser}b,~\ref{M-fig:native-restoration}).
 \begin{guidelist}
-\item \textbf{Sec.~\ref{sec:allstep-restoration}, Tables~\ref{tab:allstep-restoration-contrasts}--\ref{tab:allstep-restoration-arms}.} 216 held-out cases: error 0.409 to 0.312 (Camera), 0.209 to 0.199 (Sensor Noise), lower in 25 of 27 and 24 of 30 tasks. Success $+1.85$ and $+3.33$ points, intervals include zero. The 16 directions reach 86.9\% and 70.7\% of replacing the whole L9 state, which gains 7.41 and 5.83 points (post hoc).
+\item \textbf{Sec.~\ref{sec:allstep-restoration}, Tables~\ref{tab:allstep-restoration-contrasts}--\ref{tab:allstep-restoration-arms}.} 216 held-out cases: error 0.409 to 0.312 (Camera), 0.209 to 0.199 (Sensor Noise), lower in 25 of 27 and 24 of 30 tasks. Task success is higher by 1.85 and 3.33 points. The 16 directions reach 86.9\% and 70.7\% of replacing the whole L9 state, which gains 7.41 and 5.83 points (post hoc).
 \item \textbf{Sec.~\ref{sec:dev-restoration-controls}.} At matched edit size, restoration beats clean-feature directions under Camera only.
 \item \textbf{Sec.~\ref{sec:supp-native-ablation}.} No clean observation (6,048 planned rollouts): L18 response lower by 8.8\% and 7.6\%; random directions at most 0.3\%.
 \end{guidelist}
 \textbf{C3: command changes reach the robot} (main Sec.~\ref{M-sec:early}).
 \begin{guidelist}
 \item \textbf{Sec.~\ref{sec:early-late-association}, Fig.~\ref{fig:supp-early-late}.} Rank correlation with end-effector separation 0.95/0.97 after 5 controls, 0.47/0.41 after 60.
-\item \textbf{Secs.~\ref{sec:supp-q0-consistency},~\ref{supp:p13}.} Agreement across noise draws 0.88--0.92 and 0.80--0.89; lower for the gripper.
+\item \textbf{Sec.~\ref{sec:supp-q0-consistency}.} Agreement across noise draws 0.88--0.92 and 0.80--0.89; lower for the gripper.
 \end{guidelist}
 \textbf{C4: the size of a change is not its cost} (main Sec.~\ref{M-sec:sensitivity}, Fig.~\ref{M-fig:behavior}).
 \begin{guidelist}
@@ -36,7 +36,7 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \item \textbf{Secs.~\ref{supp:legacy-d3},~\ref{supp:legacy-d2}.} Rank correlation $-0.90$ across ten condition means, $-0.075$ across 400 cells. Headlight: 5.1 times the command change of matched dimming, both 77 of 80 (Fig.~\ref{fig:legacy-d2-inputs}).
 \item \textbf{Sec.~\ref{sec:supp-complete-panels}.} Complete main-paper panels.
 \end{guidelist}
-\textbf{Additional studies, not relied on by the main paper:} internal associations (Sec.~\ref{sec:supp-bounded-internal}, Table~\ref{tab:supp-internal-links}), exposure timing (Sec.~\ref{sec:window552}), original LIBERO (Sec.~\ref{supp:legacy}), LIBERO-Plus outcomes (Sec.~\ref{sec:supp-plus}), attention (Sec.~\ref{sec:supp-attention-analysis}, Table~\ref{tab:attention-context}, Fig.~\ref{fig:attention-trends}; details in Secs.~\ref{supp:legacy-attention}, \ref{sec:supp-spatial-attention}, \ref{sec:supp-plus-joint-readout}, Figs.~\ref{fig:supp-attention-main-view},~\ref{fig:supp-attention-estimates}).
+\textbf{Additional studies, not relied on by the main paper:} internal associations (Sec.~\ref{sec:supp-bounded-internal}, Table~\ref{tab:supp-internal-links}), gripper timing (Sec.~\ref{sec:supp-landmark-final}), LIBERO-Plus outcomes (Sec.~\ref{sec:supp-plus}).
 
 \paragraph{2. Limits stated in the main paper and where they are documented} (main Sec.~\ref{M-sec:discussion}).
 \begin{guidelist}
@@ -51,7 +51,7 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \item \textbf{Internal recordings} ($\pi_{0.5}$, LIBERO-Plus): 536 pairs on 40 tasks fit the shared directions (Secs.~\ref{sec:mean-controls}, \ref{sec:supp-plus}); 404 pairs on 28 common tasks link features, commands, motion and outcomes (Sec.~\ref{sec:supp-bounded-internal}).
 \item \textbf{Restoration} ($\pi_{0.5}$): 31 held-out tasks, 108 settings, two draws, six runs, 1,296 rollouts (Sec.~\ref{sec:allstep-restoration}).
 \item \textbf{Paired executions} ($\pi_{0.5}$, $\pi_0$): five runs per setting; 268 settings per policy on 40 tasks, 202 on 28 for outcomes (Sec.~\ref{sec:five-arm}). Same settings as the recordings; $\pi_0$ internals regenerated on 369 of 404 pairs (Sec.~\ref{sec:supp-pi0-internals}).
-\item \textbf{Original LIBERO} ($\pi_{0.5}$): later observation, 3,360 episodes (Sec.~\ref{sec:supp-p08-dynamic}; its L9 directions are the ones removed in Sec.~\ref{sec:supp-native-ablation}); removal without a clean observation, 288 cases $\times$ 3 conditions (clean, Camera $+15^\circ$, headlight off) $\times$ 7 runs; matched lighting, 80 initial states (Sec.~\ref{supp:legacy-d2}); 480-pair camera study (Sec.~\ref{supp:legacy}); fixed-state camera $0^\circ\!\rightarrow15^\circ$, 36 tasks (Table~\ref{tab:legacy-attention}); ten conditions, 2,344 of 2,400 pairs on 40 tasks.
+\item \textbf{Original LIBERO} ($\pi_{0.5}$): later observation, 3,360 episodes (Sec.~\ref{sec:supp-p08-dynamic}; its L9 directions are the ones removed in Sec.~\ref{sec:supp-native-ablation}); removal without a clean observation, 288 cases $\times$ 3 conditions (clean, Camera $+15^\circ$, headlight off) $\times$ 7 runs; matched lighting, 80 initial states (Sec.~\ref{supp:legacy-d2}); ten conditions, 2,344 of 2,400 pairs on 40 tasks.
 \end{guidelist}
 
 \paragraph{Glossary.}
@@ -61,7 +61,7 @@ Part 1 maps the main paper's claims C1--C4 to their evidence, Part 2 its stated 
 \item \textbf{Directions.} Sixteen channel directions fitted to responses (shared; ``Response'' in tables), to clean features (``Clean'') or random (``Random''); position-centered fits subtract the ten position means of the fitting data.
 \item \textbf{Energy shares.} One minus reconstruction error over the energy around the fitting-data mean (main Eq.~\ref{M-eq:p08-reconstruction}), or over the raw energy.
 \item \textbf{Computation.} Query: one observation and plan; generation step $j=0,\ldots,9$; plan position: one planned action; control: one executed action. First five commands: their translation part, 15 numbers. First flow: clean--perturbed difference of the step-0 update.
-\item \textbf{Internal quantities.} Prefix H, normalized Z, cached values V; action-expert H after a block; attention probability P; attention output W before gating (Table~\ref{tab:recording-roles}). Conditional TV: redistribution within a region; mass-weighted TV rescales it by the region's mass. Participation: effective number of channels (tokens) carrying a response. Raw output response: a difference RMS; relative response divides it by the matched-clean norm.
+\item \textbf{Internal quantities.} Prefix H, normalized Z, cached values V; action-expert H after a block; attention probability P; attention output W before gating (Table~\ref{tab:recording-roles}). Conditional TV: redistribution within a region. Participation: effective number of channels (tokens) carrying a response. Raw output response: a difference RMS; relative response divides it by the matched-clean norm.
 \item \textbf{Command change, footprint.} Perturbed minus clean first five commands; an edit's footprint is its edited-minus-unedited change as a fraction of it.
 \item \textbf{Outcomes.} Clean then perturbed (S success, F failure): SF lost, FS gained success. Success change (RD in some tables): perturbed minus clean success rate. Command--cost correlation: across the ten conditions.
 \item \textbf{Intervals} resample whole tasks. \textbf{Bounds over missing outcomes} cover all feasible values of unknown outcomes.

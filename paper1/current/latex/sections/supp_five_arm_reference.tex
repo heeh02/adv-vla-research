@@ -4,7 +4,7 @@ Which runs lose success under a perturbation, which gain it, and how does that c
 
 \subsection{Paired success, lost and gained successes}
 \paragraph{Design.}
-Each policy--setting record holds five runs, $R_0,T_0,R_1,T_1,R'_0$, with policy-noise draws $0,0,1,1,0$, all from the setting's matched initial state: two clean runs, two perturbed runs that each share one clean run's noise, and a repeat of $R_0$. $R_0$ versus $R_1$ is the clean rerun; $R_0$ versus $R'_0$ is the repeat, which checks reproducibility. Each policy keeps its own definition of the policy noise, and every comparison is formed within one record. Estimates average the two perturbed--clean comparisons equally, then settings within tasks, then tasks equally. Whole-task resampling keeps both noise draws and all five runs together, so intervals describe variation over tasks given the recorded noise draws. The episode budget is fixed within each comparison; in the spatial suite it is 220 controls for $\pi_0$ and 280 for $\pi_{0.5}$.
+Each policy--setting record holds five runs, $R_0,T_0,R_1,T_1,R'_0$, with policy-noise draws $0,0,1,1,0$, all from the setting's matched initial state: two clean runs, two perturbed runs that each share one clean run's noise, and a repeat of $R_0$. $R_0$ versus $R_1$ is the clean rerun; $R_0$ versus $R'_0$ is the repeat, which checks reproducibility. Every qualified repeat reproduces $R_0$'s end-effector position after 60 executed controls exactly, except in three settings (two in $\pi_{0.5}$, one in $\pi_0$), where the positions differ by 0.03 to 1.17\,mm with identical outcomes of $R_0$ and $R'_0$; the source of these small differences is unknown. Each policy keeps its own definition of the policy noise, and every comparison is formed within one record. Estimates average the two perturbed--clean comparisons equally, then settings within tasks, then tasks equally. Whole-task resampling keeps both noise draws and all five runs together, so intervals describe variation over tasks given the recorded noise draws. The episode budget is fixed within each comparison; in the spatial suite it is 220 controls for $\pi_0$ and 280 for $\pi_{0.5}$.
 
 \paragraph{Coverage.}
 The study plans 268 settings per policy (536 noise pairs per policy), 536 policy--setting records across both policies and 2,680 run outcomes. Every planned record, including the six specified $\pi_{0.5}$ Light settings, exists. Table~\ref{tab:five-arm-coverage} keeps the full denominator: 2,641 outcomes are validated and 39 unknown, 25 through technically missing runs and 14 through failed validation.
@@ -35,10 +35,10 @@ The primary comparison uses the 28 common tasks and the 202 settings per policy 
 \input{sections/supp_outcome_identity}
 
 \paragraph{Definitions.}
-For binary outcomes $Y_R,Y_T$ of a clean and a perturbed run, a lost success (SF, harm) has probability $\Pr(Y_R=1,Y_T=0)$ and a gained success (FS, recovery) $\Pr(Y_R=0,Y_T=1)$, both unconditional paired probabilities under the stated weights. The success change (RD) is
+For binary outcomes $Y_R,Y_T$ of a clean and a perturbed run, a lost success (SF) has probability $\Pr(Y_R=1,Y_T=0)$ and a gained success (FS) $\Pr(Y_R=0,Y_T=1)$, both unconditional paired probabilities under the stated weights. The success change (RD) is
 \begin{equation}
  \mathrm{RD}=\mathrm{SR}(T)-\mathrm{SR}(R)
-            =\mathrm{recovery}-\mathrm{harm},
+            =\Pr(\mathrm{gained})-\Pr(\mathrm{lost}),
 \end{equation}
 and the rate of changed outcomes is their sum. Unknown outcomes take every possible value on the planned support, giving bounds over missing outcomes; sampling intervals are separate.
 
@@ -113,7 +113,7 @@ $\pi_0$ / S & 17.86 & 0.00 & 0.00\\
 Camera changes the commands and moves the end effector most in both policies; Light has the smallest means and incomplete support (Table~\ref{tab:five-arm-motion}). Plans hold ten actions ($\pi_{0.5}$) and fifty ($\pi_0$); the comparison uses the first five commands, end-effector positions at fixed control steps, and each run's final observation. Each row uses the settings where the metric and control step are available for $T_0$ vs.\ $R_0$, $T_1$ vs.\ $R_1$, and $R_0$ vs.\ $R_1$; outcome estimates keep the full planned denominator.
 
 \begin{table}[t]
-\caption{\textbf{Camera changes commands and moves the end effector most in both policies; Light has the smallest means and incomplete support.} Primary-panel settings whose perturbed--clean and clean-rerun records share metric and control step ($N$/tasks); no row replaces the planned outcome denominator. Task-equal perturbed--clean means, no intervals. Translation RMS over the first five commands in command units; EEF5/EEF60 are end-effector position distances after controls 5 and 60, stored in metres, shown in centimetres. Supports for each metric, control step and reference, including unequal final steps, are recorded separately.}
+\caption{\textbf{Camera changes commands and moves the end effector most in both policies; Light has the smallest means and incomplete support.} Primary-panel settings whose perturbed--clean and clean-rerun records share metric and control step ($N$/tasks); no row replaces the planned outcome denominator. Task-equal perturbed--clean means, no intervals. Translation RMS over the first five commands in command units; EEF5/EEF60 are end-effector position distances after controls 5 and 60, stored in meters, shown in centimeters. Supports for each metric, control step and reference, including unequal final steps, are recorded separately.}
 
 \centering\small
 \setlength{\tabcolsep}{4pt}
@@ -144,7 +144,7 @@ The $\pi_{0.5}$ internal states stored here are recomputed (prefix H before each
 A ranking comparison listed in advance asks how often one family has the larger command or motion change while another has the larger net loss of success. All six ordered comparisons among Background, Camera and Sensor Noise are stored for the primary command measure; each fraction is the share of 2,000 resampled task sets in which the reversal holds strictly (ties count as none). For $\pi_0$, Background against Sensor Noise, the fractions are 69.9\% for commands, 67.75\% for EEF5 and 2.8\% for EEF60, so the reversal depends on the measure and the control step.
 
 \paragraph{Estimators that could not be computed.}
-A planned estimator of the difference between correlations is undefined on these executions: for both policies and all five fixed primary command and end-effector metrics, none of the 2,000 draws defines it on the fixed support. The aggregation and lost-success comparisons that can be estimated use the studies in Secs.~\ref{supp:legacy} and~\ref{sec:plus-p0}. The timing of exposure is examined in the separate 552-episode study (Sec.~\ref{sec:window552}), which compares $C/F_{30}/R_{30}/N_{30}$ schedules within $\pi_{0.5}$ on its own cases.
+A planned estimator of the difference between correlations is undefined on these executions: for both policies and all five fixed primary command and end-effector metrics, none of the 2,000 draws defines it on the fixed support. The aggregation and lost-success comparisons that can be estimated use the studies in Secs.~\ref{supp:legacy} and~\ref{sec:plus-p0}.
 
 \paragraph{Motion size and lost success, by family (post hoc).}
 The table below gives the AUROC of Sec.~\ref{sec:supp-matched-motion} (motion ratio after control 5; lost against joint successes) per policy and family, with lost/joint-success pair counts in parentheses; the last row uses motion after control 60. Light has too few lost-success pairs. New draws make the $\pi_0$ Sensor Noise interval differ slightly from Sec.~\ref{sec:supp-matched-motion}.

@@ -1,6 +1,6 @@
-"""Figure 4 (native restoration, independent confirmation): what Figure 1b does not already show.
-Figure 1b gives response restoration against the unedited policy. Here each row compares response restoration with
-another arm: the two equal-rank controls (random basis, clean-PCA basis) and full replacement of the L9 state.
+"""Figure 4 (restoration test): each row compares restoration with another run of the same cases.
+First row: the unedited perturbed run (the main comparison, also summarized in Figure 1b). Then the two controls with
+16 directions (random, clean-feature) and replacement of the whole L9 state.
   a  reduction in initial-command error, arm minus response restoration (mean, simultaneous 95% interval, tasks)
   b  task-success gain, response restoration minus arm (percentage points, simultaneous 95% interval)
 Dots and intervals are drawn as in Figure 1b. Full L9 is outside the six prespecified comparisons: open mark, no interval.
@@ -15,9 +15,9 @@ import fig4_data
 apply()
 D = fig4_data.build()
 K = '#222222'
-ROWS = (('R_rand', 'Random directions'), ('R_clean', 'Clean-feature directions'), ('R_full', 'Whole L9 state'))
+ROWS = (('N_T', 'Perturbed, unedited'), ('R_rand', 'Random directions'), ('R_clean', 'Clean-feature directions'), ('R_full', 'Whole L9 state'))
 Y0, DYR = 35.0, 24.0                       # first row, row pitch
-YA = Y0 + 2 * DYR + 14.0                   # axis
+YA = Y0 + (len(ROWS) - 1) * DYR + 14.0     # axis
 HF = YA + 12.5
 F = S.Fig(HF); T = F.text; cv = F.cv
 

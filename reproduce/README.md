@@ -49,7 +49,7 @@ bash paper1/current/figure_src/build.sh
 bash paper1/current/figure_src/build_supplement.sh
 ```
 
-Outputs are `paper1/current/latex/main.pdf` (10 pages) and `paper1/current/latex/supplement.pdf` (71 pages). The supplement uses the main document's labels. PDF metadata and font metrics may vary by toolchain.
+Outputs are `paper1/current/latex/main.pdf` (10 pages) and `paper1/current/latex/supplement.pdf` (47 pages). The supplement uses the main document's labels. PDF metadata and font metrics may vary by toolchain.
 
 ## Replay the archived statistics
 

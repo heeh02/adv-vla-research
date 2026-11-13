@@ -6,7 +6,7 @@ Packaging only: scientific text, figures, bibliography and statistics are unchan
 ## Main files
 
 - `main.tex`: main paper (8 scientific pages; LLM statement/references on page 9).
-- `supplement.tex`: separate supplementary material (73 pages).
+- `supplement.tex`: separate supplementary material (47 pages).
 - Compiler: **pdfLaTeX**; bibliography: **BibTeX**.
 
 Import this ZIP as a LaTeX project, preserving its directory structure.

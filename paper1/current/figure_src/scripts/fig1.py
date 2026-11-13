@@ -116,14 +116,20 @@ T(a1 + 5, 5.8, 'Commands')
 bx = AX + AW - 8
 PX = 394.0                                                   # panel b box starts here
 for L, y in YS.items():
-    yr = y + BH / 2 + (4.0 if L == 'L9' else 0.0)
-    arr([(bx, yr), (bx + 21, yr)], color=ACC, lw=1.1, hs=4.6, z=3.6)
-    T(bx + 24, yr + 0.2, r'$\Delta H_{%s}$' % L[1:], size=8.4, color=K)
-y9 = YS['L9'] + BH / 2 + 4.0
+    in_loop = L == 'L9'                                      # the response that enters the loop gets its own small box
+    yr = y + BH / 2 + (5.0 if in_loop else 0.0)
+    xa = bx + (24 if in_loop else 21)
+    arr([(bx, yr), (xa, yr)], color=ACC, lw=1.1, hs=4.6, z=3.6)
+    xe = T(xa + 3, yr + 0.2, r'$\Delta H_{%s}$' % L[1:], size=8.4, color=K)
+    if in_loop:
+        HB = 11.6
+        f.box(xa, yr - HB / 2, xe + 3.0 - xa, HB, fc='#ffffff', ec=ACC, lw=0.9, r=2.6, z=2.9)
+        print('dH9 box centre', round((xa + xe + 3.0) / 2, 1), 'arrow x', 344.0 + 42.0 / 2)
+y9 = YS['L9'] + BH / 2 + 5.0
 OX, OW, OH = 344.0, 42.0, 19.2
 f.box(OX, NY - OH / 2, OW, OH, fc=ACC_T, ec=ACC, lw=0.9, r=3.2, z=3)
 T(OX + OW / 2, NY - 4.1, '16 shared', size=7.0, ha='center'); T(OX + OW / 2, NY + 4.3, 'directions', size=7.0, ha='center')
-arr([(OX + OW / 2, y9 - 5.6), (OX + OW / 2, NY + OH / 2)], color=ACC, lw=1.1, hs=4.6, z=3.6)
+arr([(OX + OW / 2, y9 - 5.8), (OX + OW / 2, NY + OH / 2)], color=ACC, lw=1.1, hs=4.6, z=3.6)
 arr([(OX, NY), (XA + 4.6, NY)], color=ACC, lw=1.1, hs=4.6, z=3.6)
 f.cv.add_patch(Circle((XA, NY), 4.4, fc='#ffffff', ec=ACC, lw=1.0, zorder=4))
 f.line([(XA - 2.3, NY), (XA + 2.3, NY)], color=ACC, lw=1.2, z=4.2)
