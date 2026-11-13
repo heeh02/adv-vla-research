@@ -27,9 +27,9 @@ head, body = (here / "page.html").read_text(encoding="utf-8").split("<!--BODY-->
 reset = ("<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}"
          "img{max-width:100%}[hidden]{display:none!important}</style>")
 icon = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
-        "%3Crect width='32' height='32' rx='7' fill='%2315202b'/%3E"
-        "%3Crect x='7' y='9' width='18' height='5' rx='1.5' fill='%238a96a1'/%3E"
-        "%3Crect x='7' y='18' width='10.5' height='5' rx='1.5' fill='%23e56a4f'/%3E%3C/svg%3E")
+        "%3Crect width='32' height='32' rx='7' fill='%23003366'/%3E"
+        "%3Crect x='7' y='9' width='18' height='5' rx='1.5' fill='%23c9d6e6'/%3E"
+        "%3Crect x='7' y='18' width='10.5' height='5' rx='1.5' fill='%23e3b95a'/%3E%3C/svg%3E")
 meta = "\n".join([
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
