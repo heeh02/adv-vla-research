@@ -1,0 +1,601 @@
+<title>Sensitivity Is Not Fragility</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a left-aligned reading column inside a wide measure; each finding pairs its text with one small
+   to-scale chart, then gives the paper's own figure a full-width white plate. Section eyebrows name the
+   link of the chain (image -> features -> commands -> motion -> outcome) that the finding belongs to. */
+:root {
+  --bg: #f5f7f9;            /* cool paper */
+  --surface: #ffffff;       /* cards and chart surfaces */
+  --ink: #15202b;
+  --ink-2: #465361;
+  --muted: #64717e;
+  --rule: #dbe2e8;
+  --accent: #1f6fb5;        /* the blue of the paper's figures: shared directions, restoration */
+  --accent-wash: #e6f0f9;
+  --pert: #c2452d;          /* the perturbed run and lost successes */
+  --gain: #1f6fb5;
+  --kept: #8a96a1;          /* clean reruns and kept successes: context, not the story */
+  --both: #3b4753;
+  --flag: rgba(31, 111, 181, 0.09);
+  --plate: #ffffff;         /* figures keep a white ground in both themes */
+  --code-bg: #eaeff3;
+  --font-display: "Bricolage Grotesque", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1318; --surface: #161c23; --ink: #e8edf1; --ink-2: #b3bec8; --muted: #8b98a5; --rule: #27313b;
+    --accent: #4a94dc; --accent-wash: #152536; --pert: #e56a4f; --gain: #4a94dc; --kept: #7d8a96; --both: #aab4bd;
+    --flag: rgba(74, 148, 220, 0.13); --plate: #ffffff; --code-bg: #11171d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1318; --surface: #161c23; --ink: #e8edf1; --ink-2: #b3bec8; --muted: #8b98a5; --rule: #27313b;
+  --accent: #4a94dc; --accent-wash: #152536; --pert: #e56a4f; --gain: #4a94dc; --kept: #7d8a96; --both: #aab4bd;
+  --flag: rgba(74, 148, 220, 0.13); --plate: #ffffff; --code-bg: #11171d; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 var(--font-body); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+p { margin: 0; }
+sub { font-size: 0.72em; line-height: 0; }
+
+.wrap { max-width: 70rem; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.page { display: flex; flex-direction: column; gap: clamp(3.5rem, 8vw, 6rem); padding-block: clamp(1.25rem, 3vw, 2rem) 4rem; }
+.measure { max-width: 38rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.stack { display: flex; flex-direction: column; gap: 1.75rem; min-width: 0; }
+
+.topbar { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; justify-content: space-between; font-size: 0.875rem; }
+.topbar .mark { font-family: var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.topbar nav a { color: var(--ink-2); text-decoration: none; }
+.topbar nav a:hover { color: var(--accent); text-decoration: underline; }
+
+.eyebrow { font: 500 0.78rem/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; color: var(--ink); }
+h1 { font-size: clamp(2.9rem, 8.4vw, 5.6rem); line-height: 0.94; letter-spacing: -0.025em; font-weight: 300; }
+h1 strong { font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.35rem); line-height: 1.08; letter-spacing: -0.015em; font-weight: 700; }
+h3 { font-size: 1.15rem; line-height: 1.25; font-weight: 700; }
+.subtitle { font: 500 clamp(1.05rem, 2vw, 1.3rem)/1.3 var(--font-display); color: var(--ink-2); max-width: 32rem; }
+.lede { font-size: 1.125rem; color: var(--ink); }
+.muted { color: var(--muted); }
+.num { font-family: var(--font-mono); font-size: 0.94em; white-space: nowrap; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: clamp(2rem, 5vw, 4rem); align-items: end; }
+.hero-text { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.authors { font-size: 0.9375rem; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.btn { display: inline-flex; align-items: center; min-height: 2.6rem; padding: 0.45rem 1rem; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); background: transparent; font: 500 0.9375rem/1.2 var(--font-body); text-decoration: none; }
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+
+/* chart cards */
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(1rem, 2.4vw, 1.5rem); display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.card h3 { font-size: 1.05rem; }
+.card .note { font-size: 0.8125rem; line-height: 1.45; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.8125rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.sw { width: 0.8rem; height: 0.8rem; border-radius: 3px; flex: none; }
+.sw.dot { border-radius: 50%; }
+.sw.pert { background: var(--pert); } .sw.kept { background: var(--kept); } .sw.acc { background: var(--accent); } .sw.both { background: var(--both); }
+
+.bars { --valw: 6.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+.bars.w8 { --valw: 8.2rem; }
+.bars.w9 { --valw: 8.6rem; }
+.bars .cap { font: 500 0.8125rem/1.35 var(--font-body); color: var(--ink-2); }
+.bar-row { display: grid; grid-template-columns: minmax(0, 8.2rem) minmax(0, 1fr) var(--valw); gap: 0.6rem; align-items: center; font-size: 0.875rem; }
+.bar-row .name { color: var(--ink-2); line-height: 1.25; }
+.bar-row .val { font-family: var(--font-mono); font-size: 0.875rem; color: var(--ink); text-align: right; white-space: nowrap; }
+.track { position: relative; height: 18px; border-left: 1px solid var(--muted); }
+.track .fill { position: absolute; top: 2px; bottom: 2px; left: 0; border-radius: 0 4px 4px 0; min-width: 2px; }
+.track .fill.pert { background: var(--pert); } .track .fill.kept { background: var(--kept); } .track .fill.acc { background: var(--accent); }
+.track.range { border-left: 0; background: linear-gradient(var(--rule), var(--rule)) left center / 100% 1px no-repeat; }
+.track.range .fill { border-radius: 4px; }
+.track .pt { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
+.track .pt.kept { background: var(--kept); } .track .pt.acc { background: var(--accent); }
+.track .link { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--accent); opacity: 0.45; }
+.axis { display: grid; grid-template-columns: minmax(0, 8.2rem) minmax(0, 1fr) var(--valw); gap: 0.6rem; font: 400 0.75rem/1 var(--font-mono); color: var(--muted); }
+.axis .ticks { display: flex; justify-content: space-between; }
+@media (max-width: 30rem) {
+  .bar-row, .axis { grid-template-columns: minmax(0, 1fr) var(--valw); }
+  .bar-row .name { grid-column: 1 / -1; }
+  .axis .sp { display: none; }
+}
+
+/* chain */
+.chain { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; }
+.chain li { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 0.7rem 0.8rem; display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; position: relative; }
+.chain .stage { font: 700 1.05rem/1.2 var(--font-display); }
+.chain .what { font-size: 0.8125rem; line-height: 1.35; color: var(--muted); }
+.chain li + li::before { content: "\2192"; position: absolute; left: -0.25rem; top: 50%; transform: translate(-50%, -50%); color: var(--ink-2); font: 500 1rem/1 var(--font-mono); }
+.questions { margin: 0; padding: 0 0 0 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.questions li::marker { font-family: var(--font-mono); color: var(--muted); }
+.questions em { font-style: normal; font-weight: 600; }
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0; }
+.terms div { border-top: 2px solid var(--ink); padding-top: 0.7rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.terms dt { font: 700 1.15rem/1.2 var(--font-display); }
+.terms dd { margin: 0; color: var(--ink-2); font-size: 0.9688rem; }
+@media (max-width: 46rem) {
+  .chain { grid-template-columns: minmax(0, 1fr); }
+  .chain li + li::before { content: "\2193"; left: 1.2rem; top: -0.25rem; transform: translate(0, -50%); }
+  .terms { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* findings */
+.split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+@media (max-width: 56rem) { .hero, .split { grid-template-columns: minmax(0, 1fr); } .hero { align-items: start; } }
+.plate { margin: 0; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.plate-img { background: var(--plate); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(0.6rem, 2vw, 1.25rem); overflow-x: auto; }
+.plate-img img { display: block; width: 100%; min-width: 40rem; height: auto; }
+.plate figcaption { font-size: 0.875rem; line-height: 1.5; color: var(--muted); max-width: 46rem; }
+.plate figcaption b { color: var(--ink-2); font-weight: 600; }
+
+/* threshold explorer */
+.explorer { gap: 1rem; }
+.control { display: flex; flex-direction: column; gap: 0.5rem; }
+.control label { font-size: 0.9375rem; color: var(--ink); }
+.control output { font: 500 1rem/1 var(--font-mono); background: var(--accent-wash); color: var(--ink); padding: 0.15rem 0.45rem; border-radius: 4px; }
+input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 2rem; margin: 0; }
+#pairs-plot { position: relative; min-width: 0; }
+#pairs-svg { display: block; width: 100%; touch-action: pan-y; }
+#pairs-svg text { font-family: var(--font-body); fill: var(--ink-2); font-size: 12px; }
+#pairs-svg .rowlab { fill: var(--ink); font-weight: 600; }
+#pairs-svg .rowsub { fill: var(--muted); }
+#pairs-svg .tick { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
+#pairs-svg .grid { stroke: var(--rule); stroke-width: 1; }
+#pairs-svg .one { stroke: var(--muted); stroke-width: 1; }
+#pairs-svg .flagzone { fill: var(--flag); }
+#pairs-svg .thr { stroke: var(--accent); stroke-width: 2; }
+#pairs-svg .thrlab { fill: var(--ink); font-size: 11.5px; font-weight: 500; }
+#pairs-svg circle { stroke: var(--surface); stroke-width: 2; transition: opacity 0.12s linear; }
+#pairs-svg .d-SS { fill: var(--kept); } #pairs-svg .d-SF { fill: var(--pert); } #pairs-svg .d-FS { fill: var(--gain); } #pairs-svg .d-FF { fill: var(--both); }
+#pairs-svg .off { opacity: 0.42; }
+#pairs-svg .hot { stroke: var(--ink); }
+#pairs-tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 0.8125rem; line-height: 1.35; padding: 0.35rem 0.55rem; border-radius: 6px; max-width: 14rem; z-index: 2; }
+#pairs-tip b { font-family: var(--font-mono); font-weight: 500; }
+.readout { display: flex; flex-direction: column; gap: 0.55rem; }
+.readout .say { font-size: 0.9688rem; color: var(--ink); }
+details { font-size: 0.875rem; color: var(--ink-2); }
+summary { cursor: pointer; color: var(--accent); width: fit-content; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 0.875rem; min-width: 100%; }
+th, td { text-align: left; padding: 0.5rem 0.9rem 0.5rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-2); }
+td.n, th.n { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; padding-right: 0; padding-left: 0.9rem; }
+
+/* closing sections */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2.5rem; }
+.pair > div { border-top: 2px solid var(--ink); padding-top: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+.pair p { color: var(--ink-2); }
+.limits { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--ink-2); }
+@media (max-width: 46rem) { .pair { grid-template-columns: minmax(0, 1fr); } }
+.codebox { position: relative; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px; min-width: 0; }
+.codebox pre { margin: 0; padding: 1rem 1rem 1rem 1rem; overflow-x: auto; font: 400 0.8438rem/1.6 var(--font-mono); color: var(--ink); }
+.codebox button { position: absolute; top: 0.5rem; right: 0.5rem; font: 500 0.75rem/1 var(--font-body); padding: 0.4rem 0.65rem; border-radius: 6px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.codebox button:hover { border-color: var(--ink); }
+.codebox pre.withbtn { padding-top: 2.6rem; }
+footer { border-top: 1px solid var(--rule); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { #pairs-svg circle { transition: none; } }
+</style>
+<!--BODY-->
+<div class="wrap page">
+
+  <header class="topbar">
+    <span class="mark">frozen &pi;<sub>0.5</sub> and &pi;<sub>0</sub> &middot; LIBERO and LIBERO-Plus</span>
+    <nav aria-label="Sections">
+      <a href="#path">The path</a>
+      <a href="#findings">Findings</a>
+      <a href="#setup">Setup</a>
+      <a href="#reproduce">Reproduce</a>
+      <a href="#cite">Cite</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-text">
+      <h1 id="title">Sensitivity Is Not <strong>Fragility</strong></h1>
+      <p class="subtitle">Shared Visual Responses and Task Outcomes in Vision-Language-Action Policies</p>
+      <p class="lede">A robot policy can react strongly to a visual change and still finish its task. It can also barely react and fail. We follow visual perturbations through two frozen policies, from features to commands, motion and task outcomes, and measure where reaction and failure come apart.</p>
+      <!-- AUTHORS: replace the line below with the author list and affiliations when they can be shown. -->
+      <p class="authors" data-placeholder="authors">Author list to be added.</p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/main.pdf" target="_blank" rel="noopener">Paper</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/paper1/current/latex/supplement.pdf" target="_blank" rel="noopener">Supplement</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research" target="_blank" rel="noopener">Code and data</a>
+        <a class="btn" href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.md" target="_blank" rel="noopener">Figure guide</a>
+      </div>
+    </div>
+
+    <div class="card" role="group" aria-labelledby="hero-chart-title">
+      <h3 id="hero-chart-title">&pi;<sub>0</sub> under sensor noise: less motion than a clean rerun, more failures</h3>
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw kept"></i>Second clean run (new policy noise)</span>
+        <span><i class="sw pert"></i>Sensor-noise run</span>
+      </div>
+      <div class="bars">
+        <p class="cap">Distance from the clean run after five controls</p>
+        <div class="bar-row"><span class="name">Second clean run</span><span class="track"><i class="fill kept" style="width:100%"></i></span><span class="val">6.1 mm</span></div>
+        <div class="bar-row"><span class="name">Sensor-noise run</span><span class="track"><i class="fill pert" style="width:57.4%"></i></span><span class="val">3.5 mm</span></div>
+      </div>
+      <div class="bars">
+        <p class="cap">Task success lost</p>
+        <div class="bar-row"><span class="name">Second clean run</span><span class="track"></span><span class="val">0.0 points</span></div>
+        <div class="bar-row"><span class="name">Sensor-noise run</span><span class="track"><i class="fill pert" style="width:100%"></i></span><span class="val">14.3 points</span></div>
+      </div>
+      <p class="note">110 paired runs on 28 LIBERO tasks. These policies generate actions from random noise, so two unperturbed runs already move differently. That clean rerun is the yardstick used throughout.</p>
+    </div>
+  </section>
+
+  <section id="path" class="stack" aria-labelledby="path-h">
+    <div class="measure">
+      <p class="eyebrow">The question</p>
+      <h2 id="path-h">Follow a perturbation from pixels to task outcome</h2>
+      <p>Visual changes that leave a task unchanged, such as a shifted camera or image noise, can sharply reduce the success of vision-language-action policies. To make these policies robust we need to know what a perturbation changes inside them, and how to judge a correction. We compare a clean and a perturbed run that start from the same physical state with the same policy noise, at each link of the path.</p>
+    </div>
+    <ol class="chain" aria-label="The path of a perturbation">
+      <li><span class="stage">Image</span><span class="what">clean or perturbed observation</span></li>
+      <li><span class="stage">Features</span><span class="what">action-expert states at layers L1, L9, L18</span></li>
+      <li><span class="stage">Commands</span><span class="what">first five commands sent to the robot</span></li>
+      <li><span class="stage">Motion</span><span class="what">end-effector position after 5 and 60 controls</span></li>
+      <li><span class="stage">Outcome</span><span class="what">task success at the end of the episode</span></li>
+    </ol>
+    <div class="split">
+      <ol class="questions">
+        <li><em>Image to features.</em> Do different perturbations change the features along shared directions?</li>
+        <li><em>Features to commands.</em> Does restoring clean values along them move the commands back toward the clean run?</li>
+        <li><em>Commands to motion and outcome.</em> How do command changes relate to motion and to success?</li>
+      </ol>
+      <dl class="terms">
+        <div><dt>Sensitivity</dt><dd>How much a perturbation changes features, commands or motion.</dd></div>
+        <div><dt>Fragility</dt><dd>How much task success the perturbation costs.</dd></div>
+      </dl>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure1.png" width="2750" height="1166" alt="Diagram of the policy: a clean and a perturbed image pass through a vision encoder, a VLM prefix and an 18-block action expert. Feature differences are recorded after blocks L1, L9 and L18, and clean values along 16 shared directions are copied back after L9. A side panel shows that restoration reduces command error and raises task success under Camera and Sensor Noise."></div>
+      <figcaption><b>Where a perturbation's effect is recorded and restored in frozen &pi;<sub>0.5</sub>.</b> The response is the perturbed-minus-clean feature difference after action-expert blocks L1, L9 and L18. Restoration copies the clean values along 16 shared directions back after L9.</figcaption>
+    </figure>
+  </section>
+
+  <div id="findings" class="page" style="padding-block:0">
+
+  <section class="stack" aria-labelledby="f1-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">Image &rarr; features</p>
+        <h2 id="f1-h">Different perturbations change the features along the same few directions</h2>
+        <p>In &pi;<sub>0.5</sub> we fit 16 directions per layer to the feature changes that perturbations cause. Each fit leaves out both the tasks and the perturbation family it is tested on, so directions tested on Camera responses never saw a Camera response.</p>
+        <p>On those unseen responses the 16 directions still capture most of the change. Sixteen directions fitted to clean features, or drawn at random, capture almost none. The result holds in &pi;<sub>0</sub>, for other numbers of directions, and at a later observation of an episode.</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c1-title">
+        <h3 id="c1-title">Share of an unseen response captured by 16 directions</h3>
+        <div class="bars">
+          <div class="bar-row"><span class="name">Shared directions</span><span class="track range"><i class="fill acc" style="left:36.5%;width:47.1%"></i></span><span class="val">36.5&ndash;83.6%</span></div>
+          <div class="bar-row"><span class="name">Clean-feature directions</span><span class="track range"><i class="fill kept" style="left:0.5%;width:9.7%"></i></span><span class="val">0.5&ndash;10.2%</span></div>
+          <div class="bar-row"><span class="name">Random directions</span><span class="track range"><i class="fill kept" style="left:1.3%;width:0.6%"></i></span><span class="val">1.3&ndash;1.9%</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0%</span><span>50%</span><span>100%</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">Each bar spans the range over three layers and four perturbation families. 404 clean and perturbed pairs on 28 tasks; tasks and family held out together.</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure3.png" width="2750" height="1016" alt="Two rows of four panels, one per perturbation family. Top: share of response energy retained by shared, clean-feature and random directions at layers L1, L9 and L18. Bottom: error of a linear readout of the same coordinates when predicting the command change, relative to predicting no change."></div>
+      <figcaption><b>Shared directions retain far more of an unseen response than the controls; the commands are predicted best at the last layer.</b> Small dots are tasks, large dots their means.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f2-h">
+    <div class="split">
+      <div class="measure">
+        <p class="eyebrow">Features &rarr; commands</p>
+        <h2 id="f2-h">Restoring clean values along them pulls the commands back</h2>
+        <p>As a causal test, we copy clean values back along the shared directions at a middle layer (L9) during action generation, using a clean observation of the same state. Everything else stays perturbed, including the image that the later blocks still read.</p>
+        <p>On 31 held-out tasks the first five commands move toward those of the clean run. Their error falls in 25 of 27 Camera tasks and 24 of 30 Sensor Noise tasks. Sixteen directions out of 1,024 channels achieve 86.9% and 70.7% of what replacing the whole layer does. Task success is also higher, by 1.85 and 3.33 points.</p>
+        <p class="muted">The test needs a clean observation of the same state, so it is a controlled experiment and not a method one could deploy.</p>
+      </div>
+      <div class="card" role="group" aria-labelledby="c2-title">
+        <h3 id="c2-title">Error of the first five commands, before and after restoration</h3>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw dot kept"></i>Perturbed, unedited</span>
+          <span><i class="sw dot acc"></i>With restoration</span>
+        </div>
+        <div class="bars w8">
+          <div class="bar-row"><span class="name">Camera</span><span class="track range"><i class="link" style="left:62.4%;width:19.4%"></i><i class="pt kept" style="left:81.8%"></i><i class="pt acc" style="left:62.4%"></i></span><span class="val">0.409 &rarr; 0.312</span></div>
+          <div class="bar-row"><span class="name">Sensor Noise</span><span class="track range"><i class="link" style="left:39.8%;width:2%"></i><i class="pt kept" style="left:41.8%"></i><i class="pt acc" style="left:39.8%"></i></span><span class="val">0.209 &rarr; 0.199</span></div>
+          <div class="axis" aria-hidden="true"><span class="sp"></span><span class="ticks"><span>0</span><span>0.25</span><span>0.5</span></span><span class="sp"></span></div>
+        </div>
+        <p class="note">Distance from the clean run's commands, in command units; lower is closer to clean. A fall of 24% under Camera and 5% under Sensor Noise. 96 Camera and 120 Sensor Noise cases, six runs each.</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure4.png" width="2750" height="741" alt="Forest plot. Rows compare restoration with the unedited perturbed run, random directions, clean-feature directions and replacing the whole L9 state, for command-error reduction and task-success gain under Camera and Sensor Noise."></div>
+      <figcaption><b>Restoration against the unedited perturbed run, two controls, and replacing the whole L9 state.</b> Positive values favor restoration. Means with simultaneous 95% intervals; small dots are tasks.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack" aria-labelledby="f3-h">
+    <div class="measure">
+      <p class="eyebrow">Commands &rarr; motion &rarr; outcome</p>
+      <h2 id="f3-h">The size of a change is not its cost</h2>
+      <p>Command changes do reach the robot. After five controls their size ranks the motion change almost perfectly (rank correlation 0.95 in &pi;<sub>0.5</sub> and 0.97 in &pi;<sub>0</sub>), and the link is still visible after 60 controls (0.47 and 0.41).</p>
+      <p>But how far a run moves says little about whether it fails. Ranking runs by their motion change separates failures from successes with an AUROC of 0.72 and 0.64 when all perturbation families are pooled, 0.62 and 0.55 within a family, and 0.49 for &pi;<sub>0</sub> under Sensor Noise. A value of 0.5 is chance.</p>
+    </div>
+
+    <div class="card explorer" role="group" aria-labelledby="ex-title">
+      <h3 id="ex-title">Try to catch the failures by how far the robot moved</h3>
+      <p class="note">Every dot is one of the 110 &pi;<sub>0</sub> runs under Sensor Noise, placed by how far it moved from its clean run after five controls, relative to a clean rerun of the same setting. Move the threshold and see which runs it flags.</p>
+      <div class="control">
+        <label for="thr">Flag a run when it moves more than <output id="thr-out" for="thr">1.00&times;</output> as far as a clean rerun</label>
+        <input type="range" id="thr" min="0" max="240" step="1" value="170" aria-describedby="say">
+      </div>
+      <div id="pairs-plot">
+        <svg id="pairs-svg" role="img" aria-label="Dot plot of 110 runs by motion ratio on a logarithmic axis, in four rows by outcome. Runs that lost success cover a similar range to runs that kept it."></svg>
+        <div id="pairs-tip" hidden></div>
+      </div>
+      <div class="readout">
+        <p class="say" id="say" aria-live="polite"></p>
+        <div class="bars w9">
+          <div class="bar-row"><span class="name">Lost-success runs flagged</span><span class="track"><i class="fill pert" id="m-sf" style="width:0%"></i></span><span class="val" id="v-sf"></span></div>
+          <div class="bar-row"><span class="name">Kept-success runs flagged</span><span class="track"><i class="fill kept" id="m-ss" style="width:0%"></i></span><span class="val" id="v-ss"></span></div>
+        </div>
+        <p class="note">Wherever the threshold sits, it flags about the same share of both groups. That is what an AUROC of 0.49 looks like.</p>
+      </div>
+      <details>
+        <summary>Show the counts as a table</summary>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Outcome (clean, then perturbed)</th><th class="n">Runs</th><th class="n">Moved less than a clean rerun</th></tr></thead>
+            <tbody>
+              <tr><td>Kept success</td><td class="n">84</td><td class="n">65</td></tr>
+              <tr><td>Lost success</td><td class="n">18</td><td class="n">12</td></tr>
+              <tr><td>Gained success</td><td class="n">2</td><td class="n">2</td></tr>
+              <tr><td>Failed in both</td><td class="n">6</td><td class="n">4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="split">
+      <div class="measure">
+        <h3>Net success hides lost and gained successes</h3>
+        <p>Under a perturbation some clean successes fail and some clean failures succeed. The net change shows only their difference. Under Background, &pi;<sub>0.5</sub> loses 3.57% of successes and gains 3.57%: net success is unchanged while 7.14% of outcomes change.</p>
+        <p>A clean rerun alone changes up to 7.1% of outcomes, so changes have to be read against it. Lost successes exceed the rerun level under Camera and Sensor Noise in both policies. Gained successes do not.</p>
+      </div>
+      <div class="measure">
+        <h3>The same gap in other comparisons</h3>
+        <p>Removing a headlight changes &pi;<sub>0.5</sub>'s first five commands 5.1 times as much as a dimming matched in image statistics, and both succeed in 77 of 80 runs. In a ten-condition study, a condition's mean command change ranks its mean success change (rank correlation &minus;0.90), but across the 400 task and condition cells the correlation is &minus;0.075.</p>
+      </div>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure5.png" width="2750" height="1133" alt="Three panels. Left: motion ratio of each perturbation family against its change in success for both policies. Top right: motion ratio per task and the share of successes lost and gained. Bottom right: all 110 pi-0 Sensor Noise pairs by outcome."></div>
+      <figcaption><b>A small motion change can cost success, and net success hides lost and gained successes.</b> Motion ratio: distance between a perturbed run and its clean run after five controls, relative to the distance between two clean runs.</figcaption>
+    </figure>
+  </section>
+
+  </div>
+
+  <section class="stack" aria-labelledby="gives-h">
+    <div class="measure">
+      <p class="eyebrow">What this gives later work</p>
+      <h2 id="gives-h">A place to intervene and a yardstick to judge by</h2>
+    </div>
+    <div class="pair">
+      <div><h3>A common place to intervene</h3><p>Perturbations of different kinds act on the same few directions inside the policy, and restoring those directions moves the commands. Different disturbances can be studied, and corrected, through one set of internal components.</p></div>
+      <div><h3>A yardstick</h3><p>Any correction, ours included, should be judged by paired task outcomes against clean reruns: which successes are lost, which are gained, and how that compares with what the policy's own randomness does.</p></div>
+    </div>
+  </section>
+
+  <section id="setup" class="stack" aria-labelledby="setup-h">
+    <div class="measure">
+      <p class="eyebrow">Setup</p>
+      <h2 id="setup-h">Three paired studies, about 4,000 simulator rollouts</h2>
+      <p>All studies use frozen, LIBERO-finetuned &pi;<sub>0.5</sub> and &pi;<sub>0</sub> in the LIBERO simulator under four LIBERO-Plus perturbation families: Background, Camera, Light and Sensor Noise. Every comparison runs a setting clean and perturbed from the same initial state with the same policy noise, so that only the image differs.</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Study</th><th>What is compared</th><th>Data</th></tr></thead>
+        <tbody>
+          <tr><td>Internal recordings (&pi;<sub>0.5</sub>)</td><td>Clean and perturbed features and commands at the first policy query</td><td>404 pairs on 28 tasks (536 on all 40)</td></tr>
+          <tr><td>Restoration (&pi;<sub>0.5</sub>)</td><td>Six runs per case: clean, perturbed, restoration, two controls, whole L9 state replaced</td><td>96 Camera and 120 Sensor Noise cases; 1,296 rollouts on 31 held-out tasks</td></tr>
+          <tr><td>Paired executions (both policies)</td><td>Two clean, two perturbed and one repeat run per setting; commands, motion after 5 and 60 controls, final success</td><td>268 settings on 40 tasks per policy; 2,680 planned rollouts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="plate">
+      <div class="plate-img"><img src="assets/figure2.png" width="2750" height="1127" alt="Four diagrams: one policy query with ten generation steps and five executed controls; paired recording of a clean and a perturbed branch from the same noise; restoration at L9 at every generation step; and five runs from one state compared after 5 and 60 controls."></div>
+      <figcaption><b>How the policy runs, and what each study compares.</b> A second test on original LIBERO, with 6,048 planned rollouts, removes the shared components without a clean observation; it is reported in the supplement.</figcaption>
+    </figure>
+    <div class="measure">
+      <h3>Limits</h3>
+      <ul class="limits">
+        <li>Sensitivity is measured at the start of an episode; later, contact-critical steps are left to future work.</li>
+        <li>Restoration is tested in &pi;<sub>0.5</sub> at one layer, with 16 directions, on two of the four families and 216 cases, and it needs a clean observation of the same state.</li>
+        <li>The shared directions also carry the response to Background, which costs &pi;<sub>0.5</sub> no net success. They describe how the policy responds to a visual change, harmful or not.</li>
+        <li>All experiments are simulated, use two related policies, and use settings chosen to keep perturbations moderate.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reproduce" class="stack" aria-labelledby="rep-h">
+    <div class="measure">
+      <p class="eyebrow">Reproduce</p>
+      <h2 id="rep-h">Check the main numbers with one command</h2>
+      <p>The check needs Python 3.9 or later and only the standard library. It rebuilds the task scores behind the shared-direction result, recomputes command error across the 216 restoration cases, and recomputes the paired outcomes. The repository also holds the figure scripts, the collection code and the data release.</p>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-rep">Copy</button>
+      <pre class="withbtn" id="code-rep">git clone https://github.com/heeh02/adv-vla-research.git
+cd adv-vla-research
+python3 -B reproduce/paper.py --output paper-results.json</pre>
+    </div>
+    <p class="muted"><a href="https://github.com/heeh02/adv-vla-research/blob/main/reproduce/README.md" target="_blank" rel="noopener">Reproduction guide</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0" target="_blank" rel="noopener">Data release</a> &middot; <a href="https://github.com/heeh02/adv-vla-research/blob/main/docs/figures/README.zh-CN.md" target="_blank" rel="noopener">中文逐图讲解</a></p>
+  </section>
+
+  <section id="cite" class="stack" aria-labelledby="cite-h">
+    <div class="measure">
+      <p class="eyebrow">Cite</p>
+      <h2 id="cite-h">BibTeX</h2>
+    </div>
+    <div class="codebox">
+      <button type="button" data-copy="code-bib">Copy</button>
+      <pre class="withbtn" id="code-bib">@misc{sensitivity_not_fragility_2026,
+  title  = {Sensitivity Is Not Fragility: Shared Visual Responses and
+            Task Outcomes in Vision-Language-Action Policies},
+  author = {Author list to be added},
+  year   = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p>Code is released under Apache-2.0; text, figures and derived data under CC BY 4.0. Model weights and benchmark assets keep the terms of their upstream projects.</p>
+    <p>Two companion studies, on intervention and prediction and on training continuation, are released in the same repository as drafts for others to continue.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var PAIRS = [["SS",2.0862],["SS",2.0327],["SS",0.8971],["SS",0.9975],["SS",0.2575],["SS",0.234],["SS",0.4381],["SS",0.2923],["SS",1.8104],["SS",0.5729],["SS",0.6311],["SS",1.3663],["SS",0.2887],["SS",0.9482],["SS",4.4159],["SS",0.1274],["SS",2.0955],["SS",1.6646],["SS",0.7684],["SS",0.6359],["SS",0.6],["SS",0.3217],["SS",0.3148],["SS",0.0235],["SS",0.4919],["SS",0.5241],["SS",1.2452],["SS",1.0281],["SS",1.2167],["SS",0.8926],["SS",0.7555],["SS",1.0728],["SS",0.4148],["SS",0.759],["SS",0.38],["SS",0.4159],["SS",0.3812],["SS",0.403],["SS",0.3979],["SS",0.0628],["SS",0.0892],["SS",0.8656],["SS",0.772],["SS",0.3551],["SS",0.3668],["SS",0.6859],["SS",0.7791],["SS",0.5441],["SS",0.7695],["SS",0.3723],["SS",0.3593],["SS",2.1269],["SS",1.6438],["SS",1.8044],["SS",1.2938],["SS",0.3464],["SS",0.392],["SS",0.7666],["SS",0.8013],["SS",0.1701],["SS",0.1699],["SS",0.1518],["SS",0.1456],["SS",0.1546],["SS",0.1246],["SS",0.2668],["SS",0.2259],["SS",0.1312],["SS",0.2139],["SS",0.2185],["SS",0.1417],["SS",0.1457],["SS",0.7537],["SS",0.8731],["SS",0.7778],["SS",0.8027],["SS",0.1268],["SS",0.1414],["SS",0.2235],["SS",0.2057],["SS",2.6358],["SS",3.4342],["SS",1.5205],["SS",1.4318],["SF",2.3539],["SF",1.0534],["SF",1.0918],["SF",1.5493],["SF",0.3983],["SF",1.5977],["SF",3.6686],["SF",0.2401],["SF",0.694],["SF",0.0726],["SF",0.0514],["SF",0.0955],["SF",0.4661],["SF",0.302],["SF",0.3781],["SF",0.4089],["SF",0.3825],["SF",0.3075],["FS",0.5579],["FS",0.3128],["FF",1.3091],["FF",1.4672],["FF",0.5984],["FF",0.471],["FF",0.462],["FF",0.3545]];
+  var ROWS = [
+    { k: "SS", label: "Kept success", sub: "succeeds clean and perturbed" },
+    { k: "SF", label: "Lost success", sub: "succeeds clean, fails perturbed" },
+    { k: "FS", label: "Gained success", sub: "fails clean, succeeds perturbed" },
+    { k: "FF", label: "Failed in both", sub: "" }
+  ];
+  var NAMES = { SS: "kept success", SF: "lost success", FS: "gained success", FF: "failed in both" };
+  var LO = -1.7, HI = 0.7, NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("pairs-svg"), box = document.getElementById("pairs-plot");
+  var slider = document.getElementById("thr"), out = document.getElementById("thr-out"), tip = document.getElementById("pairs-tip");
+  if (!svg || !slider) return;
+  var dots = [], thrLine = null, thrZone = null, thrLab = null, geom = null, hot = null;
+
+  function thr() { return Math.pow(10, LO + (+slider.value) / 100); }
+  function el(name, attrs, text) {
+    var e = document.createElementNS(NS, name);
+    for (var a in attrs) e.setAttribute(a, attrs[a]);
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function render() {
+    var W = Math.max(280, Math.floor(box.clientWidth)), padL = 8, padR = 12, S = 8.6, labH = 20, gap = 10;
+    var x = function (v) { return padL + (Math.log10(v) - LO) / (HI - LO) * (W - padL - padR); };
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    dots = [];
+    var y = 22, rows = [];
+    ROWS.forEach(function (r) {
+      var vals = PAIRS.filter(function (p) { return p[0] === r.k; }).map(function (p) { return p[1]; }).sort(function (a, b) { return a - b; });
+      var placed = [], maxLev = 0;
+      vals.forEach(function (v) {
+        var px = x(v), lev = 0, n = 0;
+        while (placed.some(function (q) { return q.lev === lev && Math.abs(q.px - px) < S; })) { n += 1; lev = (n % 2 ? 1 : -1) * Math.ceil(n / 2); }
+        placed.push({ px: px, lev: lev, v: v });
+        maxLev = Math.max(maxLev, Math.abs(lev));
+      });
+      var h = (2 * maxLev + 1) * S + 6;
+      rows.push({ r: r, top: y, h: h, placed: placed, n: vals.length });
+      y += labH + h + gap;
+    });
+    var plotBottom = y - gap + 2, H = plotBottom + 30;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+    thrZone = el("rect", { "class": "flagzone", y: 0, height: plotBottom });
+    svg.appendChild(thrZone);
+    [0.03, 0.1, 0.3, 1, 3].forEach(function (t) {
+      svg.appendChild(el("line", { "class": t === 1 ? "one" : "grid", x1: x(t), x2: x(t), y1: 18, y2: plotBottom }));
+      var lab = t === 1 ? (W > 520 ? "1× = a clean rerun" : "1×") : t + "×";
+      svg.appendChild(el("text", { "class": "tick", x: x(t), y: plotBottom + 16, "text-anchor": "middle" }, lab));
+    });
+    svg.appendChild(el("line", { "class": "one", x1: padL, x2: W - padR, y1: plotBottom, y2: plotBottom }));
+    rows.forEach(function (row) {
+      var t = el("text", { x: padL, y: row.top + 13 });
+      t.appendChild(el("tspan", { "class": "rowlab" }, row.r.label + " · " + row.n));
+      if (row.r.sub && W > 460) t.appendChild(el("tspan", { "class": "rowsub", dx: 8 }, row.r.sub));
+      svg.appendChild(t);
+      var cy = row.top + labH + row.h / 2;
+      row.placed.forEach(function (p) {
+        var c = el("circle", { "class": "d-" + row.r.k, cx: p.px, cy: cy + p.lev * S, r: 4.3 });
+        svg.appendChild(c);
+        dots.push({ c: c, x: p.px, y: cy + p.lev * S, v: p.v, k: row.r.k });
+      });
+    });
+    thrLine = el("line", { "class": "thr", y1: 0, y2: plotBottom });
+    thrLab = el("text", { "class": "thrlab", y: 11 }, "flagged →");
+    svg.appendChild(thrLine); svg.appendChild(thrLab);
+    geom = { x: x, W: W, padR: padR };
+    update();
+  }
+
+  function update() {
+    if (!geom) return;
+    var t = thr(), tx = geom.x(t), sf = 0, ss = 0;
+    thrLine.setAttribute("x1", tx); thrLine.setAttribute("x2", tx);
+    thrZone.setAttribute("x", tx); thrZone.setAttribute("width", Math.max(0, geom.W - tx));
+    var right = tx + 6 + 62 < geom.W;
+    thrLab.setAttribute("x", right ? tx + 6 : tx - 6);
+    thrLab.setAttribute("text-anchor", right ? "start" : "end");
+    thrLab.textContent = right ? "flagged →" : "flagged →";
+    dots.forEach(function (d) {
+      var on = d.v > t;
+      d.c.classList.toggle("off", !on);
+      if (on && d.k === "SF") sf += 1;
+      if (on && d.k === "SS") ss += 1;
+    });
+    var label = (t < 0.1 ? t.toFixed(3) : t.toFixed(2)) + "×";
+    out.textContent = label;
+    slider.setAttribute("aria-valuetext", label + " a clean rerun");
+    document.getElementById("say").textContent = "This threshold catches " + sf + " of the 18 runs that lost success, and also flags " + ss + " of the 84 runs that kept it.";
+    document.getElementById("m-sf").style.width = (sf / 18 * 100) + "%";
+    document.getElementById("m-ss").style.width = (ss / 84 * 100) + "%";
+    document.getElementById("v-sf").textContent = sf + " of 18 (" + Math.round(sf / 18 * 100) + "%)";
+    document.getElementById("v-ss").textContent = ss + " of 84 (" + Math.round(ss / 84 * 100) + "%)";
+  }
+
+  function nearest(ev) {
+    var r = svg.getBoundingClientRect(), px = ev.clientX - r.left, py = ev.clientY - r.top, best = null, bd = 24 * 24;
+    dots.forEach(function (d) { var q = (d.x - px) * (d.x - px) + (d.y - py) * (d.y - py); if (q < bd) { bd = q; best = d; } });
+    return best;
+  }
+  function showTip(ev) {
+    var d = nearest(ev);
+    if (hot && hot !== d) hot.c.classList.remove("hot");
+    hot = d;
+    if (!d) { tip.hidden = true; return; }
+    d.c.classList.add("hot");
+    tip.textContent = "";
+    var b = document.createElement("b");
+    b.textContent = (d.v < 0.1 ? d.v.toFixed(3) : d.v.toFixed(2)) + "×";
+    tip.appendChild(b);
+    tip.appendChild(document.createTextNode(" a clean rerun · " + NAMES[d.k]));
+    tip.hidden = false;
+    var w = tip.offsetWidth, left = Math.min(Math.max(0, d.x - w / 2), box.clientWidth - w);
+    tip.style.left = left + "px";
+    tip.style.top = Math.max(0, d.y - tip.offsetHeight - 12) + "px";
+  }
+  svg.addEventListener("pointermove", showTip);
+  svg.addEventListener("pointerdown", showTip);
+  svg.addEventListener("pointerleave", function () { if (hot) hot.c.classList.remove("hot"); hot = null; tip.hidden = true; });
+  slider.addEventListener("input", update);
+  if (window.ResizeObserver) { new ResizeObserver(function () { render(); }).observe(box); } else { window.addEventListener("resize", render); }
+  render();
+
+  function selectText(node) { var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var node = document.getElementById(btn.getAttribute("data-copy")), text = node.textContent;
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var fallback = function () { selectText(node); btn.textContent = "Selected"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done).catch(fallback); } else { fallback(); }
+    });
+  });
+})();
+</script>
