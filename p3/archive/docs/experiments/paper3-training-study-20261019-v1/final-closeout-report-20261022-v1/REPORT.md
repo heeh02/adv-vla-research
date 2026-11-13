@@ -126,7 +126,7 @@ T20/Original另有229个固定面板端点缺口，不能与T30缺口合并成�
 
 C对固定训练支持继续拟合，内部留出却恶化；T20的内部目标低于C20。在四条件、两seed中，全部40个任务均值都呈T20<C20，不是仅由一个极端任务拉低总均值。但并非每个demo都更好；内部监控同属40个训练任务，且用于研究决策，不能称未见任务盲测或基础模型从未见过的数据。[E02、E04]
 
-![F03：四条件、两seed的全部40任务C20/T20内部留出比较](/Users/researcher/Adv-VLA-π0.5/docs/experiments/existing-data-synthesis-20261018-v1/training-convergence-v1/heterogeneity/actual-v1/science/F1_TASK_PAIRED_ENDPOINTS-v1.png)
+![F03：四条件、两seed的全部40任务C20/T20内部留出比较](../../existing-data-synthesis-20261018-v1/training-convergence-v1/heterogeneity/actual-v1/science/F1_TASK_PAIRED_ENDPOINTS-v1.png)
 
 图的可用结论是“本次等预算时间采样策略改变了内部留出目标”；它不能证明闭环提升、时间覆盖的独立因果作用或神经流形机制。图中每点是一个任务的10个留出demo均值，任务点与两个seed都不能被误当成大量独立训练重复。
 
@@ -136,7 +136,7 @@ C对固定训练支持继续拟合，内部留出却恶化；T20的内部目标�
 
 完整30k分支中，floor seed0和reheat seed1的训练probe继续下降，但共同内部D32监控相对restored20k分别上升约1.57%–2.65%和6.47%–10.41%。它们是不同seed，不能彼此相减当作学习率效应。另两支缺30k监控，也不能拿29k替代同step比较。[E06、E07]
 
-![F07：T新增起点上的固定训练probe，EMA、D7/D25/D32分开](/Users/researcher/Adv-VLA-π0.5/docs/experiments/t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-T_added.png)
+![F07：T新增起点上的固定训练probe，EMA、D7/D25/D32分开](../../t20-optimization-continuation-20261019-v1/curve-analysis-v1/technical-v2/prepared-v2/run-v1/readback/science/F03-fixed-probe-EMA-T_added.png)
 
 图中的T_added是训练样本角色；C_old同样表示用T模型测旧训练起点，不是C模型曲线。H5是监督flow前五位置，不是已生成/执行动作。两条30k尾部缺失按原图留空。内部留出只存H10_D32总量，不能用它反推出D7变差；原T20与restored20k数值不同也单独保存，没有归因硬件或取更优值。
 
@@ -171,7 +171,7 @@ C对固定训练支持继续拟合，内部留出却恶化；T20的内部目标�
 
 两个预先固定的原始输入见证分别来自“仅物理hash不同”和“物理及图像hash不同”类，按最小seed/ordinal选取，不按成功率择例。它们的仿真状态最大坐标差仅5.55e−16和1.06e−15。第一例双图、本体、噪声全部相同；第二例主图1339/65536、腕图455/65536像素不同，最大通道差为uint8的1级，本体与噪声仍相同。[E13]
 
-![F11：两例实际query0原图与原量纲绝对差，不是attention图](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-q0-witness-v1/Q0-WITNESSES.png)
+![F11：两例实际query0原图与原量纲绝对差，不是attention图](../../paper3-training-study-20261019-v1/rss-common-panel-20261021-v1/figures-q0-witness-v1/Q0-WITNESSES.png)
 
 差图使用0–255量纲，1级差看起来接近黑，必须同报数字，不能看黑图就说精确相同。仿真向量混合不同量，最大差不能统称米或机器人位移。两例不能外推全部拒配，像素差小也不能证明模型输出/闭环后果必然小。原门没有放宽；这项发现改进了对拒配的解释，没有把案例重新接纳。
 

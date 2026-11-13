@@ -109,11 +109,11 @@ P/W 来自诊断重放，H 来自原生执行；各分支自身生成状态的�
 ## 8. 证据入口
 
 - 当前交付工程：`VLA_Attention_Supplement_20261109/source`，第四章 `revised_sections/structured.tex`。
-- [22 项主张对应表](removed-private-link)。
-- [深入分析报告（G1 等）](removed-private-link)。
-- [独立科学复核](removed-private-link)。
-- [Q1 恢复命令分析](removed-private-link)。
-- [Q3 早晚运动分析](removed-private-link)。
+- 22 项主张对应表（未公开）。
+- 深入分析报告（G1 等）（未公开）。
+- 独立科学复核（未公开）。
+- Q1 恢复命令分析（未公开）。
+- Q3 早晚运动分析（未公开）。
 
 仅使用作者个人保留资料；本轮不新增训练、仿真或策略执行。
 
