@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Output of reproduce/paper.py
+paper-results.json
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Editors and OS
+.DS_Store
+*.swp

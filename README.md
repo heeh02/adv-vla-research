@@ -27,7 +27,7 @@ Clone the repository and run the numerical check with Python 3.9 or later. The r
 ```sh
 git clone https://github.com/heeh02/adv-vla-research.git
 cd adv-vla-research
-git checkout paper-v1.2
+git checkout paper-v1.3
 python3 -B reproduce/paper.py --output paper-results.json
 ```
 
@@ -39,5 +39,21 @@ We originally planned two companion papers. We did not have enough time to pursu
 
 - **Intervention and prediction.** The draft and reassessment document which controlled interventions were executed, the results of the single-window physical pilot and the remaining questions about task-level effects. [Draft](p2/archive/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/latex/main.pdf) · [Reassessment](p2/reassessment.md) · [Code](p2/implementation)
 - **Training continuation and behavior.** The final report compares continued training with the parent checkpoints on matched settings. It gives the support for each comparison and where the seeds differ. [Draft](p3/archive/docs/experiments/paper3-training-study-20261019-v1/rss-draft-20261021-v1/manuscript/main.pdf) · [Final report](p3/archive/docs/experiments/paper3-training-study-20261019-v1/final-closeout-report-20261022-v1/REPORT.md) · [Code](p3/training)
+
+## What is in this repository
+
+| Folder | Contents |
+|---|---|
+| [`paper1/current`](paper1/current) | The paper and supplement: PDFs, LaTeX source, figure scripts and their data |
+| [`paper1/reproduction`](paper1/reproduction) | Collection, intervention and statistical code behind the paper |
+| [`reproduce`](reproduce) | The one-command numerical check and its inputs |
+| [`docs`](docs) | Project page (GitHub Pages), illustrated figure guides and the Chinese talk |
+| [`website`](website) | Source of the project page; `build.py` writes it into `docs` |
+| [`p2`](p2) | Intervention and prediction study: draft, reassessment, implementation, retained results |
+| [`p3`](p3) | Training continuation study: draft, final report, training code, comparisons |
+| [`historical-analysis`](historical-analysis) | Earlier analysis code and reports (event-locked placement, unified chain v3, early control scripts for the paper), kept for reference |
+| [`third-party-notices`](third-party-notices) | openpi license and Gemma terms |
+
+Larger archives are in the [v1.0.0 data release](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0). Paper revisions are tagged `paper-v1.1`, `paper-v1.2`, `paper-v1.3`.
 
 [Data inventory for the original release](FILES.csv) · [Software, data and figure licenses](LICENSING.md)

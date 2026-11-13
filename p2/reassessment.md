@@ -178,13 +178,13 @@ RSS2027官方当前要求Stage1最多5页正文加1页参考文献，允许经�
 
 ## 本次核读入口
 
-- [v11主文源码](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/latex/main.tex)与[支持材料源码](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/latex/support.tex)
-- [完整结项报告](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/report/closeout-20261022-v1/delivery/PAPER2-CLOSEOUT-REPORT-zh.md)
-- E1：[匹配非线性验收](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/rss-kernel-comparator-v1/ACTUAL-ACCEPTANCE.json)
-- E2：[原生写入完整解释和数值范围](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/same-gstar-next-20261021-v1/ACTUAL-SCIENTIFIC-INTERPRETATION.json)
-- E3：[pulse/persistent投影验收](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/pvp-shape-v1/ACTUAL-ACCEPTANCE.json)，精确结果及反例见v11与结项报告第6节
-- E4：[接口映射裁决](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/dev16-control-map-20261021-v1/SCIENTIFIC-DECISION.json)与[q11物理验收](/Users/researcher/Adv-VLA-π0.5/docs/experiments/paper2-independent-session-20261019-v1/analysis/q11-physical-complete-20261021-v1/ACTUAL-ACCEPTANCE.json)
-- [第一篇评阅尺度校准](/Users/researcher/Adv-VLA-π0.5/docs/reviews/v7_35-calibration-accepted-papers-20261022/CALIBRATION-SUMMARY.md)与[图形表达对照](/Users/researcher/Adv-VLA-π0.5/docs/reviews/v7_35-figure-communication-20261022/SYNTHESIS-READER-NARRATIVE-FIGURES.md)：作为参照，不是第二篇实验证据
-- [贡献专项复盘](notes/contribution-assessment.md)、[设计专项复盘](notes/design-audit.md)、[图表专项复盘](notes/figure-audit.md)：本次并行核读，不是新一轮盲评或Astra评分校准
+- [v11主文源码](archive/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/latex/main.tex)与[支持材料源码](archive/docs/experiments/paper2-independent-session-20261019-v1/manuscript/rss-revision-v11/latex/support.tex)
+- 完整结项报告（未公开）
+- E1：匹配非线性验收（[数据发布 v1.0.0](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0) `paper2-study-results-public.zip` 中的 `rss-kernel-comparator-v1/ACTUAL-ACCEPTANCE.json`）
+- E2：原生写入完整解释和数值范围（[数据发布 v1.0.0](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0) `paper2-study-results-public.zip` 中的 `same-gstar-next-20261021-v1/ACTUAL-SCIENTIFIC-INTERPRETATION.json`）
+- E3：pulse/persistent投影验收（[数据发布 v1.0.0](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0) `paper2-study-results-public.zip` 中的 `pvp-shape-v1/ACTUAL-ACCEPTANCE.json`），精确结果及反例见v11与结项报告第6节
+- E4：接口映射裁决（[数据发布 v1.0.0](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0) `paper2-study-results-public.zip` 中的 `dev16-control-map-20261021-v1/SCIENTIFIC-DECISION.json`）与q11物理验收（[数据发布 v1.0.0](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0) `paper2-study-results-public.zip` 中的 `q11-physical-complete-20261021-v1/ACTUAL-ACCEPTANCE.json`）
+- 第一篇评阅尺度校准与图形表达对照（均未公开）：作为参照，不是第二篇实验证据
+- 贡献专项复盘、设计专项复盘、图表专项复盘（均未公开）：本次并行核读，不是新一轮盲评或Astra评分校准
 
 外部一手来源（2026年10月23日核验）：[W1 Registers官方论文集](https://proceedings.iclr.cc/paper_files/paper/2024/hash/0b408293619f725fd30162af057e531a-Abstract-Conference.html)、[W2 Mirage官方论文集](https://proceedings.neurips.cc/paper_files/paper/2023/hash/adc98a266f45005c403b8311ca7e8bd7-Abstract-Conference.html)、[W3 Activation Patching官方论文集](https://proceedings.iclr.cc/paper_files/paper/2024/hash/06a52a54c8ee03cd86771136bc91eb1f-Abstract-Conference.html)、[W4 RSS2027 CFP](https://roboticsconference.org/information/cfp/)。外部论文的启发用于评价方式，未将其原结果或接受状态当作本篇实验证明。
