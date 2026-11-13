@@ -27,7 +27,6 @@ Clone the repository and run the numerical check with Python 3.9 or later. The r
 ```sh
 git clone https://github.com/heeh02/adv-vla-research.git
 cd adv-vla-research
-git checkout paper-v1.3
 python3 -B reproduce/paper.py --output paper-results.json
 ```
 
@@ -54,6 +53,6 @@ We originally planned two companion papers. We did not have enough time to pursu
 | [`historical-analysis`](historical-analysis) | Earlier analysis code and reports (event-locked placement, unified chain v3, early control scripts for the paper), kept for reference |
 | [`third-party-notices`](third-party-notices) | openpi license and Gemma terms |
 
-Larger archives are in the [v1.0.0 data release](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0). Paper revisions are tagged `paper-v1.1`, `paper-v1.2`, `paper-v1.3`.
+Larger archives are in the [v1.0.0 data release](https://github.com/heeh02/adv-vla-research/releases/tag/v1.0.0). `main` holds the current revision; earlier ones are tagged `paper-v1.1` and `paper-v1.2`.
 
 [Data inventory for the original release](FILES.csv) · [Software, data and figure licenses](LICENSING.md)
